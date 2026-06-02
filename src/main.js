@@ -2,6 +2,7 @@ import { Journey } from "./journey.js";
 import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
+import { renderShop } from "./shop.js";
 import { scenes } from "./data/scenes.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -17,8 +18,11 @@ scenes.forEach((s, i) => {
 });
 
 // --- WebGL journey + fish overlay. ---
+const smallScreen =
+  window.matchMedia("(max-width: 768px)").matches ||
+  window.matchMedia("(hover: none)").matches;
 const journey = new Journey(document.getElementById("gl"), { reducedMotion });
-const fish = new Fish(journey.scene, { reducedMotion });
+const fish = new Fish(journey.scene, { reducedMotion, count: smallScreen ? 18 : 36 });
 
 // --- Audio bed. ---
 const audio = new AudioBed(document.getElementById("audio-toggle"));
@@ -33,6 +37,9 @@ new BoardingPass({
   downloadBtn: document.getElementById("pass-download"),
   shareBtn: document.getElementById("pass-share"),
 });
+
+// --- Duty-Free shop. ---
+renderShop(document.getElementById("shop-grid"));
 
 // --- Caption: show the active scene's voiceover lines. ---
 const captionEl = document.getElementById("caption");
@@ -69,22 +76,38 @@ function onScroll() {
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll);
 
-// --- First gesture starts the soundtrack (autoplay is blocked otherwise). ---
-// The SOUND toggle owns its own clicks; if we also started audio here on the
-// same gesture, the two handlers would race and cancel out.
-let kickedOff = false;
-function firstGesture(e) {
-  if (kickedOff) return;
-  if (e?.target?.closest?.("#audio-toggle")) return; // toggle handles itself
-  kickedOff = true;
-  audio.start();
-  window.removeEventListener("scroll", firstGesture);
-  window.removeEventListener("pointerdown", firstGesture);
-  window.removeEventListener("keydown", firstGesture);
+// --- Boarding gate: the entry tap is the audio gesture (sound-on by default). ---
+// "Tap to board" starts the soundtrack; "enter muted" comes in silent. The gate
+// owns the audio-start decision, so there is no scroll/tap autostart elsewhere.
+const gate = document.getElementById("gate");
+document.documentElement.style.overflow = "hidden"; // lock scroll while gated
+function closeGate() {
+  gate.classList.add("gate-out");
+  document.body.classList.remove("gated");
+  document.documentElement.style.overflow = "";
+  const hide = () => (gate.hidden = true);
+  gate.addEventListener("transitionend", hide, { once: true });
+  setTimeout(hide, 800); // fallback if transitionend is missed
 }
-window.addEventListener("scroll", firstGesture, { passive: true });
-window.addEventListener("pointerdown", firstGesture);
-window.addEventListener("keydown", firstGesture);
+document.getElementById("gate-board").addEventListener("click", () => {
+  audio.start();
+  closeGate();
+});
+document.getElementById("gate-muted").addEventListener("click", closeGate);
+
+// --- Subtle cursor reactivity for the melt (devices with a hovering pointer). ---
+if (window.matchMedia("(hover: hover)").matches) {
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      journey.setMouse(
+        (e.clientX / window.innerWidth) * 2 - 1,
+        -((e.clientY / window.innerHeight) * 2 - 1)
+      );
+    },
+    { passive: true }
+  );
+}
 
 // --- Render loop. ---
 let last = performance.now();

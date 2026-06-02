@@ -11,9 +11,9 @@
  * The SCENES array is the single source of truth mapping each shot-list scene
  * to its keyframe file. src/data/scenes.js references the same slugs.
  */
-import { mkdir, copyFile, access } from "node:fs/promises";
+import { mkdir, copyFile, access, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { join, basename, extname } from "node:path";
 import sharp from "sharp";
 
 const SRC = "/Users/kk/Desktop/midjourney_session copy/10-key-frames";
@@ -53,36 +53,68 @@ async function fileExists(p) {
 }
 
 async function main() {
-  if (!existsSync(SRC)) {
-    throw new Error(`Keyframe source folder not found: ${SRC}`);
-  }
-  await mkdir(SCENES_OUT, { recursive: true });
-  await mkdir(AUDIO_OUT, { recursive: true });
+  // Scenes + audio come from the ephemeral Desktop folder; once optimized they
+  // live committed in public/, so skip (don't fail) when the source is gone.
+  if (existsSync(SRC)) {
+    await mkdir(SCENES_OUT, { recursive: true });
+    await mkdir(AUDIO_OUT, { recursive: true });
 
-  for (const [slug, file] of SCENES) {
-    const src = join(SRC, file);
-    if (!(await fileExists(src))) {
-      throw new Error(`Missing keyframe for ${slug}: ${file}`);
+    for (const [slug, file] of SCENES) {
+      const src = join(SRC, file);
+      if (!(await fileExists(src))) {
+        throw new Error(`Missing keyframe for ${slug}: ${file}`);
+      }
+      await Promise.all(
+        SIZES.map(({ width, suffix }) =>
+          sharp(src)
+            .resize({ width, withoutEnlargement: true })
+            .webp({ quality: 84 })
+            .toFile(join(SCENES_OUT, `${slug}${suffix}.webp`))
+        )
+      );
+      console.log(`✓ ${slug}`);
     }
-    await Promise.all(
-      SIZES.map(({ width, suffix }) =>
-        sharp(src)
-          .resize({ width, withoutEnlargement: true })
-          .webp({ quality: 84 })
-          .toFile(join(SCENES_OUT, `${slug}${suffix}.webp`))
-      )
-    );
-    console.log(`✓ ${slug}`);
-  }
 
-  if (await fileExists(AUDIO_SRC)) {
-    await copyFile(AUDIO_SRC, join(AUDIO_OUT, "whale-sky-god.mp3"));
-    console.log("✓ audio/whale-sky-god.mp3");
+    if (await fileExists(AUDIO_SRC)) {
+      await copyFile(AUDIO_SRC, join(AUDIO_OUT, "whale-sky-god.mp3"));
+      console.log("✓ audio/whale-sky-god.mp3");
+    } else {
+      console.warn(`! audio not found at ${AUDIO_SRC} — skipping`);
+    }
+    console.log(`Done. ${SCENES.length} scenes optimized → public/scenes/`);
   } else {
-    console.warn(`! audio not found at ${AUDIO_SRC} — skipping`);
+    console.warn(`Keyframe source gone (${SRC}) — scenes/audio already in public/, skipping.`);
   }
 
-  console.log(`\nDone. ${SCENES.length} scenes optimized → public/scenes/`);
+  await optimizeMerch();
+}
+
+// Merch raster outputs (merch/<round>/*.png, gitignored) → committed web webp in
+// public/merch/ so the on-site Duty-Free shop can deploy. Source PNGs stay local.
+async function optimizeMerch() {
+  const MERCH_SRC = join(ROOT, "merch");
+  const MERCH_OUT = join(ROOT, "public", "merch");
+  if (!existsSync(MERCH_SRC)) return;
+
+  const rounds = (await readdir(MERCH_SRC, { withFileTypes: true }))
+    .filter((d) => d.isDirectory() && d.name !== "print") // print/ = handoff files, not web
+    .map((d) => d.name);
+
+  await mkdir(MERCH_OUT, { recursive: true });
+  let n = 0;
+  for (const round of rounds) {
+    const dir = join(MERCH_SRC, round);
+    const pngs = (await readdir(dir)).filter((f) => f.endsWith(".png"));
+    for (const file of pngs) {
+      const stem = basename(file, extname(file));
+      await sharp(join(dir, file))
+        .resize({ width: 1200, withoutEnlargement: true })
+        .webp({ quality: 86 })
+        .toFile(join(MERCH_OUT, `${round}-${stem}.webp`));
+      n++;
+    }
+  }
+  if (n) console.log(`Done. ${n} merch images optimized → public/merch/`);
 }
 
 main().catch((err) => {

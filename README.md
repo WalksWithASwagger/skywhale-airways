@@ -46,13 +46,23 @@ repo, update that one `base` string.
 
 - **`src/journey.js`** — Three.js. One fullscreen quad whose shader
   (`src/shaders/transition.frag`) melts between adjacent scene textures. Scroll
-  sets a `progress` uniform in `[0, N-1]`; the fraction is the melt. Textures
-  lazy-load as the scroll approaches them.
+  sets a `progress` uniform in `[0, N-1]`; the fraction is the melt (eased with a
+  gentle constant so it keeps flowing after you stop). A `uMouse` uniform trails
+  the cursor (`pointermove` in `main.js`, hover-capable devices only) for subtle
+  parallax + ripple; touch leaves it centered. Textures lazy-load as you approach.
+- **`about.html`** — the colophon / methodology page (a second Vite entry,
+  registered in `vite.config.js`), linked from the footer. Honest about the
+  tools, told in the film's voice.
 - **`src/fish-particles.js`** — generative fish drawn as `THREE.Points` in the
   same render pass, parallaxing with scroll and pulsing with the audio.
+- **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site
+  opens on an entry overlay so it's **sound-on by default**: browsers block
+  autoplay until a gesture, so the "Tap to board" tap *is* that gesture and starts
+  the soundtrack. A small "enter muted" link is the courteous opt-out (and, since
+  there's no scroll-autostart, the mute sticks until the `SOUND` toggle is used).
 - **`src/audio.js`** — the soundtrack bed + a WebAudio `AnalyserNode` feeding a
-  `0..1` amplitude into the shader. Autoplay is blocked by browsers, so playback
-  starts on the first gesture; the `SOUND` toggle mutes/unmutes.
+  `0..1` amplitude into the shader. The boarding-gate tap starts playback (autoplay
+  is blocked otherwise); the `SOUND` toggle mutes/unmutes.
 - **`src/boarding-pass.js`** — the signature widget. Name + decade → a canvas
   boarding pass in the film's style, downloadable / shareable. No backend.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a

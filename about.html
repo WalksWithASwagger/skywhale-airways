@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colophon · A Psychedelic Airport for Time Travelers</title>
+    <meta
+      name="description"
+      content="How A Psychedelic Airport for Time Travelers was dreamed — the methodology behind the Skywhale Airways film and site. By Kris Krug & Suzie Easton."
+    />
+    <meta name="theme-color" content="#e9c6d4" />
+    <style>
+      :root {
+        --rose: #e9c6d4;
+        --rose-deep: #c74a5c;
+        --ink: #33242a;
+        --cloud: #f4d9e3;
+        --sky: #cfd9ec;
+        --gold: #f2c14e;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        min-height: 100dvh;
+        font-family: var(--serif);
+        color: var(--ink);
+        background: radial-gradient(120% 120% at 50% 0%, var(--cloud), var(--sky));
+        padding: clamp(3rem, 8vw, 7rem) 1.5rem 5rem;
+      }
+      #grain {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        background-size: 220px 220px;
+      }
+      main {
+        position: relative;
+        z-index: 1;
+        max-width: 38rem;
+        margin: 0 auto;
+      }
+      .kicker {
+        font-size: 0.78rem;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.6);
+        margin: 0 0 0.8rem;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 1.15;
+        margin: 0 0 2rem;
+      }
+      .verse {
+        font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+        line-height: 1.8;
+        font-style: italic;
+        margin: 0 0 2.6rem;
+      }
+      p { line-height: 1.75; margin: 0 0 1.3rem; }
+      h2 {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--rose-deep);
+        margin: 3rem 0 1rem;
+      }
+      dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.55rem 1.4rem;
+      }
+      dt {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.6);
+        padding-top: 0.15rem;
+      }
+      dd { margin: 0; }
+      .manifest-note { font-style: italic; color: rgba(50, 35, 40, 0.7); }
+      footer {
+        margin-top: 3.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(50, 35, 40, 0.2);
+      }
+      footer p { margin: 0.25rem 0; font-size: 0.82rem; }
+      a { color: var(--rose-deep); text-underline-offset: 3px; }
+      .back {
+        display: inline-block;
+        margin-top: 1.6rem;
+        font-style: italic;
+        letter-spacing: 0.04em;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grain" aria-hidden="true"></div>
+    <main>
+      <p class="kicker">Skywhale Airways · Colophon</p>
+      <h1>How this was dreamed</h1>
+
+      <p class="verse">
+        The stills were dreamed in Midjourney,<br />
+        the songs summoned through Suno,<br />
+        the motion coaxed from Veo —<br />
+        then we built an airport around them,<br />
+        out of light and scroll.
+      </p>
+
+      <p>
+        <em>A Psychedelic Airport for Time Travelers</em> began as a prompt: the AI
+        Film Club's <strong>Retro</strong> challenge, June 2026. We wanted an airport
+        for lost decades — a place where fish move like aircraft, the clock refuses
+        ordinary time, and a traveler departs with one bag and arrives with more time
+        than she left with.
+      </p>
+
+      <p>
+        The look came first. Hand-painted gouache frames — the golden skywhale, the
+        long girl in her dark suit, the terminal where fish drift through the ceiling
+        like constellations — were generated in <strong>Midjourney</strong> and curated
+        down to ten keyframes. The score grew alongside them in <strong>Suno</strong>:
+        <em>whale sky god</em>, <em>Beneath Skywhale</em>, and <em>Airline Brochure</em>,
+        a retro-futurist lounge bed for a narrator from a film that was never made. The
+        animation itself is being coaxed from <strong>Veo</strong>, scene by scene — it
+        is still circling, and has not landed in this decade yet.
+      </p>
+
+      <p>
+        This site is the airport we built to hold all of it. It is a single hand-written
+        page: a <strong>WebGL</strong> shader (Three.js) melts each painting into the next
+        as you scroll, generative fish drift in parallax, and the soundtrack drives the
+        distortion so the images breathe. Nothing here is a stock template; it was
+        assembled the slow way, by hand, the same way you'd build a set.
+      </p>
+
+      <p>
+        We're transparent about the tools because the methodology <em>is</em> the art —
+        a small crew, AI as a brush and an instrument, and a lot of taste applied on top.
+      </p>
+
+      <h2>Manifest</h2>
+      <dl>
+        <dt>Stills</dt><dd>Midjourney — 10 hand-curated gouache keyframes</dd>
+        <dt>Songs</dt><dd>Suno — whale sky god · Beneath Skywhale · Airline Brochure</dd>
+        <dt>Animation</dt><dd>Veo — in progress, scene by scene</dd>
+        <dt>Airport</dt><dd>Vite · Three.js / GLSL · vanilla JS, built by hand</dd>
+        <dt>Merch</dt><dd>Gemini image generation, the keyframes as reference</dd>
+        <dt>Decade</dt><dd>retro · all of them · none of them</dd>
+      </dl>
+
+      <footer>
+        <p>A Skywhale Airways production.</p>
+        <p>AI Film Club · Retro Challenge · June 2026.</p>
+        <p>By <strong>Kris Krug</strong> &amp; <strong>Suzie Easton</strong>.</p>
+        <a class="back" href="index.html">← back to the airport</a>
+      </footer>
+    </main>
+  </body>
+</html>

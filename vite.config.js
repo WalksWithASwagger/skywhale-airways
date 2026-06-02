@@ -1,4 +1,7 @@
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
+
+const r = (p) => fileURLToPath(new URL(p, import.meta.url));
 
 // GitHub Pages serves this project site under /skywhale-airways/. The base is
 // applied only for the production build; dev stays at the root for convenience.
@@ -11,6 +14,12 @@ export default defineConfig(({ command }) => ({
   build: {
     outDir: "dist",
     sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: r("index.html"),
+        about: r("about.html"),
+      },
+    },
   },
   optimizeDeps: {
     include: ["three", "gsap"],

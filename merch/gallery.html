@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skywhale Airways · Duty-Free · Round 1</title>
+    <style>
+      :root { --ink: #33242a; --rose: #e9c6d4; --cloud: #f4d9e3; --sky: #cfd9ec; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, var(--cloud), var(--sky));
+        padding: 3rem 1.5rem 5rem;
+      }
+      header { max-width: 1100px; margin: 0 auto 2.5rem; text-align: center; }
+      h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 .4rem; }
+      .sub { font-style: italic; color: rgba(50,35,40,.72); margin: 0; }
+      .meta { margin-top: .6rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(50,35,40,.6); }
+      .grid {
+        max-width: 1100px; margin: 0 auto;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.8rem;
+      }
+      figure {
+        margin: 0; background: #fff; border-radius: 10px; overflow: hidden;
+        box-shadow: 0 14px 40px rgba(60,30,50,.18);
+      }
+      figure img { display: block; width: 100%; height: auto; background: #faf4ea; }
+      figcaption { padding: .9rem 1.1rem 1.1rem; }
+      .name { font-weight: 700; }
+      .for { font-size: .82rem; color: rgba(50,35,40,.7); font-style: italic; margin-top: .2rem; }
+      .tall { grid-row: span 2; }
+      footer { max-width: 1100px; margin: 3rem auto 0; text-align: center; font-size: .8rem; color: rgba(50,35,40,.65); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Skywhale Airways · Duty-Free</h1>
+      <p class="sub">Round 1 — stickers &amp; shirts from "A Psychedelic Airport for Time Travelers"</p>
+      <p class="meta">by Kris Krug &amp; Suzie Easton · AI Film Club Retro</p>
+    </header>
+
+    <div class="grid">
+      <figure>
+        <img src="./r1/01-skywhale-roundel.png" alt="Skywhale Airways roundel sticker" />
+        <figcaption><div class="name">01 · Skywhale Airways roundel</div><div class="for">Circular die-cut sticker · GATE ∞</div></figcaption>
+      </figure>
+      <figure>
+        <img src="./r1/02-fly-the-golden-fish.png" alt="Fly the Golden Fish sticker" />
+        <figcaption><div class="name">02 · Fly the Golden Fish</div><div class="for">Die-cut character sticker</div></figcaption>
+      </figure>
+      <figure>
+        <img src="./r1/03-baggage-tag.png" alt="Skywhale Airways baggage tag sticker" />
+        <figcaption><div class="name">03 · Baggage tag</div><div class="for">Boarding through memory · seat 🐟</div></figcaption>
+      </figure>
+      <figure>
+        <img src="./r1/04-lyric-more-time.png" alt="More time than you left with lyric sticker" />
+        <figcaption><div class="name">04 · "More time than you left with"</div><div class="for">Lyric die-cut sticker</div></figcaption>
+      </figure>
+      <figure>
+        <img src="./r1/05-shirt-skywhale-front.png" alt="Skywhale Airways shirt chest print" />
+        <figcaption><div class="name">05 · Skywhale chest print</div><div class="for">Shirt front · est. nowhen, arriving soon</div></figcaption>
+      </figure>
+      <figure class="tall">
+        <img src="./r1/06-shirt-lost-decades.png" alt="One airport for lost decades travel poster shirt" />
+        <figcaption><div class="name">06 · One airport for lost decades</div><div class="for">Shirt / travel poster · every decade has its own weather</div></figcaption>
+      </figure>
+    </div>
+
+    <footer>Round 1 · regenerate from <code>skywhale-airways-merch-r1.md</code></footer>
+  </body>
+</html>
