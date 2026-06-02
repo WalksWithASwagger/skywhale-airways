@@ -12,7 +12,8 @@ Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
 and drives the distortion, and the poetic voiceover surfaces line by line. At the
-end of the terminal, visitors issue themselves a time-travel boarding pass.
+end of the terminal, visitors issue themselves a time-travel boarding pass and
+watch the finished cut in the terminal frame.
 
 ## Run it
 
@@ -34,8 +35,8 @@ repo, update that one `base` string.
 
 ## Roadmap
 
-- **Finished film** — drop the Veo animation into the reserved `#film-frame`
-  slot (below).
+- **Finished film** — the Veo cut is wired into the `#film-frame` slot from
+  `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   doubles as the press/landing page.
 - **Merch** — a shop section for stickers, patches, and shirts of the characters
@@ -82,15 +83,13 @@ WebP are committed, never the ~2 MB originals.
 `Airline Brochure.mp3` and `Beneath Skywhale.mp3` — swap the `AUDIO_SRC` line in
 `scripts/optimize-assets.mjs` and re-run `npm run optimize` to change the bed.
 
-## Dropping in the finished film
+## Film embed
 
-The animation is still in progress. When it's ready, replace the placeholder in
-the `#film-frame` element in `index.html` with the embed, e.g.:
+The finished web cut is committed at `public/film/psychedelic-airport.mp4` and
+is embedded in the `#film-frame` element with relative asset paths:
 
 ```html
 <div class="film-frame" id="film-frame">
-  <video src="/film/psychedelic-airport.mp4" controls playsinline poster="/scenes/01-skywhale-airport.webp"></video>
+  <video src="./film/psychedelic-airport.mp4" controls playsinline poster="./scenes/01-skywhale-airport.webp"></video>
 </div>
 ```
-
-(or a YouTube/Vimeo `<iframe>`). Put the file under `public/film/`.

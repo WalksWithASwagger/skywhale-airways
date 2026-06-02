@@ -84,11 +84,18 @@
           </div>
         </div>
 
-        <!-- Reserved slot: the finished Veo film drops in here (see README). -->
+        <!-- The finished Veo film lives in public/film and is copied through the static build. -->
         <div id="film-slot">
           <p class="film-label">Feature presentation</p>
           <div class="film-frame" id="film-frame">
-            <span class="film-soon">The film is still circling · it has not landed in this decade yet</span>
+            <video
+              src="./film/psychedelic-airport.mp4"
+              controls
+              playsinline
+              preload="metadata"
+              poster="./scenes/01-skywhale-airport.webp"
+              aria-label="A Psychedelic Airport for Time Travelers film"
+            ></video>
           </div>
         </div>
 

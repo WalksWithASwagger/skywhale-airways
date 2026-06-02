@@ -115,4 +115,4 @@ no pop vocals, no trailer drums.
 Text philosophy: keep readable text **sparse** — one or two anchors; let most
 signage stay dreamlike / semi-legible.
 
-See [HANDOFF.md](HANDOFF.md) for production status and rebuild commands.
+See [README.md](README.md) for production status and rebuild commands.

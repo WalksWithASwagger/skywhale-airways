@@ -17,7 +17,7 @@ production/
     keyframes/                 # s01–s10 source frames (scene-named)
     clips/                     # s01–s10 generated clips (8s each, 1080p)
     audio/                     # VO takes, music beds, Demucs stems, instrumental cut, mixes
-    edits/                     # assembled cuts (the 6-shot <60s instrumental cut)
+    edits/                     # assembled web and festival cuts
     supporting-docs/           # storyboard PDF/DOCX, Veo prompts + Suno notes
 ```
 
@@ -54,9 +54,9 @@ production/
   narration script (newer, tighter lyrics) voiced as a warm male narrator.
 - Music: independent retro lounge-jazz beds via Replicate `stable-audio`
   (`audio/bed_*.wav`), plus full VO-over-bed mixes (`audio/mix_*.mp3`).
-- The hero track `Airline Brochure.mp3` was split with Demucs
-  (`audio/stems/no_vocals.mp3`); `audio/inst_intro_57s.mp3` is the clean
-  word-free 0:00–0:57 instrumental used in the current cut.
+- The final web cut uses `audio/whale-sky-god.mp3`. The earlier
+  `audio/inst_intro_57s.mp3` instrumental and Demucs stems are retained as
+  production history for the 6-shot exploration.
 
 ## The finished cut
 
@@ -94,9 +94,10 @@ production/
 - Pro source clips (`clips/s01_full.mp4` … `s10_full.mp4`) are regenerable with
   `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
   demand) — only the fast clips and the final cut live in the repo.
-- **Web embed:** the finished file sits in `public/film/`; wiring it into the
-  `#film-frame` element in `index.html` is left to the web app work (the Pages
-  deploy needs `lfs: true` on its checkout — see PR #1).
+- **Web embed:** the finished file sits in `public/film/` and `index.html`
+  loads it into the `#film-frame` element with relative paths. The temporary
+  GitHub Pages deploy fetches LFS objects during checkout so the build copies the
+  real MP4, not a pointer file.
 
 ## Titles & credits
 
