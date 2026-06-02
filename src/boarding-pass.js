@@ -56,7 +56,7 @@ export class BoardingPass {
     const gate = seed % 4 === 0 ? "∞" : String((seed % 30) + 1);
     const status = STATUSES[seed % STATUSES.length];
     const terminal = TERMINALS[seed % TERMINALS.length];
-    const flight = "TA-" + (100 + (seed % 899));
+    const flight = "SW-" + (100 + (seed % 899));
     const seq = String((seed * 7) % 1000).padStart(3, "0");
     return { name, decade, gate, status, terminal, flight, seq };
   }
@@ -112,7 +112,7 @@ export class BoardingPass {
     ctx.textBaseline = "alphabetic";
 
     ctx.font = "700 30px Georgia, 'Times New Roman', serif";
-    ctx.fillText("TIME AIRWAYS", 56, 84);
+    ctx.fillText("SKYWHALE AIRWAYS", 56, 84);
     ctx.font = "italic 17px Georgia, serif";
     ctx.fillStyle = "rgba(50,35,40,0.7)";
     ctx.fillText("A Psychedelic Airport for Time Travelers", 56, 110);

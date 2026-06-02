@@ -2,7 +2,7 @@
 // amplitude into the shader. Browsers block autoplay, so playback starts on the
 // first user gesture; the toggle lets the visitor mute/unmute thereafter.
 export class AudioBed {
-  constructor(toggleEl, { src = "/audio/whale-sky-god.mp3" } = {}) {
+  constructor(toggleEl, { src = `${import.meta.env.BASE_URL}audio/whale-sky-god.mp3` } = {}) {
     this.level = 0;
     this.started = false;
     this.toggle = toggleEl;

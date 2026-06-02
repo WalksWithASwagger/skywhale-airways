@@ -66,6 +66,7 @@ export const scenes = [
 ];
 
 // Responsive source for a scene texture (small frame on narrow screens).
+// BASE_URL keeps paths correct under the GitHub Pages /skywhale-airways/ subpath.
 export function sceneImage(slug, small = false) {
-  return `/scenes/${slug}${small ? "@sm" : ""}.webp`;
+  return `${import.meta.env.BASE_URL}scenes/${slug}${small ? "@sm" : ""}.webp`;
 }

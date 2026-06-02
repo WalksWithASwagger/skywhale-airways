@@ -1,8 +1,12 @@
-# A Psychedelic Airport for Time Travelers
+# Skywhale Airways ✈ 🐋
 
 A scroll-driven, heavy-WebGL microsite for the animation *A Psychedelic Airport
 for Time Travelers* — **AI Film Club · Retro Challenge · June 2026**, by
-**Kris Krug & Suzie Easton**.
+**Kris Krug & Suzie Easton**. *Skywhale Airways* is the in-world airline brand
+(it's the airline on the boarding pass) and the project's name for festivals and
+merch.
+
+**Live:** https://walkswithaswagger.github.io/skywhale-airways/
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -18,7 +22,25 @@ npm run optimize   # builds public/scenes/*.webp + public/audio from the source 
 npm run dev        # http://localhost:3000
 ```
 
-`npm run build` → `dist/` (static, deploy to Vercel). `npm run preview` to check it.
+`npm run build` → `dist/` (static). `npm run preview` to check it.
+
+## Deploy
+
+Pushing to `main` auto-deploys to **GitHub Pages** via
+`.github/workflows/deploy.yml` (build → `dist` → Pages). The site lives under the
+`/skywhale-airways/` subpath, so `vite.config.js` sets `base` on build and all
+runtime asset URLs are prefixed with `import.meta.env.BASE_URL`. If you rename the
+repo, update that one `base` string.
+
+## Roadmap
+
+- **Finished film** — drop the Veo animation into the reserved `#film-frame`
+  slot (below).
+- **Festival submissions** — *Skywhale Airways* is the submission brand; the site
+  doubles as the press/landing page.
+- **Merch** — a shop section for stickers, patches, and shirts of the characters
+  (the skywhale, the golden fish) and song lyrics. Not built yet; the airline
+  branding (boarding pass, wordmark) is the design seed.
 
 ## How it works
 
