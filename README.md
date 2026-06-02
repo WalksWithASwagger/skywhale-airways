@@ -16,8 +16,9 @@ Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
 and drives the distortion, and the poetic voiceover surfaces line by line. At the
-end of the terminal, visitors issue themselves a time-travel boarding pass and
-browse the Skywhale Airways Duty-Free merch concepts.
+end of the terminal, visitors issue themselves a time-travel boarding pass,
+watch the finished cut in the terminal frame, and browse the Skywhale Airways
+Duty-Free merch concepts.
 
 ## Run it
 
@@ -55,8 +56,8 @@ work.
 
 - **Vercel production** — link the repo, enable Git LFS, verify root-path assets,
   then attach the custom domain.
-- **Finished film** — merge the film-production PR and wire the MP4 into the
-  reserved `#film-frame` slot.
+- **Finished film** — the Veo cut is wired into the `#film-frame` slot from
+  `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   doubles as the press/landing page.
 - **Duty-Free merch** — concept products are live on the site. Source and
@@ -110,17 +111,14 @@ held `Airline Brochure.mp3` and `Beneath Skywhale.mp3`; swap the `AUDIO_SRC` lin
 in `scripts/optimize-assets.mjs` and re-run `npm run optimize` to change the bed
 when those local sources are available.
 
-## Dropping in the finished film
+## Film embed
 
-The animation is still in progress on the web surface. When the film PR lands,
-replace the placeholder in the `#film-frame` element in `index.html` with the
-relative embed:
+The finished web cut is committed at `public/film/psychedelic-airport.mp4` and
+is embedded in the `#film-frame` element with relative asset paths. Confirm Git
+LFS is enabled on Vercel before relying on production deploys.
 
 ```html
 <div class="film-frame" id="film-frame">
   <video src="./film/psychedelic-airport.mp4" controls playsinline poster="./scenes/01-skywhale-airport.webp"></video>
 </div>
 ```
-
-Put the file under `public/film/` and confirm Git LFS is enabled on Vercel before
-deploying.

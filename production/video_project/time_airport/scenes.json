@@ -1,0 +1,87 @@
+{
+  "title": "A Psychedelic Airport for Time Travelers",
+  "model_fast": "google/veo-3.1-fast",
+  "model_full": "google/veo-3.1",
+  "version_fast": "ba987aceebef53bebfede32973f842fe3aa2301bf2585878181e7a7677052e36",
+  "version_full": "9c6ca0c25d89ac6102278405a0673fd929b7793856870d2718e3a84a5aa4ad4d",
+  "defaults": {
+    "aspect_ratio": "16:9",
+    "duration": 8,
+    "resolution": "1080p",
+    "generate_audio": false,
+    "style_suffix": "Embrace surreal Salvador Dali-esque transformation throughout: forms slowly melt and drip, time flows like liquid, space warps and breathes, colors bleed and pulse, fish and clocks elongate and ripple like a dream, soft psychedelic morphing and trippy distortion. Keep the subject and location clearly legible - the traveler and the scene remain readable even as the world melts. Keep the hand-painted gouache texture, ink outlines, and pastel palette at all times - painterly and analog, never 3D CGI or plastic. No subtitles, no captions, no on-screen text, no watermark.",
+    "negative_prompt": "3D render, CGI, photorealistic skin, smooth plastic surfaces, glossy plastic, lens flare, subtitles, captions, on-screen text, watermark, logo, distorted human faces, mangled hands, harsh flicker"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "title": "The Skywhale Airport",
+      "keyframe": "keyframes/s01_skywhale.png",
+      "narration": "There are airports for cities, airports for countries, and one airport for lost decades.",
+      "prompt": "Animate the provided keyframe as the opening exterior of a surreal retro hand-painted short film called A Psychedelic Airport for Time Travelers. A colossal yellow fish-aircraft hangs over a flooded field of runway markers while a lone blonde traveler stands below. Preserve the exact gouache-like painted texture, delicate ink outlines, pastel palette, and 1960s-1970s psychedelic airport futurism. Use a slow cinematic push-in. The yellow skywhale drifts slightly, smaller fish glide like aircraft, reeds and poles tremble gently, and the air feels charged with departure. No modern digital effects, no readable text additions, no subtitles, no watermark."
+    },
+    {
+      "id": "s02",
+      "title": "Lost Baggage Check-In",
+      "keyframe": "keyframes/s02_baggage.png",
+      "narration": "At check-in, they weigh her luggage, her memories, and the years she has not yet unpacked.",
+      "prompt": "Animate the provided keyframe as the lost-baggage check-in hall of a surreal time-travel airport. The blonde traveler stands with suitcases while fish-aircraft drift through the room like baggage inspectors. Preserve the hand-painted retro illustration style, pastel airport palette, paper texture, wonky signage, and dreamlike composition. Use a slow observational pan from luggage to traveler. Suitcases subtly breathe or nudge, fish swim through the terminal air, and the traveler turns her head slightly as if called to the next counter. Keep motion restrained and uncanny. No subtitles, no watermark."
+    },
+    {
+      "id": "s03",
+      "title": "Departures Concourse",
+      "keyframe": "keyframes/s03_concourse.png",
+      "narration": "In the departures hall, fish move overhead and the clock refuses ordinary time.",
+      "prompt": "Animate the provided keyframe as the main departures concourse of a psychedelic time-travel airport. A blonde traveler in a dark suit walks forward holding a briefcase under a red-striped ceiling crowded with fish-aircraft and a strange clock. Preserve the original hand-painted gouache style, pastel blue walls, red ceiling, delicate ink lines, vintage airline-brochure surrealism, and 1970s retro-futurist mood. Use a slow forward dolly. Fish glide above like planes, the clock hand stutters out of sequence, passengers perform tiny waiting-room loops, and the traveler moves calmly through the center aisle. No modern digital polish, no subtitles, no watermark."
+    },
+    {
+      "id": "s04",
+      "title": "Gate Delay / Duplicate Selves",
+      "keyframe": "keyframes/s04_duplicates.png",
+      "narration": "At the gate, she meets another version of herself already waiting.",
+      "prompt": "Animate the provided keyframe as a pink waiting-room gate inside a surreal time airport. Two versions of the same blonde traveler appear in the lounge, one seated lower and one perched higher on the pink chairs, while fish-aircraft drift through the corridor. Preserve the hand-painted retro illustration style, pale yellow walls, pink seats, blue floor, paper texture, and eerie comic timing. Keep the scene almost still and uncanny. One traveler blinks or shifts slightly while the other version moves a hand or foot; fish pass between the duplicates in gentle parallax. No subtitles, no watermark."
+    },
+    {
+      "id": "s05",
+      "title": "Boarding Platform",
+      "keyframe": "keyframes/s05_boarding.png",
+      "narration": "When boarding begins, the runway opens like a memory.",
+      "prompt": "Animate the provided keyframe as the boarding platform of a psychedelic airport for time travelers. The blonde traveler stands on a circular mechanical platform surrounded by fish-aircraft, a real airplane, balloons, clocks, route tokens, and soft pink mountains. Preserve the surreal hand-painted style, pastel blue sky, gouache texture, thin ink outlines, and retro-futurist airport mood. Use a slow circular camera drift. The platform hums and rotates slightly, clock-like discs spin, balloons rise, fish arrange into looping flight paths, and the traveler braces gently as if boarding a living route. No subtitles, no watermark."
+    },
+    {
+      "id": "s06",
+      "title": "Zero-Gravity Transfer",
+      "keyframe": "keyframes/s06_zerogravity.png",
+      "narration": "Somewhere between gate and sky, gravity stops insisting.",
+      "prompt": "Animate the provided keyframe as the zero-gravity transfer out of the time airport. A blonde traveler in a dark navy suit floats horizontally beside a pink modernist terminal building while fish-aircraft surround her in the pale blue sky. Preserve the hand-painted gouache illustration, delicate ink outlines, pastel palette, and 1970s surreal airport tone. Use a gentle left-to-right floating camera move. The traveler drifts weightlessly, hair and tie slowly trailing, fish pass in front and behind her with parallax, and the pink terminal recedes below. No subtitles, no watermark."
+    },
+    {
+      "id": "s07",
+      "title": "Golden Fish Flight",
+      "keyframe": "keyframes/s07_goldenfish.png",
+      "narration": "A golden fish carries her between decades.",
+      "prompt": "Animate the provided keyframe as the main in-flight sequence of a psychedelic time-airport journey. The blonde traveler rides on the back of a huge yellow fish-aircraft above a low terminal building and parked car while many escort fish glide around her. Preserve the exact hand-painted retro illustration style, pale blue sky, pink building, gouache texture, ink outlines, and whimsical 1970s airline dream logic. Use a majestic lateral tracking shot. The yellow fish glides steadily like a living airplane, the traveler remains calm, escort fish keep loose formation, and the ground slowly drifts below. No subtitles, no watermark."
+    },
+    {
+      "id": "s08",
+      "title": "Holding Pattern Runway",
+      "keyframe": "keyframes/s08_holding.png",
+      "narration": "They do not arrive. They circle. Every decade has its own weather.",
+      "prompt": "Animate the provided keyframe as a surreal holding-pattern runway between decades. The blonde traveler sits on a tall black table on a runway-like plain while fish, a yellow airplane, clocks, route lines, antenna towers, and red signal machines float around her. Preserve the hand-painted gouache style, pastel desert-runway palette, delicate ink outlines, and retro airport control-room logic. Use a slow patient camera push-in. Dotted route lines draw themselves through the sky, fish and planes trace lazy loops, signal towers blink, and the traveler remains still in mid-transit. No subtitles, no watermark."
+    },
+    {
+      "id": "s09",
+      "title": "Cloud Orchard Layover",
+      "keyframe": "keyframes/s09_orchard.png",
+      "narration": "In the layover orchard, even the clouds are waiting for someone.",
+      "prompt": "Animate the provided keyframe as the soft layover orchard inside a psychedelic airport for time travelers. The blonde traveler rests among pink cloud-trees, chairs, shallow water, and a pale blue horizon. Preserve the dreamy hand-painted gouache texture, delicate ink outlines, pastel pink and blue palette, and gentle retro-surreal airport mood. Use a slow floating camera drift. The pink cloud-trees breathe and bob, thin red stems sway, water ripples softly, the chair hovers slightly, and a small fish glides high above like a distant shuttle. No subtitles, no watermark."
+    },
+    {
+      "id": "s10",
+      "title": "Pink Rotunda Arrival",
+      "keyframe": "keyframes/s10_rotunda.png",
+      "narration": "At last she enters a vast terminal where fish drift through the ceiling like constellations.",
+      "prompt": "Animate the provided keyframe as the final arrival terminal of A Psychedelic Airport for Time Travelers. The blonde traveler stands in a vast pink rotunda with circular baggage pods and a huge curved ceiling filled with fish-aircraft moving like constellations. Preserve the hand-painted retro illustration, gouache texture, delicate ink outlines, pastel pink floor, blue ceiling, and 1970s airline-brochure futurism. Use a slow elegant pull-back to reveal the full terminal. Fish glide in broad arcs overhead, baggage pods pulse softly, distant travelers make tiny settling movements, and the protagonist pauses in peaceful arrival. No subtitles, no watermark."
+    }
+  ]
+}
