@@ -3,9 +3,9 @@
   "outputDirectory": "dist",
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.skywhaleairways.com" }],
-      "destination": "https://skywhaleairways.com/:path*",
+      "destination": "https://skywhaleairways.com/$1",
       "permanent": true
     }
   ],
