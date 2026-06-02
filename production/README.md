@@ -98,7 +98,29 @@ production/
   `#film-frame` element in `index.html` is left to the web app work (the Pages
   deploy needs `lfs: true` on its checkout — see PR #1).
 
+## Titles & credits
+
+Generative, in-style title and credit cards (rafiki, with a source keyframe as a
+`style` reference):
+
+- `titles/title_card.png` — "SKYWHALE AIRWAYS / A PSYCHEDELIC AIRPORT FOR TIME
+  TRAVELERS". Generated on **OpenAI gpt-image-2** (Gemini reliably misspells
+  "psychedelic"; gpt-image-2 spells it correctly). Style ref: `s07_goldenfish.png`.
+- `titles/credits_card.png` — "A FILM BY KRIS KRÜG & SUZIE EASTON / MUSIC — whale
+  sky god / AI FILM CLUB · RETRO CHALLENGE · 2026". Generated on Gemini
+  (`gemini-2.5-flash-image`). Style ref: `s10_rotunda.png`.
+
+**Text-on-card caveat:** Veo animation *melts lettering*, so don't run text cards
+through `run_i2v_pipeline`. The title is animated with a text-safe ffmpeg slow
+push-in (Ken Burns); the credits use a short Veo clip windowed to the first ~5s
+(before its text dissolves).
+
+**Festival cut:** `edits/skywhale_whalesky_titled.mp4` — 63s = title card (4.5s,
+push-in, fades from black) → the 53s film → credits card (5.5s, fades to black).
+The clean 53s `public/film/psychedelic-airport.mp4` stays as the web-embed cut.
+
 ## Config
 
-Copy `.env.example` → `.env` and set `REPLICATE_API_TOKEN` (clips, beds, stems)
-and `ELEVENLABS_API_KEY` (voiceover).
+Copy `.env.example` → `.env` and set `REPLICATE_API_TOKEN` (clips, beds, stems),
+`ELEVENLABS_API_KEY` (voiceover), plus `GOOGLE_API_KEY` / `OPENAI_API_KEY` for
+rafiki card generation.
