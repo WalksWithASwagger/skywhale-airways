@@ -1,11 +1,12 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 2, 2026.
+Last updated: June 2, 2026 14:01 PDT.
 
 ## Launch Status
 
 Skywhale Airways remains the project and festival brand. Vercel is the primary
-production host and is verified with Git LFS media.
+production host and is verified with Git LFS media. The custom domains are
+attached in Vercel and resolving publicly through Porkbun DNS.
 
 The canonical repository is `/Users/kk/Code/skywhale-airways`. The sibling
 checkout `/Users/kk/Code/psychedelic-airport` has been used only as the source
@@ -23,6 +24,18 @@ for preserved merch PNG and print assets.
   and film links.
 - Domain `skywhaleairways.com` registered and attached to the Vercel project as
   both apex and `www`.
+- Porkbun DNS verified for apex and `www`; both resolve to Vercel.
+
+## Repository Queue Snapshot
+
+Audited June 2, 2026 14:01 PDT.
+
+- Open GitHub issues: none.
+- Open GitHub PRs: none.
+- Branches: `main` is the only local branch and the only remote branch.
+- Recently merged PRs:
+  - #2 `Prepare Vercel launch and LFS merch assets`
+  - #1 `Add film production pipeline and final web cut`
 
 ## Verification
 
@@ -43,24 +56,27 @@ The June 2, 2026 Vercel production deploy serves
 `/film/psychedelic-airport.mp4` as `video/mp4` with an 81,961,123 byte response
 and an MP4 `ftyp` header.
 
+The production deployment `dpl_2qPxs4J67M91c7wGuUdFY1McjiTC` is ready and
+aliased to `skywhaleairways.com`, `www.skywhaleairways.com`, and
+`skywhale-airways.vercel.app`.
+
+Custom-domain checks on June 2, 2026 14:01 PDT:
+
+- `https://skywhaleairways.com/` -> HTTP 200 from Vercel.
+- `https://www.skywhaleairways.com/` -> HTTP 200 from Vercel.
+
 ## Ready For KK
 
 - Keep the public brand as Skywhale Airways unless a deliberate rename happens.
-- Configure Porkbun DNS for Vercel:
-  - `A skywhaleairways.com 76.76.21.21`
-  - `A www.skywhaleairways.com 76.76.21.21`
 - Decide whether the GitHub Pages public URL should redirect, stay as an old
   mirror, or be left unpublished.
 
 ## Agent-Fixable
 
-- Verify custom-domain HTTP once Porkbun DNS propagates.
+- Decide whether `www.skywhaleairways.com` should hard-redirect to the apex.
+  It currently serves the site with apex canonical tags.
 - Add merch fulfillment links when a vendor is chosen.
-- Run a Lighthouse/accessibility pass after the Vercel cutover.
-
-## Blocked On DNS
-
-- Custom-domain verification is blocked until Porkbun DNS points at Vercel.
+- Run a Lighthouse/accessibility pass after the domain cutover.
 
 ## Later
 

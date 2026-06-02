@@ -58,7 +58,7 @@ export const products = [
     price: "$9",
   },
   {
-    img: "merch/r3-02-long-girl-floating.webp",
+    img: "merch/r3-02-time-traveller-floating.webp",
     title: "Gravity Stops Insisting",
     type: "Die-cut sticker · the Time Traveller, unweighted",
     price: "$5",

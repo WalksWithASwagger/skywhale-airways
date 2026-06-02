@@ -9,10 +9,10 @@ merch.
 **Canonical domain:** https://skywhaleairways.com/
 
 **Production host:** Vercel at the domain root. The apex and `www` custom
-domains are attached to the Vercel project; DNS still needs to point Porkbun at
-Vercel before the canonical domain resolves publicly.
+domains are attached to the Vercel project and resolve publicly through
+Porkbun DNS.
 
-**Vercel fallback:** https://skywhale-airways-walkswithaswaggers-projects.vercel.app/
+**Vercel fallback:** https://skywhale-airways.vercel.app/
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -33,7 +33,7 @@ npm run dev        # http://localhost:3000
 `npm run build` writes the static site to `dist/`. `npm run preview` serves the
 root-path Vercel build locally.
 
-To preview the temporary GitHub Pages fallback path, run:
+To test the old GitHub Pages subpath build manually, run:
 
 ```bash
 VITE_BASE_PATH=/skywhale-airways/ npm run build
@@ -45,23 +45,26 @@ npm run preview -- --base /skywhale-airways/
 Vercel is the production host. The GitHub repo is linked, Git LFS is enabled in
 the project's Git settings, and production deploys from `main`.
 
-Custom domains attached in Vercel on June 2, 2026:
+Custom domains attached in Vercel and resolving publicly on June 2, 2026:
 
 - `skywhaleairways.com`
 - `www.skywhaleairways.com`
 
-Porkbun DNS records needed for Vercel verification:
+Porkbun DNS records:
 
 - `A` record: `skywhaleairways.com` → `76.76.21.21`
 - `A` record: `www.skywhaleairways.com` → `76.76.21.21`
+
+As of June 2, 2026 14:01 PDT, both apex and `www` returned HTTP 200 from
+Vercel. Page canonical tags point at the apex domain.
 
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
 work.
 
-- **Vercel production** — verified on June 2, 2026 with root-path assets and a
-  real Git LFS-backed film file.
+- **Vercel production** — verified on June 2, 2026 with root-path assets, custom
+  aliases attached, and a real Git LFS-backed film file.
 - **Finished film** — the Veo cut is wired into the `#film-frame` slot from
   `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site

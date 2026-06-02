@@ -5,8 +5,8 @@ const r = (p) => fileURLToPath(new URL(p, import.meta.url));
 
 const base = process.env.VITE_BASE_PATH || "/";
 
-// Vercel serves the production site at the domain root. GitHub Pages can still
-// pass VITE_BASE_PATH=/skywhale-airways/ while it remains a fallback mirror.
+// Vercel serves production at the domain root. Set VITE_BASE_PATH manually only
+// when testing the old GitHub Pages subpath build.
 export default defineConfig(({ command }) => ({
   base: command === "build" ? base : "/",
   server: {

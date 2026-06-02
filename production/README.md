@@ -95,9 +95,10 @@ production/
   `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
   demand) — only the fast clips and the final cut live in the repo.
 - **Web embed:** the finished file sits in `public/film/` and `index.html`
-  loads it into the `#film-frame` element with relative paths. The temporary
-  GitHub Pages deploy fetches LFS objects during checkout so the build copies the
-  real MP4, not a pointer file.
+  loads it into the `#film-frame` element with relative paths. Vercel has Git
+  LFS enabled and serves the real MP4, not a pointer file. The old GitHub Pages
+  subpath can still be tested manually with `VITE_BASE_PATH=/skywhale-airways/`
+  if a fallback mirror is needed later.
 
 ## Titles & credits
 
