@@ -11,9 +11,9 @@
  * The SCENES array is the single source of truth mapping each shot-list scene
  * to its keyframe file. src/data/scenes.js references the same slugs.
  */
-import { mkdir, copyFile, access } from "node:fs/promises";
+import { mkdir, copyFile, access, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { join, basename, extname } from "node:path";
 import sharp from "sharp";
 
 const SRC = "/Users/kk/Desktop/midjourney_session copy/10-key-frames";
@@ -83,6 +83,36 @@ async function main() {
   }
 
   console.log(`\nDone. ${SCENES.length} scenes optimized → public/scenes/`);
+
+  await optimizeMerch();
+}
+
+// Merch raster outputs (merch/<round>/*.png, gitignored) → committed web webp in
+// public/merch/ so the on-site Duty-Free shop can deploy. Source PNGs stay local.
+async function optimizeMerch() {
+  const MERCH_SRC = join(ROOT, "merch");
+  const MERCH_OUT = join(ROOT, "public", "merch");
+  if (!existsSync(MERCH_SRC)) return;
+
+  const rounds = (await readdir(MERCH_SRC, { withFileTypes: true }))
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
+  await mkdir(MERCH_OUT, { recursive: true });
+  let n = 0;
+  for (const round of rounds) {
+    const dir = join(MERCH_SRC, round);
+    const pngs = (await readdir(dir)).filter((f) => f.endsWith(".png"));
+    for (const file of pngs) {
+      const stem = basename(file, extname(file));
+      await sharp(join(dir, file))
+        .resize({ width: 1200, withoutEnlargement: true })
+        .webp({ quality: 86 })
+        .toFile(join(MERCH_OUT, `${round}-${stem}.webp`));
+      n++;
+    }
+  }
+  if (n) console.log(`Done. ${n} merch images optimized → public/merch/`);
 }
 
 main().catch((err) => {

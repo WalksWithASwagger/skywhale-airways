@@ -2,6 +2,7 @@ import { Journey } from "./journey.js";
 import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
+import { renderShop } from "./shop.js";
 import { scenes } from "./data/scenes.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -33,6 +34,9 @@ new BoardingPass({
   downloadBtn: document.getElementById("pass-download"),
   shareBtn: document.getElementById("pass-share"),
 });
+
+// --- Duty-Free shop. ---
+renderShop(document.getElementById("shop-grid"));
 
 // --- Caption: show the active scene's voiceover lines. ---
 const captionEl = document.getElementById("caption");
