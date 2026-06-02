@@ -3,10 +3,12 @@ import { fileURLToPath } from "node:url";
 
 const r = (p) => fileURLToPath(new URL(p, import.meta.url));
 
-// GitHub Pages serves this project site under /skywhale-airways/. The base is
-// applied only for the production build; dev stays at the root for convenience.
+const base = process.env.VITE_BASE_PATH || "/";
+
+// Vercel serves the production site at the domain root. GitHub Pages can still
+// pass VITE_BASE_PATH=/skywhale-airways/ while it remains a fallback mirror.
 export default defineConfig(({ command }) => ({
-  base: command === "build" ? "/skywhale-airways/" : "/",
+  base: command === "build" ? base : "/",
   server: {
     port: 3000,
     open: true,
@@ -22,6 +24,6 @@ export default defineConfig(({ command }) => ({
     },
   },
   optimizeDeps: {
-    include: ["three", "gsap"],
+    include: ["three"],
   },
 }));

@@ -66,7 +66,8 @@ export const scenes = [
 ];
 
 // Responsive source for a scene texture (small frame on narrow screens).
-// BASE_URL keeps paths correct under the GitHub Pages /skywhale-airways/ subpath.
+// BASE_URL keeps paths correct for both Vercel root deploys and the temporary
+// GitHub Pages fallback path.
 export function sceneImage(slug, small = false) {
   return `${import.meta.env.BASE_URL}scenes/${slug}${small ? "@sm" : ""}.webp`;
 }
