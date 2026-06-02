@@ -20,6 +20,7 @@ export default defineConfig(({ command }) => ({
       input: {
         main: r("index.html"),
         about: r("about.html"),
+        press: r("press.html"),
       },
     },
   },

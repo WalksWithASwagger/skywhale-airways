@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Press Kit · A Psychedelic Airport for Time Travelers</title>
+    <meta
+      name="description"
+      content="Festival and press materials for A Psychedelic Airport for Time Travelers, a Skywhale Airways AI Film Club short by Kris Krug and Suzie Easton."
+    />
+    <meta name="theme-color" content="#e9c6d4" />
+    <meta property="og:title" content="Press Kit · A Psychedelic Airport for Time Travelers" />
+    <meta
+      property="og:description"
+      content="Synopsis, credits, runtime, stills, and film links for the Skywhale Airways short."
+    />
+    <meta property="og:type" content="website" />
+    <style>
+      :root {
+        --rose: #e9c6d4;
+        --rose-deep: #c74a5c;
+        --ink: #33242a;
+        --cloud: #f4d9e3;
+        --sky: #cfd9ec;
+        --gold: #f2c14e;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        min-height: 100dvh;
+        font-family: var(--serif);
+        color: var(--ink);
+        background: radial-gradient(120% 120% at 50% 0%, var(--cloud), var(--sky));
+        padding: clamp(2.5rem, 7vw, 6rem) 1.25rem 4.5rem;
+      }
+      #grain {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        background-size: 220px 220px;
+      }
+      main {
+        position: relative;
+        z-index: 1;
+        max-width: 58rem;
+        margin: 0 auto;
+      }
+      .kicker {
+        font-size: 0.78rem;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.6);
+        margin: 0 0 0.8rem;
+      }
+      h1 {
+        max-width: 46rem;
+        font-size: clamp(2.1rem, 6vw, 4.25rem);
+        line-height: 1.08;
+        margin: 0 0 1.2rem;
+      }
+      .dek {
+        max-width: 39rem;
+        font-size: clamp(1.08rem, 2.3vw, 1.35rem);
+        line-height: 1.65;
+        font-style: italic;
+        color: rgba(50, 35, 40, 0.78);
+        margin: 0 0 2.2rem;
+      }
+      .hero {
+        margin: 2rem 0 3rem;
+      }
+      .hero img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 18px 50px rgba(60, 30, 50, 0.22);
+      }
+      section {
+        margin: 3rem 0;
+      }
+      h2 {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--rose-deep);
+        margin: 0 0 1rem;
+      }
+      p {
+        line-height: 1.75;
+        margin: 0 0 1.2rem;
+      }
+      dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(8rem, max-content) 1fr;
+        gap: 0.7rem 1.4rem;
+      }
+      dt {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.6);
+        padding-top: 0.18rem;
+      }
+      dd { margin: 0; line-height: 1.55; }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin: 1.5rem 0 0;
+      }
+      .button {
+        display: inline-block;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        background: var(--rose-deep);
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+      }
+      .button.secondary {
+        background: rgba(50, 35, 40, 0.1);
+        color: var(--ink);
+        border: 1px solid rgba(50, 35, 40, 0.24);
+      }
+      .stills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+        gap: 1rem;
+      }
+      figure {
+        margin: 0;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(60, 30, 50, 0.16);
+      }
+      figcaption {
+        margin-top: 0.45rem;
+        font-size: 0.78rem;
+        font-style: italic;
+        color: rgba(50, 35, 40, 0.7);
+      }
+      footer {
+        margin-top: 3.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(50, 35, 40, 0.2);
+      }
+      footer p {
+        margin: 0.25rem 0;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.72);
+      }
+      a { color: var(--rose-deep); text-underline-offset: 3px; }
+      footer a {
+        display: inline-block;
+        margin-top: 1rem;
+        font-style: italic;
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 640px) {
+        dl {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+        }
+        dd {
+          margin-bottom: 0.75rem;
+        }
+        .button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grain" aria-hidden="true"></div>
+    <main>
+      <p class="kicker">Skywhale Airways · Press Kit</p>
+      <h1>A Psychedelic Airport for Time Travelers</h1>
+      <p class="dek">
+        A surreal 53-second retro airport short where fish keep schedules,
+        luggage remembers, and every terminal belongs to a different decade.
+      </p>
+
+      <div class="hero">
+        <img
+          src="./scenes/01-skywhale-airport.webp"
+          alt="A golden skywhale floating over a surreal airport runway"
+        />
+      </div>
+
+      <section>
+        <h2>Synopsis</h2>
+        <p>
+          A lone Time Traveller enters Skywhale Airways, an airport for lost
+          decades. Fish drift through the terminals like aircraft, clocks refuse
+          ordinary time, and the runway opens like a memory. By the end of the
+          journey, she arrives with one bag, one body, and tomorrow's yesterday.
+        </p>
+      </section>
+
+      <section>
+        <h2>Film Details</h2>
+        <dl>
+          <dt>Title</dt>
+          <dd><em>A Psychedelic Airport for Time Travelers</em></dd>
+          <dt>Brand</dt>
+          <dd>Skywhale Airways</dd>
+          <dt>Runtime</dt>
+          <dd>53 seconds, web cut</dd>
+          <dt>Festival cut</dt>
+          <dd>63 seconds with title and credits cards</dd>
+          <dt>Challenge</dt>
+          <dd>AI Film Club · Retro Challenge · June 2026</dd>
+          <dt>Format</dt>
+          <dd>16:9 · 1080p source · H.264 MP4 web embed</dd>
+          <dt>Created by</dt>
+          <dd>Kris Krug &amp; Suzie Easton</dd>
+          <dt>Music</dt>
+          <dd><em>whale sky god</em></dd>
+          <dt>Contact</dt>
+          <dd>Festival contact TBD after the public domain is registered.</dd>
+        </dl>
+        <div class="actions">
+          <a class="button" href="./film/psychedelic-airport.mp4">Watch / download web cut</a>
+          <a class="button secondary" href="./about.html">Read the colophon</a>
+          <a class="button secondary" href="./">Open the airport</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Stills</h2>
+        <div class="stills">
+          <figure>
+            <a href="./scenes/01-skywhale-airport.webp">
+              <img src="./scenes/01-skywhale-airport@sm.webp" alt="Golden skywhale airport still" />
+            </a>
+            <figcaption>The Skywhale Airport</figcaption>
+          </figure>
+          <figure>
+            <a href="./scenes/04-duplicate-selves.webp">
+              <img src="./scenes/04-duplicate-selves@sm.webp" alt="Duplicate selves waiting room still" />
+            </a>
+            <figcaption>Gate Delay / Duplicate Selves</figcaption>
+          </figure>
+          <figure>
+            <a href="./scenes/06-zero-gravity.webp">
+              <img src="./scenes/06-zero-gravity@sm.webp" alt="Zero-gravity transfer still" />
+            </a>
+            <figcaption>Zero-Gravity Transfer</figcaption>
+          </figure>
+          <figure>
+            <a href="./scenes/07-golden-fish-flight.webp">
+              <img src="./scenes/07-golden-fish-flight@sm.webp" alt="Golden fish flight still" />
+            </a>
+            <figcaption>Golden Fish Flight</figcaption>
+          </figure>
+          <figure>
+            <a href="./scenes/09-cloud-orchard.webp">
+              <img src="./scenes/09-cloud-orchard@sm.webp" alt="Cloud orchard layover still" />
+            </a>
+            <figcaption>Cloud-Orchard Layover</figcaption>
+          </figure>
+          <figure>
+            <a href="./scenes/10-pink-rotunda.webp">
+              <img src="./scenes/10-pink-rotunda@sm.webp" alt="Pink rotunda arrival still" />
+            </a>
+            <figcaption>Pink Rotunda Arrival</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section>
+        <h2>Production Notes</h2>
+        <p>
+          The stills were generated in Midjourney and curated into ten gouache
+          keyframes. The animation was generated scene by scene with Veo 3.1,
+          then assembled to the spoken-word lounge track <em>whale sky god</em>.
+          The site itself is a hand-built Vite / Three.js microsite with a
+          scroll-driven WebGL journey, interactive boarding pass, Decade Weather
+          card, film embed, and Skywhale Airways Duty-Free concept shop.
+        </p>
+      </section>
+
+      <footer>
+        <p>A Skywhale Airways production.</p>
+        <p>AI Film Club · Retro Challenge · June 2026.</p>
+        <p>By Kris Krug &amp; Suzie Easton.</p>
+        <a href="index.html">← back to the airport</a>
+      </footer>
+    </main>
+  </body>
+</html>

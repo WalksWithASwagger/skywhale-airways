@@ -19,6 +19,8 @@ for preserved merch PNG and print assets.
 - PR #1: film production pipeline and final web cut.
 - Production Vercel deploy verified on June 2, 2026.
 - GitHub Pages workflow removed after Vercel passed.
+- Lightweight press kit added for festival synopsis, credits, stills, runtime,
+  and film links.
 
 ## Verification
 
@@ -50,8 +52,6 @@ and an MP4 `ftyp` header.
 ## Agent-Fixable
 
 - Add domain-specific README and press-kit links once the domain exists.
-- Add a small film/press page if festival submissions need downloadable
-  stills, synopsis, credits, and contact details.
 - Add merch fulfillment links when a vendor is chosen.
 - Run a Lighthouse/accessibility pass after the Vercel cutover.
 
@@ -62,8 +62,6 @@ and an MP4 `ftyp` header.
 ## Later
 
 - Add social preview images for the root page, About page, and film.
-- Add a lightweight press kit with festival synopsis, credits, stills, and
-  runtime.
 - Decide whether the Duty-Free section becomes a real shop, a concept gallery,
   or a print-on-demand experiment.
 - Archive production prompts and source notes into a stable handoff package

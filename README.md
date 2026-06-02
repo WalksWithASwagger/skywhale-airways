@@ -54,7 +54,7 @@ work.
 - **Finished film** — the Veo cut is wired into the `#film-frame` slot from
   `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
-  doubles as the press/landing page.
+  includes a lightweight press kit at `press.html`.
 - **Duty-Free merch** — concept products are live on the site. Source and
   print-ready PNGs are kept in `merch/` and tracked with Git LFS; deployable WebP
   derivatives live in `public/merch/`.
@@ -70,6 +70,8 @@ work.
 - **`about.html`** — the colophon / methodology page (a second Vite entry,
   registered in `vite.config.js`), linked from the footer. Honest about the
   tools, told in the film's voice.
+- **`press.html`** — the festival-facing press kit: synopsis, credits, runtime,
+  format notes, stills, and film links.
 - **`src/fish-particles.js`** — generative fish drawn as `THREE.Points` in the
   same render pass, parallaxing with scroll and pulsing with the audio.
 - **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site
