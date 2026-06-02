@@ -46,8 +46,13 @@ repo, update that one `base` string.
 
 - **`src/journey.js`** — Three.js. One fullscreen quad whose shader
   (`src/shaders/transition.frag`) melts between adjacent scene textures. Scroll
-  sets a `progress` uniform in `[0, N-1]`; the fraction is the melt. Textures
-  lazy-load as the scroll approaches them.
+  sets a `progress` uniform in `[0, N-1]`; the fraction is the melt (eased with a
+  gentle constant so it keeps flowing after you stop). A `uMouse` uniform trails
+  the cursor (`pointermove` in `main.js`, hover-capable devices only) for subtle
+  parallax + ripple; touch leaves it centered. Textures lazy-load as you approach.
+- **`about.html`** — the colophon / methodology page (a second Vite entry,
+  registered in `vite.config.js`), linked from the footer. Honest about the
+  tools, told in the film's voice.
 - **`src/fish-particles.js`** — generative fish drawn as `THREE.Points` in the
   same render pass, parallaxing with scroll and pulsing with the audio.
 - **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site

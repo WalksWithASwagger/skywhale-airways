@@ -8,6 +8,7 @@ uniform float uProgress;   // 0..1 crossfade between A and B
 uniform float uTime;       // seconds, for drifting liquid motion
 uniform float uAudio;      // 0..1 smoothed audio amplitude
 uniform float uIntensity;  // global trippy intensity (0 = reduced motion)
+uniform vec2  uMouse;      // cursor, -1..1, eased (centered on touch)
 uniform vec2  uResolution; // canvas size in px
 uniform vec2  uCover;      // uv scale to cover the viewport (object-fit: cover)
 
@@ -49,11 +50,21 @@ void main() {
   ) - 0.5;
   vec2 displace = n * flow * (0.4 + swell);
 
-  // Chromatic aberration: gentle at rest, blooming through the melt.
-  float aberration = (0.0015 + swell * 0.012 + uAudio * 0.006) * uIntensity;
+  // Cursor reactivity: a soft warp that ripples outward from the pointer, plus a
+  // gentle parallax so the image has depth as the mouse drifts (B shifts more).
+  vec2 mouseUv = uMouse * 0.5 + 0.5;
+  vec2 toMouse = uv - mouseUv;
+  float md = length(toMouse);
+  vec2 warp = normalize(toMouse + 1e-5) * exp(-md * 3.5) * 0.012 * uIntensity;
+  vec2 parallax = uMouse * 0.010 * uIntensity;
+  displace += warp;
 
-  vec3 a = sampleScene(uTexA, uv, displace, aberration);
-  vec3 b = sampleScene(uTexB, uv, displace * 1.4, aberration);
+  // Chromatic aberration: gentle at rest, blooming through the melt + off-center.
+  float aberration =
+    (0.0015 + swell * 0.012 + uAudio * 0.006 + length(uMouse) * 0.003) * uIntensity;
+
+  vec3 a = sampleScene(uTexA, uv, displace + parallax * 0.5, aberration);
+  vec3 b = sampleScene(uTexB, uv, displace * 1.4 + parallax, aberration);
 
   // Melt the crossfade edge with noise so scenes dissolve, not dip-to-fade.
   float edge = noise(uv * 6.0 + uTime * 0.02) - 0.5;

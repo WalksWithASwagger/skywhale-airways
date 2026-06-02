@@ -53,36 +53,38 @@ async function fileExists(p) {
 }
 
 async function main() {
-  if (!existsSync(SRC)) {
-    throw new Error(`Keyframe source folder not found: ${SRC}`);
-  }
-  await mkdir(SCENES_OUT, { recursive: true });
-  await mkdir(AUDIO_OUT, { recursive: true });
+  // Scenes + audio come from the ephemeral Desktop folder; once optimized they
+  // live committed in public/, so skip (don't fail) when the source is gone.
+  if (existsSync(SRC)) {
+    await mkdir(SCENES_OUT, { recursive: true });
+    await mkdir(AUDIO_OUT, { recursive: true });
 
-  for (const [slug, file] of SCENES) {
-    const src = join(SRC, file);
-    if (!(await fileExists(src))) {
-      throw new Error(`Missing keyframe for ${slug}: ${file}`);
+    for (const [slug, file] of SCENES) {
+      const src = join(SRC, file);
+      if (!(await fileExists(src))) {
+        throw new Error(`Missing keyframe for ${slug}: ${file}`);
+      }
+      await Promise.all(
+        SIZES.map(({ width, suffix }) =>
+          sharp(src)
+            .resize({ width, withoutEnlargement: true })
+            .webp({ quality: 84 })
+            .toFile(join(SCENES_OUT, `${slug}${suffix}.webp`))
+        )
+      );
+      console.log(`✓ ${slug}`);
     }
-    await Promise.all(
-      SIZES.map(({ width, suffix }) =>
-        sharp(src)
-          .resize({ width, withoutEnlargement: true })
-          .webp({ quality: 84 })
-          .toFile(join(SCENES_OUT, `${slug}${suffix}.webp`))
-      )
-    );
-    console.log(`✓ ${slug}`);
-  }
 
-  if (await fileExists(AUDIO_SRC)) {
-    await copyFile(AUDIO_SRC, join(AUDIO_OUT, "whale-sky-god.mp3"));
-    console.log("✓ audio/whale-sky-god.mp3");
+    if (await fileExists(AUDIO_SRC)) {
+      await copyFile(AUDIO_SRC, join(AUDIO_OUT, "whale-sky-god.mp3"));
+      console.log("✓ audio/whale-sky-god.mp3");
+    } else {
+      console.warn(`! audio not found at ${AUDIO_SRC} — skipping`);
+    }
+    console.log(`Done. ${SCENES.length} scenes optimized → public/scenes/`);
   } else {
-    console.warn(`! audio not found at ${AUDIO_SRC} — skipping`);
+    console.warn(`Keyframe source gone (${SRC}) — scenes/audio already in public/, skipping.`);
   }
-
-  console.log(`\nDone. ${SCENES.length} scenes optimized → public/scenes/`);
 
   await optimizeMerch();
 }

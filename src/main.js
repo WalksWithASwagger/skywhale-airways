@@ -18,8 +18,11 @@ scenes.forEach((s, i) => {
 });
 
 // --- WebGL journey + fish overlay. ---
+const smallScreen =
+  window.matchMedia("(max-width: 768px)").matches ||
+  window.matchMedia("(hover: none)").matches;
 const journey = new Journey(document.getElementById("gl"), { reducedMotion });
-const fish = new Fish(journey.scene, { reducedMotion });
+const fish = new Fish(journey.scene, { reducedMotion, count: smallScreen ? 18 : 36 });
 
 // --- Audio bed. ---
 const audio = new AudioBed(document.getElementById("audio-toggle"));
@@ -91,6 +94,20 @@ document.getElementById("gate-board").addEventListener("click", () => {
   closeGate();
 });
 document.getElementById("gate-muted").addEventListener("click", closeGate);
+
+// --- Subtle cursor reactivity for the melt (devices with a hovering pointer). ---
+if (window.matchMedia("(hover: hover)").matches) {
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      journey.setMouse(
+        (e.clientX / window.innerWidth) * 2 - 1,
+        -((e.clientY / window.innerHeight) * 2 - 1)
+      );
+    },
+    { passive: true }
+  );
+}
 
 // --- Render loop. ---
 let last = performance.now();

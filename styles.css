@@ -31,6 +31,7 @@ body {
   inset: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh; /* track the visible viewport under the mobile URL bar */
   display: block;
   z-index: 0;
 }
@@ -60,6 +61,7 @@ body {
 }
 .scene-panel {
   height: 100vh;
+  height: 100dvh; /* match #gl + the innerHeight the scroll math uses */
 }
 
 /* --- Voiceover caption over the journey --- */
@@ -68,6 +70,7 @@ body {
   left: 0;
   right: 0;
   bottom: 12vh;
+  bottom: 12dvh;
   margin: 0;
   z-index: 3;
   padding: 0 8vw;
@@ -132,6 +135,7 @@ body {
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
   cursor: pointer;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 #audio-toggle .dot {
@@ -393,6 +397,13 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(50, 35, 40, 0.7);
+}
+.colophon-link {
+  color: var(--rose-deep);
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  text-underline-offset: 3px;
 }
 
 /* --- Boarding gate (entry overlay; first tap starts the soundtrack) --- */

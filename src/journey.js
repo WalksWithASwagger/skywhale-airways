@@ -28,12 +28,15 @@ export class Journey {
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
+    this.targetMouse = new THREE.Vector2(0, 0); // cursor in NDC, -1..1
+
     this.uniforms = {
       uTexA: { value: this.placeholder },
       uTexB: { value: this.placeholder },
       uProgress: { value: 0 },
       uTime: { value: 0 },
       uAudio: { value: 0 },
+      uMouse: { value: new THREE.Vector2(0, 0) },
       uIntensity: { value: reducedMotion ? 0.0 : 1.0 },
       uResolution: { value: new THREE.Vector2(1, 1) },
       uCover: { value: new THREE.Vector2(1, 1) },
@@ -103,6 +106,11 @@ export class Journey {
     this.audioLevel = v;
   }
 
+  // x,y in normalized device coords (-1..1); the shader eases toward it.
+  setMouse(x, y) {
+    this.targetMouse.set(x, y);
+  }
+
   currentSceneIndex() {
     return Math.round(this.progress);
   }
@@ -130,13 +138,20 @@ export class Journey {
 
   render() {
     const dt = this.clock.getDelta();
-    // Ease scroll so melts feel liquid, not snappy.
-    const ease = this.reducedMotion ? 1 : 1 - Math.pow(0.001, dt);
+    // Ease scroll so melts stay liquid — a gentle constant lets the melt keep
+    // flowing after you stop scrolling, instead of snapping to the new scene.
+    const ease = this.reducedMotion ? 1 : 1 - Math.pow(0.08, dt);
     this.progress += (this.targetProgress - this.progress) * ease;
 
     // Smooth the audio level for a breathing, not jittery, reaction.
     this.uniforms.uAudio.value +=
       (this.audioLevel - this.uniforms.uAudio.value) * Math.min(1, dt * 6);
+
+    // Trail the cursor so subtle mouse moves ripple the image with a soft lag.
+    const m = this.uniforms.uMouse.value;
+    const mk = Math.min(1, dt * 3);
+    m.x += (this.targetMouse.x - m.x) * mk;
+    m.y += (this.targetMouse.y - m.y) * mk;
 
     const i = Math.floor(this.progress);
     const frac = this.progress - i;
