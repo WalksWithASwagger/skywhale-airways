@@ -6,11 +6,10 @@ for Time Travelers* — **AI Film Club · Retro Challenge · June 2026**, by
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
 
-**Live today:** https://walkswithaswagger.github.io/skywhale-airways/
+**Live today:** https://skywhale-airways-walkswithaswaggers-projects.vercel.app/
 
-**Production target:** Vercel at the domain root once the custom domain is
-chosen and registered. GitHub Pages remains a temporary fallback mirror during
-the migration.
+**Production host:** Vercel at the domain root. The custom domain is still a
+placeholder until KK chooses and registers it.
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -40,22 +39,18 @@ npm run preview -- --base /skywhale-airways/
 
 ## Deploy
 
-Vercel is the primary production target. Import/link the GitHub repo in Vercel,
-enable Git LFS in the project's Git settings, and deploy from `main`. The custom
-domain can be attached once it is registered.
+Vercel is the production host. The GitHub repo is linked, Git LFS is enabled in
+the project's Git settings, and production deploys from `main`.
 
-GitHub Pages is still configured as a fallback via
-`.github/workflows/deploy.yml`. That workflow passes
-`VITE_BASE_PATH=/skywhale-airways/` so the same source can build for the Pages
-subpath while Vercel builds for `/`.
+Attach the custom domain in Vercel after KK registers it.
 
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
 work.
 
-- **Vercel production** — link the repo, enable Git LFS, verify root-path assets,
-  then attach the custom domain.
+- **Vercel production** — verified on June 2, 2026 with root-path assets and a
+  real Git LFS-backed film file.
 - **Finished film** — the Veo cut is wired into the `#film-frame` slot from
   `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
@@ -102,7 +97,7 @@ keyframe folder is gone, scene/audio optimization is skipped because those
 outputs are already committed.
 
 The sibling checkout `/Users/kk/Code/psychedelic-airport` was used as the source
-for the ignored merch PNGs and print-ready die-cuts now preserved in `merch/`.
+for the merch PNGs and print-ready die-cuts now preserved in `merch/`.
 Those source/print assets are tracked with Git LFS. `scripts/diecut.mjs` can
 regenerate transparent print cuts from `merch/r1`, `merch/r2`, and `merch/r3`.
 
@@ -114,8 +109,8 @@ when those local sources are available.
 ## Film embed
 
 The finished web cut is committed at `public/film/psychedelic-airport.mp4` and
-is embedded in the `#film-frame` element with relative asset paths. Confirm Git
-LFS is enabled on Vercel before relying on production deploys.
+is embedded in the `#film-frame` element with relative asset paths. Git LFS is
+enabled on Vercel, and production serves the file as `video/mp4`.
 
 ```html
 <div class="film-frame" id="film-frame">
