@@ -70,15 +70,21 @@ window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll);
 
 // --- First gesture starts the soundtrack (autoplay is blocked otherwise). ---
-function firstGesture() {
+// The SOUND toggle owns its own clicks; if we also started audio here on the
+// same gesture, the two handlers would race and cancel out.
+let kickedOff = false;
+function firstGesture(e) {
+  if (kickedOff) return;
+  if (e?.target?.closest?.("#audio-toggle")) return; // toggle handles itself
+  kickedOff = true;
   audio.start();
   window.removeEventListener("scroll", firstGesture);
   window.removeEventListener("pointerdown", firstGesture);
   window.removeEventListener("keydown", firstGesture);
 }
-window.addEventListener("scroll", firstGesture, { once: true, passive: true });
-window.addEventListener("pointerdown", firstGesture, { once: true });
-window.addEventListener("keydown", firstGesture, { once: true });
+window.addEventListener("scroll", firstGesture, { passive: true });
+window.addEventListener("pointerdown", firstGesture);
+window.addEventListener("keydown", firstGesture);
 
 // --- Render loop. ---
 let last = performance.now();
