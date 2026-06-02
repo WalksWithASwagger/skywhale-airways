@@ -51,10 +51,13 @@ subpath while Vercel builds for `/`.
 
 ## Roadmap
 
-- **Finished film** — the Veo cut is wired into the `#film-frame` slot from
-  `public/film/psychedelic-airport.mp4`.
+See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
+work.
+
 - **Vercel production** — link the repo, enable Git LFS, verify root-path assets,
   then attach the custom domain.
+- **Finished film** — the Veo cut is wired into the `#film-frame` slot from
+  `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   doubles as the press/landing page.
 - **Duty-Free merch** — concept products are live on the site. Source and
