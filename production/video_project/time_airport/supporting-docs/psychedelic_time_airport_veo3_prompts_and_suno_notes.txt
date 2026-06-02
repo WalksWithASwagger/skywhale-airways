@@ -1,0 +1,66 @@
+A Psychedelic Airport for Time Travelers
+Veo 3.1 prompts + Suno.ai notes
+
+SUNO.AI STYLE NOTES
+Create a spoken-word cinematic voiceover and music bed for a surreal retro animation called "A Psychedelic Airport for Time Travelers." The voice should feel warm, intimate, poetic, and calm: a curious narrator from a lost 1970s airport film, not a movie-trailer voice. Delivery should be measured, slightly dreamy, emotionally sincere, with spacious pauses between lines. Avoid hype, parody, pop belting, and overacting.
+
+Music style: retro-futurist ambient lounge-jazz with analog tape warmth. 72-84 BPM. Soft airport chimes through tape delay, brushed drums, vibraphone, mellow electric piano, upright bass, warm analog synth pads, subtle theremin, distant trumpet, watery bubbles, reel-to-reel hiss, and gentle vinyl crackle. Whimsical but eerie, light-hearted but emotionally meaningful. The music should feel like an old airline brochure discovered in a dream.
+
+Mix notes: voiceover must be clear and forward. Keep music airy and cinematic underneath. No big EDM drop, no aggressive drums, no modern pop sheen, no lyrics other than the spoken narration.
+
+VOICEOVER DRAFT
+There are airports for cities, airports for countries, and one airport for lost decades.
+
+Beneath the skywhale, she arrives carrying a single bag.
+
+At check-in, they weigh her luggage, her memories, and the years she has not yet unpacked.
+
+In the departures hall, fish move overhead and the clock refuses ordinary time.
+
+At the gate, she meets another version of herself already waiting.
+
+When boarding begins, the runway opens like a memory.
+
+Somewhere between gate and sky, gravity stops insisting.
+
+A golden fish carries her between decades.
+
+They do not arrive. They circle. Every decade has its own weather.
+
+In the layover orchard, even the clouds are waiting for someone.
+
+At last she enters a vast terminal where fish drift through the ceiling like constellations.
+
+She has arrived in another decade, carrying one bag, one body, and more time than she left with.
+
+VEO 3.1 IMAGE-TO-VIDEO PROMPTS
+
+SCENE 1: The Skywhale Airport
+Animate the provided keyframe as the opening exterior of a surreal retro hand-painted short film called A Psychedelic Airport for Time Travelers. A colossal yellow fish-aircraft hangs over a flooded field of runway markers while a lone blonde traveler stands below. Preserve the exact gouache-like painted texture, delicate ink outlines, pastel palette, and 1960s-1970s psychedelic airport futurism. Use a slow cinematic push-in. The yellow skywhale drifts slightly, smaller fish glide like aircraft, reeds and poles tremble gently, and the air feels charged with departure. No modern digital effects, no readable text additions, no subtitles, no watermark. Audio: wide outdoor terminal wind, distant propeller flutter, low analog synth drone, faint runway radio static, gull-like fish calls, and soft reel-to-reel tape hiss.
+
+SCENE 2: Lost Baggage Check-In
+Animate the provided keyframe as the lost-baggage check-in hall of a surreal time-travel airport. The blonde traveler stands with suitcases while fish-aircraft drift through the room like baggage inspectors. Preserve the hand-painted retro illustration style, pastel airport palette, paper texture, wonky signage, and dreamlike composition. Use a slow observational pan from luggage to traveler. Suitcases subtly breathe or nudge, fish swim through the terminal air, and the traveler turns her head slightly as if called to the next counter. Keep motion restrained and uncanny. No subtitles, no watermark. Audio: suitcase wheels rolling on tile, rubber baggage-belt hum, soft passport stamps, muffled invented-language intercom, watery ambience, faint analog synth pad, tape hiss.
+
+SCENE 3: Departures Concourse
+Animate the provided keyframe as the main departures concourse of a psychedelic time-travel airport. A blonde traveler in a dark suit walks forward holding a briefcase under a red-striped ceiling crowded with fish-aircraft and a strange clock. Preserve the original hand-painted gouache style, pastel blue walls, red ceiling, delicate ink lines, vintage airline-brochure surrealism, and 1970s retro-futurist mood. Use a slow forward dolly. Fish glide above like planes, the clock hand stutters out of sequence, passengers perform tiny waiting-room loops, and the traveler moves calmly through the center aisle. No modern digital polish, no subtitles, no watermark. Audio: tape-delayed airport chimes, murmuring passengers, distant invented-language boarding announcements, ticking clock irregularities, low analog synth, watery engine ambience.
+
+SCENE 4: Gate Delay / Duplicate Selves
+Animate the provided keyframe as a pink waiting-room gate inside a surreal time airport. Two versions of the same blonde traveler appear in the lounge, one seated lower and one perched higher on the pink chairs, while fish-aircraft drift through the corridor. Preserve the hand-painted retro illustration style, pale yellow walls, pink seats, blue floor, paper texture, and eerie comic timing. Keep the scene almost still and uncanny. One traveler blinks or shifts slightly while the other version moves a hand or foot; fish pass between the duplicates in gentle parallax. No subtitles, no watermark. Audio: soft HVAC hum, delayed boarding chime, vinyl crackle, pink vinyl seat squeak, muffled reversed intercom, faint lounge-jazz chord.
+
+SCENE 5: Boarding Platform
+Animate the provided keyframe as the boarding platform of a psychedelic airport for time travelers. The blonde traveler stands on a circular mechanical platform surrounded by fish-aircraft, a real airplane, balloons, clocks, route tokens, and soft pink mountains. Preserve the surreal hand-painted style, pastel blue sky, gouache texture, thin ink outlines, and retro-futurist airport mood. Use a slow circular camera drift. The platform hums and rotates slightly, clock-like discs spin, balloons rise, fish arrange into looping flight paths, and the traveler braces gently as if boarding a living route. No subtitles, no watermark. Audio: analog activation tone, radar pings, mechanical platform hum, soft bass swell, distant airport announcement, little clock ticks through tape delay.
+
+SCENE 6: Zero-Gravity Transfer
+Animate the provided keyframe as the zero-gravity transfer out of the time airport. A blonde traveler in a dark navy suit floats horizontally beside a pink modernist terminal building while fish-aircraft surround her in the pale blue sky. Preserve the hand-painted gouache illustration, delicate ink outlines, pastel palette, and 1970s surreal airport tone. Use a gentle left-to-right floating camera move. The traveler drifts weightlessly, hair and tie slowly trailing, fish pass in front and behind her with parallax, and the pink terminal recedes below. No subtitles, no watermark. Audio: air pressure drop, soft underwater bubbles, stretched airport chime, quiet whoosh, low analog synth rising, distant tape-warped trumpet echo.
+
+SCENE 7: Golden Fish Flight
+Animate the provided keyframe as the main in-flight sequence of a psychedelic time-airport journey. The blonde traveler rides on the back of a huge yellow fish-aircraft above a low terminal building and parked car while many escort fish glide around her. Preserve the exact hand-painted retro illustration style, pale blue sky, pink building, gouache texture, ink outlines, and whimsical 1970s airline dream logic. Use a majestic lateral tracking shot. The yellow fish glides steadily like a living airplane, the traveler remains calm, escort fish keep loose formation, and the ground slowly drifts below. No subtitles, no watermark. Audio: soft rush of air, oceanic engine hum, wind over scales, distant mellow trumpet, analog bass pulse, light tape hiss.
+
+SCENE 8: Holding Pattern Runway
+Animate the provided keyframe as a surreal holding-pattern runway between decades. The blonde traveler sits on a tall black table on a runway-like plain while fish, a yellow airplane, clocks, route lines, antenna towers, and red signal machines float around her. Preserve the hand-painted gouache style, pastel desert-runway palette, delicate ink outlines, and retro airport control-room logic. Use a slow patient camera push-in. Dotted route lines draw themselves through the sky, fish and planes trace lazy loops, signal towers blink, and the traveler remains still in mid-transit. No subtitles, no watermark. Audio: runway wind, analog tower radio static, irregular clock ticks, red machine hum, distant landing-gear clunk, soft synth drone.
+
+SCENE 9: Cloud Orchard Layover
+Animate the provided keyframe as the soft layover orchard inside a psychedelic airport for time travelers. The blonde traveler rests among pink cloud-trees, chairs, shallow water, and a pale blue horizon. Preserve the dreamy hand-painted gouache texture, delicate ink outlines, pastel pink and blue palette, and gentle retro-surreal airport mood. Use a slow floating camera drift. The pink cloud-trees breathe and bob, thin red stems sway, water ripples softly, the chair hovers slightly, and a small fish glides high above like a distant shuttle. No subtitles, no watermark. Audio: airy analog synth chord, soft bell tones, shallow water lap, marsh wind, distant airport chime, warm tape hiss.
+
+SCENE 10: Pink Rotunda Arrival
+Animate the provided keyframe as the final arrival terminal of A Psychedelic Airport for Time Travelers. The blonde traveler stands in a vast pink rotunda with circular baggage pods and a huge curved ceiling filled with fish-aircraft moving like constellations. Preserve the hand-painted retro illustration, gouache texture, delicate ink outlines, pastel pink floor, blue ceiling, and 1970s airline-brochure futurism. Use a slow elegant pull-back to reveal the full terminal. Fish glide in broad arcs overhead, baggage pods pulse softly, distant travelers make tiny settling movements, and the protagonist pauses in peaceful arrival. No subtitles, no watermark. Audio: soft landing chime, spacious terminal reverb, warm analog synth pad, distant footsteps, gentle final chord, tape hiss fading out.
