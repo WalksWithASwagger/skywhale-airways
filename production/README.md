@@ -58,32 +58,45 @@ production/
   (`audio/stems/no_vocals.mp3`); `audio/inst_intro_57s.mp3` is the clean
   word-free 0:00–0:57 instrumental used in the current cut.
 
-## Current cut & next steps
+## The finished cut
 
-- **`../public/film/psychedelic-airport.mp4`** (= `edits/time_airport_10shot_establish_pro.mp4`)
-  — **the deliverable.** 57.5s, instrumental only, all ten shots in storyboard
-  order, generated on **`veo-3.1` (pro)**. Each shot uses its *opening* window
-  (head mode) stretched into slow motion, so the whole film stays in the flat
-  hand-painted folk-art style and never drifts into the over-melted ends. s01 is
-  capped at 3.5s to stay ahead of any morph. Built with:
+- **`../public/film/psychedelic-airport.mp4`** (= `edits/skywhale_whalesky_final.mp4`)
+  — **the deliverable.** 53.0s, all ten pro (`veo-3.1`) shots, cut to the
+  **`whale sky god`** track (the spoken-word song — narration is *in* the track,
+  no separate VO). Each shot uses its *opening* window stretched into slow motion
+  (head mode), so the film stays in the flat hand-painted style throughout.
+
+  The cut is **lyric-synced**: shot boundaries fall on the song's phrase
+  timestamps and the hero shots land on their own lines —
+  *"yellow god with fins"* → skywhale (0:00), *"saw herself already waiting"* →
+  duplicate selves (0:16), *"the big yellow animal…"* → golden-fish flight
+  (0:34), *"she arrived…"* → rotunda (0:40). The golden-fish flight is moved to
+  the climax slot (just before arrival) to match the narration order. Title
+  couplet fades in over the opening shot; the arrival holds through the
+  instrumental outro and fades out for credits.
 
   ```bash
   python3 scripts/assemble_time_airport.py \
-    --audio video_project/time_airport/audio/inst_intro_57s.mp3 \
-    --mode head --variant full --src-window 4.0 --head-overrides "s01=3.5" \
-    --scenes s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 \
-    --out video_project/time_airport/edits/time_airport_10shot_establish_pro.mp4
+    --audio video_project/time_airport/audio/whale-sky-god.mp3 \
+    --mode head --variant full --silent \
+    --scenes s01 s02 s03 s04 s05 s06 s08 s09 s07 s10 \
+    --durations "5.84,4.5,5.72,4.46,3.18,3.14,3.51,3.51,5.76,13.38" \
+    --windows   "3.5,3.2,4.0,3.2,2.3,2.3,2.5,2.5,4.0,6.0" \
+    --out /tmp/wsg_silent.mp4
+  # then add title fade-in (1.5s) + credits fade-out (6s) and mux the track:
+  ffmpeg -i /tmp/wsg_silent.mp4 -i video_project/time_airport/audio/whale-sky-god.mp3 \
+    -filter_complex "[0:v]fade=t=in:st=0:d=1.5,fade=t=out:st=47:d=6[v];\
+[1:a]afade=t=in:st=0:d=1.0,afade=t=out:st=49.5:d=3.5[a]" \
+    -map "[v]" -map "[a]" -c:v libx264 -crf 18 -pix_fmt yuv420p -c:a aac -b:a 192k -t 53 \
+    video_project/time_airport/edits/skywhale_whalesky_final.mp4
   ```
 
-- The earlier `edits/time_airport_6shot_57s.mp4` (six hero shots, melty middles)
-  is kept as an alternate.
 - Pro source clips (`clips/s01_full.mp4` … `s10_full.mp4`) are regenerable with
   `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
   demand) — only the fast clips and the final cut live in the repo.
-- **Optional next:** layer the most poignant spoken-word lines (ElevenLabs VO,
-  used sparingly) back over the instrumental, then re-export.
 - **Web embed:** the finished file sits in `public/film/`; wiring it into the
-  `#film-frame` element in `index.html` is left to the web app work.
+  `#film-frame` element in `index.html` is left to the web app work (the Pages
+  deploy needs `lfs: true` on its checkout — see PR #1).
 
 ## Config
 
