@@ -60,12 +60,30 @@ production/
 
 ## Current cut & next steps
 
-- **`edits/time_airport_6shot_57s.mp4`** — 57.5s, instrumental only, six hero
-  shots (skywhale → concourse → zero-g → golden-fish flight → cloud orchard →
-  rotunda). This is the candidate for the site's `#film-frame` slot.
-- **Next:** lock the shot selection, then **regenerate the keepers on `veo-3.1`
-  (full / pro)** for final quality, and optionally layer the most poignant
-  spoken-word lines back over the instrumental.
+- **`../public/film/psychedelic-airport.mp4`** (= `edits/time_airport_10shot_establish_pro.mp4`)
+  — **the deliverable.** 57.5s, instrumental only, all ten shots in storyboard
+  order, generated on **`veo-3.1` (pro)**. Each shot uses its *opening* window
+  (head mode) stretched into slow motion, so the whole film stays in the flat
+  hand-painted folk-art style and never drifts into the over-melted ends. s01 is
+  capped at 3.5s to stay ahead of any morph. Built with:
+
+  ```bash
+  python3 scripts/assemble_time_airport.py \
+    --audio video_project/time_airport/audio/inst_intro_57s.mp3 \
+    --mode head --variant full --src-window 4.0 --head-overrides "s01=3.5" \
+    --scenes s01 s02 s03 s04 s05 s06 s07 s08 s09 s10 \
+    --out video_project/time_airport/edits/time_airport_10shot_establish_pro.mp4
+  ```
+
+- The earlier `edits/time_airport_6shot_57s.mp4` (six hero shots, melty middles)
+  is kept as an alternate.
+- Pro source clips (`clips/s01_full.mp4` … `s10_full.mp4`) are regenerable with
+  `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
+  demand) — only the fast clips and the final cut live in the repo.
+- **Optional next:** layer the most poignant spoken-word lines (ElevenLabs VO,
+  used sparingly) back over the instrumental, then re-export.
+- **Web embed:** the finished file sits in `public/film/`; wiring it into the
+  `#film-frame` element in `index.html` is left to the web app work.
 
 ## Config
 
