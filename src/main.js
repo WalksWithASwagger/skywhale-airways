@@ -73,22 +73,24 @@ function onScroll() {
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", onScroll);
 
-// --- First gesture starts the soundtrack (autoplay is blocked otherwise). ---
-// The SOUND toggle owns its own clicks; if we also started audio here on the
-// same gesture, the two handlers would race and cancel out.
-let kickedOff = false;
-function firstGesture(e) {
-  if (kickedOff) return;
-  if (e?.target?.closest?.("#audio-toggle")) return; // toggle handles itself
-  kickedOff = true;
-  audio.start();
-  window.removeEventListener("scroll", firstGesture);
-  window.removeEventListener("pointerdown", firstGesture);
-  window.removeEventListener("keydown", firstGesture);
+// --- Boarding gate: the entry tap is the audio gesture (sound-on by default). ---
+// "Tap to board" starts the soundtrack; "enter muted" comes in silent. The gate
+// owns the audio-start decision, so there is no scroll/tap autostart elsewhere.
+const gate = document.getElementById("gate");
+document.documentElement.style.overflow = "hidden"; // lock scroll while gated
+function closeGate() {
+  gate.classList.add("gate-out");
+  document.body.classList.remove("gated");
+  document.documentElement.style.overflow = "";
+  const hide = () => (gate.hidden = true);
+  gate.addEventListener("transitionend", hide, { once: true });
+  setTimeout(hide, 800); // fallback if transitionend is missed
 }
-window.addEventListener("scroll", firstGesture, { passive: true });
-window.addEventListener("pointerdown", firstGesture);
-window.addEventListener("keydown", firstGesture);
+document.getElementById("gate-board").addEventListener("click", () => {
+  audio.start();
+  closeGate();
+});
+document.getElementById("gate-muted").addEventListener("click", closeGate);
 
 // --- Render loop. ---
 let last = performance.now();

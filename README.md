@@ -50,9 +50,14 @@ repo, update that one `base` string.
   lazy-load as the scroll approaches them.
 - **`src/fish-particles.js`** — generative fish drawn as `THREE.Points` in the
   same render pass, parallaxing with scroll and pulsing with the audio.
+- **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site
+  opens on an entry overlay so it's **sound-on by default**: browsers block
+  autoplay until a gesture, so the "Tap to board" tap *is* that gesture and starts
+  the soundtrack. A small "enter muted" link is the courteous opt-out (and, since
+  there's no scroll-autostart, the mute sticks until the `SOUND` toggle is used).
 - **`src/audio.js`** — the soundtrack bed + a WebAudio `AnalyserNode` feeding a
-  `0..1` amplitude into the shader. Autoplay is blocked by browsers, so playback
-  starts on the first gesture; the `SOUND` toggle mutes/unmutes.
+  `0..1` amplitude into the shader. The boarding-gate tap starts playback (autoplay
+  is blocked otherwise); the `SOUND` toggle mutes/unmutes.
 - **`src/boarding-pass.js`** — the signature widget. Name + decade → a canvas
   boarding pass in the film's style, downloadable / shareable. No backend.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a
