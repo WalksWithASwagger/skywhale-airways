@@ -21,6 +21,8 @@ for preserved merch PNG and print assets.
 - GitHub Pages workflow removed after Vercel passed.
 - Lightweight press kit added for festival synopsis, credits, stills, runtime,
   and film links.
+- Domain `skywhaleairways.com` registered and attached to the Vercel project as
+  both apex and `www`.
 
 ## Verification
 
@@ -43,21 +45,22 @@ and an MP4 `ftyp` header.
 
 ## Ready For KK
 
-- Choose and register the final domain.
 - Keep the public brand as Skywhale Airways unless a deliberate rename happens.
-- Attach the domain to the Vercel project after DNS is ready.
+- Configure Porkbun DNS for Vercel:
+  - `A skywhaleairways.com 76.76.21.21`
+  - `A www.skywhaleairways.com 76.76.21.21`
 - Decide whether the GitHub Pages public URL should redirect, stay as an old
   mirror, or be left unpublished.
 
 ## Agent-Fixable
 
-- Add domain-specific README and press-kit links once the domain exists.
+- Verify custom-domain HTTP once Porkbun DNS propagates.
 - Add merch fulfillment links when a vendor is chosen.
 - Run a Lighthouse/accessibility pass after the Vercel cutover.
 
-## Blocked On Domain
+## Blocked On DNS
 
-- Custom-domain verification is blocked until KK registers the domain.
+- Custom-domain verification is blocked until Porkbun DNS points at Vercel.
 
 ## Later
 

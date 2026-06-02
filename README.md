@@ -6,10 +6,13 @@ for Time Travelers* — **AI Film Club · Retro Challenge · June 2026**, by
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
 
-**Live today:** https://skywhale-airways-walkswithaswaggers-projects.vercel.app/
+**Canonical domain:** https://skywhaleairways.com/
 
-**Production host:** Vercel at the domain root. The custom domain is still a
-placeholder until KK chooses and registers it.
+**Production host:** Vercel at the domain root. The apex and `www` custom
+domains are attached to the Vercel project; DNS still needs to point Porkbun at
+Vercel before the canonical domain resolves publicly.
+
+**Vercel fallback:** https://skywhale-airways-walkswithaswaggers-projects.vercel.app/
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -42,7 +45,15 @@ npm run preview -- --base /skywhale-airways/
 Vercel is the production host. The GitHub repo is linked, Git LFS is enabled in
 the project's Git settings, and production deploys from `main`.
 
-Attach the custom domain in Vercel after KK registers it.
+Custom domains attached in Vercel on June 2, 2026:
+
+- `skywhaleairways.com`
+- `www.skywhaleairways.com`
+
+Porkbun DNS records needed for Vercel verification:
+
+- `A` record: `skywhaleairways.com` → `76.76.21.21`
+- `A` record: `www.skywhaleairways.com` → `76.76.21.21`
 
 ## Roadmap
 
