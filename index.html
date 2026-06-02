@@ -84,6 +84,32 @@
           </div>
         </div>
 
+        <section id="decade-weather">
+          <h2 class="terminal-title">Decade Weather</h2>
+          <p class="terminal-sub">
+            Choose a decade and Skywhale Airways will issue the current
+            conditions: runway visibility, baggage advice, and the weather
+            waiting outside the wrong year.
+          </p>
+
+          <form id="weather-form" autocomplete="off">
+            <label>
+              Arriving
+              <select id="weather-decade"></select>
+            </label>
+            <button id="weather-generate" type="submit">Issue weather</button>
+          </form>
+
+          <div id="weather-stage" hidden>
+            <canvas id="weather-canvas" width="1024" height="640" role="img"
+              aria-label="Your generated Skywhale Airways decade weather report"></canvas>
+            <div class="weather-actions">
+              <button id="weather-download" type="button">Download weather</button>
+              <button id="weather-share" type="button" hidden>Share</button>
+            </div>
+          </div>
+        </section>
+
         <!-- The finished Veo film lives in public/film and is copied through the static build. -->
         <div id="film-slot">
           <p class="film-label">Feature presentation</p>

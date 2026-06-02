@@ -14,7 +14,8 @@ reference only, 1970s airline-brochure gouache, pastel, hand-painted.
 5. **05-sticker-sheet** — kiss-cut sheet: skywhale, fish, plane, suitcase, clock,
    GATE ∞ tag, cloud, SKYWHALE AIRWAYS ribbon.
 6. **06-passport-stamp** — distressed circular passport stamp, "SKYWHALE AIRWAYS ·
-   ARRIVING SOON · GATE ∞".
+   ARRIVING SOON · GATE ∞". Parked as a needs-rework concept, not active catalog
+   art.
 
 References: skywhale (`…5ed26510…`), golden fish (`…f65df54b…`), terminal
 (`…82f1e761…`), duplicate-selves office (`…92c002d8…`).

@@ -81,6 +81,9 @@ work.
   `SOUND` toggle mutes/unmutes.
 - **`src/boarding-pass.js`** — the signature widget. Name + decade → a canvas
   boarding pass in the film's style, downloadable / shareable. No backend.
+- **`src/decade-weather.js`** — a second client-side canvas widget. Decade →
+  a Skywhale Airways weather advisory with deterministic copy, downloadable /
+  shareable as a mini print.
 - **`src/shop-data.js` / `src/shop.js`** — the Duty-Free catalog and renderer.
   Buttons are disabled until a fulfillment provider is chosen.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a
@@ -99,7 +102,9 @@ outputs are already committed.
 The sibling checkout `/Users/kk/Code/psychedelic-airport` was used as the source
 for the merch PNGs and print-ready die-cuts now preserved in `merch/`.
 Those source/print assets are tracked with Git LFS. `scripts/diecut.mjs` can
-regenerate transparent print cuts from `merch/r1`, `merch/r2`, and `merch/r3`.
+regenerate transparent print cuts from the merch round folders. Round 4 centers
+the Skywhale Chest Print art for patches, decals, sticker sheets, pins, and the
+Decade Weather card.
 
 **Soundtrack:** currently `whale sky god.mp3`. The original session folder also
 held `Airline Brochure.mp3` and `Beneath Skywhale.mp3`; swap the `AUDIO_SRC` line

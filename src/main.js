@@ -2,6 +2,7 @@ import { Journey } from "./journey.js";
 import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
+import { DecadeWeather } from "./decade-weather.js";
 import { renderShop } from "./shop.js";
 import { scenes } from "./data/scenes.js";
 
@@ -36,6 +37,16 @@ new BoardingPass({
   canvas: document.getElementById("pass-canvas"),
   downloadBtn: document.getElementById("pass-download"),
   shareBtn: document.getElementById("pass-share"),
+});
+
+// --- Decade-weather widget. ---
+new DecadeWeather({
+  form: document.getElementById("weather-form"),
+  decadeSelect: document.getElementById("weather-decade"),
+  stage: document.getElementById("weather-stage"),
+  canvas: document.getElementById("weather-canvas"),
+  downloadBtn: document.getElementById("weather-download"),
+  shareBtn: document.getElementById("weather-share"),
 });
 
 // --- Duty-Free shop. ---
