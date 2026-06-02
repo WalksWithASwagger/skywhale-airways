@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Psychedelic Airport for Time Travelers</title>
+    <meta
+      name="description"
+      content="A scroll-driven WebGL journey through a surreal retro airport for time travelers. AI Film Club Retro challenge, June 2026. By Kris Krug & Suzie Easton."
+    />
+    <meta name="theme-color" content="#e9c6d4" />
+    <meta property="og:title" content="A Psychedelic Airport for Time Travelers" />
+    <meta
+      property="og:description"
+      content="A surreal retro airport where fish drift like aircraft and the clock refuses ordinary time."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- WebGL journey canvas (fixed, full viewport) -->
+    <canvas id="gl"></canvas>
+
+    <!-- Film grain overlay -->
+    <div id="grain" aria-hidden="true"></div>
+
+    <!-- Voiceover caption, swapped per scene -->
+    <figure id="caption" aria-live="polite"></figure>
+
+    <!-- Audio + scene HUD -->
+    <header id="hud">
+      <span id="now-showing">A Psychedelic Airport for Time Travelers</span>
+      <button id="audio-toggle" type="button" aria-pressed="false" aria-label="Play soundtrack">
+        <span class="dot"></span><span class="audio-label">sound</span>
+      </button>
+    </header>
+
+    <!-- Scroll affordance -->
+    <div id="scroll-hint" aria-hidden="true">scroll to board ↓</div>
+
+    <!-- Scroll track: one tall section per scene drives the journey progress -->
+    <main id="scroll-track"></main>
+
+    <!-- Boarding pass widget + credits + reserved film slot live after the journey -->
+    <section id="terminal">
+      <div class="terminal-inner">
+        <h2 class="terminal-title">Issue Yourself a Boarding Pass</h2>
+        <p class="terminal-sub">
+          Every traveler leaves with one bag and more time than they arrived with.
+          Choose a decade. The airport will do the rest.
+        </p>
+
+        <form id="pass-form" autocomplete="off">
+          <label>
+            Passenger
+            <input id="pass-name" type="text" maxlength="22" placeholder="your name" />
+          </label>
+          <label>
+            Arriving
+            <select id="pass-decade"></select>
+          </label>
+          <button id="pass-generate" type="submit">Issue pass</button>
+        </form>
+
+        <div id="pass-stage" hidden>
+          <canvas id="pass-canvas" width="1024" height="640" role="img"
+            aria-label="Your generated time-travel boarding pass"></canvas>
+          <div class="pass-actions">
+            <button id="pass-download" type="button">Download pass</button>
+            <button id="pass-share" type="button" hidden>Share</button>
+          </div>
+        </div>
+
+        <!-- Reserved slot: the finished Veo film drops in here (see README). -->
+        <div id="film-slot">
+          <p class="film-label">Feature presentation</p>
+          <div class="film-frame" id="film-frame">
+            <span class="film-soon">The animation is now boarding · arriving soon</span>
+          </div>
+        </div>
+
+        <footer id="credits">
+          <p class="credit-line">A Psychedelic Airport for Time Travelers</p>
+          <p class="credit-meta">AI Film Club · Retro Challenge · June 2026</p>
+          <p class="credit-meta">by Kris Krug &amp; Suzie Easton</p>
+        </footer>
+      </div>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

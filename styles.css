@@ -1,0 +1,341 @@
+:root {
+  --rose: #e9c6d4;
+  --rose-deep: #c74a5c;
+  --ink: #33242a;
+  --cloud: #f4d9e3;
+  --sky: #cfd9ec;
+  --gold: #f2c14e;
+  --serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--rose);
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* --- Fixed WebGL canvas behind everything --- */
+#gl {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+/* --- Film grain overlay --- */
+#grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("/grain.svg");
+  background-size: 220px 220px;
+  animation: grain-shift 0.6s steps(2) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-6px, 4px); }
+  100% { transform: translate(4px, -3px); }
+}
+
+/* --- Scroll track: each panel is one scene's worth of scroll --- */
+#scroll-track {
+  position: relative;
+  z-index: 1;
+}
+.scene-panel {
+  height: 100vh;
+}
+
+/* --- Voiceover caption over the journey --- */
+#caption {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 12vh;
+  margin: 0;
+  z-index: 3;
+  padding: 0 8vw;
+  text-align: center;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+#caption .line {
+  display: inline-block;
+  font-size: clamp(1.1rem, 2.6vw, 2rem);
+  line-height: 1.4;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(40, 20, 35, 0.6), 0 0 2px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(14px);
+}
+#caption.show .line {
+  animation: line-rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+#caption.show .line:nth-child(2) { animation-delay: 0.5s; }
+@keyframes line-rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Top HUD --- */
+#hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(40, 20, 35, 0.7);
+  mix-blend-mode: difference;
+}
+#now-showing {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+#audio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: inherit;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+#audio-toggle .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+#audio-toggle.on .dot {
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% { opacity: 0.4; }
+}
+
+/* --- Scroll hint --- */
+#scroll-hint {
+  position: fixed;
+  bottom: 1.4rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 4;
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(40, 20, 35, 0.7);
+  animation: bob 2.4s ease-in-out infinite;
+  transition: opacity 0.5s;
+}
+.scrolled #scroll-hint {
+  opacity: 0;
+}
+
+/* In the terminal section, retire the floating journey overlays. */
+.in-terminal #caption,
+.in-terminal #now-showing {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.in-terminal #caption {
+  pointer-events: none;
+}
+@keyframes bob {
+  50% { transform: translateY(8px); }
+}
+
+/* --- Terminal: widget + credits + film slot --- */
+#terminal {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, var(--cloud), var(--sky));
+  border-top: 1px solid rgba(50, 35, 40, 0.2);
+  padding: 7rem 1.5rem 5rem;
+}
+.terminal-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.terminal-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin: 0 0 0.6rem;
+  font-weight: 700;
+}
+.terminal-sub {
+  font-style: italic;
+  color: rgba(50, 35, 40, 0.75);
+  max-width: 30rem;
+  margin: 0 auto 2.4rem;
+  line-height: 1.6;
+}
+
+#pass-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+#pass-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(50, 35, 40, 0.7);
+}
+#pass-form input,
+#pass-form select {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid rgba(50, 35, 40, 0.4);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  border-radius: 4px;
+  min-width: 12rem;
+}
+#pass-generate,
+.pass-actions button {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  background: var(--rose-deep);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s;
+}
+#pass-generate:hover,
+.pass-actions button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+#pass-stage {
+  margin: 0 auto 3rem;
+}
+#pass-canvas {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(60, 30, 50, 0.28);
+}
+.pass-actions {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+.pass-actions button {
+  background: var(--ink);
+}
+
+/* --- Reserved film slot --- */
+#film-slot {
+  margin: 3.5rem 0 2.5rem;
+}
+.film-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(50, 35, 40, 0.6);
+  margin: 0 0 0.8rem;
+}
+.film-frame {
+  aspect-ratio: 16 / 9;
+  border: 1px dashed rgba(50, 35, 40, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.35);
+}
+.film-soon {
+  font-style: italic;
+  color: rgba(50, 35, 40, 0.6);
+  letter-spacing: 0.04em;
+}
+
+/* --- Credits --- */
+#credits {
+  border-top: 1px solid rgba(50, 35, 40, 0.2);
+  padding-top: 2rem;
+}
+.credit-line {
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 0 0 0.6rem;
+}
+.credit-meta {
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(50, 35, 40, 0.7);
+}
+
+/* --- Reduced motion: calm everything that shakes --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  #grain {
+    animation: none;
+  }
+  #scroll-hint {
+    animation: none;
+  }
+  #audio-toggle.on .dot {
+    animation: none;
+  }
+  #caption.show .line {
+    animation-duration: 0.6s;
+  }
+}
