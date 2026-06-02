@@ -50,6 +50,9 @@ subpath while Vercel builds for `/`.
 
 ## Roadmap
 
+See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
+work.
+
 - **Vercel production** — link the repo, enable Git LFS, verify root-path assets,
   then attach the custom domain.
 - **Finished film** — merge the film-production PR and wire the MP4 into the
