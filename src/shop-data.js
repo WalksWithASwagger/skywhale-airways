@@ -28,15 +28,51 @@ export const products = [
     price: "$5",
   },
   {
-    img: "merch/r1-05-shirt-skywhale-front.webp",
+    img: "merch/mockups-05-skywhale-tee.webp",
     title: "Skywhale Chest Print",
     type: "Shirt · est. nowhen, arriving soon",
     price: "$34",
   },
   {
-    img: "merch/r1-06-shirt-lost-decades.webp",
+    img: "merch/mockups-06-lost-decades-tee.webp",
     title: "One Airport for Lost Decades",
     type: "Shirt · every decade has its own weather",
     price: "$36",
+  },
+  {
+    img: "merch/r2-05-sticker-sheet.webp",
+    title: "Skywhale Airways Sticker Sheet",
+    type: "Kiss-cut sheet · 8 stickers",
+    price: "$9",
+  },
+  {
+    img: "merch/r2-03-enamel-pins.webp",
+    title: "Enamel Pin Set",
+    type: "3 hard-enamel pins · skywhale, fish, gate ∞",
+    price: "$24",
+  },
+  {
+    img: "merch/r2-01-departures-board.webp",
+    title: "Departures Board",
+    type: "Die-cut sticker · delayed by gravity",
+    price: "$5",
+  },
+  {
+    img: "merch/r2-02-duplicate-selves.webp",
+    title: "I Met Another Version of Myself",
+    type: "Die-cut sticker",
+    price: "$5",
+  },
+  {
+    img: "merch/r2-04-lyric-weather.webp",
+    title: "Every Decade Has Its Own Weather",
+    type: "Lyric die-cut sticker",
+    price: "$5",
+  },
+  {
+    img: "merch/r2-06-passport-stamp.webp",
+    title: "Arriving Soon Passport Stamp",
+    type: "Die-cut sticker · gate ∞",
+    price: "$5",
   },
 ];

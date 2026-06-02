@@ -95,7 +95,7 @@ async function optimizeMerch() {
   if (!existsSync(MERCH_SRC)) return;
 
   const rounds = (await readdir(MERCH_SRC, { withFileTypes: true }))
-    .filter((d) => d.isDirectory())
+    .filter((d) => d.isDirectory() && d.name !== "print") // print/ = handoff files, not web
     .map((d) => d.name);
 
   await mkdir(MERCH_OUT, { recursive: true });
