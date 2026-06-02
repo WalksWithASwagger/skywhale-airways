@@ -3,6 +3,3 @@ dist
 .DS_Store
 *.log
 .vercel
-
-# merch raster outputs — regenerate from the prompt sheet
-merch/**/*.png
