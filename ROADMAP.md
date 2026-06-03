@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 2, 2026 14:01 PDT.
+Last updated: June 2, 2026 16:20 PDT.
 
 ## Launch Status
 
@@ -25,10 +25,13 @@ for preserved merch PNG and print assets.
 - Domain `skywhaleairways.com` registered and attached to the Vercel project as
   both apex and `www`.
 - Porkbun DNS verified for apex and `www`; both resolve to Vercel.
+- Social preview image metadata added for the public pages.
+- Merch Wave 5 added: **I AM NOMAD.** sticker, patch, and tee graphic using one
+  core blonde Time Traveller art system.
 
 ## Repository Queue Snapshot
 
-Audited June 2, 2026 14:01 PDT.
+Audited June 2, 2026 16:20 PDT.
 
 - Open GitHub issues: none.
 - Open GitHub PRs: none.
@@ -73,14 +76,13 @@ Custom-domain checks on June 2, 2026 14:01 PDT:
 
 ## Agent-Fixable
 
-- Decide whether `www.skywhaleairways.com` should hard-redirect to the apex.
-  It currently serves the site with apex canonical tags.
+- Verify the `www.skywhaleairways.com` hard redirect after the next Vercel
+  production deploy.
 - Add merch fulfillment links when a vendor is chosen.
 - Run a Lighthouse/accessibility pass after the domain cutover.
 
 ## Later
 
-- Add social preview images for the root page, About page, and film.
 - Decide whether the Duty-Free section becomes a real shop, a concept gallery,
   or a print-on-demand experiment.
 - Archive production prompts and source notes into a stable handoff package

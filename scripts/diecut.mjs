@@ -16,7 +16,7 @@ import { join, basename, extname } from "node:path";
 import sharp from "sharp";
 
 const ROOT = new URL("..", import.meta.url).pathname;
-const ROUNDS = ["r1", "r2", "r3", "r4"]; // sticker rounds (mockups stay as product photos)
+const ROUNDS = ["r1", "r2", "r3", "r4", "r5"]; // sticker rounds (mockups stay as product photos)
 const OUT = join(ROOT, "merch", "print");
 const TOLERANCE = 34; // < distance(cream→white)≈44, so white borders survive
 

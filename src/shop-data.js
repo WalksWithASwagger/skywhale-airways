@@ -4,6 +4,24 @@
 
 export const products = [
   {
+    img: "merch/r5-01-i-am-nomad-sticker.webp",
+    title: "I AM NOMAD Sticker",
+    type: "Die-cut sticker · the Time Traveller with one suitcase and fish-aircraft",
+    price: "$6",
+  },
+  {
+    img: "merch/r5-02-i-am-nomad-patch.webp",
+    title: "I AM NOMAD Patch",
+    type: "Embroidered patch · est. nowhen, boarding through memory",
+    price: "$14",
+  },
+  {
+    img: "merch/r5-03-i-am-nomad-tee.webp",
+    title: "I AM NOMAD Tee",
+    type: "Shirt graphic · Time Traveller portrait, route arc, terminal fish",
+    price: "$36",
+  },
+  {
     img: "merch/r4-01-skywhale-chest-patch.webp",
     title: "Skywhale Chest Patch",
     type: "Embroidered patch · the chest-print skywhale for jackets and bags",

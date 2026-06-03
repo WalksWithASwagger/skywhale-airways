@@ -120,7 +120,8 @@ for the merch PNGs and print-ready die-cuts now preserved in `merch/`.
 Those source/print assets are tracked with Git LFS. `scripts/diecut.mjs` can
 regenerate transparent print cuts from the merch round folders. Round 4 centers
 the Skywhale Chest Print art for patches, decals, sticker sheets, pins, and the
-Decade Weather card.
+Decade Weather card. Round 5 adds **I AM NOMAD.** sticker, patch, and tee
+graphics built from the blonde Time Traveller keyframe.
 
 **Soundtrack:** currently `whale sky god.mp3`. The original session folder also
 held `Airline Brochure.mp3` and `Beneath Skywhale.mp3`; swap the `AUDIO_SRC` line
