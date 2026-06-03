@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 2, 2026 16:20 PDT.
+Last updated: June 3, 2026 09:40 PDT.
 
 ## Launch Status
 
@@ -26,8 +26,9 @@ for preserved merch PNG and print assets.
   both apex and `www`.
 - Porkbun DNS verified for apex and `www`; both resolve to Vercel.
 - Social preview image metadata added for the public pages.
-- Merch Wave 5 added: **I AM NOMAD.** sticker, patch, and tee graphic using one
-  core blonde Time Traveller art system.
+- Merch Wave 5 refined: the upgraded **I AM NOMAD** poster is the canonical
+  project/store image and now drives the sticker, patch, tee, and social
+  preview art.
 
 ## Repository Queue Snapshot
 
@@ -80,6 +81,8 @@ Custom-domain checks on June 2, 2026 14:01 PDT:
   production deploy.
 - Add merch fulfillment links when a vendor is chosen.
 - Run a Lighthouse/accessibility pass after the domain cutover.
+- Decide whether the canonical **I AM NOMAD** art should replace more page-level
+  stills beyond social previews and Duty-Free.
 
 ## Later
 

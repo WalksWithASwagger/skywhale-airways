@@ -4,21 +4,21 @@
 
 export const products = [
   {
-    img: "merch/r5-01-i-am-nomad-sticker.webp",
-    title: "I AM NOMAD Sticker",
-    type: "Die-cut sticker · the Time Traveller with one suitcase and fish-aircraft",
+    img: "merch/r5-i-am-nomad-master.webp",
+    title: "I AM NOMAD Holographic Sticker",
+    type: "Holographic sticker · the canonical Time Traveller at Gate infinity",
     price: "$6",
   },
   {
-    img: "merch/r5-02-i-am-nomad-patch.webp",
+    img: "merch/r5-i-am-nomad-master.webp",
     title: "I AM NOMAD Patch",
-    type: "Embroidered patch · est. nowhen, boarding through memory",
+    type: "Embroidered patch · one suitcase, fish-aircraft overhead",
     price: "$14",
   },
   {
-    img: "merch/r5-03-i-am-nomad-tee.webp",
+    img: "merch/r5-i-am-nomad-master.webp",
     title: "I AM NOMAD Tee",
-    type: "Shirt graphic · Time Traveller portrait, route arc, terminal fish",
+    type: "Shirt graphic · the iconic Skywhale Airways project image",
     price: "$36",
   },
   {
