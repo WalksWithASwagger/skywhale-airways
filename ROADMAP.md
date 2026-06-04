@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 4, 2026 13:56 PDT / 20:56 UTC.
+Last updated: June 4, 2026 14:22 PDT / 21:22 UTC.
 
 ## Launch Status
 
@@ -81,18 +81,32 @@ preserved merch PNG and print assets.
 - Shopify Dev MCP verified callable after Codex restart; the monitor prompt now
   names the docs-only Shopify MCP tools and keeps store/product/order/cart
   mutation out of scope.
+- Roadmap backlog split into focused GitHub issues #24-#33 for the next swarm;
+  #17 remains the parent Shopify/fulfillment tracker.
 
 ## Repository Queue Snapshot
 
-Audited June 4, 2026 13:56 PDT / 20:56 UTC.
+Audited June 4, 2026 14:22 PDT / 21:22 UTC.
 
 - Open GitHub PRs: none.
 - Current branch: `main`.
 - Local branches: `main`.
 - Open launch-polish issue:
   - #15 `Human watch/listen signoff for awards submission`
-- Open merch issue:
+- Open merch/shop parent issue:
   - #17 `Expand Shopify beyond the first Nomad drop`
+- Open merch/shop child issues:
+  - #24 `Decide real-shop fulfillment model for Duty-Free`
+  - #25 `Add size and fulfillment model for I AM NOMAD tee`
+  - #26 `Prepare Skywhale Chest Print patch for live commerce`
+  - #27 `Prepare Skywhale Chest Print sticker/decal for live commerce`
+  - #28 `Prepare Decade Weather card/sticker for live commerce`
+  - #29 `Prepare baggage tag variant for live commerce`
+  - #30 `Prepare Gravity Stops Insisting tee/sticker for live commerce`
+  - #31 `Source pin and sticker-sheet production path`
+  - #32 `Connect shop.skywhaleairways.com if standalone shop surface is needed`
+- Open archive issue:
+  - #33 `Package festival submission archive`
 - Recently closed launch/admin issues:
   - #10 `Launch Nomad Shopify Buy Button checkout`
   - #11 `Create GA4 stream and verify production analytics`
@@ -197,16 +211,21 @@ Press Kit local performance pass on June 4, 2026:
 
 ## Next Swarm
 
-- #17: Decide whether Duty-Free stays a concept gallery, becomes a broader
-  Shopify catalog, or moves to another fulfillment path. The current
-  recommendation is to keep only the three Nomad Buy Buttons live until
-  fulfillment, variants, shipping, returns, and tax are decided.
+- #15: Human watch/listen signoff for the production-served awards cut.
+- #17: Parent tracker for broader Shopify/fulfillment.
+- #24-#32: Merch/shop fulfillment, candidate products, and standalone shop-domain
+  decisions. Keep only the three Nomad Buy Buttons live until fulfillment,
+  variants, shipping, returns, and tax are decided.
+- #33: Festival submission archive packaging, if festivals require off-repo
+  deliverables.
 
 ## Later
 
-- Connect `shop.skywhaleairways.com` as a custom Shopify storefront domain if
-  the public shop surface should exist outside embedded Buy Buttons.
+- Connect `shop.skywhaleairways.com` only if #32 decides the public shop surface
+  should exist outside embedded Buy Buttons.
 - Add real fulfillment, sizes, variants, shipping, returns, and tax settings
-  before treating the tee/patch/sticker drop as a serious public storefront.
+  through #24-#31 before treating the tee/patch/sticker drop as a serious public
+  storefront.
 - Package a festival-submission archive outside the repo if festivals require
-  ZIP delivery, ProRes, stills contact sheets, or separate rights documents.
+  ZIP delivery, ProRes, stills contact sheets, or separate rights documents;
+  track that through #33.

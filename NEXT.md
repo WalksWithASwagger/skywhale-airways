@@ -1,6 +1,6 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 13:56 PDT / 20:56 UTC.
+Last updated: June 4, 2026 14:22 PDT / 21:22 UTC.
 
 ## Current Production
 
@@ -39,8 +39,13 @@ Last updated: June 4, 2026 13:56 PDT / 20:56 UTC.
 ## Open Work
 
 - #15: Human watch/listen signoff for awards submission.
-- #17: Decide merch fulfillment and whether Duty-Free becomes a broader real
-  shop. A fulfillment decision packet now lives in `merch/shopify-launch.md`.
+- #17: Parent tracker for broader Shopify/fulfillment. Child issue split:
+  #24 Duty-Free fulfillment model, #25 Nomad tee size/fulfillment, #26 Chest
+  Print patch, #27 Chest Print sticker/decal, #28 Decade Weather card/sticker,
+  #29 baggage tag variant, #30 Gravity Stops Insisting tee/sticker, #31
+  pin/sticker-sheet production, #32 standalone shop domain decision.
+- #33: Festival submission archive package, if an off-repo festival deliverable
+  is needed.
 
 ## Restart Commands
 
