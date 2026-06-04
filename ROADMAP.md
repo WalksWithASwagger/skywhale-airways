@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 4, 2026 13:03 PDT / 20:03 UTC.
+Last updated: June 4, 2026 13:34 PDT / 20:34 UTC.
 
 ## Launch Status
 
@@ -70,13 +70,15 @@ preserved merch PNG and print assets.
   practices/SEO/agentic browsing.
 - Parent creative-widget planning issue #18 split into build issues #21, #22,
   and #23.
+- Gate Receipt, Route Map Postcard, and Suitcase Sticker Manifest widgets added
+  to the Gate Infinity desk. Issues #21, #22, and #23 closed.
 - Production prompts, source notes, final deliverables, and restart handoff
   documented through `production/README.md`, `production/ORIGIN_NOTES.md`,
   `production/AWARDS_QA.md`, `merch/shopify-launch.md`, and `NEXT.md`.
 
 ## Repository Queue Snapshot
 
-Audited June 4, 2026 13:03 PDT / 20:03 UTC.
+Audited June 4, 2026 13:34 PDT / 20:34 UTC.
 
 - Open GitHub PRs: none.
 - Current branch: `main`.
@@ -85,10 +87,6 @@ Audited June 4, 2026 13:03 PDT / 20:03 UTC.
   - #15 `Human watch/listen signoff for awards submission`
 - Open merch issue:
   - #17 `Expand Shopify beyond the first Nomad drop`
-- Open creative-widget build issues:
-  - #21 `Build Gate Receipt share card widget`
-  - #22 `Build Route Map Postcard generator`
-  - #23 `Build Suitcase Sticker Manifest widget`
 - Recently closed launch/admin issues:
   - #10 `Launch Nomad Shopify Buy Button checkout`
   - #11 `Create GA4 stream and verify production analytics`
@@ -98,6 +96,9 @@ Audited June 4, 2026 13:03 PDT / 20:03 UTC.
   - #16 `Prune stale awards worktrees and branches after merge`
   - #18 `Plan the next creative widgets and shareable terminal artifacts`
   - #19 `Archive production prompts, source notes, and final handoff package`
+  - #21 `Build Gate Receipt share card widget`
+  - #22 `Build Route Map Postcard generator`
+  - #23 `Build Suitcase Sticker Manifest widget`
 - Recently merged PRs:
   - #9 `Prepare Skywhale awards cut package`
   - #2 `Prepare Vercel launch and LFS merch assets`
@@ -114,6 +115,9 @@ Audited June 4, 2026 13:03 PDT / 20:03 UTC.
 - `ffmpeg ebur128=peak=true` on `public/film/skywhale-awards-cut-v2.mp4`
 - Browser smoke: gate, scroll journey, soundtrack toggle, boarding pass,
   widget copy links, Duty-Free grid, About page, Press Kit, and film embed.
+- Terminal artifact smoke: shared links restore Gate Receipt, Route Map
+  Postcard, and Suitcase Sticker Manifest; canvases render nonblank; 390px
+  mobile layout has no horizontal overflow.
 - Shopify smoke: first three Duty-Free cards mount real Buy Buttons, add to cart
   works, remove works, cart reopens, and checkout starts on Shopify.
 - GA smoke: production page loads the configured GA4 tag and sends the expected
@@ -130,8 +134,9 @@ Audited June 4, 2026 13:03 PDT / 20:03 UTC.
   - `/merch/...`
   - `/scenes/...`
 
-The production deployment `dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC` is ready and
-aliased to `https://skywhaleairways.com/`.
+The last manually verified production deployment
+`dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC` is ready and aliased to
+`https://skywhaleairways.com/`.
 
 Awards cut production checks on June 4, 2026:
 
@@ -179,9 +184,6 @@ Press Kit local performance pass on June 4, 2026:
 
 - #17: Decide whether Duty-Free stays a concept gallery, becomes a broader
   Shopify catalog, or moves to another fulfillment path.
-- #21: Build the Gate Receipt share card widget.
-- #22: Build the Route Map Postcard generator.
-- #23: Build the Suitcase Sticker Manifest widget.
 
 ## Later
 

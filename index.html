@@ -186,6 +186,111 @@
               </div>
             </div>
           </section>
+
+          <section class="widget-panel" id="gate-receipt">
+            <p class="widget-label">Claim Desk 13</p>
+            <h2 class="terminal-title">Gate Receipt</h2>
+            <p class="terminal-sub">
+              The airport has a paper trail for everything: gravity, fish
+              traffic, duplicate selves, and luggage that remembers out loud.
+            </p>
+
+            <form id="receipt-form" autocomplete="off">
+              <label>
+                Decade
+                <select id="receipt-decade"></select>
+              </label>
+              <label>
+                Delay
+                <select id="receipt-delay"></select>
+              </label>
+              <button id="receipt-generate" type="submit">Issue receipt</button>
+            </form>
+
+            <div id="receipt-stage" hidden>
+              <canvas id="receipt-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Skywhale Airways gate receipt"></canvas>
+              <div class="receipt-actions">
+                <button id="receipt-download" type="button">Download receipt</button>
+                <button id="receipt-copy" type="button" hidden>Copy link</button>
+                <button id="receipt-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="widget-panel" id="route-postcard">
+            <p class="widget-label">Route Office 27</p>
+            <h2 class="terminal-title">Route Map Postcard</h2>
+            <p class="terminal-sub">
+              A souvenir route from one decade to another, stamped by Gate
+              Infinity and carried by a pilot with fins.
+            </p>
+
+            <form id="route-form" autocomplete="off">
+              <label>
+                Origin
+                <select id="route-origin"></select>
+              </label>
+              <label>
+                Destination
+                <select id="route-destination"></select>
+              </label>
+              <label>
+                Mood
+                <select id="route-mood"></select>
+              </label>
+              <button id="route-generate" type="submit">Draw route</button>
+            </form>
+
+            <div id="route-stage" hidden>
+              <canvas id="route-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Skywhale Airways route map postcard"></canvas>
+              <div class="route-actions">
+                <button id="route-download" type="button">Download postcard</button>
+                <button id="route-copy" type="button" hidden>Copy link</button>
+                <button id="route-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="widget-panel" id="suitcase-manifest">
+            <p class="widget-label">Baggage Memory 04</p>
+            <h2 class="terminal-title">Suitcase Sticker Manifest</h2>
+            <p class="terminal-sub">
+              Three small relics for one impossible suitcase. The rest can wait
+              in lost baggage until the century calls.
+            </p>
+
+            <form id="manifest-form" autocomplete="off">
+              <label>
+                Decade
+                <select id="manifest-decade"></select>
+              </label>
+              <label>
+                Relic 01
+                <select id="manifest-relic-1"></select>
+              </label>
+              <label>
+                Relic 02
+                <select id="manifest-relic-2"></select>
+              </label>
+              <label>
+                Relic 03
+                <select id="manifest-relic-3"></select>
+              </label>
+              <button id="manifest-generate" type="submit">Pack manifest</button>
+            </form>
+
+            <div id="manifest-stage" hidden>
+              <canvas id="manifest-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Skywhale Airways suitcase sticker manifest"></canvas>
+              <div class="manifest-actions">
+                <button id="manifest-download" type="button">Download manifest</button>
+                <button id="manifest-copy" type="button" hidden>Copy link</button>
+                <button id="manifest-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+          </section>
         </div>
 
         <!-- The finished Veo film lives in public/film and is copied through the static build. -->

@@ -258,6 +258,7 @@ body {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  scroll-margin-top: 5rem;
   padding: clamp(1.5rem, 4vw, 2.3rem);
   border: 1px solid rgba(50, 35, 40, 0.2);
   border-radius: 8px;
@@ -302,7 +303,10 @@ body {
 
 #pass-form,
 #weather-form,
-#stamp-form {
+#stamp-form,
+#receipt-form,
+#route-form,
+#manifest-form {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -312,7 +316,10 @@ body {
 }
 #pass-form label,
 #weather-form label,
-#stamp-form label {
+#stamp-form label,
+#receipt-form label,
+#route-form label,
+#manifest-form label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -325,7 +332,10 @@ body {
 #pass-form input,
 #pass-form select,
 #weather-form select,
-#stamp-form select {
+#stamp-form select,
+#receipt-form select,
+#route-form select,
+#manifest-form select {
   font-family: var(--serif);
   font-size: 1.05rem;
   padding: 0.6rem 0.8rem;
@@ -339,9 +349,15 @@ body {
 #pass-generate,
 #weather-generate,
 #stamp-generate,
+#receipt-generate,
+#route-generate,
+#manifest-generate,
 .pass-actions button,
 .weather-actions button,
-.stamp-actions button {
+.stamp-actions button,
+.receipt-actions button,
+.route-actions button,
+.manifest-actions button {
   font-family: var(--serif);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -357,21 +373,33 @@ body {
 #pass-generate:hover,
 #weather-generate:hover,
 #stamp-generate:hover,
+#receipt-generate:hover,
+#route-generate:hover,
+#manifest-generate:hover,
 .pass-actions button:hover,
 .weather-actions button:hover,
-.stamp-actions button:hover {
+.stamp-actions button:hover,
+.receipt-actions button:hover,
+.route-actions button:hover,
+.manifest-actions button:hover {
   transform: translateY(-1px);
   filter: brightness(1.08);
 }
 
 #pass-stage,
 #weather-stage,
-#stamp-stage {
+#stamp-stage,
+#receipt-stage,
+#route-stage,
+#manifest-stage {
   margin: 0 auto 3rem;
 }
 #pass-canvas,
 #weather-canvas,
-#stamp-canvas {
+#stamp-canvas,
+#receipt-canvas,
+#route-canvas,
+#manifest-canvas {
   width: 100%;
   max-width: 640px;
   height: auto;
@@ -380,7 +408,10 @@ body {
 }
 .pass-actions,
 .weather-actions,
-.stamp-actions {
+.stamp-actions,
+.receipt-actions,
+.route-actions,
+.manifest-actions {
   margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
@@ -389,13 +420,19 @@ body {
 }
 .pass-actions button,
 .weather-actions button,
-.stamp-actions button {
+.stamp-actions button,
+.receipt-actions button,
+.route-actions button,
+.manifest-actions button {
   background: var(--ink);
   min-width: 9.5rem;
 }
 
 #decade-weather,
-#passport-stamp {
+#passport-stamp,
+#gate-receipt,
+#route-postcard,
+#suitcase-manifest {
   margin: 0;
 }
 
@@ -679,7 +716,7 @@ body.gated {
 
 @media (max-width: 680px) {
   #terminal {
-    padding: 5rem 1rem 4rem;
+    padding: 5rem 1rem 6rem;
   }
   .terminal-inner {
     max-width: 100%;
@@ -701,30 +738,60 @@ body.gated {
   }
   #pass-form,
   #weather-form,
-  #stamp-form {
+  #stamp-form,
+  #receipt-form,
+  #route-form,
+  #manifest-form {
     align-items: stretch;
     gap: 0.8rem;
   }
   #pass-form label,
   #weather-form label,
   #stamp-form label,
+  #receipt-form label,
+  #route-form label,
+  #manifest-form label,
   #pass-generate,
   #weather-generate,
-  #stamp-generate {
+  #stamp-generate,
+  #receipt-generate,
+  #route-generate,
+  #manifest-generate {
     width: 100%;
   }
   #pass-form input,
   #pass-form select,
   #weather-form select,
-  #stamp-form select {
+  #stamp-form select,
+  #receipt-form select,
+  #route-form select,
+  #manifest-form select {
     width: 100%;
     min-width: 0;
   }
   .pass-actions button,
   .weather-actions button,
   .stamp-actions button,
+  .receipt-actions button,
+  .route-actions button,
+  .manifest-actions button,
   .film-link {
     width: 100%;
+  }
+  .in-terminal #hud {
+    top: auto;
+    bottom: 0;
+    justify-content: flex-end;
+    padding: 0.75rem 1rem;
+    mix-blend-mode: normal;
+    pointer-events: none;
+  }
+  .in-terminal #audio-toggle {
+    pointer-events: auto;
+    color: var(--ink);
+    text-shadow: none;
+    background: rgba(255, 251, 241, 0.78);
+    border-color: rgba(50, 35, 40, 0.28);
   }
 }
 

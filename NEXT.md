@@ -1,12 +1,12 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 13:03 PDT / 20:03 UTC.
+Last updated: June 4, 2026 13:34 PDT / 20:34 UTC.
 
 ## Current Production
 
 - Production: `https://skywhaleairways.com/`
 - Vercel fallback: `https://skywhale-airways.vercel.app/`
-- Current production deploy: `dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC`
+- Last manually verified production deploy: `dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC`
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
 - Primary film: `public/film/skywhale-awards-cut-v2.mp4`
@@ -28,9 +28,6 @@ Last updated: June 4, 2026 13:03 PDT / 20:03 UTC.
 - #15: Human watch/listen signoff for awards submission.
 - #17: Decide merch fulfillment and whether Duty-Free becomes a broader real
   shop.
-- #21: Build Gate Receipt share card widget.
-- #22: Build Route Map Postcard generator.
-- #23: Build Suitcase Sticker Manifest widget.
 
 ## Restart Commands
 

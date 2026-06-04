@@ -4,6 +4,7 @@ import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
 import { DecadeWeather } from "./decade-weather.js";
 import { PassportStamp } from "./passport-stamp.js";
+import { GateReceipt, RoutePostcard, SuitcaseManifest } from "./terminal-artifacts.js";
 import { renderShop } from "./shop.js";
 import { initializeShopifyBuyButtons } from "./shopify-buy-buttons.js";
 import { trackEvent } from "./analytics.js";
@@ -68,6 +69,47 @@ const passportStamp = new PassportStamp({
   shareBtn: document.getElementById("stamp-share"),
 });
 
+// --- Gate receipt widget. ---
+const gateReceipt = new GateReceipt({
+  form: document.getElementById("receipt-form"),
+  decadeSelect: document.getElementById("receipt-decade"),
+  delaySelect: document.getElementById("receipt-delay"),
+  stage: document.getElementById("receipt-stage"),
+  canvas: document.getElementById("receipt-canvas"),
+  downloadBtn: document.getElementById("receipt-download"),
+  copyBtn: document.getElementById("receipt-copy"),
+  shareBtn: document.getElementById("receipt-share"),
+});
+
+// --- Route postcard widget. ---
+const routePostcard = new RoutePostcard({
+  form: document.getElementById("route-form"),
+  originSelect: document.getElementById("route-origin"),
+  destinationSelect: document.getElementById("route-destination"),
+  moodSelect: document.getElementById("route-mood"),
+  stage: document.getElementById("route-stage"),
+  canvas: document.getElementById("route-canvas"),
+  downloadBtn: document.getElementById("route-download"),
+  copyBtn: document.getElementById("route-copy"),
+  shareBtn: document.getElementById("route-share"),
+});
+
+// --- Suitcase manifest widget. ---
+const suitcaseManifest = new SuitcaseManifest({
+  form: document.getElementById("manifest-form"),
+  decadeSelect: document.getElementById("manifest-decade"),
+  relicSelects: [
+    document.getElementById("manifest-relic-1"),
+    document.getElementById("manifest-relic-2"),
+    document.getElementById("manifest-relic-3"),
+  ],
+  stage: document.getElementById("manifest-stage"),
+  canvas: document.getElementById("manifest-canvas"),
+  downloadBtn: document.getElementById("manifest-download"),
+  copyBtn: document.getElementById("manifest-copy"),
+  shareBtn: document.getElementById("manifest-share"),
+});
+
 // --- Duty-Free shop. ---
 renderShop(document.getElementById("shop-grid"));
 initializeShopifyBuyButtons(products);
@@ -86,6 +128,15 @@ document.getElementById("weather-form")?.addEventListener("submit", () => {
 });
 document.getElementById("stamp-form")?.addEventListener("submit", () => {
   trackEvent("passport_stamp_generate");
+});
+document.getElementById("receipt-form")?.addEventListener("submit", () => {
+  trackEvent("gate_receipt_generate");
+});
+document.getElementById("route-form")?.addEventListener("submit", () => {
+  trackEvent("route_postcard_generate");
+});
+document.getElementById("manifest-form")?.addEventListener("submit", () => {
+  trackEvent("suitcase_manifest_generate");
 });
 document.querySelectorAll(".film-link, .colophon-link").forEach((link) => {
   link.addEventListener("click", () => {
@@ -156,6 +207,24 @@ function parseSharedWidgetState() {
       route: params.get("route") || "",
     };
   }
+  if (kind === "receipt") {
+    return { kind, decade: params.get("decade") || "", delay: params.get("delay") || "" };
+  }
+  if (kind === "route") {
+    return {
+      kind,
+      origin: params.get("origin") || "",
+      destination: params.get("destination") || "",
+      mood: params.get("mood") || "",
+    };
+  }
+  if (kind === "manifest") {
+    return {
+      kind,
+      decade: params.get("decade") || "",
+      relics: params.get("relics") || "",
+    };
+  }
   return null;
 }
 
@@ -167,6 +236,9 @@ function restoreSharedWidgetState() {
   if (state.kind === "pass") boardingPass.issueFromLink(state);
   if (state.kind === "weather") decadeWeather.issueFromLink(state);
   if (state.kind === "stamp") passportStamp.issueFromLink(state);
+  if (state.kind === "receipt") gateReceipt.issueFromLink(state);
+  if (state.kind === "route") routePostcard.issueFromLink(state);
+  if (state.kind === "manifest") suitcaseManifest.issueFromLink(state);
 }
 
 function closeGate() {
