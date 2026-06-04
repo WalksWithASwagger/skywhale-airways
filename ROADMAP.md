@@ -75,6 +75,9 @@ preserved merch PNG and print assets.
 - Production prompts, source notes, final deliverables, and restart handoff
   documented through `production/README.md`, `production/ORIGIN_NOTES.md`,
   `production/AWARDS_QA.md`, `merch/shopify-launch.md`, and `NEXT.md`.
+- Shopify Dev MCP configured in Codex global config for future Shopify
+  docs/schema work, and a read-only Skywhale Launch Monitor automation created
+  for Friday health checks.
 
 ## Repository Queue Snapshot
 

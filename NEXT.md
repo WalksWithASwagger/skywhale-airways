@@ -23,6 +23,13 @@ Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
   `dze7ru-ii.myshopify.com`.
 - Vercel Production and Preview env vars are set for Shopify domain, Storefront
   token, and product IDs.
+- Shopify Dev MCP is configured globally in `/Users/kk/.codex/config.toml` as
+  `shopify-dev-mcp` using `npx -y @shopify/dev-mcp@latest`. Restart Codex if it
+  is not visible in the current session. Treat it as Shopify docs/schema/dev
+  context, not as a store-admin mutation tool.
+- Skywhale Launch Monitor is active at
+  `/Users/kk/.codex/automations/skywhale-launch-monitor/automation.toml`. It
+  runs Fridays at 9:15 AM in read-only mode.
 - Do not commit real `.env` files or the Shopify Storefront access token.
 
 ## Open Work
