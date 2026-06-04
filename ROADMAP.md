@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
+Last updated: June 4, 2026 07:50 PDT / 14:50 UTC.
 
 ## Launch Status
 
@@ -18,6 +18,9 @@ IDs and a Storefront access token from the Shopify admin.
 
 The public film path now leads with the 59s festival / awards cut while
 preserving the original 53s web cut.
+
+The remaining launch work has been turned into GitHub issues for the next swarm.
+Use the `tomorrow-swarm`, `launch-polish`, and `later` labels to slice the queue.
 
 ## Closed Out
 
@@ -55,6 +58,11 @@ preserving the original 53s web cut.
 - Boarding pass and Decade Weather widgets now support copyable state links:
   `#pass?...` and `#weather?...`.
 - Awards QA handoff added at `production/AWARDS_QA.md`.
+- PR #9: awards/festival cut package, Press Kit upgrade, widget share links, and
+  production notes. Merged June 4, 2026.
+- Production Vercel deploy `dpl_8tcssWUzzdzMmfxNuDKdCiR5RWyJ` verified on June
+  4, 2026. The apex serves the awards cut as a real MP4 and `www` still
+  hard-redirects to the apex.
 - Lighthouse/accessibility pass completed locally against the final build:
   Home mobile 91/96/100/100/100, Home desktop 100/96/100/100/100,
   About mobile+desktop 100s, Press mobile 88/100/92/100/100, Press desktop
@@ -63,31 +71,41 @@ preserving the original 53s web cut.
 
 ## Repository Queue Snapshot
 
-Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
+Audited June 4, 2026 07:50 PDT / 14:50 UTC.
 
-- Open GitHub issues before this closeout:
+- Closed awards issues after PR #9 merged:
   - #8 `Awards QA checklist and verification`
   - #7 `Upgrade press kit for festival programmers`
   - #6 `Publish festival cut on the site`
   - #5 `Crisp title and credits typography pass`
   - #4 `Festival audio master and subtle sound design`
   - #3 `Awards cut v2: tighten the titled festival edit`
+- New launch-polish issues for the next swarm:
+  - #10 `Launch Nomad Shopify Buy Button checkout`
+  - #11 `Create GA4 stream and verify production analytics`
+  - #12 `Add Search Console property and submit sitemap`
+  - #14 `Improve Press Kit mobile LCP and image delivery`
+  - #15 `Human watch/listen signoff for awards submission`
+  - #16 `Prune stale awards worktrees and branches after merge`
+- Closed production deploy issue:
+  - #13 `Verify awards cut on Vercel production`
+- Later backlog issues:
+  - #17 `Expand Shopify beyond the first Nomad drop`
+  - #18 `Plan the next creative widgets and shareable terminal artifacts`
+  - #19 `Archive production prompts, source notes, and final handoff package`
 - Open GitHub PRs: none.
 - Branches/worktrees:
   - `main` is the canonical branch.
-  - `codex/share-press-polish` is the temporary closeout branch for this pass.
-  - `/Users/kk/Code/skywhale-airways-awards-swarm` is checked out at
-    `codex/skywhale-awards-swarm` with no unique commits, but it contains
-    untracked awards artifacts. Those artifacts have now been copied into the
-    canonical repo; leave the worktree in place until KK confirms it can be
-    pruned.
+  - `codex/skywhale-awards-swarm` was merged and the remote branch was deleted.
+  - `/Users/kk/Code/skywhale-airways-awards-swarm` is now a clean `main`
+    worktree used for the production deploy.
+  - `/Users/kk/Code/skywhale-airways` is still on the local scratch branch
+    `codex/share-press-polish`; prune or reset it only after confirming no
+    needed local-only work remains.
 - Recently merged PRs:
+  - #9 `Prepare Skywhale awards cut package`
   - #2 `Prepare Vercel launch and LFS merch assets`
   - #1 `Add film production pipeline and final web cut`
-
-Expected issue closeout after this branch lands on `main`: #5, #6, and #7.
-#3, #4, and #8 should stay open until the final human watch/listen/signoff pass
-is complete.
 
 ## Verification
 
@@ -137,24 +155,40 @@ Awards cut local checks on June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC:
 - `ebur128`: integrated loudness `-16.7 LUFS`, true peak `-3.6 dBFS`.
 - Awards title and credits cards inspected at full size and readable.
 
+Awards cut production checks on June 4, 2026 07:49 PDT / 14:49 UTC:
+
+- Vercel CLI upgraded locally to `54.9.1` before deploy.
+- `npm run build` passed before deploy with the known large WebGL bundle warning.
+- Production deployment `dpl_8tcssWUzzdzMmfxNuDKdCiR5RWyJ` is ready and aliased
+  to `https://skywhaleairways.com/`.
+- `https://skywhaleairways.com/` returned HTTP 200 and references
+  `./film/skywhale-awards-cut-v2.mp4`.
+- `https://skywhaleairways.com/press.html` returned HTTP 200 and links both the
+  festival cut and the preserved 53s web cut.
+- `https://www.skywhaleairways.com/` returned HTTP 308 to the apex.
+- `https://skywhaleairways.com/film/skywhale-awards-cut-v2.mp4` returned HTTP
+  200, `content-type: video/mp4`, `content-length: 78241899`, and an `ftypisom`
+  MP4 header.
+
 ## Launch Polish
 
-- Create the Shopify store at `shop.skywhaleairways.com`, publish the three
+- #10: Create the Shopify store at `shop.skywhaleairways.com`, publish the three
   Nomad products to the Buy Button sales channel, then add the Vite env values
   in Vercel.
-- Improve Press Kit mobile LCP/image delivery if festival traffic makes that
-  page a primary landing surface.
-- Human signoff pass for awards submission: watch the 59s festival cut end to
-  end, listen once on headphones and once on speakers, then close #3/#4/#8 if no
-  subjective issues remain.
-- Confirm Vercel production serves `skywhale-awards-cut-v2.mp4` as a real MP4
-  after this branch is deployed.
-- Decide whether the `codex/skywhale-awards-swarm` worktree can be pruned now
-  that its artifacts have been copied into canonical paths.
+- #11: Create or confirm a GA4 web stream, wire its Measurement ID through
+  Vercel, and verify public analytics collection.
+- #12: Add Skywhale Airways to Search Console, submit the sitemap, and document
+  verification/access status.
+- #14: Improve Press Kit mobile LCP/image delivery if festival traffic makes
+  that page a primary landing surface.
+- #15: Run the human watch/listen signoff pass against the production-served
+  awards cut.
+- #16: Prune stale local worktrees and branches after confirming no local-only
+  artifacts are still needed.
 
 ## Later
 
-- Expand Shopify beyond the first three Nomad products once the first drop is
-  proven.
-- Add more creative widgets and shareable terminal artifacts.
-- Archive production prompts and source notes into a stable handoff package.
+- #17: Expand Shopify beyond the first three Nomad products once the first drop
+  is proven.
+- #18: Add more creative widgets and shareable terminal artifacts.
+- #19: Archive production prompts and source notes into a stable handoff package.
