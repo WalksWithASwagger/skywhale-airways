@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
+Last updated: June 4, 2026 13:56 PDT / 20:56 UTC.
 
 ## Launch Status
 
@@ -78,10 +78,13 @@ preserved merch PNG and print assets.
 - Shopify Dev MCP configured in Codex global config for future Shopify
   docs/schema work, and a read-only Skywhale Launch Monitor automation created
   for Friday health checks.
+- Shopify Dev MCP verified callable after Codex restart; the monitor prompt now
+  names the docs-only Shopify MCP tools and keeps store/product/order/cart
+  mutation out of scope.
 
 ## Repository Queue Snapshot
 
-Audited June 4, 2026 13:40 PDT / 20:40 UTC.
+Audited June 4, 2026 13:56 PDT / 20:56 UTC.
 
 - Open GitHub PRs: none.
 - Current branch: `main`.
@@ -195,7 +198,9 @@ Press Kit local performance pass on June 4, 2026:
 ## Next Swarm
 
 - #17: Decide whether Duty-Free stays a concept gallery, becomes a broader
-  Shopify catalog, or moves to another fulfillment path.
+  Shopify catalog, or moves to another fulfillment path. The current
+  recommendation is to keep only the three Nomad Buy Buttons live until
+  fulfillment, variants, shipping, returns, and tax are decided.
 
 ## Later
 

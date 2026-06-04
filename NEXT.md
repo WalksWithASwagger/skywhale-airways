@@ -1,6 +1,6 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
+Last updated: June 4, 2026 13:56 PDT / 20:56 UTC.
 
 ## Current Production
 
@@ -25,18 +25,22 @@ Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
   token, and product IDs.
 - Shopify Dev MCP is configured globally in `/Users/kk/.codex/config.toml` as
   `shopify-dev-mcp` using `npx -y @shopify/dev-mcp@latest`. Restart Codex if it
-  is not visible in the current session. Treat it as Shopify docs/schema/dev
-  context, not as a store-admin mutation tool.
+  is not visible in the current session. After restart, callable tools were
+  verified: `mcp__shopify_dev_mcp.learn_shopify_api` and
+  `mcp__shopify_dev_mcp.search_docs_chunks`. Treat them as Shopify
+  docs/schema/dev context, not as store-admin mutation tools.
 - Skywhale Launch Monitor is active at
   `/Users/kk/.codex/automations/skywhale-launch-monitor/automation.toml`. It
-  runs Fridays at 9:15 AM in read-only mode.
+  runs Fridays at 9:15 AM in read-only mode and now names the callable Shopify
+  MCP docs tools while forbidding store, product, order, cart, deployment, commit,
+  and issue-comment mutations.
 - Do not commit real `.env` files or the Shopify Storefront access token.
 
 ## Open Work
 
 - #15: Human watch/listen signoff for awards submission.
 - #17: Decide merch fulfillment and whether Duty-Free becomes a broader real
-  shop.
+  shop. A fulfillment decision packet now lives in `merch/shopify-launch.md`.
 
 ## Restart Commands
 
