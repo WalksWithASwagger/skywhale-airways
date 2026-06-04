@@ -2,7 +2,7 @@
 
 A scroll-driven, heavy-WebGL microsite for the animation *A Psychedelic Airport
 for Time Travelers* — **AI Film Club · Retro Challenge · June 2026**, by
-**Kris Krug & Suzie Easton**. *Skywhale Airways* is the in-world airline brand
+**Kris Krug & Suzy Easton**. *Skywhale Airways* is the in-world airline brand
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
 

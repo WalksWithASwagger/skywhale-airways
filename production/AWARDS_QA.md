@@ -64,7 +64,7 @@ Result:
 
 The awards title and credits cards were inspected at full size. Both are
 1920x1080 PNGs with readable composited text. The awards credits card and MP4
-credit segment use `KRIS KRUG & SUZIE EASTON`.
+credit segment use `KRIS KRUG & SUZY EASTON`.
 
 ## Browser / Site Checks
 

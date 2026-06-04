@@ -1,6 +1,6 @@
 # Skywhale Airways
 
-> A scroll-driven WebGL microsite and AI Film Club short by Kris Krug and Suzie
+> A scroll-driven WebGL microsite and AI Film Club short by Kris Krug and Suzy
 > Easton.
 
 ## Core Pages

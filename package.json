@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A Psychedelic Airport for Time Travelers — WebGL microsite. AI Film Club Retro challenge, June 2026. By Kris Krug & Suzie Easton.",
+  "description": "A Psychedelic Airport for Time Travelers — WebGL microsite. AI Film Club Retro challenge, June 2026. By Kris Krug & Suzy Easton.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

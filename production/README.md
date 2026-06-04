@@ -120,7 +120,7 @@ Generative, in-style title and credit cards (rafiki, with a source keyframe as a
   "psychedelic"; gpt-image-2 spells it correctly). Style ref: `s07_goldenfish.png`.
 - `titles/credits_card.png` — historical draft credit card generated with a
   misspelled Kris Krug name line; superseded by the awards card below.
-- `titles/credits_card_awards.png` — "A FILM BY KRIS KRUG & SUZIE EASTON /
+- `titles/credits_card_awards.png` — "A FILM BY KRIS KRUG & SUZY EASTON /
   MUSIC — whale sky god / AI FILM CLUB · RETRO CHALLENGE · 2026". Generated on
   Gemini (`gemini-2.5-flash-image`) and corrected with crisp text for the awards
   cut. Style ref: `s10_rotunda.png`.
