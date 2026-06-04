@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 3, 2026 23:01 PDT.
+Last updated: June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
 ## Launch Status
 
@@ -15,6 +15,9 @@ for preserved merch PNG and print assets.
 Duty-Free is now Nomad-first for Shopify: the repo has the embedded Buy Button
 integration and product handles, but live checkout still needs Shopify product
 IDs and a Storefront access token from the Shopify admin.
+
+The public film path now leads with the 59s festival / awards cut while
+preserving the original 53s web cut.
 
 ## Closed Out
 
@@ -40,6 +43,18 @@ IDs and a Storefront access token from the Shopify admin.
 - Suno cover art for **Whale Sky God** archived in production titles.
 - Shopify Buy Button scaffolding added for the three Nomad products; checkout is
   pending Shopify env values.
+- Awards/festival cut v2 imported from the awards worktree and wired as the
+  primary homepage film frame:
+  `public/film/skywhale-awards-cut-v2.mp4`.
+- Original 53s web cut preserved at `public/film/psychedelic-airport.mp4`.
+- Awards title card, credits card, and audio master archived under
+  `production/video_project/time_airport/`.
+- Press Kit upgraded for festival programmers with a snapshot, canonical
+  **I AM NOMAD** key art, thesis, distinct festival/web cut links, process note,
+  and rights/clearance language.
+- Boarding pass and Decade Weather widgets now support copyable state links:
+  `#pass?...` and `#weather?...`.
+- Awards QA handoff added at `production/AWARDS_QA.md`.
 - Lighthouse/accessibility pass completed locally against the final build:
   Home mobile 91/96/100/100/100, Home desktop 100/96/100/100/100,
   About mobile+desktop 100s, Press mobile 88/100/92/100/100, Press desktop
@@ -48,15 +63,31 @@ IDs and a Storefront access token from the Shopify admin.
 
 ## Repository Queue Snapshot
 
-Audited June 3, 2026 23:01 PDT.
+Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-- Open GitHub issues: none.
+- Open GitHub issues before this closeout:
+  - #8 `Awards QA checklist and verification`
+  - #7 `Upgrade press kit for festival programmers`
+  - #6 `Publish festival cut on the site`
+  - #5 `Crisp title and credits typography pass`
+  - #4 `Festival audio master and subtle sound design`
+  - #3 `Awards cut v2: tighten the titled festival edit`
 - Open GitHub PRs: none.
-- Branches before this closeout: `main` was the only local branch and the only
-  remote branch.
+- Branches/worktrees:
+  - `main` is the canonical branch.
+  - `codex/share-press-polish` is the temporary closeout branch for this pass.
+  - `/Users/kk/Code/skywhale-airways-awards-swarm` is checked out at
+    `codex/skywhale-awards-swarm` with no unique commits, but it contains
+    untracked awards artifacts. Those artifacts have now been copied into the
+    canonical repo; leave the worktree in place until KK confirms it can be
+    pruned.
 - Recently merged PRs:
   - #2 `Prepare Vercel launch and LFS merch assets`
   - #1 `Add film production pipeline and final web cut`
+
+Expected issue closeout after this branch lands on `main`: #5, #6, and #7.
+#3, #4, and #8 should stay open until the final human watch/listen/signoff pass
+is complete.
 
 ## Verification
 
@@ -64,11 +95,16 @@ Audited June 3, 2026 23:01 PDT.
 - `npm run build`
 - `npm run optimize`
 - `npm audit --audit-level=moderate`
+- `ffprobe` on `public/film/skywhale-awards-cut-v2.mp4`
+- `ffmpeg blackdetect` on `public/film/skywhale-awards-cut-v2.mp4`
+- `ffmpeg ebur128=peak=true` on `public/film/skywhale-awards-cut-v2.mp4`
 - Browser smoke: gate, scroll journey, soundtrack toggle, boarding pass,
-  Duty-Free grid, About page, and film embed.
+  widget copy links, Duty-Free grid, About page, Press Kit, and film embed.
 - Vercel root URLs:
   - `/`
   - `/about.html`
+  - `/press.html`
+  - `/film/skywhale-awards-cut-v2.mp4`
   - `/film/psychedelic-airport.mp4`
   - `/merch/...`
   - `/scenes/...`
@@ -93,6 +129,14 @@ Post-Nomad production checks on June 3, 2026 23:01 PDT:
 - GitHub Pages API returns 404 after Pages was disabled.
 - The old GitHub Pages URL returns 404.
 
+Awards cut local checks on June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC:
+
+- `skywhale-awards-cut-v2.mp4`: 59.208333s, 78,241,899 bytes, H.264, 1920x1080,
+  nominal 24fps, AAC stereo 48kHz.
+- `blackdetect`: no events printed.
+- `ebur128`: integrated loudness `-16.7 LUFS`, true peak `-3.6 dBFS`.
+- Awards title and credits cards inspected at full size and readable.
+
 ## Launch Polish
 
 - Create the Shopify store at `shop.skywhaleairways.com`, publish the three
@@ -100,10 +144,13 @@ Post-Nomad production checks on June 3, 2026 23:01 PDT:
   in Vercel.
 - Improve Press Kit mobile LCP/image delivery if festival traffic makes that
   page a primary landing surface.
-- Make the Press Kit easier to skim for festival programmers.
-- Add copy/share polish to the boarding pass and Decade Weather widgets.
-- Decide whether the canonical **I AM NOMAD** art should replace more page-level
-  stills beyond social previews and Duty-Free.
+- Human signoff pass for awards submission: watch the 59s festival cut end to
+  end, listen once on headphones and once on speakers, then close #3/#4/#8 if no
+  subjective issues remain.
+- Confirm Vercel production serves `skywhale-awards-cut-v2.mp4` as a real MP4
+  after this branch is deployed.
+- Decide whether the `codex/skywhale-awards-swarm` worktree can be pruned now
+  that its artifacts have been copied into canonical paths.
 
 ## Later
 

@@ -54,14 +54,22 @@ production/
   narration script (newer, tighter lyrics) voiced as a warm male narrator.
 - Music: independent retro lounge-jazz beds via Replicate `stable-audio`
   (`audio/bed_*.wav`), plus full VO-over-bed mixes (`audio/mix_*.mp3`).
-- The final web cut uses `audio/whale-sky-god.mp3`. The earlier
+- The final web cut uses `audio/whale-sky-god.mp3`. The awards/festival cut uses
+  `audio/whale-sky-god-awards-master.wav`, measured at `-16.7 LUFS` integrated
+  loudness and `-3.6 dBFS` true peak after MP4 export. The earlier
   `audio/inst_intro_57s.mp3` instrumental and Demucs stems are retained as
   production history for the 6-shot exploration.
 
 ## The finished cut
 
+- **`../public/film/skywhale-awards-cut-v2.mp4`** (=
+  `edits/skywhale_awards_cut_v2.mp4`) — **the festival / awards cut and primary
+  public watch path.** 59.21s, 1920x1080, H.264/AAC, nominal 24fps. It uses the
+  crisp awards title and credits cards, preserves the clean 53s film body, and
+  trims the titled edit down from the earlier 63s pacing.
+
 - **`../public/film/psychedelic-airport.mp4`** (= `edits/skywhale_whalesky_final.mp4`)
-  — **the deliverable.** 53.0s, all ten pro (`veo-3.1`) shots, cut to the
+  — **the preserved web cut.** 53.0s, all ten pro (`veo-3.1`) shots, cut to the
   **`whale sky god`** track (the spoken-word song — narration is *in* the track,
   no separate VO). Each shot uses its *opening* window stretched into slow motion
   (head mode), so the film stays in the flat hand-painted style throughout.
@@ -94,11 +102,13 @@ production/
 - Pro source clips (`clips/s01_full.mp4` … `s10_full.mp4`) are regenerable with
   `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
   demand) — only the fast clips and the final cut live in the repo.
-- **Web embed:** the finished file sits in `public/film/` and `index.html`
-  loads it into the `#film-frame` element with relative paths. Vercel has Git
-  LFS enabled and serves the real MP4, not a pointer file. The old GitHub Pages
-  subpath can still be tested manually with `VITE_BASE_PATH=/skywhale-airways/`
-  if a fallback mirror is needed later.
+- **Web embed:** the primary festival cut sits in `public/film/` and
+  `index.html` loads it into the `#film-frame` element with relative paths. The
+  53s web cut remains linked from the film actions and Press Kit. Vercel has Git
+  LFS enabled and serves real MP4s, not pointer files.
+
+See `AWARDS_QA.md` for the ffprobe, blackdetect, loudness, and browser checklist
+results.
 
 ## Titles & credits
 
@@ -108,22 +118,28 @@ Generative, in-style title and credit cards (rafiki, with a source keyframe as a
 - `titles/title_card.png` — "SKYWHALE AIRWAYS / A PSYCHEDELIC AIRPORT FOR TIME
   TRAVELERS". Generated on **OpenAI gpt-image-2** (Gemini reliably misspells
   "psychedelic"; gpt-image-2 spells it correctly). Style ref: `s07_goldenfish.png`.
-- `titles/credits_card.png` — "A FILM BY KRIS KRÜG & SUZIE EASTON / MUSIC — whale
-  sky god / AI FILM CLUB · RETRO CHALLENGE · 2026". Generated on Gemini
-  (`gemini-2.5-flash-image`). Style ref: `s10_rotunda.png`.
+- `titles/credits_card.png` — historical draft credit card generated with a
+  misspelled Kris Krug name line; superseded by the awards card below.
+- `titles/credits_card_awards.png` — "A FILM BY KRIS KRUG & SUZIE EASTON /
+  MUSIC — whale sky god / AI FILM CLUB · RETRO CHALLENGE · 2026". Generated on
+  Gemini (`gemini-2.5-flash-image`) and corrected with crisp text for the awards
+  cut. Style ref: `s10_rotunda.png`.
 - `titles/whale-sky-god-suno-cover-portrait.png` — Suno publishing cover for
   **Whale Sky God**. Built as a 1024x1536 portrait-safe poster so it reads in
   Suno's tall song-card UI while surviving Suno's square CDN normalization.
   Published song: https://suno.com/song/4a931db0-bbcd-45e0-b187-0ecde5bbd1d4
+- `titles/title_card_awards.png` — crisp 1920x1080 awards title card used in the
+  59s festival cut.
 
 **Text-on-card caveat:** Veo animation *melts lettering*, so don't run text cards
 through `run_i2v_pipeline`. The title is animated with a text-safe ffmpeg slow
 push-in (Ken Burns); the credits use a short Veo clip windowed to the first ~5s
 (before its text dissolves).
 
-**Festival cut:** `edits/skywhale_whalesky_titled.mp4` — 63s = title card (4.5s,
-push-in, fades from black) → the 53s film → credits card (5.5s, fades to black).
-The clean 53s `public/film/psychedelic-airport.mp4` stays as the web-embed cut.
+**Earlier festival cut:** `edits/skywhale_whalesky_titled.mp4` — 63s = title
+card (4.5s, push-in, fades from black) → the 53s film → credits card (5.5s,
+fades to black). The current primary awards cut is
+`edits/skywhale_awards_cut_v2.mp4`.
 
 ## Config
 

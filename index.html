@@ -109,6 +109,7 @@
             aria-label="Your generated time-travel boarding pass"></canvas>
           <div class="pass-actions">
             <button id="pass-download" type="button">Download pass</button>
+            <button id="pass-copy" type="button" hidden>Copy link</button>
             <button id="pass-share" type="button" hidden>Share</button>
           </div>
         </div>
@@ -134,6 +135,7 @@
               aria-label="Your generated Skywhale Airways decade weather report"></canvas>
             <div class="weather-actions">
               <button id="weather-download" type="button">Download weather</button>
+              <button id="weather-copy" type="button" hidden>Copy link</button>
               <button id="weather-share" type="button" hidden>Share</button>
             </div>
           </div>
@@ -141,16 +143,21 @@
 
         <!-- The finished Veo film lives in public/film and is copied through the static build. -->
         <div id="film-slot">
-          <p class="film-label">Feature presentation</p>
+          <p class="film-label">Feature presentation · festival cut</p>
           <div class="film-frame" id="film-frame">
             <video
-              src="./film/psychedelic-airport.mp4"
+              src="./film/skywhale-awards-cut-v2.mp4"
               controls
               playsinline
               preload="metadata"
               poster="./scenes/01-skywhale-airport.webp"
-              aria-label="A Psychedelic Airport for Time Travelers film"
+              aria-label="A Psychedelic Airport for Time Travelers festival cut"
             ></video>
+          </div>
+          <div class="film-actions">
+            <a class="film-link primary" href="./film/skywhale-awards-cut-v2.mp4">Watch / download festival cut</a>
+            <a class="film-link" href="./film/psychedelic-airport.mp4">Download 53s web cut</a>
+            <a class="film-link" href="./press.html">Press kit</a>
           </div>
         </div>
 

@@ -284,12 +284,14 @@ body {
 .weather-actions {
   margin-top: 1.2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
   justify-content: center;
 }
 .pass-actions button,
 .weather-actions button {
   background: var(--ink);
+  min-width: 9.5rem;
 }
 
 #decade-weather {
@@ -323,6 +325,31 @@ body {
   height: 100%;
   border-radius: inherit;
   object-fit: cover;
+}
+.film-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.film-link {
+  display: inline-block;
+  min-width: 9.5rem;
+  padding: 0.68rem 1rem;
+  border: 1px solid rgba(50, 35, 40, 0.24);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.46);
+  color: var(--ink);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.film-link.primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
 }
 .film-soon {
   font-style: italic;
