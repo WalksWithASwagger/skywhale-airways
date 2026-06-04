@@ -134,58 +134,78 @@ export class DecadeWeather {
     const ctx = this.ctx;
     const W = this.canvas.width;
     const H = this.canvas.height;
+    const rand = this.#rng(d.decade);
     ctx.clearRect(0, 0, W, H);
 
     const g = ctx.createLinearGradient(0, 0, W, H);
-    g.addColorStop(0, "#f7e3d4");
-    g.addColorStop(0.5, "#f3c9d7");
+    g.addColorStop(0, "#fbecd7");
+    g.addColorStop(0.48, "#f4d9e3");
     g.addColorStop(1, "#c9dced");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
 
-    for (let i = 0; i < 1200; i++) {
-      ctx.fillStyle = `rgba(70,45,50,${Math.random() * 0.035})`;
-      ctx.fillRect(Math.random() * W, Math.random() * H, 1.4, 1.4);
-    }
-
-    this.#route(ctx, 130, 190, 760, 118);
-    this.#cloud(ctx, 760, 150, 92);
-    this.#cloud(ctx, 180, 500, 72);
-    for (let i = 0; i < 8; i++) {
-      this.#fish(ctx, 130 + i * 92, 185 + Math.sin(i) * 34, 18 + (i % 3) * 5);
+    for (let i = 0; i < 1400; i++) {
+      ctx.fillStyle = `rgba(70,45,50,${rand() * 0.035})`;
+      ctx.fillRect(rand() * W, rand() * H, 1.4, 1.4);
     }
 
     ctx.strokeStyle = "rgba(50,35,40,0.55)";
     ctx.lineWidth = 3;
     ctx.strokeRect(34, 34, W - 68, H - 68);
-    ctx.strokeStyle = "rgba(199,74,92,0.55)";
+    ctx.strokeStyle = "rgba(53,94,103,0.45)";
     ctx.lineWidth = 1.5;
     ctx.strokeRect(48, 48, W - 96, H - 96);
 
+    this.#route(ctx, 154, 170, 700, 102);
+    this.#cloud(ctx, 710, 126, 74);
+    this.#cloud(ctx, 122, 218, 54);
+    this.#skywhale(ctx, 516, 112, 46);
+    for (let i = 0; i < 6; i++) {
+      this.#fish(ctx, 222 + i * 96, 178 + Math.sin(i) * 22, 16 + (i % 3) * 5);
+    }
+
     ctx.fillStyle = "#33242a";
     ctx.textBaseline = "alphabetic";
-    ctx.font = "700 31px Georgia, 'Times New Roman', serif";
+    ctx.font = "700 28px Georgia, 'Times New Roman', serif";
     ctx.fillText("SKYWHALE AIRWAYS", 70, 92);
-    ctx.font = "italic 19px Georgia, serif";
+    ctx.font = "700 44px Georgia, serif";
+    ctx.fillStyle = "rgba(199,74,92,0.82)";
+    ctx.fillText("DECADE WEATHER", 70, 148);
+    ctx.font = "italic 18px Georgia, serif";
     ctx.fillStyle = "rgba(50,35,40,0.7)";
-    ctx.fillText("Decade Weather Advisory", 70, 122);
+    ctx.fillText("Every decade has its own weather", 72, 178);
 
-    ctx.fillStyle = "rgba(199,74,92,0.92)";
-    ctx.fillRect(70, 154, 275, 80);
+    ctx.fillStyle = "rgba(53,94,103,0.76)";
+    ctx.fillRect(70, 198, 210, 62);
     ctx.fillStyle = "#fff";
-    ctx.font = "700 54px Georgia, serif";
-    ctx.fillText(d.decade, 92, 211);
+    ctx.font = "700 44px Georgia, serif";
+    ctx.fillText(d.decade, 94, 243);
 
-    this.#field(ctx, "CONDITION", d.condition, 70, 294, 26, 650);
-    this.#field(ctx, "RUNWAY VISIBILITY", d.visibility, 70, 374, 24, 650);
-    this.#field(ctx, "DELAY REASON", d.delay, 70, 452, 24, 650);
-    this.#field(ctx, "BAGGAGE ADVISORY", d.baggage, 70, 528, 23, 650);
+    this.#panel(ctx, "CONDITION", d.condition, 70, 292, 420, 96);
+    this.#panel(ctx, "RUNWAY VISIBILITY", d.visibility, 534, 292, 420, 96);
+    this.#panel(ctx, "DELAY REASON", d.delay, 70, 414, 420, 96);
+    this.#panel(ctx, "BAGGAGE ADVISORY", d.baggage, 534, 414, 420, 96);
 
     ctx.fillStyle = "rgba(50,35,40,0.76)";
-    ctx.font = "italic 25px Georgia, serif";
-    this.#wrap(ctx, d.line, 70, H - 66, 790, 31);
+    ctx.font = "italic 23px Georgia, serif";
+    this.#wrap(ctx, d.line, 70, H - 70, 710, 29);
 
-    this.#stamp(ctx, W - 210, H - 180);
+    this.#clock(ctx, 866, 212, 52);
+    this.#stamp(ctx, W - 140, H - 78);
+  }
+
+  #panel(ctx, label, value, x, y, w, h) {
+    ctx.fillStyle = "rgba(255,251,240,0.62)";
+    ctx.strokeStyle = "rgba(50,35,40,0.24)";
+    ctx.lineWidth = 1.5;
+    ctx.fillRect(x, y, w, h);
+    ctx.strokeRect(x, y, w, h);
+    ctx.fillStyle = "rgba(199,74,92,0.74)";
+    ctx.font = "700 13px Georgia, serif";
+    ctx.fillText(label, x + 20, y + 28);
+    ctx.fillStyle = "#33242a";
+    ctx.font = "700 22px Georgia, serif";
+    this.#wrap(ctx, value, x + 20, y + 64, w - 40, 27);
   }
 
   #field(ctx, label, value, x, y, size, maxWidth) {
@@ -252,6 +272,48 @@ export class DecadeWeather {
     ctx.lineTo(-s * 1.45, s * 0.46);
     ctx.closePath();
     ctx.fill();
+    ctx.restore();
+  }
+
+  #skywhale(ctx, x, y, s) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = "rgba(194,135,46,0.72)";
+    ctx.beginPath();
+    ctx.ellipse(0, 0, s * 1.7, s * 0.58, -0.08, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-s * 1.18, -s * 0.08);
+    ctx.lineTo(-s * 1.88, -s * 0.5);
+    ctx.lineTo(-s * 1.6, 0);
+    ctx.lineTo(-s * 1.88, s * 0.5);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  #clock(ctx, x, y, r) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = "rgba(255,248,224,0.72)";
+    ctx.strokeStyle = "rgba(50,35,40,0.42)";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(50,35,40,0.62)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(r * 0.08, -r * 0.62);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(r * 0.44, r * 0.18);
+    ctx.stroke();
+    ctx.fillStyle = "rgba(50,35,40,0.58)";
+    ctx.font = "700 10px Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.fillText("WRONG", 0, r + 18);
     ctx.restore();
   }
 
@@ -328,5 +390,17 @@ export class DecadeWeather {
     } catch {
       // share dismissed
     }
+  }
+
+  #seed(text) {
+    return [...text].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) >>> 0, 2166136261);
+  }
+
+  #rng(text) {
+    let seed = this.#seed(text);
+    return () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    };
   }
 }

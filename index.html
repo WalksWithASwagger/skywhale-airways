@@ -84,63 +84,109 @@
     <!-- Scroll track: one tall section per scene drives the journey progress -->
     <main id="scroll-track"></main>
 
-    <!-- Boarding pass widget + credits + reserved film slot live after the journey -->
+    <!-- Terminal widgets + credits + reserved film slot live after the journey -->
     <section id="terminal">
       <div class="terminal-inner">
-        <h2 class="terminal-title">Issue Yourself a Boarding Pass</h2>
-        <p class="terminal-sub">
-          At check-in we weigh your luggage, your memories, and the years you
-          haven't unpacked. Choose a decade. The airport remembers the rest.
-        </p>
-
-        <form id="pass-form" autocomplete="off">
-          <label>
-            Passenger
-            <input id="pass-name" type="text" maxlength="22" placeholder="your name" />
-          </label>
-          <label>
-            Arriving
-            <select id="pass-decade"></select>
-          </label>
-          <button id="pass-generate" type="submit">Issue pass</button>
-        </form>
-
-        <div id="pass-stage" hidden>
-          <canvas id="pass-canvas" width="1024" height="640" role="img"
-            aria-label="Your generated time-travel boarding pass"></canvas>
-          <div class="pass-actions">
-            <button id="pass-download" type="button">Download pass</button>
-            <button id="pass-copy" type="button" hidden>Copy link</button>
-            <button id="pass-share" type="button" hidden>Share</button>
+        <div class="widget-desk" aria-label="Gate Infinity desk">
+          <div class="widget-desk-top" aria-hidden="true">
+            <span>Gate Infinity Desk</span>
+            <span>Artifacts issued nowhen</span>
           </div>
-        </div>
 
-        <section id="decade-weather">
-          <h2 class="terminal-title">Decade Weather</h2>
-          <p class="terminal-sub">
-            Choose a decade and Skywhale Airways will issue the current
-            conditions: runway visibility, baggage advice, and the weather
-            waiting outside the wrong year.
-          </p>
+          <section class="widget-panel" id="boarding-pass">
+            <p class="widget-label">Ticket Counter 01</p>
+            <h2 class="terminal-title">Issue Yourself a Boarding Pass</h2>
+            <p class="terminal-sub">
+              At check-in we weigh your luggage, your memories, and the years you
+              haven't unpacked. Choose a decade. The airport remembers the rest.
+            </p>
 
-          <form id="weather-form" autocomplete="off">
-            <label>
-              Arriving
-              <select id="weather-decade"></select>
-            </label>
-            <button id="weather-generate" type="submit">Issue weather</button>
-          </form>
+            <form id="pass-form" autocomplete="off">
+              <label>
+                Passenger
+                <input id="pass-name" type="text" maxlength="22" placeholder="your name" />
+              </label>
+              <label>
+                Arriving
+                <select id="pass-decade"></select>
+              </label>
+              <button id="pass-generate" type="submit">Issue pass</button>
+            </form>
 
-          <div id="weather-stage" hidden>
-            <canvas id="weather-canvas" width="1024" height="640" role="img"
-              aria-label="Your generated Skywhale Airways decade weather report"></canvas>
-            <div class="weather-actions">
-              <button id="weather-download" type="button">Download weather</button>
-              <button id="weather-copy" type="button" hidden>Copy link</button>
-              <button id="weather-share" type="button" hidden>Share</button>
+            <div id="pass-stage" hidden>
+              <canvas id="pass-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated time-travel boarding pass"></canvas>
+              <div class="pass-actions">
+                <button id="pass-download" type="button">Download pass</button>
+                <button id="pass-copy" type="button" hidden>Copy link</button>
+                <button id="pass-share" type="button" hidden>Share</button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          <section class="widget-panel" id="decade-weather">
+            <p class="widget-label">Weather Desk 08</p>
+            <h2 class="terminal-title">Decade Weather</h2>
+            <p class="terminal-sub">
+              Choose a decade and Skywhale Airways will issue the current
+              conditions: runway visibility, baggage advice, and the weather
+              waiting outside the wrong year.
+            </p>
+
+            <form id="weather-form" autocomplete="off">
+              <label>
+                Arriving
+                <select id="weather-decade"></select>
+              </label>
+              <button id="weather-generate" type="submit">Issue weather</button>
+            </form>
+
+            <div id="weather-stage" hidden>
+              <canvas id="weather-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Skywhale Airways decade weather report"></canvas>
+              <div class="weather-actions">
+                <button id="weather-download" type="button">Download weather</button>
+                <button id="weather-copy" type="button" hidden>Copy link</button>
+                <button id="weather-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="widget-panel" id="passport-stamp">
+            <p class="widget-label">Passport Control ∞</p>
+            <h2 class="terminal-title">Gate Infinity Passport Stamp</h2>
+            <p class="terminal-sub">
+              Choose a decade, a mood, and a route through the portal. Skywhale
+              Airways will stamp your crossing for the records.
+            </p>
+
+            <form id="stamp-form" autocomplete="off">
+              <label>
+                Arriving
+                <select id="stamp-decade"></select>
+              </label>
+              <label>
+                Mood
+                <select id="stamp-mood"></select>
+              </label>
+              <label>
+                Route
+                <select id="stamp-route"></select>
+              </label>
+              <button id="stamp-generate" type="submit">Stamp passport</button>
+            </form>
+
+            <div id="stamp-stage" hidden>
+              <canvas id="stamp-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Gate Infinity passport stamp"></canvas>
+              <div class="stamp-actions">
+                <button id="stamp-download" type="button">Download stamp</button>
+                <button id="stamp-copy" type="button" hidden>Copy link</button>
+                <button id="stamp-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+          </section>
+        </div>
 
         <!-- The finished Veo film lives in public/film and is copied through the static build. -->
         <div id="film-slot">

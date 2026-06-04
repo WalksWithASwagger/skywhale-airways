@@ -83,33 +83,36 @@ export class BoardingPass {
     const ctx = this.ctx;
     const W = this.canvas.width;
     const H = this.canvas.height;
+    const rand = this.#rng(`${d.name}${d.decade}${d.flight}`);
     ctx.clearRect(0, 0, W, H);
 
-    // Painterly pastel ground.
     const g = ctx.createLinearGradient(0, 0, W, H);
-    g.addColorStop(0, "#f4d9e3");
-    g.addColorStop(0.5, "#e7c7dd");
+    g.addColorStop(0, "#f9ead6");
+    g.addColorStop(0.44, "#f4d9e3");
     g.addColorStop(1, "#cfd9ec");
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
 
-    // Grain speckle.
-    ctx.save();
-    for (let i = 0; i < 1400; i++) {
-      ctx.fillStyle = `rgba(80,60,70,${Math.random() * 0.04})`;
-      ctx.fillRect(Math.random() * W, Math.random() * H, 1.5, 1.5);
+    for (let i = 0; i < 1600; i++) {
+      ctx.fillStyle = `rgba(80,60,70,${rand() * 0.04})`;
+      ctx.fillRect(rand() * W, rand() * H, 1.5, 1.5);
     }
-    ctx.restore();
 
-    // Drifting fish marks.
-    for (let i = 0; i < 7; i++) this.#fish(ctx, Math.random() * W, Math.random() * H * 0.5, 18 + Math.random() * 22, `rgba(242,193,78,${0.25 + Math.random() * 0.3})`);
+    this.#route(ctx, 74, 142, 830, 95);
+    this.#perforation(ctx, W, H);
+    this.#skywhale(ctx, W - 180, 108, 44);
+    this.#baggageSticker(ctx, 86, H - 116);
+    for (let i = 0; i < 8; i++) {
+      this.#fish(ctx, 110 + i * 92, 142 + Math.sin(i * 1.6) * 36, 16 + (i % 3) * 6, `rgba(242,193,78,${0.28 + rand() * 0.26})`);
+    }
 
-    // Ink frame.
     ctx.strokeStyle = "rgba(50,35,40,0.55)";
     ctx.lineWidth = 3;
     ctx.strokeRect(28, 28, W - 56, H - 56);
+    ctx.strokeStyle = "rgba(53,94,103,0.34)";
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(44, 44, W - 88, H - 88);
 
-    // Perforated stub divider.
     const stubX = W * 0.7;
     ctx.setLineDash([3, 10]);
     ctx.beginPath();
@@ -141,23 +144,24 @@ export class BoardingPass {
     ctx.font = "700 18px Georgia, serif";
     ctx.fillText(d.status, 70, 399);
 
+    this.#stamp(ctx, stubX - 130, H - 150);
+
     ctx.fillStyle = "rgba(50,35,40,0.6)";
     ctx.font = "14px Georgia, serif";
     ctx.fillText("Carry one bag. Bring more time than you leave with.", 56, H - 56);
 
-    // Stub.
     const sx = stubX + 26;
     this.#field(ctx, "GATE", d.gate, sx, 180, 40);
-    this.#field(ctx, "SEAT", "🐟", sx, 270, 36);
+    this.#field(ctx, "SEAT", "FISH", sx, 270, 30);
     this.#field(ctx, "SEQ", d.seq, sx, 350, 26);
+    this.#stamp(ctx, sx + 96, 126);
 
-    // Faux barcode.
     ctx.fillStyle = ink;
     let bx = sx;
     for (let i = 0; i < 26 && bx < W - 44; i++) {
-      const w = 2 + Math.round(Math.random() * 5);
+      const w = 2 + Math.round(rand() * 5);
       ctx.fillRect(bx, H - 130, w, 70);
-      bx += w + 2 + Math.round(Math.random() * 3);
+      bx += w + 2 + Math.round(rand() * 3);
     }
   }
 
@@ -170,9 +174,34 @@ export class BoardingPass {
     ctx.fillText(value, x, y);
   }
 
+  #route(ctx, x, y, w, h) {
+    ctx.save();
+    ctx.strokeStyle = "rgba(53,94,103,0.3)";
+    ctx.lineWidth = 2;
+    ctx.setLineDash([8, 10]);
+    ctx.beginPath();
+    ctx.moveTo(x, y + h * 0.65);
+    ctx.bezierCurveTo(x + w * 0.22, y - h * 0.36, x + w * 0.72, y + h * 1.22, x + w, y + h * 0.16);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  #perforation(ctx, W, H) {
+    ctx.save();
+    ctx.fillStyle = "rgba(255,255,255,0.42)";
+    for (let x = 76; x < W - 76; x += 28) {
+      ctx.beginPath();
+      ctx.arc(x, 28, 5, 0, Math.PI * 2);
+      ctx.arc(x, H - 28, 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
   #fish(ctx, x, y, s, color) {
     ctx.save();
     ctx.translate(x, y);
+    ctx.rotate(Math.sin(x * 0.015) * 0.18);
     ctx.fillStyle = color;
     ctx.beginPath();
     ctx.ellipse(0, 0, s, s * 0.5, 0, 0, Math.PI * 2);
@@ -184,6 +213,63 @@ export class BoardingPass {
     ctx.lineTo(-s * 1.5, s * 0.5);
     ctx.closePath();
     ctx.fill();
+    ctx.restore();
+  }
+
+  #skywhale(ctx, x, y, s) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = "rgba(194,135,46,0.7)";
+    ctx.beginPath();
+    ctx.ellipse(0, 0, s * 1.7, s * 0.58, -0.08, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-s * 1.18, -s * 0.08);
+    ctx.lineTo(-s * 1.88, -s * 0.5);
+    ctx.lineTo(-s * 1.6, 0);
+    ctx.lineTo(-s * 1.88, s * 0.5);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  #baggageSticker(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(-0.08);
+    ctx.fillStyle = "rgba(255,248,224,0.72)";
+    ctx.strokeStyle = "rgba(50,35,40,0.34)";
+    ctx.lineWidth = 3;
+    ctx.fillRect(0, 0, 132, 72);
+    ctx.strokeRect(0, 0, 132, 72);
+    ctx.fillStyle = "rgba(53,94,103,0.72)";
+    ctx.font = "700 15px Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.fillText("BAGGAGE", 66, 30);
+    ctx.fillStyle = "rgba(199,74,92,0.75)";
+    ctx.fillText("MEMORY", 66, 52);
+    ctx.restore();
+  }
+
+  #stamp(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(-0.15);
+    ctx.strokeStyle = "rgba(199,74,92,0.68)";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(0, 0, 54, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(0, 0, 40, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = "rgba(199,74,92,0.76)";
+    ctx.font = "700 13px Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.fillText("GATE", 0, -8);
+    ctx.font = "700 25px Georgia, serif";
+    ctx.fillText("∞", 0, 18);
     ctx.restore();
   }
 
@@ -239,5 +325,17 @@ export class BoardingPass {
     } catch {
       // share dismissed — no-op
     }
+  }
+
+  #seed(text) {
+    return [...text].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) >>> 0, 2166136261);
+  }
+
+  #rng(text) {
+    let seed = this.#seed(text);
+    return () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    };
   }
 }

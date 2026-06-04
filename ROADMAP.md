@@ -59,6 +59,9 @@ admin setup still needs the Google properties and values.
   and rights/clearance language.
 - Boarding pass and Decade Weather widgets now support copyable state links:
   `#pass?...` and `#weather?...`.
+- Terminal widgets polished into a Gate Infinity desk, with upgraded Boarding
+  Pass and Decade Weather artwork plus a new Passport Stamp widget at
+  `#stamp?...`.
 - Awards QA handoff added at `production/AWARDS_QA.md`.
 - PR #9: awards/festival cut package, Press Kit upgrade, widget share links, and
   production notes. Merged June 4, 2026.

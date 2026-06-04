@@ -23,8 +23,9 @@ melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
 and drives the distortion, and the poetic voiceover surfaces line by line. At the
 end of the terminal, visitors issue themselves a time-travel boarding pass,
-watch the festival cut in the terminal frame, and browse the Skywhale Airways
-Duty-Free merch concepts.
+pull a decade weather advisory, stamp their Gate Infinity passport, watch the
+festival cut in the terminal frame, and browse the Skywhale Airways Duty-Free
+merch concepts.
 
 ## Run it
 
@@ -129,6 +130,9 @@ work.
   a Skywhale Airways weather advisory with deterministic copy, downloadable,
   file-shareable where supported, and restorable through a copied `#weather?...`
   link.
+- **`src/passport-stamp.js`** — the Gate Infinity passport-stamp widget. Decade
+  + mood + route → a downloadable/shareable portal stamp, restorable through a
+  copied `#stamp?...` link.
 - **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
   Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
   mount embedded Shopify buttons when Vite env vars are set; all other products

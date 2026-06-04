@@ -3,8 +3,10 @@ import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
 import { DecadeWeather } from "./decade-weather.js";
+import { PassportStamp } from "./passport-stamp.js";
 import { renderShop } from "./shop.js";
 import { initializeShopifyBuyButtons } from "./shopify-buy-buttons.js";
+import { trackEvent } from "./analytics.js";
 import { scenes } from "./data/scenes.js";
 import { products } from "./shop-data.js";
 
@@ -53,9 +55,46 @@ const decadeWeather = new DecadeWeather({
   shareBtn: document.getElementById("weather-share"),
 });
 
+// --- Gate Infinity passport-stamp widget. ---
+const passportStamp = new PassportStamp({
+  form: document.getElementById("stamp-form"),
+  decadeSelect: document.getElementById("stamp-decade"),
+  moodSelect: document.getElementById("stamp-mood"),
+  routeSelect: document.getElementById("stamp-route"),
+  stage: document.getElementById("stamp-stage"),
+  canvas: document.getElementById("stamp-canvas"),
+  downloadBtn: document.getElementById("stamp-download"),
+  copyBtn: document.getElementById("stamp-copy"),
+  shareBtn: document.getElementById("stamp-share"),
+});
+
 // --- Duty-Free shop. ---
 renderShop(document.getElementById("shop-grid"));
 initializeShopifyBuyButtons(products);
+
+document.getElementById("gate-board")?.addEventListener("click", () => {
+  trackEvent("skywhale_board", { audio_mode: "sound_on" });
+});
+document.getElementById("gate-muted")?.addEventListener("click", () => {
+  trackEvent("skywhale_board", { audio_mode: "muted" });
+});
+document.getElementById("pass-form")?.addEventListener("submit", () => {
+  trackEvent("boarding_pass_generate");
+});
+document.getElementById("weather-form")?.addEventListener("submit", () => {
+  trackEvent("decade_weather_generate");
+});
+document.getElementById("stamp-form")?.addEventListener("submit", () => {
+  trackEvent("passport_stamp_generate");
+});
+document.querySelectorAll(".film-link, .colophon-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("skywhale_link_click", {
+      link_text: link.textContent.trim(),
+      link_url: link.href,
+    });
+  });
+});
 
 // --- Caption: show the active scene's voiceover lines. ---
 const captionEl = document.getElementById("caption");
@@ -109,6 +148,14 @@ function parseSharedWidgetState() {
   if (kind === "weather") {
     return { kind, decade: params.get("decade") || "" };
   }
+  if (kind === "stamp") {
+    return {
+      kind,
+      decade: params.get("decade") || "",
+      mood: params.get("mood") || "",
+      route: params.get("route") || "",
+    };
+  }
   return null;
 }
 
@@ -119,6 +166,7 @@ function restoreSharedWidgetState() {
   if (!state) return;
   if (state.kind === "pass") boardingPass.issueFromLink(state);
   if (state.kind === "weather") decadeWeather.issueFromLink(state);
+  if (state.kind === "stamp") passportStamp.issueFromLink(state);
 }
 
 function closeGate() {

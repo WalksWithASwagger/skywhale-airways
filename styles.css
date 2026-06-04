@@ -190,12 +190,14 @@ body {
 #terminal {
   position: relative;
   z-index: 1;
-  background: linear-gradient(180deg, var(--cloud), var(--sky));
+  background:
+    linear-gradient(180deg, rgba(244, 217, 227, 0.96), rgba(207, 217, 236, 0.96)),
+    repeating-linear-gradient(90deg, rgba(50, 35, 40, 0.04) 0 1px, transparent 1px 64px);
   border-top: 1px solid rgba(50, 35, 40, 0.2);
   padding: 7rem 1.5rem 5rem;
 }
 .terminal-inner {
-  max-width: 720px;
+  max-width: 880px;
   margin: 0 auto;
   text-align: center;
 }
@@ -212,8 +214,95 @@ body {
   line-height: 1.6;
 }
 
+.widget-desk {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+.widget-desk::before {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 50%;
+  width: min(72vw, 520px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.32;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 16px, rgba(53, 94, 103, 0.52) 16px 20px, transparent 20px 34px),
+    linear-gradient(180deg, transparent 0 10%, rgba(242, 193, 78, 0.25) 10% 11%, transparent 11% 48%, rgba(199, 74, 92, 0.2) 48% 49%, transparent 49%);
+  clip-path: polygon(48% 0, 70% 9%, 55% 24%, 76% 38%, 48% 54%, 30% 70%, 54% 86%, 42% 100%, 36% 100%, 47% 86%, 24% 70%, 43% 53%, 23% 38%, 45% 24%, 31% 8%, 44% 0);
+}
+.widget-desk-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem 1rem;
+  padding: 0.7rem 1rem;
+  border-top: 1px solid rgba(50, 35, 40, 0.22);
+  border-bottom: 1px solid rgba(50, 35, 40, 0.22);
+  color: rgba(50, 35, 40, 0.68);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.widget-desk-top span:first-child {
+  color: var(--ink);
+  font-weight: 700;
+}
+.widget-panel {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 2.3rem);
+  border: 1px solid rgba(50, 35, 40, 0.2);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 251, 241, 0.82), rgba(255, 255, 255, 0.44)),
+    repeating-linear-gradient(0deg, rgba(50, 35, 40, 0.025) 0 1px, transparent 1px 12px);
+  box-shadow: 0 18px 54px rgba(60, 30, 50, 0.15);
+}
+.widget-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 9px solid rgba(255, 255, 255, 0.28);
+}
+.widget-panel::after {
+  content: "Gate ∞";
+  position: absolute;
+  top: 1rem;
+  right: -1.3rem;
+  padding: 0.35rem 1.9rem;
+  transform: rotate(9deg);
+  border: 2px solid rgba(199, 74, 92, 0.6);
+  color: rgba(199, 74, 92, 0.72);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.widget-label {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 0.35rem 0.72rem;
+  border: 1px solid rgba(50, 35, 40, 0.24);
+  border-left: 4px solid var(--gold);
+  background: rgba(255, 255, 255, 0.42);
+  color: rgba(50, 35, 40, 0.64);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 #pass-form,
-#weather-form {
+#weather-form,
+#stamp-form {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -222,7 +311,8 @@ body {
   margin-bottom: 2.5rem;
 }
 #pass-form label,
-#weather-form label {
+#weather-form label,
+#stamp-form label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -234,7 +324,8 @@ body {
 }
 #pass-form input,
 #pass-form select,
-#weather-form select {
+#weather-form select,
+#stamp-form select {
   font-family: var(--serif);
   font-size: 1.05rem;
   padding: 0.6rem 0.8rem;
@@ -243,11 +334,14 @@ body {
   color: var(--ink);
   border-radius: 4px;
   min-width: 12rem;
+  max-width: 100%;
 }
 #pass-generate,
 #weather-generate,
+#stamp-generate,
 .pass-actions button,
-.weather-actions button {
+.weather-actions button,
+.stamp-actions button {
   font-family: var(--serif);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -262,18 +356,22 @@ body {
 }
 #pass-generate:hover,
 #weather-generate:hover,
+#stamp-generate:hover,
 .pass-actions button:hover,
-.weather-actions button:hover {
+.weather-actions button:hover,
+.stamp-actions button:hover {
   transform: translateY(-1px);
   filter: brightness(1.08);
 }
 
 #pass-stage,
-#weather-stage {
+#weather-stage,
+#stamp-stage {
   margin: 0 auto 3rem;
 }
 #pass-canvas,
-#weather-canvas {
+#weather-canvas,
+#stamp-canvas {
   width: 100%;
   max-width: 640px;
   height: auto;
@@ -281,7 +379,8 @@ body {
   box-shadow: 0 18px 50px rgba(60, 30, 50, 0.28);
 }
 .pass-actions,
-.weather-actions {
+.weather-actions,
+.stamp-actions {
   margin-top: 1.2rem;
   display: flex;
   flex-wrap: wrap;
@@ -289,13 +388,15 @@ body {
   justify-content: center;
 }
 .pass-actions button,
-.weather-actions button {
+.weather-actions button,
+.stamp-actions button {
   background: var(--ink);
   min-width: 9.5rem;
 }
 
-#decade-weather {
-  margin: 3.5rem 0;
+#decade-weather,
+#passport-stamp {
+  margin: 0;
 }
 
 /* --- Reserved film slot --- */
@@ -574,6 +675,57 @@ body.gated {
 }
 .gate-muted:hover {
   color: rgba(50, 35, 40, 0.85);
+}
+
+@media (max-width: 680px) {
+  #terminal {
+    padding: 5rem 1rem 4rem;
+  }
+  .terminal-inner {
+    max-width: 100%;
+  }
+  .widget-desk {
+    gap: 1.4rem;
+  }
+  .widget-desk-top {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+  .widget-panel {
+    padding: 1.4rem 1rem;
+  }
+  .widget-panel::after {
+    top: 0.6rem;
+    right: -1.7rem;
+    font-size: 0.62rem;
+  }
+  #pass-form,
+  #weather-form,
+  #stamp-form {
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  #pass-form label,
+  #weather-form label,
+  #stamp-form label,
+  #pass-generate,
+  #weather-generate,
+  #stamp-generate {
+    width: 100%;
+  }
+  #pass-form input,
+  #pass-form select,
+  #weather-form select,
+  #stamp-form select {
+    width: 100%;
+    min-width: 0;
+  }
+  .pass-actions button,
+  .weather-actions button,
+  .stamp-actions button,
+  .film-link {
+    width: 100%;
+  }
 }
 
 /* --- Reduced motion: calm everything that shakes --- */
