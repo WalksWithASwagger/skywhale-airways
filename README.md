@@ -14,6 +14,10 @@ Porkbun DNS.
 
 **Vercel fallback:** https://skywhale-airways.vercel.app/
 
+**Shopify storefront:** https://shop.skywhaleairways.com/ — Nomad-first
+checkout is configured through embedded Shopify Buy Buttons once the Shopify
+product IDs and Storefront access token are set in Vercel.
+
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
@@ -45,6 +49,12 @@ npm run preview -- --base /skywhale-airways/
 Vercel is the production host. The GitHub repo is linked, Git LFS is enabled in
 the project's Git settings, and production deploys from `main`.
 
+The local Vercel CLI should be `54.9.0` or newer before deployment work:
+
+```bash
+npm i -g vercel@latest
+```
+
 Custom domains attached in Vercel and resolving publicly on June 2, 2026:
 
 - `skywhaleairways.com`
@@ -58,6 +68,14 @@ Porkbun DNS records:
 As of June 2, 2026 14:01 PDT, both apex and `www` returned HTTP 200 from
 Vercel. Page canonical tags point at the apex domain.
 
+GitHub Pages was disabled on June 3, 2026 after Vercel production was verified.
+The old `walkswithaswagger.github.io/skywhale-airways/` URL should return 404.
+
+Shopify Buy Button env vars are documented in `.env.example` and
+`merch/shopify-launch.md`. Production checkout requires the Shopify products to
+be published to the Buy Button sales channel before the values are added to
+Vercel.
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
@@ -69,9 +87,11 @@ work.
   `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   includes a lightweight press kit at `press.html`.
-- **Duty-Free merch** — concept products are live on the site. Source and
-  print-ready PNGs are kept in `merch/` and tracked with Git LFS; deployable WebP
-  derivatives live in `public/merch/`.
+- **Duty-Free merch** — concept products are live on the site. The first three
+  Nomad products are Shopify-ready and fall back to "Shop opening soon" until
+  Shopify env values are present. Source and print-ready PNGs are kept in
+  `merch/` and tracked with Git LFS; deployable WebP derivatives live in
+  `public/merch/`.
 
 ## How it works
 
@@ -100,8 +120,10 @@ work.
 - **`src/decade-weather.js`** — a second client-side canvas widget. Decade →
   a Skywhale Airways weather advisory with deterministic copy, downloadable /
   shareable as a mini print.
-- **`src/shop-data.js` / `src/shop.js`** — the Duty-Free catalog and renderer.
-  Buttons are disabled until a fulfillment provider is chosen.
+- **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
+  Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
+  mount embedded Shopify buttons when Vite env vars are set; all other products
+  remain concept-only.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a
   title and its voiceover lines.
 - **Accessibility** — `prefers-reduced-motion` zeroes the shader's `uIntensity`

@@ -392,6 +392,7 @@ body {
 }
 .product-buy {
   margin-top: auto;
+  width: 100%;
   font-family: var(--serif);
   font-size: 0.78rem;
   letter-spacing: 0.1em;
@@ -402,6 +403,16 @@ body {
   color: rgba(50, 35, 40, 0.6);
   border-radius: 4px;
   cursor: not-allowed;
+}
+.shopify-buy-slot {
+  margin-top: auto;
+  min-height: 2.4rem;
+}
+.shopify-buy-slot iframe {
+  max-width: 100%;
+}
+.shopify-buy-slot[data-shopify-state="ready"] {
+  min-height: 3rem;
 }
 
 /* --- Credits --- */

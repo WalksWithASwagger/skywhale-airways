@@ -1,0 +1,19 @@
+# Skywhale Airways
+
+> A scroll-driven WebGL microsite and AI Film Club short by Kris Krug and Suzie
+> Easton.
+
+## Core Pages
+
+- [Home](https://skywhaleairways.com/) - the Skywhale Airways journey, boarding
+  pass, Decade Weather, film embed, and Duty-Free catalog.
+- [Colophon](https://skywhaleairways.com/about.html) - methodology, tools, and
+  creative notes.
+- [Press Kit](https://skywhaleairways.com/press.html) - synopsis, credits,
+  runtime, stills, and film links for festival programmers.
+
+## Project Notes
+
+Skywhale Airways is the project and festival brand for *A Psychedelic Airport
+for Time Travelers*. The canonical project image is the **I AM NOMAD** Time
+Traveller poster.

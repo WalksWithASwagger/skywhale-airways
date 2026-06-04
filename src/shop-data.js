@@ -1,6 +1,6 @@
 // Skywhale Airways Duty-Free catalog. Images live in public/merch (committed
-// web-optimized webp; source rasters regenerate from merch/*.md). Prices are
-// placeholders and "buy" is not wired yet — fulfillment provider TBD.
+// web-optimized webp; source rasters regenerate from merch/*.md). Nomad-first
+// Shopify products mount into the first three cards when VITE_* values are set.
 
 export const products = [
   {
@@ -8,18 +8,39 @@ export const products = [
     title: "I AM NOMAD Holographic Sticker",
     type: "Holographic sticker · the canonical Time Traveller at Gate infinity",
     price: "$6",
+    shopify: {
+      enabled: true,
+      handle: "i-am-nomad-holographic-sticker",
+      productEnv: "VITE_SHOPIFY_NOMAD_STICKER_PRODUCT_ID",
+      componentId: "shopify-buy-i-am-nomad-sticker",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r5-i-am-nomad-master.webp",
     title: "I AM NOMAD Patch",
     type: "Embroidered patch · one suitcase, fish-aircraft overhead",
     price: "$14",
+    shopify: {
+      enabled: true,
+      handle: "i-am-nomad-patch",
+      productEnv: "VITE_SHOPIFY_NOMAD_PATCH_PRODUCT_ID",
+      componentId: "shopify-buy-i-am-nomad-patch",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r5-i-am-nomad-master.webp",
     title: "I AM NOMAD Tee",
     type: "Shirt graphic · the iconic Skywhale Airways project image",
     price: "$36",
+    shopify: {
+      enabled: true,
+      handle: "i-am-nomad-tee",
+      productEnv: "VITE_SHOPIFY_NOMAD_TEE_PRODUCT_ID",
+      componentId: "shopify-buy-i-am-nomad-tee",
+      variantMode: "options",
+    },
   },
   {
     img: "merch/r4-01-skywhale-chest-patch.webp",

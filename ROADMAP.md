@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 3, 2026 09:40 PDT.
+Last updated: June 3, 2026 23:01 PDT.
 
 ## Launch Status
 
@@ -11,6 +11,10 @@ attached in Vercel and resolving publicly through Porkbun DNS.
 The canonical repository is `/Users/kk/Code/skywhale-airways`. The sibling
 checkout `/Users/kk/Code/psychedelic-airport` has been used only as the source
 for preserved merch PNG and print assets.
+
+Duty-Free is now Nomad-first for Shopify: the repo has the embedded Buy Button
+integration and product handles, but live checkout still needs Shopify product
+IDs and a Storefront access token from the Shopify admin.
 
 ## Closed Out
 
@@ -29,14 +33,27 @@ for preserved merch PNG and print assets.
 - Merch Wave 5 refined: the upgraded **I AM NOMAD** poster is the canonical
   project/store image and now drives the sticker, patch, tee, and social
   preview art.
+- `www.skywhaleairways.com` verified as a hard 308 redirect to the apex.
+- GitHub Pages disabled; the old
+  `walkswithaswagger.github.io/skywhale-airways/` URL now returns 404 instead of
+  the stale June 2 build.
+- Suno cover art for **Whale Sky God** archived in production titles.
+- Shopify Buy Button scaffolding added for the three Nomad products; checkout is
+  pending Shopify env values.
+- Lighthouse/accessibility pass completed locally against the final build:
+  Home mobile 91/96/100/100/100, Home desktop 100/96/100/100/100,
+  About mobile+desktop 100s, Press mobile 88/100/92/100/100, Press desktop
+  100/100/96/100/100. Score order: performance/accessibility/best
+  practices/SEO/agentic browsing.
 
 ## Repository Queue Snapshot
 
-Audited June 2, 2026 16:20 PDT.
+Audited June 3, 2026 23:01 PDT.
 
 - Open GitHub issues: none.
 - Open GitHub PRs: none.
-- Branches: `main` is the only local branch and the only remote branch.
+- Branches before this closeout: `main` was the only local branch and the only
+  remote branch.
 - Recently merged PRs:
   - #2 `Prepare Vercel launch and LFS merch assets`
   - #1 `Add film production pipeline and final web cut`
@@ -69,24 +86,28 @@ Custom-domain checks on June 2, 2026 14:01 PDT:
 - `https://skywhaleairways.com/` -> HTTP 200 from Vercel.
 - `https://www.skywhaleairways.com/` -> HTTP 200 from Vercel.
 
-## Ready For KK
+Post-Nomad production checks on June 3, 2026 23:01 PDT:
 
-- Keep the public brand as Skywhale Airways unless a deliberate rename happens.
-- Decide whether the GitHub Pages public URL should redirect, stay as an old
-  mirror, or be left unpublished.
+- `https://skywhaleairways.com/` serves the `i-am-nomad-og.jpg` social preview.
+- `https://www.skywhaleairways.com/` returns 308 to the apex.
+- GitHub Pages API returns 404 after Pages was disabled.
+- The old GitHub Pages URL returns 404.
 
-## Agent-Fixable
+## Launch Polish
 
-- Verify the `www.skywhaleairways.com` hard redirect after the next Vercel
-  production deploy.
-- Add merch fulfillment links when a vendor is chosen.
-- Run a Lighthouse/accessibility pass after the domain cutover.
+- Create the Shopify store at `shop.skywhaleairways.com`, publish the three
+  Nomad products to the Buy Button sales channel, then add the Vite env values
+  in Vercel.
+- Improve Press Kit mobile LCP/image delivery if festival traffic makes that
+  page a primary landing surface.
+- Make the Press Kit easier to skim for festival programmers.
+- Add copy/share polish to the boarding pass and Decade Weather widgets.
 - Decide whether the canonical **I AM NOMAD** art should replace more page-level
   stills beyond social previews and Duty-Free.
 
 ## Later
 
-- Decide whether the Duty-Free section becomes a real shop, a concept gallery,
-  or a print-on-demand experiment.
-- Archive production prompts and source notes into a stable handoff package
-  after the film branch lands.
+- Expand Shopify beyond the first three Nomad products once the first drop is
+  proven.
+- Add more creative widgets and shareable terminal artifacts.
+- Archive production prompts and source notes into a stable handoff package.

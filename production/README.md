@@ -111,6 +111,10 @@ Generative, in-style title and credit cards (rafiki, with a source keyframe as a
 - `titles/credits_card.png` — "A FILM BY KRIS KRÜG & SUZIE EASTON / MUSIC — whale
   sky god / AI FILM CLUB · RETRO CHALLENGE · 2026". Generated on Gemini
   (`gemini-2.5-flash-image`). Style ref: `s10_rotunda.png`.
+- `titles/whale-sky-god-suno-cover-portrait.png` — Suno publishing cover for
+  **Whale Sky God**. Built as a 1024x1536 portrait-safe poster so it reads in
+  Suno's tall song-card UI while surviving Suno's square CDN normalization.
+  Published song: https://suno.com/song/4a931db0-bbcd-45e0-b187-0ecde5bbd1d4
 
 **Text-on-card caveat:** Veo animation *melts lettering*, so don't run text cards
 through `run_i2v_pipeline`. The title is animated with a text-safe ffmpeg slow

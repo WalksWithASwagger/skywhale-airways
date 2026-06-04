@@ -4,7 +4,9 @@ import { AudioBed } from "./audio.js";
 import { BoardingPass } from "./boarding-pass.js";
 import { DecadeWeather } from "./decade-weather.js";
 import { renderShop } from "./shop.js";
+import { initializeShopifyBuyButtons } from "./shopify-buy-buttons.js";
 import { scenes } from "./data/scenes.js";
+import { products } from "./shop-data.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -51,6 +53,7 @@ new DecadeWeather({
 
 // --- Duty-Free shop. ---
 renderShop(document.getElementById("shop-grid"));
+initializeShopifyBuyButtons(products);
 
 // --- Caption: show the active scene's voiceover lines. ---
 const captionEl = document.getElementById("caption");
