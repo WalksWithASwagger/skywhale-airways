@@ -1,46 +1,90 @@
 # Skywhale Awards QA
 
-Run these checks before treating the festival package as submission-ready.
+Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
 ## Files
 
-- Festival cut: `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
-- Public festival cut: `public/film/skywhale-awards-cut-v2.mp4`
-- Web cut: `public/film/psychedelic-airport.mp4`
-- Audio master: `production/video_project/time_airport/audio/whale-sky-god-awards-master.wav`
-- Poster/social image: `public/social/skywhale-awards-title-card.jpg`
+- Festival cut: `public/film/skywhale-awards-cut-v2.mp4`
+- Production edit: `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
+- Web cut, preserved: `public/film/psychedelic-airport.mp4`
+- Awards audio master: `production/video_project/time_airport/audio/whale-sky-god-awards-master.wav`
+- Awards title card: `production/video_project/time_airport/titles/title_card_awards.png`
+- Awards credits card: `production/video_project/time_airport/titles/credits_card_awards.png`
 
-## Current Readout
+`public/film/skywhale-awards-cut-v2.mp4` and
+`production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4` are
+byte-identical.
 
-- Festival cut duration: 59.21s.
-- Festival cut format: 1920x1080 H.264 video, AAC stereo audio, 24fps source cadence.
-- Festival cut loudness: -16.7 LUFS integrated.
-- Festival cut true peak: -3.6 dBFS.
-- Audio master loudness: -16.6 LUFS integrated.
-- Audio master true peak: -3.7 dBFS.
-- Black-gap scan: no unwanted `blackdetect` intervals in `skywhale_awards_cut_v2.mp4`.
+## Video Specs
 
-## Commands
+Command:
+
+```bash
+ffprobe -hide_banner -v error \
+  -show_entries format=duration,size,bit_rate:stream=index,codec_type,codec_name,width,height,r_frame_rate,avg_frame_rate,sample_rate,channels \
+  -of json public/film/skywhale-awards-cut-v2.mp4
+```
+
+Result:
+
+- Duration: `59.208333`
+- Size: `78,241,899` bytes
+- Video: H.264, `1920x1080`, `24/1` nominal frame rate
+- Audio: AAC, stereo, `48000 Hz`
+
+## Black Gap Check
+
+Command:
+
+```bash
+ffmpeg -hide_banner -nostats \
+  -i public/film/skywhale-awards-cut-v2.mp4 \
+  -vf blackdetect=d=0.1:pix_th=0.10 -an -f null -
+```
+
+Result: no `blackdetect` events were printed.
+
+## Loudness Check
+
+Command:
+
+```bash
+ffmpeg -hide_banner -nostats \
+  -i public/film/skywhale-awards-cut-v2.mp4 \
+  -filter_complex ebur128=peak=true -f null -
+```
+
+Result:
+
+- Integrated loudness: `-16.7 LUFS`
+- Loudness range: `4.3 LU`
+- True peak: `-3.6 dBFS`
+
+## Title And Credits
+
+The awards title and credits cards were inspected at full size. Both are
+1920x1080 PNGs with readable composited text. The awards credits card and MP4
+credit segment use `KRIS KRUG & SUZIE EASTON`.
+
+## Browser / Site Checks
+
+Run after any site edit:
 
 ```bash
 npm run build
-ffprobe -hide_banner -v error -show_format -show_streams production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4
-ffmpeg -hide_banner -i production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4 -vf blackdetect=d=0.08:pic_th=0.98 -an -f null -
-ffmpeg -hide_banner -nostats -i production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4 -filter_complex ebur128=peak=true -f null -
-ffmpeg -hide_banner -nostats -i production/video_project/time_airport/audio/whale-sky-god-awards-master.wav -filter_complex ebur128=peak=true -f null -
 ```
 
-## Browser Review
+Then smoke test:
 
-- Homepage shows the festival cut as the primary film.
-- Homepage still links the 53s web cut.
-- Press kit opens with the festival cut CTA above the hero image.
-- Press kit links resolve locally.
-- Poster/social image renders in the hero and metadata paths.
+- Home page gate opens.
+- Festival cut appears in the terminal film frame.
+- `public/film/skywhale-awards-cut-v2.mp4` loads as the primary cut.
+- `public/film/psychedelic-airport.mp4` remains reachable as the 53s web cut.
+- Press Kit links for festival cut, web cut, stills, About, and airport resolve.
 
-## Playback Review
+## Remaining Human Review
 
-- Title is readable immediately.
-- First film image arrives after the 3s title card.
-- Credits are readable at the end.
-- No accidental mute, clipping, dropped video, or visible black seam appears between sections.
+- Watch the 59s festival cut end to end on the target submission device.
+- Listen once on headphones and once on speakers before final awards submission.
+- Re-check any festival-specific music/AI clearance paperwork before submitting
+  to a venue that requires formal rights documents.

@@ -31,23 +31,25 @@ const fish = new Fish(journey.scene, { reducedMotion, count: smallScreen ? 18 : 
 const audio = new AudioBed(document.getElementById("audio-toggle"));
 
 // --- Boarding-pass widget. ---
-new BoardingPass({
+const boardingPass = new BoardingPass({
   form: document.getElementById("pass-form"),
   nameInput: document.getElementById("pass-name"),
   decadeSelect: document.getElementById("pass-decade"),
   stage: document.getElementById("pass-stage"),
   canvas: document.getElementById("pass-canvas"),
   downloadBtn: document.getElementById("pass-download"),
+  copyBtn: document.getElementById("pass-copy"),
   shareBtn: document.getElementById("pass-share"),
 });
 
 // --- Decade-weather widget. ---
-new DecadeWeather({
+const decadeWeather = new DecadeWeather({
   form: document.getElementById("weather-form"),
   decadeSelect: document.getElementById("weather-decade"),
   stage: document.getElementById("weather-stage"),
   canvas: document.getElementById("weather-canvas"),
   downloadBtn: document.getElementById("weather-download"),
+  copyBtn: document.getElementById("weather-copy"),
   shareBtn: document.getElementById("weather-share"),
 });
 
@@ -95,10 +97,35 @@ window.addEventListener("resize", onScroll);
 // owns the audio-start decision, so there is no scroll/tap autostart elsewhere.
 const gate = document.getElementById("gate");
 document.documentElement.style.overflow = "hidden"; // lock scroll while gated
+let sharedWidgetStateRestored = false;
+
+function parseSharedWidgetState() {
+  const hash = window.location.hash.replace(/^#/, "");
+  const [kind, query = ""] = hash.split("?");
+  const params = new URLSearchParams(query);
+  if (kind === "pass") {
+    return { kind, name: params.get("name") || "", decade: params.get("decade") || "" };
+  }
+  if (kind === "weather") {
+    return { kind, decade: params.get("decade") || "" };
+  }
+  return null;
+}
+
+function restoreSharedWidgetState() {
+  if (sharedWidgetStateRestored) return;
+  sharedWidgetStateRestored = true;
+  const state = parseSharedWidgetState();
+  if (!state) return;
+  if (state.kind === "pass") boardingPass.issueFromLink(state);
+  if (state.kind === "weather") decadeWeather.issueFromLink(state);
+}
+
 function closeGate() {
   gate.classList.add("gate-out");
   document.body.classList.remove("gated");
   document.documentElement.style.overflow = "";
+  restoreSharedWidgetState();
   const hide = () => (gate.hidden = true);
   gate.addEventListener("transitionend", hide, { once: true });
   setTimeout(hide, 800); // fallback if transitionend is missed

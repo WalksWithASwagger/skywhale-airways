@@ -6,14 +6,17 @@
 ## Core Pages
 
 - [Home](https://skywhaleairways.com/) - the Skywhale Airways journey, boarding
-  pass, Decade Weather, film embed, and Duty-Free catalog.
+  pass, Decade Weather, festival cut film embed, and Duty-Free catalog.
 - [Colophon](https://skywhaleairways.com/about.html) - methodology, tools, and
   creative notes.
-- [Press Kit](https://skywhaleairways.com/press.html) - synopsis, credits,
-  runtime, stills, and film links for festival programmers.
+- [Press Kit](https://skywhaleairways.com/press.html) - programmer snapshot,
+  artistic thesis, credits, runtime, key art, stills, rights note, and
+  festival/web cut links for programmers.
 
 ## Project Notes
 
 Skywhale Airways is the project and festival brand for *A Psychedelic Airport
 for Time Travelers*. The canonical project image is the **I AM NOMAD** Time
-Traveller poster.
+Traveller poster. The primary public film is the 59s festival cut at
+`/film/skywhale-awards-cut-v2.mp4`; the preserved 53s web cut remains at
+`/film/psychedelic-airport.mp4`.

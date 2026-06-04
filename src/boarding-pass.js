@@ -19,13 +19,14 @@ const STATUSES = [
 const TERMINALS = ["WHALE", "ORCHID", "TIDE", "EMBER", "DRIFT"];
 
 export class BoardingPass {
-  constructor({ form, nameInput, decadeSelect, stage, canvas, downloadBtn, shareBtn }) {
+  constructor({ form, nameInput, decadeSelect, stage, canvas, downloadBtn, copyBtn, shareBtn }) {
     this.form = form;
     this.nameInput = nameInput;
     this.decadeSelect = decadeSelect;
     this.stage = stage;
     this.canvas = canvas;
     this.downloadBtn = downloadBtn;
+    this.copyBtn = copyBtn;
     this.shareBtn = shareBtn;
     this.ctx = canvas.getContext("2d");
 
@@ -39,13 +40,23 @@ export class BoardingPass {
 
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      this.#issue();
+      this.issue();
     });
     this.downloadBtn.addEventListener("click", () => this.#download());
+    if (this.copyBtn && navigator.clipboard?.writeText) {
+      this.copyBtn.hidden = false;
+      this.copyBtn.addEventListener("click", () => this.#copyLink());
+    }
     if ("share" in navigator && "canShare" in navigator) {
       this.shareBtn.hidden = false;
       this.shareBtn.addEventListener("click", () => this.#share());
     }
+  }
+
+  issueFromLink({ name, decade }) {
+    this.nameInput.value = (name || "").trim().slice(0, 22);
+    if (DECADES.includes(decade)) this.decadeSelect.value = decade;
+    this.issue();
   }
 
   // Deterministic-ish flourishes from the inputs so a pass is stable per name.
@@ -61,7 +72,7 @@ export class BoardingPass {
     return { name, decade, gate, status, terminal, flight, seq };
   }
 
-  #issue() {
+  issue() {
     this.data = this.#flourishes();
     this.#draw(this.data);
     this.stage.hidden = false;
@@ -186,6 +197,32 @@ export class BoardingPass {
     a.download = this.#filename();
     a.href = this.canvas.toDataURL("image/png");
     a.click();
+  }
+
+  #shareUrl() {
+    const data = this.data || this.#flourishes();
+    const params = new URLSearchParams({ name: data.name, decade: data.decade });
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = `pass?${params.toString()}`;
+    return url.toString();
+  }
+
+  async #copyLink() {
+    try {
+      await navigator.clipboard.writeText(this.#shareUrl());
+      this.#flashCopyStatus("Copied");
+    } catch {
+      this.#flashCopyStatus("Copy failed");
+    }
+  }
+
+  #flashCopyStatus(text) {
+    this.copyBtn.textContent = text;
+    clearTimeout(this.copyReset);
+    this.copyReset = window.setTimeout(() => {
+      this.copyBtn.textContent = "Copy link";
+    }, 1400);
   }
 
   async #share() {

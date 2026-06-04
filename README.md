@@ -23,7 +23,7 @@ melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
 and drives the distortion, and the poetic voiceover surfaces line by line. At the
 end of the terminal, visitors issue themselves a time-travel boarding pass,
-watch the finished cut in the terminal frame, and browse the Skywhale Airways
+watch the festival cut in the terminal frame, and browse the Skywhale Airways
 Duty-Free merch concepts.
 
 ## Run it
@@ -83,11 +83,11 @@ work.
 
 - **Vercel production** — verified on June 2, 2026 with root-path assets, custom
   aliases attached, and a real Git LFS-backed film file.
-- **Finished film** — the festival cut is wired into the `#film-frame` slot from
-  `public/film/skywhale-awards-cut-v2.mp4`; the clean 53s web cut remains at
-  `public/film/psychedelic-airport.mp4`.
+- **Finished film** — the 59s festival / awards cut is wired into the
+  `#film-frame` slot from `public/film/skywhale-awards-cut-v2.mp4`. The 53s web
+  cut remains available at `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
-  includes a lightweight press kit at `press.html`.
+  includes an award-facing press kit at `press.html`.
 - **Duty-Free merch** — concept products are live on the site. The first three
   Nomad products are Shopify-ready and fall back to "Shop opening soon" until
   Shopify env values are present. Source and print-ready PNGs are kept in
@@ -105,8 +105,9 @@ work.
 - **`about.html`** — the colophon / methodology page (a second Vite entry,
   registered in `vite.config.js`), linked from the footer. Honest about the
   tools, told in the film's voice.
-- **`press.html`** — the festival-facing press kit: synopsis, credits, runtime,
-  format notes, stills, and film links.
+- **`press.html`** — the festival-facing press kit: programmer snapshot,
+  artistic thesis, credits, runtime, format notes, stills/key art, rights note,
+  and distinct festival/web cut links.
 - **`src/fish-particles.js`** — generative fish drawn as `THREE.Points` in the
   same render pass, parallaxing with scroll and pulsing with the audio.
 - **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site
@@ -117,10 +118,12 @@ work.
   `0..1` amplitude into the shader. The boarding-gate tap starts playback; the
   `SOUND` toggle mutes/unmutes.
 - **`src/boarding-pass.js`** — the signature widget. Name + decade → a canvas
-  boarding pass in the film's style, downloadable / shareable. No backend.
+  boarding pass in the film's style, downloadable, file-shareable where
+  supported, and restorable through a copied `#pass?...` link. No backend.
 - **`src/decade-weather.js`** — a second client-side canvas widget. Decade →
-  a Skywhale Airways weather advisory with deterministic copy, downloadable /
-  shareable as a mini print.
+  a Skywhale Airways weather advisory with deterministic copy, downloadable,
+  file-shareable where supported, and restorable through a copied `#weather?...`
+  link.
 - **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
   Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
   mount embedded Shopify buttons when Vite env vars are set; all other products
@@ -153,16 +156,18 @@ held `Airline Brochure.mp3` and `Beneath Skywhale.mp3`; swap the `AUDIO_SRC` lin
 in `scripts/optimize-assets.mjs` and re-run `npm run optimize` to change the bed
 when those local sources are available.
 
-## Film embed
+## Film Embed
 
-The awards/festival cut is committed at
+The primary festival cut is committed at
 `public/film/skywhale-awards-cut-v2.mp4` and is embedded in the `#film-frame`
-element with relative asset paths. The original clean web cut remains available
-at `public/film/psychedelic-airport.mp4`. Git LFS is enabled on Vercel, and
-production serves the files as `video/mp4`.
+element with relative asset paths. The 53s web cut remains committed at
+`public/film/psychedelic-airport.mp4`. Git LFS is enabled on Vercel, and
+production serves MP4 files as real video assets instead of pointer files.
 
 ```html
 <div class="film-frame" id="film-frame">
-  <video src="./film/skywhale-awards-cut-v2.mp4" controls playsinline poster="./social/skywhale-awards-title-card.jpg"></video>
+  <video src="./film/skywhale-awards-cut-v2.mp4" controls playsinline poster="./scenes/01-skywhale-airport.webp"></video>
 </div>
 ```
+
+Awards verification lives in `production/AWARDS_QA.md`.

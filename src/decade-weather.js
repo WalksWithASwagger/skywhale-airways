@@ -84,12 +84,13 @@ const REPORTS = {
 };
 
 export class DecadeWeather {
-  constructor({ form, decadeSelect, stage, canvas, downloadBtn, shareBtn }) {
+  constructor({ form, decadeSelect, stage, canvas, downloadBtn, copyBtn, shareBtn }) {
     this.form = form;
     this.decadeSelect = decadeSelect;
     this.stage = stage;
     this.canvas = canvas;
     this.downloadBtn = downloadBtn;
+    this.copyBtn = copyBtn;
     this.shareBtn = shareBtn;
     this.ctx = canvas.getContext("2d");
 
@@ -103,16 +104,25 @@ export class DecadeWeather {
 
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      this.#issue();
+      this.issue();
     });
     this.downloadBtn.addEventListener("click", () => this.#download());
+    if (this.copyBtn && navigator.clipboard?.writeText) {
+      this.copyBtn.hidden = false;
+      this.copyBtn.addEventListener("click", () => this.#copyLink());
+    }
     if ("share" in navigator && "canShare" in navigator) {
       this.shareBtn.hidden = false;
       this.shareBtn.addEventListener("click", () => this.#share());
     }
   }
 
-  #issue() {
+  issueFromLink({ decade }) {
+    if (DECADES.includes(decade)) this.decadeSelect.value = decade;
+    this.issue();
+  }
+
+  issue() {
     const decade = this.decadeSelect.value;
     this.data = { decade, ...REPORTS[decade] };
     this.#draw(this.data);
@@ -276,6 +286,32 @@ export class DecadeWeather {
     a.download = this.#filename();
     a.href = this.canvas.toDataURL("image/png");
     a.click();
+  }
+
+  #shareUrl() {
+    const decade = this.data?.decade || this.decadeSelect.value;
+    const params = new URLSearchParams({ decade });
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = `weather?${params.toString()}`;
+    return url.toString();
+  }
+
+  async #copyLink() {
+    try {
+      await navigator.clipboard.writeText(this.#shareUrl());
+      this.#flashCopyStatus("Copied");
+    } catch {
+      this.#flashCopyStatus("Copy failed");
+    }
+  }
+
+  #flashCopyStatus(text) {
+    this.copyBtn.textContent = text;
+    clearTimeout(this.copyReset);
+    this.copyReset = window.setTimeout(() => {
+      this.copyBtn.textContent = "Copy link";
+    }, 1400);
   }
 
   async #share() {
