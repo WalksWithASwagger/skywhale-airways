@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 4, 2026 13:34 PDT / 20:34 UTC.
+Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
 
 ## Launch Status
 
@@ -78,7 +78,7 @@ preserved merch PNG and print assets.
 
 ## Repository Queue Snapshot
 
-Audited June 4, 2026 13:34 PDT / 20:34 UTC.
+Audited June 4, 2026 13:40 PDT / 20:40 UTC.
 
 - Open GitHub PRs: none.
 - Current branch: `main`.
@@ -134,8 +134,8 @@ Audited June 4, 2026 13:34 PDT / 20:34 UTC.
   - `/merch/...`
   - `/scenes/...`
 
-The last manually verified production deployment
-`dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC` is ready and aliased to
+The widget deployment verified during smoke,
+`dpl_DFCBq74up3pjKytJZor5hyd8kuUt`, was ready and aliased to
 `https://skywhaleairways.com/`.
 
 Awards cut production checks on June 4, 2026:
@@ -165,6 +165,15 @@ Shopify checkout checks on June 4, 2026:
   token, and the three product IDs. The token is not committed.
 - Production checkout opened on Shopify with Skywhale branding, the sticker line
   item, and a `USD $6.00` total.
+
+Terminal artifact production checks on June 4, 2026 13:39 PDT / 20:39 UTC:
+
+- `https://skywhaleairways.com/` returned HTTP 200 from Vercel.
+- The production HTML includes Gate Receipt, Route Map Postcard, and Suitcase
+  Sticker Manifest panels.
+- Vercel deployment `dpl_DFCBq74up3pjKytJZor5hyd8kuUt` was Ready and aliased to
+  apex, `www`, the Vercel fallback, and the main Git deployment URL during the
+  widget smoke.
 
 Press Kit local performance pass on June 4, 2026:
 

@@ -1,16 +1,18 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 13:34 PDT / 20:34 UTC.
+Last updated: June 4, 2026 13:40 PDT / 20:40 UTC.
 
 ## Current Production
 
 - Production: `https://skywhaleairways.com/`
 - Vercel fallback: `https://skywhale-airways.vercel.app/`
-- Last manually verified production deploy: `dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC`
+- Widget deployment verified during smoke: `dpl_DFCBq74up3pjKytJZor5hyd8kuUt`
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
 - Primary film: `public/film/skywhale-awards-cut-v2.mp4`
 - Preserved web cut: `public/film/psychedelic-airport.mp4`
+- Terminal artifacts live on the Gate Infinity desk: Gate Receipt, Route Map
+  Postcard, and Suitcase Sticker Manifest.
 
 ## Admin State
 
