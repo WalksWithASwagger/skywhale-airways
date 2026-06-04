@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#e9c6d4" />
     <link rel="canonical" href="https://skywhaleairways.com/press.html" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/social/i-am-nomad-og.jpg" fetchpriority="high" />
     <meta property="og:title" content="Press Kit · A Psychedelic Airport for Time Travelers" />
     <meta
       property="og:description"
@@ -44,6 +45,7 @@
       name="twitter:image:alt"
       content="I AM NOMAD poster art with the blonde Time Traveller at Gate infinity as fish-aircraft drift overhead."
     />
+    <script type="module" src="/src/analytics.js"></script>
     <style>
       :root {
         --rose: #e9c6d4;
@@ -224,6 +226,20 @@
         letter-spacing: 0.04em;
       }
       @media (max-width: 640px) {
+        body {
+          overflow-x: hidden;
+        }
+        main,
+        .dek,
+        .actions {
+          width: 100%;
+          max-width: 100%;
+        }
+        h1 {
+          max-width: 100%;
+          font-size: clamp(1.75rem, 8.5vw, 2rem);
+          text-wrap: balance;
+        }
         dl {
           grid-template-columns: 1fr;
           gap: 0.25rem;
@@ -236,8 +252,12 @@
           margin-bottom: 0.75rem;
         }
         .button {
+          min-width: 0;
+          max-width: 100%;
           width: 100%;
           text-align: center;
+          white-space: normal;
+          line-height: 1.35;
         }
       }
     </style>
@@ -293,6 +313,8 @@
           src="./social/i-am-nomad-og.jpg"
           width="1200"
           height="630"
+          fetchpriority="high"
+          decoding="async"
           alt="I AM NOMAD key art with the Time Traveller at Gate infinity"
         />
       </div>
@@ -353,43 +375,43 @@
         <div class="stills">
           <figure>
             <a href="./social/i-am-nomad-og.jpg">
-              <img src="./social/i-am-nomad-og.jpg" width="1200" height="630" alt="I AM NOMAD key art" />
+              <img src="./social/i-am-nomad-og.jpg" width="1200" height="630" loading="lazy" decoding="async" alt="I AM NOMAD key art" />
             </a>
             <figcaption>I AM NOMAD key art</figcaption>
           </figure>
           <figure>
             <a href="./scenes/01-skywhale-airport.webp">
-              <img src="./scenes/01-skywhale-airport@sm.webp" width="800" height="448" alt="Golden skywhale airport still" />
+              <img src="./scenes/01-skywhale-airport@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Golden skywhale airport still" />
             </a>
             <figcaption>The Skywhale Airport</figcaption>
           </figure>
           <figure>
             <a href="./scenes/04-duplicate-selves.webp">
-              <img src="./scenes/04-duplicate-selves@sm.webp" width="800" height="448" alt="Duplicate selves waiting room still" />
+              <img src="./scenes/04-duplicate-selves@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Duplicate selves waiting room still" />
             </a>
             <figcaption>Gate Delay / Duplicate Selves</figcaption>
           </figure>
           <figure>
             <a href="./scenes/06-zero-gravity.webp">
-              <img src="./scenes/06-zero-gravity@sm.webp" width="800" height="448" alt="Zero-gravity transfer still" />
+              <img src="./scenes/06-zero-gravity@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Zero-gravity transfer still" />
             </a>
             <figcaption>Zero-Gravity Transfer</figcaption>
           </figure>
           <figure>
             <a href="./scenes/07-golden-fish-flight.webp">
-              <img src="./scenes/07-golden-fish-flight@sm.webp" width="800" height="448" alt="Golden fish flight still" />
+              <img src="./scenes/07-golden-fish-flight@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Golden fish flight still" />
             </a>
             <figcaption>Golden Fish Flight</figcaption>
           </figure>
           <figure>
             <a href="./scenes/09-cloud-orchard.webp">
-              <img src="./scenes/09-cloud-orchard@sm.webp" width="800" height="448" alt="Cloud orchard layover still" />
+              <img src="./scenes/09-cloud-orchard@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Cloud orchard layover still" />
             </a>
             <figcaption>Cloud-Orchard Layover</figcaption>
           </figure>
           <figure>
             <a href="./scenes/10-pink-rotunda.webp">
-              <img src="./scenes/10-pink-rotunda@sm.webp" width="800" height="448" alt="Pink rotunda arrival still" />
+              <img src="./scenes/10-pink-rotunda@sm.webp" width="800" height="448" loading="lazy" decoding="async" alt="Pink rotunda arrival still" />
             </a>
             <figcaption>Pink Rotunda Arrival</figcaption>
           </figure>
