@@ -34,6 +34,9 @@ The tee is currently a single product with no size or color variants. Treat real
 tee fulfillment, sizing, shipping, tax, and returns as issue #17 work before a
 larger public merch push.
 
+Fulfillment policy and the standalone-shop decision are tracked in
+`merch/fulfillment-roadmap.md`.
+
 ## Issue #17 Fulfillment Decision Packet
 
 Shopify Dev MCP was callable after restart on June 4, 2026 and used only for

@@ -110,6 +110,9 @@ production/
 See `AWARDS_QA.md` for the ffprobe, blackdetect, loudness, and browser checklist
 results.
 
+See `FESTIVAL_ARCHIVE.md` for the off-repo festival submission package manifest,
+credits note, rights/process note, and export guardrails.
+
 ## Titles & credits
 
 Generative, in-style title and credit cards (rafiki, with a source keyframe as a

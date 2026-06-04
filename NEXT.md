@@ -1,6 +1,6 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 14:22 PDT / 21:22 UTC.
+Last updated: June 4, 2026 14:34 PDT / 21:34 UTC.
 
 ## Current Production
 
@@ -40,12 +40,12 @@ Last updated: June 4, 2026 14:22 PDT / 21:22 UTC.
 
 - #15: Human watch/listen signoff for awards submission.
 - #17: Parent tracker for broader Shopify/fulfillment. Child issue split:
-  #24 Duty-Free fulfillment model, #25 Nomad tee size/fulfillment, #26 Chest
-  Print patch, #27 Chest Print sticker/decal, #28 Decade Weather card/sticker,
-  #29 baggage tag variant, #30 Gravity Stops Insisting tee/sticker, #31
-  pin/sticker-sheet production, #32 standalone shop domain decision.
-- #33: Festival submission archive package, if an off-repo festival deliverable
-  is needed.
+  #25 Nomad tee size/fulfillment, #26 Chest Print patch, #27 Chest Print
+  sticker/decal, #28 Decade Weather card/sticker, #29 baggage tag variant, #30
+  Gravity Stops Insisting tee/sticker, #31 pin/sticker-sheet production.
+  Fulfillment defaults and the standalone shop-domain decision are documented in
+  `merch/fulfillment-roadmap.md`.
+- Festival archive packaging is documented in `production/FESTIVAL_ARCHIVE.md`.
 
 ## Restart Commands
 
@@ -67,9 +67,11 @@ public derivatives.
 - Film production project: `production/video_project/time_airport/`
 - Final public film files: `public/film/`
 - Shopify launch notes: `merch/shopify-launch.md`
+- Duty-Free fulfillment policy: `merch/fulfillment-roadmap.md`
 - Canonical Nomad art: `merch/r5/i-am-nomad-master.png`
 - Holographic sticker print handoff:
   `merch/print/r5-i-am-nomad-holographic-sticker.png`
+- Festival archive manifest: `production/FESTIVAL_ARCHIVE.md`
 
 ## Guardrails
 
