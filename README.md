@@ -14,9 +14,9 @@ Porkbun DNS.
 
 **Vercel fallback:** https://skywhale-airways.vercel.app/
 
-**Shopify storefront:** https://shop.skywhaleairways.com/ — Nomad-first
-checkout is configured through embedded Shopify Buy Buttons once the Shopify
-product IDs and Storefront access token are set in Vercel.
+**Shopify checkout:** the first Nomad drop checks out through embedded Shopify
+Buy Buttons backed by `dze7ru-ii.myshopify.com`. `shop.skywhaleairways.com` is a
+future custom shop-domain polish task.
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -73,19 +73,18 @@ GitHub Pages was disabled on June 3, 2026 after Vercel production was verified.
 The old `walkswithaswagger.github.io/skywhale-airways/` URL should return 404.
 
 Shopify Buy Button env vars are documented in `.env.example` and
-`merch/shopify-launch.md`. Production checkout requires the Shopify products to
-be published to the Buy Button sales channel before the values are added to
-Vercel.
+`merch/shopify-launch.md`. Production and preview env vars are set in Vercel for
+the first three Nomad products; checkout was verified on June 4, 2026.
 
 Admin verification env vars are also documented in `.env.example`.
 `VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or `GT-...` tag is
-present. `VITE_GOOGLE_SITE_VERIFICATION` injects the Search Console verification
-meta tag at build time.
+present; production currently uses `G-W59LMFSG43`. `VITE_GOOGLE_SITE_VERIFICATION`
+injects the Search Console verification meta tag at build time.
 
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
-work.
+work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 
 - **Vercel production** — verified on June 2, 2026 with root-path assets, custom
   aliases attached, and a real Git LFS-backed film file.
@@ -95,8 +94,9 @@ work.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   includes an award-facing press kit at `press.html`.
 - **Duty-Free merch** — concept products are live on the site. The first three
-  Nomad products are Shopify-ready and fall back to "Shop opening soon" until
-  Shopify env values are present. Source and print-ready PNGs are kept in
+  Nomad products mount real Shopify Buy Buttons; the broader catalog remains
+  concept-only until fulfillment and product setup are chosen. Source and
+  print-ready PNGs are kept in
   `merch/` and tracked with Git LFS; deployable WebP derivatives live in
   `public/merch/`.
 
