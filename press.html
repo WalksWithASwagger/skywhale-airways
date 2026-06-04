@@ -6,7 +6,7 @@
     <title>Press Kit · A Psychedelic Airport for Time Travelers</title>
     <meta
       name="description"
-      content="Festival and press materials for A Psychedelic Airport for Time Travelers, a Skywhale Airways AI Film Club short by Kris Krug and Suzie Easton."
+      content="Festival and press materials for A Psychedelic Airport for Time Travelers, a 59-second Skywhale Airways AI Film Club short by Kris Krug and Suzie Easton."
     />
     <meta name="theme-color" content="#e9c6d4" />
     <link rel="canonical" href="https://skywhaleairways.com/press.html" />
@@ -14,35 +14,35 @@
     <meta property="og:title" content="Press Kit · A Psychedelic Airport for Time Travelers" />
     <meta
       property="og:description"
-      content="Synopsis, credits, runtime, stills, and film links for the Skywhale Airways short."
+      content="Festival cut, synopsis, credits, runtime, stills, and production notes for the Skywhale Airways short."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://skywhaleairways.com/press.html" />
     <meta property="og:site_name" content="Skywhale Airways" />
     <meta
       property="og:image"
-      content="https://skywhaleairways.com/social/i-am-nomad-og.jpg"
+      content="https://skywhaleairways.com/social/skywhale-awards-title-card.jpg"
     />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="I AM NOMAD poster art with the blonde Time Traveller at Gate infinity as fish-aircraft drift overhead."
+      content="Skywhale Airways title card with a golden fish-aircraft and a time traveler above a retro airport."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Press Kit · A Psychedelic Airport for Time Travelers" />
     <meta
       name="twitter:description"
-      content="Synopsis, credits, runtime, stills, and film links for the Skywhale Airways short."
+      content="Festival cut, synopsis, credits, runtime, stills, and production notes for the Skywhale Airways short."
     />
     <meta
       name="twitter:image"
-      content="https://skywhaleairways.com/social/i-am-nomad-og.jpg"
+      content="https://skywhaleairways.com/social/skywhale-awards-title-card.jpg"
     />
     <meta
       name="twitter:image:alt"
-      content="I AM NOMAD poster art with the blonde Time Traveller at Gate infinity as fish-aircraft drift overhead."
+      content="Skywhale Airways title card with a golden fish-aircraft and a time traveler above a retro airport."
     />
     <style>
       :root {
@@ -160,6 +160,13 @@
         color: var(--ink);
         border: 1px solid rgba(50, 35, 40, 0.24);
       }
+      .thesis {
+        border-left: 4px solid var(--rose-deep);
+        font-size: clamp(1.05rem, 2.1vw, 1.25rem);
+        font-style: italic;
+        margin: 2rem 0;
+        padding-left: 1rem;
+      }
       .stills {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
@@ -222,18 +229,29 @@
       <p class="kicker">Skywhale Airways · Press Kit</p>
       <h1>A Psychedelic Airport for Time Travelers</h1>
       <p class="dek">
-        A surreal 53-second retro airport short where fish keep schedules,
-        luggage remembers, and every terminal belongs to a different decade.
+        A 59-second festival cut where fish keep schedules, luggage remembers,
+        and every terminal belongs to a different decade.
       </p>
+      <div class="actions">
+        <a class="button" href="./film/skywhale-awards-cut-v2.mp4">Watch / download festival cut</a>
+        <a class="button secondary" href="./film/psychedelic-airport.mp4">Download 53s web cut</a>
+        <a class="button secondary" href="./">Open the airport</a>
+      </div>
 
       <div class="hero">
         <img
-          src="./scenes/01-skywhale-airport.webp"
-          width="1456"
-          height="816"
-          alt="A golden skywhale floating over a surreal airport runway"
+          src="./social/skywhale-awards-title-card.jpg"
+          width="1200"
+          height="630"
+          alt="Skywhale Airways title card with a golden fish-aircraft and a time traveler above a retro airport"
         />
       </div>
+
+      <p class="thesis">
+        A time traveler boards an airport for lost decades; the film uses AI as
+        a hand-guided animation department for a gouache world about memory,
+        delay, and arriving as one version of yourself.
+      </p>
 
       <section>
         <h2>Synopsis</h2>
@@ -253,13 +271,15 @@
           <dt>Brand</dt>
           <dd>Skywhale Airways</dd>
           <dt>Runtime</dt>
-          <dd>53 seconds, web cut</dd>
+          <dd>59 seconds, festival cut</dd>
           <dt>Festival cut</dt>
-          <dd>63 seconds with title and credits cards</dd>
+          <dd>Title card, mastered audio, 53-second film body, and credits card</dd>
+          <dt>Web cut</dt>
+          <dd>53 seconds, clean embed version</dd>
           <dt>Challenge</dt>
           <dd>AI Film Club · Retro Challenge · June 2026</dd>
           <dt>Format</dt>
-          <dd>16:9 · 1080p source · H.264 MP4 web embed</dd>
+          <dd>16:9 · 1920x1080 · 24fps · H.264/AAC MP4</dd>
           <dt>Created by</dt>
           <dd>Kris Krug &amp; Suzie Easton</dd>
           <dt>Music</dt>
@@ -268,9 +288,9 @@
           <dd><a href="https://skywhaleairways.com/">skywhaleairways.com</a></dd>
         </dl>
         <div class="actions">
-          <a class="button" href="./film/psychedelic-airport.mp4">Watch / download web cut</a>
+          <a class="button" href="./film/skywhale-awards-cut-v2.mp4">Watch / download festival cut</a>
+          <a class="button secondary" href="./film/psychedelic-airport.mp4">Download 53s web cut</a>
           <a class="button secondary" href="./about.html">Read the colophon</a>
-          <a class="button secondary" href="./">Open the airport</a>
         </div>
       </section>
 
@@ -325,6 +345,24 @@
           The site itself is a hand-built Vite / Three.js microsite with a
           scroll-driven WebGL journey, interactive boarding pass, Decade Weather
           card, film embed, and Skywhale Airways Duty-Free concept shop.
+        </p>
+        <p>
+          The festival cut adds crisp composited title and credit typography,
+          a quieter festival audio master, and a light sound-design layer under
+          the original song. The AI systems were used as image and animation
+          instruments inside a directed edit, with final timing, typography,
+          audio mastering, and web presentation handled manually.
+        </p>
+      </section>
+
+      <section>
+        <h2>Rights &amp; Availability</h2>
+        <p>
+          Submitted materials are prepared from project-owned/generated
+          keyframes, generated scene animation, and the original
+          <em>whale sky god</em> track used for this Skywhale Airways cut.
+          Festival programmers may screen the linked MP4 and use the stills on
+          this page for editorial coverage of the film.
         </p>
       </section>
 

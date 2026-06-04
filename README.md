@@ -83,7 +83,8 @@ work.
 
 - **Vercel production** — verified on June 2, 2026 with root-path assets, custom
   aliases attached, and a real Git LFS-backed film file.
-- **Finished film** — the Veo cut is wired into the `#film-frame` slot from
+- **Finished film** — the festival cut is wired into the `#film-frame` slot from
+  `public/film/skywhale-awards-cut-v2.mp4`; the clean 53s web cut remains at
   `public/film/psychedelic-airport.mp4`.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   includes a lightweight press kit at `press.html`.
@@ -154,12 +155,14 @@ when those local sources are available.
 
 ## Film embed
 
-The finished web cut is committed at `public/film/psychedelic-airport.mp4` and
-is embedded in the `#film-frame` element with relative asset paths. Git LFS is
-enabled on Vercel, and production serves the file as `video/mp4`.
+The awards/festival cut is committed at
+`public/film/skywhale-awards-cut-v2.mp4` and is embedded in the `#film-frame`
+element with relative asset paths. The original clean web cut remains available
+at `public/film/psychedelic-airport.mp4`. Git LFS is enabled on Vercel, and
+production serves the files as `video/mp4`.
 
 ```html
 <div class="film-frame" id="film-frame">
-  <video src="./film/psychedelic-airport.mp4" controls playsinline poster="./scenes/01-skywhale-airport.webp"></video>
+  <video src="./film/skywhale-awards-cut-v2.mp4" controls playsinline poster="./social/skywhale-awards-title-card.jpg"></video>
 </div>
 ```

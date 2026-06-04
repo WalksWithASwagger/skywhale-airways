@@ -324,6 +324,28 @@ body {
   border-radius: inherit;
   object-fit: cover;
 }
+.film-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.film-actions a {
+  border: 1px solid rgba(50, 35, 40, 0.24);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  padding: 0.72rem 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.film-actions a:first-child {
+  background: var(--rose-deep);
+  border-color: var(--rose-deep);
+  color: white;
+}
 .film-soon {
   font-style: italic;
   color: rgba(50, 35, 40, 0.6);
@@ -547,6 +569,16 @@ body.gated {
 }
 .gate-muted:hover {
   color: rgba(50, 35, 40, 0.85);
+}
+
+@media (max-width: 640px) {
+  .film-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .film-actions a {
+    text-align: center;
+  }
 }
 
 /* --- Reduced motion: calm everything that shakes --- */

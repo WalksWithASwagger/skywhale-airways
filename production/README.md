@@ -121,9 +121,16 @@ through `run_i2v_pipeline`. The title is animated with a text-safe ffmpeg slow
 push-in (Ken Burns); the credits use a short Veo clip windowed to the first ~5s
 (before its text dissolves).
 
-**Festival cut:** `edits/skywhale_whalesky_titled.mp4` — 63s = title card (4.5s,
-push-in, fades from black) → the 53s film → credits card (5.5s, fades to black).
-The clean 53s `public/film/psychedelic-airport.mp4` stays as the web-embed cut.
+**Awards cut v2:** `edits/skywhale_awards_cut_v2.mp4` — 59.21s = crisp title
+card (3s) → trimmed 53s film body with the festival audio master → readable
+credits card (4s). The cut removes the short black seams in the earlier titled
+export, uses typo-safe composited text, and is mirrored to
+`../public/film/skywhale-awards-cut-v2.mp4` for the site.
+
+**Earlier festival cut:** `edits/skywhale_whalesky_titled.mp4` — 63s = title
+card (4.5s, push-in, fades from black) → the 53s film → credits card (5.5s,
+fades to black). Kept as production history. The clean 53s
+`public/film/psychedelic-airport.mp4` remains available as the web cut.
 
 ## Config
 
