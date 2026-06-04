@@ -21,6 +21,8 @@ preserving the original 53s web cut.
 
 The remaining launch work has been turned into GitHub issues for the next swarm.
 Use the `tomorrow-swarm`, `launch-polish`, and `later` labels to slice the queue.
+GA4 and Search Console now have source-side hooks ready for Vercel env rollout;
+admin setup still needs the Google properties and values.
 
 ## Closed Out
 
@@ -170,15 +172,25 @@ Awards cut production checks on June 4, 2026 07:49 PDT / 14:49 UTC:
   200, `content-type: video/mp4`, `content-length: 78241899`, and an `ftypisom`
   MP4 header.
 
+Press Kit local performance pass on June 4, 2026:
+
+- `/press.html` mobile Lighthouse: 100/100/96/100 for
+  performance/accessibility/best-practices/SEO, LCP `1.6s`, CLS `0`.
+- `/press.html` desktop Lighthouse: 100/100/96/100, LCP `0.5s`, CLS `0`.
+- 390px layout smoke: document width equals viewport width; title, intro, and
+  action buttons fit within the page.
+
 ## Launch Polish
 
 - #10: Create the Shopify store at `shop.skywhaleairways.com`, publish the three
   Nomad products to the Buy Button sales channel, then add the Vite env values
   in Vercel.
 - #11: Create or confirm a GA4 web stream, wire its Measurement ID through
-  Vercel, and verify public analytics collection.
+  Vercel, and verify public analytics collection. Source hook is ready via
+  `src/analytics.js`; admin setup remains.
 - #12: Add Skywhale Airways to Search Console, submit the sitemap, and document
-  verification/access status.
+  verification/access status. Source hook is ready via
+  `VITE_GOOGLE_SITE_VERIFICATION`; admin setup remains.
 - #14: Improve Press Kit mobile LCP/image delivery if festival traffic makes
   that page a primary landing surface.
 - #15: Run the human watch/listen signoff pass against the production-served

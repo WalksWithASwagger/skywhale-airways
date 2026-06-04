@@ -76,6 +76,11 @@ Shopify Buy Button env vars are documented in `.env.example` and
 be published to the Buy Button sales channel before the values are added to
 Vercel.
 
+Admin verification env vars are also documented in `.env.example`.
+`VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or `GT-...` tag is
+present. `VITE_GOOGLE_SITE_VERIFICATION` injects the Search Console verification
+meta tag at build time.
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
@@ -128,6 +133,8 @@ work.
   Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
   mount embedded Shopify buttons when Vite env vars are set; all other products
   remain concept-only.
+- **`src/analytics.js`** — optional GA4 loader. It is included on all public
+  entry pages but does nothing until `VITE_GA_MEASUREMENT_ID` is configured.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a
   title and its voiceover lines.
 - **Accessibility** — `prefers-reduced-motion` zeroes the shader's `uIntensity`
