@@ -42,7 +42,8 @@ export default defineConfig(({ command, mode }) => {
     build: {
       outDir: "dist",
       sourcemap: true,
-      rollupOptions: {
+      // Vite 8 bundles with Rolldown; rollupOptions was renamed to rolldownOptions.
+      rolldownOptions: {
         input: {
           main: r("index.html"),
           about: r("about.html"),
