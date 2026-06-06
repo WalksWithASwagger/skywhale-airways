@@ -1,7 +1,4 @@
-const DECADES = [
-  "1920s", "1930s", "1940s", "1950s", "1960s",
-  "1970s", "1980s", "1990s", "2000s", "2010s", "2020s",
-];
+import { DECADES, populate, setValue, seed, rng } from "./artifacts/canvas-kit.js";
 
 const MOODS = [
   {
@@ -57,9 +54,9 @@ export class PassportStamp {
     this.shareBtn = shareBtn;
     this.ctx = canvas.getContext("2d");
 
-    this.#populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
-    this.#populate(this.moodSelect, MOODS);
-    this.#populate(this.routeSelect, ROUTES);
+    populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
+    populate(this.moodSelect, MOODS);
+    populate(this.routeSelect, ROUTES);
     this.decadeSelect.value = "1970s";
     this.moodSelect.value = "cleared";
     this.routeSelect.value = "memory";
@@ -80,9 +77,9 @@ export class PassportStamp {
   }
 
   issueFromLink({ decade, mood, route }) {
-    this.#setValue(this.decadeSelect, decade);
-    this.#setValue(this.moodSelect, mood);
-    this.#setValue(this.routeSelect, route);
+    setValue(this.decadeSelect, decade);
+    setValue(this.moodSelect, mood);
+    setValue(this.routeSelect, route);
     this.issue();
   }
 
@@ -93,24 +90,11 @@ export class PassportStamp {
     this.stage.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  #populate(select, options) {
-    for (const option of options) {
-      const opt = document.createElement("option");
-      opt.value = option.value;
-      opt.textContent = option.label;
-      select.appendChild(opt);
-    }
-  }
-
-  #setValue(select, value) {
-    if ([...select.options].some((option) => option.value === value)) select.value = value;
-  }
-
   #details() {
     const mood = MOODS.find((item) => item.value === this.moodSelect.value) || MOODS[0];
     const route = ROUTES.find((item) => item.value === this.routeSelect.value) || ROUTES[0];
     const decade = this.decadeSelect.value;
-    const seq = String(this.#seed(`${decade}${mood.value}${route.value}`) % 10000).padStart(4, "0");
+    const seq = String(seed(`${decade}${mood.value}${route.value}`) % 10000).padStart(4, "0");
     return { decade, mood, route, seq };
   }
 
@@ -118,7 +102,7 @@ export class PassportStamp {
     const ctx = this.ctx;
     const W = this.canvas.width;
     const H = this.canvas.height;
-    const rand = this.#rng(`${d.decade}${d.mood.value}${d.route.value}`);
+    const rand = rng(`${d.decade}${d.mood.value}${d.route.value}`);
     ctx.clearRect(0, 0, W, H);
 
     const paper = ctx.createLinearGradient(0, 0, W, H);
@@ -425,15 +409,4 @@ export class PassportStamp {
     }
   }
 
-  #seed(text) {
-    return [...text].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) >>> 0, 2166136261);
-  }
-
-  #rng(text) {
-    let seed = this.#seed(text);
-    return () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0;
-      return seed / 4294967296;
-    };
-  }
 }

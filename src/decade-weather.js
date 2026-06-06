@@ -1,7 +1,4 @@
-const DECADES = [
-  "1920s", "1930s", "1940s", "1950s", "1960s",
-  "1970s", "1980s", "1990s", "2000s", "2010s", "2020s",
-];
+import { DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
 
 const REPORTS = {
   "1920s": {
@@ -94,12 +91,7 @@ export class DecadeWeather {
     this.shareBtn = shareBtn;
     this.ctx = canvas.getContext("2d");
 
-    for (const d of DECADES) {
-      const opt = document.createElement("option");
-      opt.value = d;
-      opt.textContent = d;
-      this.decadeSelect.appendChild(opt);
-    }
+    populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
     this.decadeSelect.value = "1970s";
 
     this.form.addEventListener("submit", (e) => {
@@ -118,7 +110,7 @@ export class DecadeWeather {
   }
 
   issueFromLink({ decade }) {
-    if (DECADES.includes(decade)) this.decadeSelect.value = decade;
+    setValue(this.decadeSelect, decade);
     this.issue();
   }
 
@@ -134,7 +126,7 @@ export class DecadeWeather {
     const ctx = this.ctx;
     const W = this.canvas.width;
     const H = this.canvas.height;
-    const rand = this.#rng(d.decade);
+    const rand = rng(d.decade);
     ctx.clearRect(0, 0, W, H);
 
     const g = ctx.createLinearGradient(0, 0, W, H);
@@ -393,15 +385,4 @@ export class DecadeWeather {
     }
   }
 
-  #seed(text) {
-    return [...text].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) >>> 0, 2166136261);
-  }
-
-  #rng(text) {
-    let seed = this.#seed(text);
-    return () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0;
-      return seed / 4294967296;
-    };
-  }
 }

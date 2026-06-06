@@ -2,10 +2,7 @@
 // airport issues a psychedelic time-travel boarding pass on a <canvas> they can
 // download or share. Fully client-side — no backend.
 
-const DECADES = [
-  "1920s", "1930s", "1940s", "1950s", "1960s",
-  "1970s", "1980s", "1990s", "2000s", "2010s", "2020s",
-];
+import { DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
 
 const STATUSES = [
   "BOARDING THROUGH MEMORY",
@@ -30,12 +27,7 @@ export class BoardingPass {
     this.shareBtn = shareBtn;
     this.ctx = canvas.getContext("2d");
 
-    for (const d of DECADES) {
-      const opt = document.createElement("option");
-      opt.value = d;
-      opt.textContent = d;
-      this.decadeSelect.appendChild(opt);
-    }
+    populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
     this.decadeSelect.value = "1970s";
 
     this.form.addEventListener("submit", (e) => {
@@ -55,7 +47,7 @@ export class BoardingPass {
 
   issueFromLink({ name, decade }) {
     this.nameInput.value = (name || "").trim().slice(0, 22);
-    if (DECADES.includes(decade)) this.decadeSelect.value = decade;
+    setValue(this.decadeSelect, decade);
     this.issue();
   }
 
@@ -83,7 +75,7 @@ export class BoardingPass {
     const ctx = this.ctx;
     const W = this.canvas.width;
     const H = this.canvas.height;
-    const rand = this.#rng(`${d.name}${d.decade}${d.flight}`);
+    const rand = rng(`${d.name}${d.decade}${d.flight}`);
     ctx.clearRect(0, 0, W, H);
 
     const g = ctx.createLinearGradient(0, 0, W, H);
@@ -327,15 +319,4 @@ export class BoardingPass {
     }
   }
 
-  #seed(text) {
-    return [...text].reduce((hash, char) => ((hash << 5) - hash + char.charCodeAt(0)) >>> 0, 2166136261);
-  }
-
-  #rng(text) {
-    let seed = this.#seed(text);
-    return () => {
-      seed = (seed * 1664525 + 1013904223) >>> 0;
-      return seed / 4294967296;
-    };
-  }
 }
