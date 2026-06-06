@@ -2,7 +2,7 @@
 // airport issues a psychedelic time-travel boarding pass on a <canvas> they can
 // download or share. Fully client-side — no backend.
 
-import { CanvasArtifact, DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, rng } from "./canvas/canvas-kit.js";
 
 const STATUSES = [
   "BOARDING THROUGH MEMORY",

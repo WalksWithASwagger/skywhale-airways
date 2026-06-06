@@ -1,8 +1,8 @@
-import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "../canvas/canvas-kit.js";
 import {
   paper, border, perforation, routeArc, skywhale, baggageTag, field, wrapCentered,
   roundedRect, fish, clock, cloud, chair, suitcase, infinity, tinyPlane,
-} from "./canvas-draw.js";
+} from "../canvas/canvas-draw.js";
 
 const RELICS = [
   { value: "fish", label: "Fish-aircraft", code: "FIN" },
