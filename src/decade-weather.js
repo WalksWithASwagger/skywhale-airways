@@ -208,6 +208,7 @@ export class DecadeWeather {
     this.#wrap(ctx, value, x + 20, y + 64, w - 40, 27);
   }
 
+  // eslint-disable-next-line no-unused-private-class-members -- kept for an upcoming weather-card field layout
   #field(ctx, label, value, x, y, size, maxWidth) {
     ctx.fillStyle = "rgba(50,35,40,0.55)";
     ctx.font = "600 13px Georgia, serif";
