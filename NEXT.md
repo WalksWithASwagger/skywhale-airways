@@ -1,12 +1,12 @@
 # Skywhale Airways Next
 
-Last updated: June 4, 2026 14:34 PDT / 21:34 UTC.
+Last updated: June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 
 ## Current Production
 
 - Production: `https://skywhaleairways.com/`
 - Vercel fallback: `https://skywhale-airways.vercel.app/`
-- Widget deployment verified during smoke: `dpl_DFCBq74up3pjKytJZor5hyd8kuUt`
+- Production deployment verified during smoke: `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM`
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
 - Primary film: `public/film/skywhale-awards-cut-v2.mp4`
@@ -22,7 +22,10 @@ Last updated: June 4, 2026 14:34 PDT / 21:34 UTC.
 - Shopify Buy Button checkout is live for the first three Nomad products through
   `dze7ru-ii.myshopify.com`.
 - Vercel Production and Preview env vars are set for Shopify domain, Storefront
-  token, and product IDs.
+  token, and product IDs. Headless Chrome verified 3 ready Shopify Buy Button
+  iframes on June 5, 2026 without cart or checkout actions.
+- `shop.skywhaleairways.com` does not resolve. Leave it disconnected unless KK
+  chooses a standalone Shopify storefront outside the embedded Buy Button flow.
 - Shopify Dev MCP is configured globally in `/Users/kk/.codex/config.toml` as
   `shopify-dev-mcp` using `npx -y @shopify/dev-mcp@latest`. Restart Codex if it
   is not visible in the current session. After restart, callable tools were
@@ -39,6 +42,9 @@ Last updated: June 4, 2026 14:34 PDT / 21:34 UTC.
 ## Open Work
 
 - #15: Human watch/listen signoff for awards submission.
+- #34: Optional standalone shop-domain handoff. The Vercel env and embedded
+  Buy Button portions are verified; only `shop.skywhaleairways.com` DNS/Shopify
+  connection remains unresolved.
 - #17: Parent tracker for broader Shopify/fulfillment. Child issue split:
   #25 Nomad tee size/fulfillment, #26 Chest Print patch, #27 Chest Print
   sticker/decal, #28 Decade Weather card/sticker, #29 baggage tag variant, #30

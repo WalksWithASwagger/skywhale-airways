@@ -11,12 +11,12 @@ cards when the required Vite environment values are present.
 - Shopify API domain: `dze7ru-ii.myshopify.com`
 - Default currency: USD
 - Embedded checkout: live on `https://skywhaleairways.com/`
-- Future shop subdomain: `shop.skywhaleairways.com`
+- Future shop subdomain: `shop.skywhaleairways.com` (not connected)
 
-`shop.skywhaleairways.com` is not required for the embedded Buy Button checkout.
-If Skywhale needs a standalone Shopify storefront later, connect the subdomain in
-Shopify and add a Porkbun CNAME record for `shop` pointing to
-`shops.myshopify.com`.
+`shop.skywhaleairways.com` is not required for the embedded Buy Button checkout
+and did not resolve in DNS on June 5, 2026. If Skywhale needs a standalone
+Shopify storefront later, connect the subdomain in Shopify and add a Porkbun
+CNAME record for `shop` pointing to `shops.myshopify.com`.
 
 ## Products
 
@@ -90,9 +90,8 @@ VITE_SHOPIFY_NOMAD_PATCH_PRODUCT_ID=15051889705323
 VITE_SHOPIFY_NOMAD_TEE_PRODUCT_ID=15051891638635
 ```
 
-The same values are set in Vercel for Production and Preview. The Storefront
-access token is a secret and must stay out of committed docs, screenshots, and
-logs.
+The same values are set in Vercel for Production and Preview. Keep local `.env`
+files out of git, and do not paste token values into docs, screenshots, or logs.
 
 ## Verification
 
@@ -100,8 +99,10 @@ logs.
 - Without env vars, the first three cards keep their Skywhale art and show the
   non-transactional "Shop opening soon" fallback.
 - With env vars, the first three cards mount embedded Shopify Buy Buttons.
-- Production deploy `dpl_CB8FhyMecrNVSB1Nh14p82kGV3VC` is aliased to
+- Production deploy `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM` is aliased to
   `https://skywhaleairways.com/`.
+- Headless Chrome smoke on June 5, 2026 rendered 26 products, 3 Shopify Buy
+  Button slots, and 3 ready Shopify iframes without clicking cart or checkout.
 - Production smoke on June 4, 2026:
   - Shopify SDK loads from the public site.
   - First three Duty-Free cards show real Add to cart buttons.

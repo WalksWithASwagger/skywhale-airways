@@ -15,8 +15,8 @@ Porkbun DNS.
 **Vercel fallback:** https://skywhale-airways.vercel.app/
 
 **Shopify checkout:** the first Nomad drop checks out through embedded Shopify
-Buy Buttons backed by `dze7ru-ii.myshopify.com`. `shop.skywhaleairways.com` is a
-future custom shop-domain polish task.
+Buy Buttons backed by `dze7ru-ii.myshopify.com`. `shop.skywhaleairways.com` is
+not connected; embedded Buy Buttons are the current shop surface.
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -66,15 +66,16 @@ Porkbun DNS records:
 - `A` record: `skywhaleairways.com` → `76.76.21.21`
 - `A` record: `www.skywhaleairways.com` → `76.76.21.21`
 
-As of June 2, 2026 14:01 PDT, both apex and `www` returned HTTP 200 from
-Vercel. Page canonical tags point at the apex domain.
+As of June 5, 2026 18:27 PDT, the apex returned HTTP 200 from Vercel and `www`
+returned HTTP 308 to the apex. Page canonical tags point at the apex domain.
 
 GitHub Pages was disabled on June 3, 2026 after Vercel production was verified.
 The old `walkswithaswagger.github.io/skywhale-airways/` URL should return 404.
 
 Shopify Buy Button env vars are documented in `.env.example` and
 `merch/shopify-launch.md`. Production and preview env vars are set in Vercel for
-the first three Nomad products; checkout was verified on June 4, 2026.
+the first three Nomad products; live rendering was verified on June 5, 2026
+without cart or checkout actions.
 
 Admin verification env vars are also documented in `.env.example`.
 `VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or `GT-...` tag is
@@ -86,7 +87,7 @@ injects the Search Console verification meta tag at build time.
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
 work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 
-- **Vercel production** — verified on June 2, 2026 with root-path assets, custom
+- **Vercel production** — verified on June 5, 2026 with root-path assets, custom
   aliases attached, and a real Git LFS-backed film file.
 - **Finished film** — the 59s festival / awards cut is wired into the
   `#film-frame` slot from `public/film/skywhale-awards-cut-v2.mp4`. The 53s web

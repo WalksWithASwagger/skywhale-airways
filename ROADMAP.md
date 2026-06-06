@@ -1,6 +1,6 @@
 # Skywhale Airways Roadmap
 
-Last updated: June 4, 2026 14:34 PDT / 21:34 UTC.
+Last updated: June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 
 ## Launch Status
 
@@ -12,7 +12,8 @@ apex with HTTP 308.
 Duty-Free is live for the first Nomad drop. The first three cards use Skywhale's
 own catalog art and copy, then mount embedded Shopify Buy Buttons for checkout.
 The Shopify API domain is `dze7ru-ii.myshopify.com`; `shop.skywhaleairways.com`
-remains a later custom shop-domain polish task, not a launch blocker.
+does not resolve and remains a human/DNS decision, not a launch blocker for the
+embedded Buy Button flow.
 
 GA4 and Search Console are live for production. The GA4 Measurement ID is
 `G-W59LMFSG43`, Search Console URL-prefix verification is installed through the
@@ -88,12 +89,16 @@ preserved merch PNG and print assets.
 
 ## Repository Queue Snapshot
 
-Audited June 4, 2026 14:34 PDT / 21:34 UTC.
+Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 
 - Open GitHub PRs: none.
 - Current branch: `main`.
 - Local branches: `main`.
-- Open launch-polish issue:
+- Open launch-polish issues:
+  - #34 `Finish launch: set Vercel Shopify env + connect shop.skywhaleairways.com DNS`
+    - Env vars and live Buy Button rendering are verified; the remaining open
+      piece is the unresolved optional `shop.skywhaleairways.com` DNS/storefront
+      handoff.
   - #15 `Human watch/listen signoff for awards submission`
 - Open merch/shop parent issue:
   - #17 `Expand Shopify beyond the first Nomad drop`
@@ -156,9 +161,10 @@ Audited June 4, 2026 14:34 PDT / 21:34 UTC.
   - `/merch/...`
   - `/scenes/...`
 
-The widget deployment verified during smoke,
-`dpl_DFCBq74up3pjKytJZor5hyd8kuUt`, was ready and aliased to
-`https://skywhaleairways.com/`.
+The current production deployment verified during the launch-finish smoke,
+`dpl_BATferbaAcuaPEKmjPaotgJ6uSoM`, was ready and aliased to
+`https://skywhaleairways.com/`, `https://www.skywhaleairways.com/`, and
+`https://skywhale-airways.vercel.app/`.
 
 Awards cut production checks on June 4, 2026:
 
@@ -197,6 +203,22 @@ Terminal artifact production checks on June 4, 2026 13:39 PDT / 20:39 UTC:
   apex, `www`, the Vercel fallback, and the main Git deployment URL during the
   widget smoke.
 
+Launch-finish verification on June 5, 2026 18:30 PDT / June 6 01:30 UTC:
+
+- `https://skywhaleairways.com/` returned HTTP 200 from Vercel.
+- `https://www.skywhaleairways.com/` returned HTTP 308 to the apex.
+- `https://skywhale-airways.vercel.app/` returned HTTP 200.
+- `https://skywhaleairways.com/sitemap.xml` returned HTTP 200,
+  `content-type: application/xml`.
+- `https://skywhaleairways.com/film/skywhale-awards-cut-v2.mp4` returned HTTP
+  200, `content-type: video/mp4`.
+- Vercel Production and Preview env names are present for Shopify domain,
+  Storefront token, and the three Nomad product IDs; values stayed encrypted in
+  CLI output.
+- Headless Chrome smoke rendered 26 products, 3 Shopify Buy Button slots, and 3
+  ready Shopify iframes without clicking cart or checkout.
+- `shop.skywhaleairways.com` did not resolve in DNS.
+
 Press Kit local performance pass on June 4, 2026:
 
 - `/press.html` mobile Lighthouse: 100/100/96/100 for
@@ -207,6 +229,9 @@ Press Kit local performance pass on June 4, 2026:
 
 ## Launch Polish
 
+- #34: Vercel Shopify env and embedded Buy Button rendering are complete. Keep
+  this open only if KK wants the optional standalone `shop.skywhaleairways.com`
+  handoff connected in Shopify and Porkbun.
 - #15: Run the human watch/listen signoff pass against the production-served
   awards cut. This is the only remaining launch-polish gate that should stay
   human-owned.
@@ -214,6 +239,8 @@ Press Kit local performance pass on June 4, 2026:
 ## Next Swarm
 
 - #15: Human watch/listen signoff for the production-served awards cut.
+- #34: Optional standalone shop-domain decision; embedded Buy Buttons are already
+  live.
 - #17: Parent tracker for broader Shopify/fulfillment.
 - #25-#31: Product-specific merch decisions. Keep only the three Nomad Buy
   Buttons live until fulfillment, variants, shipping, returns, and tax are
