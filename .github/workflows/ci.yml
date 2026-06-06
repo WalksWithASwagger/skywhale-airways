@@ -17,3 +17,40 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+
+  smoke:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Install driver deps and chromium
+        run: |
+          cd .claude/skills/run-skywhale-airways
+          npm install
+          npx playwright install --with-deps chromium
+          cd -
+      - name: Build static site
+        run: npm run build
+      - name: Serve preview and wait for it
+        run: |
+          npm run preview &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:4173 >/dev/null 2>&1 && { echo "SERVING"; break; }
+            sleep 1
+          done
+          curl -sf http://localhost:4173 >/dev/null
+      - name: Run smoke flow
+        run: |
+          URL=http://localhost:4173 node .claude/skills/run-skywhale-airways/driver.mjs smoke 2>&1 | tee /tmp/smoke.log
+          grep -F "(no console/page errors)" /tmp/smoke.log
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-screenshots
+          path: .claude/skills/run-skywhale-airways/screenshots/
