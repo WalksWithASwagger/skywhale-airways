@@ -1,0 +1,9 @@
+{
+  "name": "run-skywhale-airways-driver",
+  "private": true,
+  "type": "module",
+  "description": "Playwright harness for driving the Skywhale Airways microsite",
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}
