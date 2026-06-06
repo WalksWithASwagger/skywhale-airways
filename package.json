@@ -11,10 +11,10 @@
     "optimize": "node scripts/optimize-assets.mjs"
   },
   "dependencies": {
-    "three": "^0.171.0"
+    "three": "^0.184.0"
   },
   "devDependencies": {
-    "sharp": "^0.33.5",
+    "sharp": "^0.34.5",
     "vite": "^6.0.0"
   }
 }
