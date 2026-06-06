@@ -53,7 +53,7 @@ export class Journey {
     this.scene.add(mesh);
 
     this.loader = new THREE.TextureLoader();
-    this.clock = new THREE.Clock();
+    this.timer = new THREE.Timer();
 
     this.resize();
     window.addEventListener("resize", () => this.resize());
@@ -137,7 +137,9 @@ export class Journey {
   }
 
   render() {
-    const dt = this.clock.getDelta();
+    // Timer must be advanced once per frame before reading the delta.
+    this.timer.update();
+    const dt = this.timer.getDelta();
     // Ease scroll so melts stay liquid — a gentle constant lets the melt keep
     // flowing after you stop scrolling, instead of snapping to the new scene.
     const ease = this.reducedMotion ? 1 : 1 - Math.pow(0.08, dt);
