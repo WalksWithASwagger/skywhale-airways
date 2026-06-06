@@ -1,7 +1,9 @@
-// Shared kit for the Gate Infinity terminal artifacts (gate receipt, route
-// postcard, suitcase manifest): the CanvasArtifact base class that handles
-// download / copy-link / file-share, plus the small form + seeded-RNG helpers
-// every artifact uses. Pure pixel-drawing primitives live in ./canvas-draw.js.
+// Shared kit for every canvas widget on the site — the boarding pass, decade
+// weather, and passport stamp, plus the Gate Infinity terminal artifacts (gate
+// receipt, route postcard, suitcase manifest). Provides the CanvasArtifact base
+// class that handles download / copy-link / file-share, plus the small form +
+// seeded-RNG helpers they share. Pure pixel-drawing primitives live in
+// ./canvas-draw.js.
 
 export const DECADES = [
   "1920s", "1930s", "1940s", "1950s", "1960s",

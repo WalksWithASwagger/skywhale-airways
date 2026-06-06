@@ -1,8 +1,8 @@
-import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "../canvas/canvas-kit.js";
 import {
   paper, border, perforation, routeArc, fish, clock, baggageTag, field, wrap,
   stamp, barcode,
-} from "./canvas-draw.js";
+} from "../canvas/canvas-draw.js";
 
 const DELAYS = [
   {

@@ -1,5 +1,5 @@
-import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./canvas-kit.js";
-import { paper, border, postcardBack, cloud, skywhale, fish, field } from "./canvas-draw.js";
+import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "../canvas/canvas-kit.js";
+import { paper, border, postcardBack, cloud, skywhale, fish, field } from "../canvas/canvas-draw.js";
 
 const ROUTE_MOODS = [
   { value: "orchard", label: "Cloud orchard", line: "Layover fruit ripening above the runway" },

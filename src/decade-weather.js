@@ -1,4 +1,4 @@
-import { CanvasArtifact, DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, rng } from "./canvas/canvas-kit.js";
 
 const REPORTS = {
   "1920s": {

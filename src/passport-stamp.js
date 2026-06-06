@@ -1,4 +1,4 @@
-import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./canvas/canvas-kit.js";
 
 const MOODS = [
   {
