@@ -1,4 +1,4 @@
-import { DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
 
 const REPORTS = {
   "1920s": {
@@ -80,16 +80,11 @@ const REPORTS = {
   },
 };
 
-export class DecadeWeather {
+export class DecadeWeather extends CanvasArtifact {
   constructor({ form, decadeSelect, stage, canvas, downloadBtn, copyBtn, shareBtn }) {
+    super({ stage, canvas, downloadBtn, copyBtn, shareBtn });
     this.form = form;
     this.decadeSelect = decadeSelect;
-    this.stage = stage;
-    this.canvas = canvas;
-    this.downloadBtn = downloadBtn;
-    this.copyBtn = copyBtn;
-    this.shareBtn = shareBtn;
-    this.ctx = canvas.getContext("2d");
 
     populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
     this.decadeSelect.value = "1970s";
@@ -98,15 +93,6 @@ export class DecadeWeather {
       e.preventDefault();
       this.issue();
     });
-    this.downloadBtn.addEventListener("click", () => this.#download());
-    if (this.copyBtn && navigator.clipboard?.writeText) {
-      this.copyBtn.hidden = false;
-      this.copyBtn.addEventListener("click", () => this.#copyLink());
-    }
-    if ("share" in navigator && "canShare" in navigator) {
-      this.shareBtn.hidden = false;
-      this.shareBtn.addEventListener("click", () => this.#share());
-    }
   }
 
   issueFromLink({ decade }) {
@@ -118,8 +104,7 @@ export class DecadeWeather {
     const decade = this.decadeSelect.value;
     this.data = { decade, ...REPORTS[decade] };
     this.#draw(this.data);
-    this.stage.hidden = false;
-    this.stage.scrollIntoView({ behavior: "smooth", block: "center" });
+    this.reveal();
   }
 
   #draw(d) {
@@ -332,18 +317,11 @@ export class DecadeWeather {
     ctx.restore();
   }
 
-  #filename() {
+  filename() {
     return `skywhale-weather-${this.data?.decade || "1970s"}.png`;
   }
 
-  #download() {
-    const a = document.createElement("a");
-    a.download = this.#filename();
-    a.href = this.canvas.toDataURL("image/png");
-    a.click();
-  }
-
-  #shareUrl() {
+  shareUrl() {
     const decade = this.data?.decade || this.decadeSelect.value;
     const params = new URLSearchParams({ decade });
     const url = new URL(window.location.href);
@@ -352,37 +330,11 @@ export class DecadeWeather {
     return url.toString();
   }
 
-  async #copyLink() {
-    try {
-      await navigator.clipboard.writeText(this.#shareUrl());
-      this.#flashCopyStatus("Copied");
-    } catch {
-      this.#flashCopyStatus("Copy failed");
-    }
+  shareTitle() {
+    return "My Skywhale Airways decade weather";
   }
 
-  #flashCopyStatus(text) {
-    this.copyBtn.textContent = text;
-    clearTimeout(this.copyReset);
-    this.copyReset = window.setTimeout(() => {
-      this.copyBtn.textContent = "Copy link";
-    }, 1400);
+  shareText() {
+    return "Every decade has its own weather.";
   }
-
-  async #share() {
-    try {
-      const blob = await new Promise((res) => this.canvas.toBlob(res, "image/png"));
-      const file = new File([blob], this.#filename(), { type: "image/png" });
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: "My Skywhale Airways decade weather",
-          text: "Every decade has its own weather.",
-        });
-      }
-    } catch {
-      // share dismissed
-    }
-  }
-
 }

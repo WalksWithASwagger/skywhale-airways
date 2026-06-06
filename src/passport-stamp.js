@@ -1,4 +1,4 @@
-import { DECADES, populate, setValue, seed, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, seed, rng } from "./artifacts/canvas-kit.js";
 
 const MOODS = [
   {
@@ -41,18 +41,13 @@ const ROUTES = [
   { value: "infinity", label: "Gate Infinity", stamp: "GATE INFINITY" },
 ];
 
-export class PassportStamp {
+export class PassportStamp extends CanvasArtifact {
   constructor({ form, decadeSelect, moodSelect, routeSelect, stage, canvas, downloadBtn, copyBtn, shareBtn }) {
+    super({ stage, canvas, downloadBtn, copyBtn, shareBtn });
     this.form = form;
     this.decadeSelect = decadeSelect;
     this.moodSelect = moodSelect;
     this.routeSelect = routeSelect;
-    this.stage = stage;
-    this.canvas = canvas;
-    this.downloadBtn = downloadBtn;
-    this.copyBtn = copyBtn;
-    this.shareBtn = shareBtn;
-    this.ctx = canvas.getContext("2d");
 
     populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
     populate(this.moodSelect, MOODS);
@@ -65,15 +60,6 @@ export class PassportStamp {
       e.preventDefault();
       this.issue();
     });
-    this.downloadBtn.addEventListener("click", () => this.#download());
-    if (this.copyBtn && navigator.clipboard?.writeText) {
-      this.copyBtn.hidden = false;
-      this.copyBtn.addEventListener("click", () => this.#copyLink());
-    }
-    if ("share" in navigator && "canShare" in navigator) {
-      this.shareBtn.hidden = false;
-      this.shareBtn.addEventListener("click", () => this.#share());
-    }
   }
 
   issueFromLink({ decade, mood, route }) {
@@ -86,8 +72,7 @@ export class PassportStamp {
   issue() {
     this.data = this.#details();
     this.#draw(this.data);
-    this.stage.hidden = false;
-    this.stage.scrollIntoView({ behavior: "smooth", block: "center" });
+    this.reveal();
   }
 
   #details() {
@@ -350,13 +335,13 @@ export class PassportStamp {
     ctx.restore();
   }
 
-  #filename() {
+  filename() {
     const decade = this.data?.decade || this.decadeSelect.value;
     const mood = this.data?.mood.value || this.moodSelect.value;
     return `skywhale-passport-stamp-${decade}-${mood}.png`;
   }
 
-  #shareUrl() {
+  shareUrl() {
     const data = this.data || this.#details();
     const params = new URLSearchParams({
       decade: data.decade,
@@ -369,44 +354,11 @@ export class PassportStamp {
     return url.toString();
   }
 
-  #download() {
-    const a = document.createElement("a");
-    a.download = this.#filename();
-    a.href = this.canvas.toDataURL("image/png");
-    a.click();
+  shareTitle() {
+    return "My Gate Infinity passport stamp";
   }
 
-  async #copyLink() {
-    try {
-      await navigator.clipboard.writeText(this.#shareUrl());
-      this.#flashCopyStatus("Copied");
-    } catch {
-      this.#flashCopyStatus("Copy failed");
-    }
+  shareText() {
+    return "Stamped at Gate Infinity by Skywhale Airways.";
   }
-
-  #flashCopyStatus(text) {
-    this.copyBtn.textContent = text;
-    clearTimeout(this.copyReset);
-    this.copyReset = window.setTimeout(() => {
-      this.copyBtn.textContent = "Copy link";
-    }, 1400);
-  }
-
-  async #share() {
-    try {
-      const blob = await new Promise((res) => this.canvas.toBlob(res, "image/png"));
-      const file = new File([blob], this.#filename(), { type: "image/png" });
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: "My Gate Infinity passport stamp",
-          text: "Stamped at Gate Infinity by Skywhale Airways.",
-        });
-      }
-    } catch {
-      // share dismissed
-    }
-  }
-
 }

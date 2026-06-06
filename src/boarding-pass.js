@@ -2,7 +2,7 @@
 // airport issues a psychedelic time-travel boarding pass on a <canvas> they can
 // download or share. Fully client-side — no backend.
 
-import { DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
+import { CanvasArtifact, DECADES, populate, setValue, rng } from "./artifacts/canvas-kit.js";
 
 const STATUSES = [
   "BOARDING THROUGH MEMORY",
@@ -15,17 +15,12 @@ const STATUSES = [
 
 const TERMINALS = ["WHALE", "ORCHID", "TIDE", "EMBER", "DRIFT"];
 
-export class BoardingPass {
+export class BoardingPass extends CanvasArtifact {
   constructor({ form, nameInput, decadeSelect, stage, canvas, downloadBtn, copyBtn, shareBtn }) {
+    super({ stage, canvas, downloadBtn, copyBtn, shareBtn });
     this.form = form;
     this.nameInput = nameInput;
     this.decadeSelect = decadeSelect;
-    this.stage = stage;
-    this.canvas = canvas;
-    this.downloadBtn = downloadBtn;
-    this.copyBtn = copyBtn;
-    this.shareBtn = shareBtn;
-    this.ctx = canvas.getContext("2d");
 
     populate(this.decadeSelect, DECADES.map((d) => ({ value: d, label: d })));
     this.decadeSelect.value = "1970s";
@@ -34,15 +29,6 @@ export class BoardingPass {
       e.preventDefault();
       this.issue();
     });
-    this.downloadBtn.addEventListener("click", () => this.#download());
-    if (this.copyBtn && navigator.clipboard?.writeText) {
-      this.copyBtn.hidden = false;
-      this.copyBtn.addEventListener("click", () => this.#copyLink());
-    }
-    if ("share" in navigator && "canShare" in navigator) {
-      this.shareBtn.hidden = false;
-      this.shareBtn.addEventListener("click", () => this.#share());
-    }
   }
 
   issueFromLink({ name, decade }) {
@@ -67,8 +53,7 @@ export class BoardingPass {
   issue() {
     this.data = this.#flourishes();
     this.#draw(this.data);
-    this.stage.hidden = false;
-    this.stage.scrollIntoView({ behavior: "smooth", block: "center" });
+    this.reveal();
   }
 
   #draw(d) {
@@ -265,19 +250,12 @@ export class BoardingPass {
     ctx.restore();
   }
 
-  #filename() {
+  filename() {
     const slug = (this.data?.name || "traveler").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "traveler";
     return `time-airways-${slug}-${this.data?.decade || "pass"}.png`;
   }
 
-  #download() {
-    const a = document.createElement("a");
-    a.download = this.#filename();
-    a.href = this.canvas.toDataURL("image/png");
-    a.click();
-  }
-
-  #shareUrl() {
+  shareUrl() {
     const data = this.data || this.#flourishes();
     const params = new URLSearchParams({ name: data.name, decade: data.decade });
     const url = new URL(window.location.href);
@@ -286,37 +264,11 @@ export class BoardingPass {
     return url.toString();
   }
 
-  async #copyLink() {
-    try {
-      await navigator.clipboard.writeText(this.#shareUrl());
-      this.#flashCopyStatus("Copied");
-    } catch {
-      this.#flashCopyStatus("Copy failed");
-    }
+  shareTitle() {
+    return "My time-travel boarding pass";
   }
 
-  #flashCopyStatus(text) {
-    this.copyBtn.textContent = text;
-    clearTimeout(this.copyReset);
-    this.copyReset = window.setTimeout(() => {
-      this.copyBtn.textContent = "Copy link";
-    }, 1400);
+  shareText() {
+    return "Boarding through memory at A Psychedelic Airport for Time Travelers.";
   }
-
-  async #share() {
-    try {
-      const blob = await new Promise((res) => this.canvas.toBlob(res, "image/png"));
-      const file = new File([blob], this.#filename(), { type: "image/png" });
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: "My time-travel boarding pass",
-          text: "Boarding through memory at A Psychedelic Airport for Time Travelers.",
-        });
-      }
-    } catch {
-      // share dismissed — no-op
-    }
-  }
-
 }
