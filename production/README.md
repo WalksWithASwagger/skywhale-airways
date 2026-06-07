@@ -5,8 +5,8 @@ hand-painted Midjourney keyframes into animated clips and edits. The WebGL
 microsite (repo root) is the *presentation* layer; this folder is where the
 actual animation is generated and cut.
 
-> Note (June 7, 2026): the `public/film/*.mp4` files referenced below were
-> removed from the repo/LFS. The festival + web cuts now live on YouTube
+> Note (June 7, 2026): the former `public/film/*.mp4` files were removed from
+> the repo/LFS. The festival + web cuts now live on YouTube
 > (Unlisted) — `youtu.be/FTMbAECxb8A` and `youtu.be/nvKMmuzQNDs`. The
 > production-edit copies under `production/video_project/.../edits/` (Git LFS)
 > are unchanged.
@@ -68,14 +68,16 @@ production/
 
 ## The finished cut
 
-- **`../public/film/skywhale-awards-cut-v2.mp4`** (=
-  `edits/skywhale_awards_cut_v2.mp4`) — **the festival / awards cut and primary
-  public watch path.** 59.21s, 1920x1080, H.264/AAC, nominal 24fps. It uses the
+- **`edits/skywhale_awards_cut_v2.mp4`** — the production edit copy of the
+  festival / awards cut. The **primary public watch path** is now YouTube
+  (Unlisted), `youtu.be/FTMbAECxb8A`, embedded on the site with
+  `youtube-nocookie`. 59.21s, 1920x1080, H.264/AAC, nominal 24fps. It uses the
   crisp awards title and credits cards, preserves the clean 53s film body, and
   trims the titled edit down from the earlier 63s pacing.
 
-- **`../public/film/psychedelic-airport.mp4`** (= `edits/skywhale_whalesky_final.mp4`)
-  — **the preserved web cut.** 53.0s, all ten pro (`veo-3.1`) shots, cut to the
+- **`edits/skywhale_whalesky_final.mp4`** — the production edit copy of the
+  preserved web cut. The public web cut is now YouTube (Unlisted),
+  `youtu.be/nvKMmuzQNDs`. 53.0s, all ten pro (`veo-3.1`) shots, cut to the
   **`whale sky god`** track (the spoken-word song — narration is *in* the track,
   no separate VO). Each shot uses its *opening* window stretched into slow motion
   (head mode), so the film stays in the flat hand-painted style throughout.
@@ -108,10 +110,10 @@ production/
 - Pro source clips (`clips/s01_full.mp4` … `s10_full.mp4`) are regenerable with
   `run_i2v_pipeline.py --all --model full`; they're not committed (regenerate on
   demand) — only the fast clips and the final cut live in the repo.
-- **Web embed:** the primary festival cut sits in `public/film/` and
-  `index.html` loads it into the `#film-frame` element with relative paths. The
-  53s web cut remains linked from the film actions and Press Kit. Vercel has Git
-  LFS enabled and serves real MP4s, not pointer files.
+- **Web embed:** `index.html` embeds the primary festival cut in the
+  `#film-frame` element from YouTube's no-cookie host. The 53s web cut remains
+  linked from the film actions and Press Kit. Vercel no longer serves public
+  film MP4s from repo/LFS.
 
 See `AWARDS_QA.md` for the ffprobe, blackdetect, loudness, and browser checklist
 results.
