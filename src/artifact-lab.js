@@ -195,6 +195,7 @@ export class ArtifactLab {
     this.nameInput.addEventListener("change", () => this.trackGenerate());
     this.downloadBtn.addEventListener("click", () => this.download());
     this.copyBtn.addEventListener("click", () => this.copyLink());
+    window.addEventListener("hashchange", () => this.restoreFromUrl({ reveal: true }));
 
     if (navigator.share) {
       this.shareBtn.hidden = false;
