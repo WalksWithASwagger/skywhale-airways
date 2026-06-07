@@ -78,6 +78,43 @@ Visual rule for Duty-Free: only products with a complete `shopify` config should
 show live embedded checkout. Everything else should remain clearly
 non-transactional until fulfillment is real.
 
+## Launching a staged product
+
+The next-batch candidates above are now **pre-wired** in `src/shop-data.js` with a
+`shopify` block kept `enabled: false` (staged) — the cards still render the
+disabled "Boarding soon" button until each goes live. Staged products and env keys:
+
+| Product | `productEnv` | `variantMode` |
+|---|---|---|
+| Skywhale Chest Patch | `VITE_SHOPIFY_CHEST_PATCH_PRODUCT_ID` | button |
+| Skywhale Chest Decal | `VITE_SHOPIFY_CHEST_DECAL_PRODUCT_ID` | button |
+| Decade Weather Card | `VITE_SHOPIFY_DECADE_WEATHER_CARD_PRODUCT_ID` | button |
+| Baggage Tag | `VITE_SHOPIFY_BAGGAGE_TAG_PRODUCT_ID` | button |
+| Gravity Stops Insisting (sticker) | `VITE_SHOPIFY_GRAVITY_STICKER_PRODUCT_ID` | button |
+| Gravity Stops Insisting Tee | `VITE_SHOPIFY_GRAVITY_TEE_PRODUCT_ID` | options |
+| Enamel Pin Set | `VITE_SHOPIFY_PIN_SET_PRODUCT_ID` | button |
+| Terminal Relics Sticker Sheet | `VITE_SHOPIFY_RELICS_SHEET_PRODUCT_ID` | button |
+
+To take one live (after the fulfillment decisions in the packet above):
+
+1. **Create the product in Shopify** with the matching `handle` (or update the
+   handle in `src/shop-data.js`), make it available to the Buy Button channel,
+   and copy its Storefront **product ID**.
+2. **Set the env var** (the product's `productEnv`) to that ID in **Vercel
+   Production + Preview** (and local `.env`).
+3. **Flip `enabled: true`** for that product's `shopify` block in
+   `src/shop-data.js`, commit, and deploy.
+4. **Verify on production:** the card mounts a live "Add to cart" button; the cart
+   opens/adds/removes and checkout starts on Shopify.
+
+Field conventions: `componentId` is `shopify-buy-<slug>` (must be unique);
+`variantMode: "options"` shows Shopify's size selector for apparel, otherwise
+`"button"`. `handle` is informational — the code uses `productEnv` + `componentId`.
+
+(#25 — I AM NOMAD tee sizing — needs no scaffolding: that product is already live
+with `variantMode: "options"`; its remaining work is defining the size variants on
+the Shopify product itself.)
+
 ## Environment
 
 Local `.env` shape:
