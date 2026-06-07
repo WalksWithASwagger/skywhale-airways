@@ -71,7 +71,7 @@ export const products = [
     type: "Die-cut decal · the friendly skywhale mark in travel-sticker form",
     price: "$6",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "skywhale-chest-decal",
       productEnv: "VITE_SHOPIFY_CHEST_DECAL_PRODUCT_ID",
       componentId: "shopify-buy-skywhale-chest-decal",
@@ -90,7 +90,7 @@ export const products = [
     type: "Sticker · seat fish, boarding through memory",
     price: "$5",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "baggage-tag",
       productEnv: "VITE_SHOPIFY_BAGGAGE_TAG_PRODUCT_ID",
       componentId: "shopify-buy-baggage-tag",
@@ -109,7 +109,7 @@ export const products = [
     type: "Five pins · skywhale, Gate infinity, suitcase, clock, fish-aircraft",
     price: "$28",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "enamel-pin-set",
       productEnv: "VITE_SHOPIFY_PIN_SET_PRODUCT_ID",
       componentId: "shopify-buy-enamel-pin-set",
@@ -128,7 +128,7 @@ export const products = [
     type: "Kiss-cut sheet · cute fragments from the time airport",
     price: "$10",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "terminal-relics-sticker-sheet",
       productEnv: "VITE_SHOPIFY_RELICS_SHEET_PRODUCT_ID",
       componentId: "shopify-buy-terminal-relics-sheet",
@@ -147,7 +147,7 @@ export const products = [
     type: "Die-cut sticker · the Time Traveller, unweighted",
     price: "$5",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "gravity-stops-insisting-sticker",
       productEnv: "VITE_SHOPIFY_GRAVITY_STICKER_PRODUCT_ID",
       componentId: "shopify-buy-gravity-stops-sticker",
@@ -160,7 +160,7 @@ export const products = [
     type: "Shirt · somewhere between gate and sky",
     price: "$36",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "gravity-stops-insisting-tee",
       productEnv: "VITE_SHOPIFY_GRAVITY_TEE_PRODUCT_ID",
       componentId: "shopify-buy-gravity-stops-tee",
@@ -179,7 +179,7 @@ export const products = [
     type: "Sticker card · warm analog haze, runway visible in dreams",
     price: "$5",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "decade-weather-card",
       productEnv: "VITE_SHOPIFY_DECADE_WEATHER_CARD_PRODUCT_ID",
       componentId: "shopify-buy-decade-weather-card",
