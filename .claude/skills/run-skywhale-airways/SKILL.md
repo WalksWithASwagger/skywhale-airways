@@ -43,7 +43,16 @@ node driver.mjs smoke
 
 Expected output ends with `(no console/page errors)` and writes `01-gate.png`, `02-journey.png`, `03-film.png`, `04-terminal.png`, and `05-artifact-lab.png` into `screenshots/`. **Open `03-film.png` and `05-artifact-lab.png`** — they should show the promoted festival-cut film and a generated Skywhale artifact.
 
-3. For ad-hoc driving, pipe commands on stdin (same session, one command per line):
+3. To verify Artifact Lab shared links, run the dedicated deep-link smoke. It loads a `#artifact?...` URL, closes the gate, and asserts the restored type, omen, decade, name, and canvas label:
+
+```bash
+cd .claude/skills/run-skywhale-airways
+node driver.mjs smoke-artifact-link
+```
+
+Expected output ends with `(no console/page errors)` and writes `06-artifact-deeplink.png` into `screenshots/`. Open it — it should show the restored Good Pilots Route artifact for Sky Tester in the 1990s.
+
+4. For ad-hoc driving, pipe commands on stdin (same session, one command per line):
 
 ```bash
 printf 'nav http://localhost:3000\nwait #gate-board\nclick #gate-muted\nscroll-to #terminal\nwait-eval document.body.classList.contains("in-terminal")\nwait #film-slot\nscroll-to #artifact-lab\nscreenshot terminal\nconsole-errors\n' | node driver.mjs
@@ -51,7 +60,7 @@ printf 'nav http://localhost:3000\nwait #gate-board\nclick #gate-muted\nscroll-t
 
 Driver commands: `nav <url>`, `wait <selector>`, `wait-text <text>`, `wait-eval <js>`, `click <sel>`, `fill <sel> <value>`, `press <sel> <key>`, `scroll <px>`, `scroll-to <sel>`, `sleep <ms>`, `eval <js>`, `screenshot [name]`, `shot-el <sel> [name]` (crop to one element), `console-errors`, `quit`. Set `HEADED=1` to watch in a visible window.
 
-4. Stop the server before relaunching (or the next `npm run dev` hits `EADDRINUSE`):
+5. Stop the server before relaunching (or the next `npm run dev` hits `EADDRINUSE`):
 
 ```bash
 kill $(cat /tmp/skywhale-dev.pid) 2>/dev/null || pkill -f 'vite'
@@ -94,4 +103,4 @@ The README's `VITE_BASE_PATH=/skywhale-airways/` variant is the retired GitHub P
 
 ## Test
 
-There is no automated test suite (no `test` script in `package.json`). The smoke flow above **is** the regression check — run `node driver.mjs smoke` and confirm it ends with `(no console/page errors)`, a valid film screenshot, and a valid artifact screenshot.
+There is no automated test suite (no `test` script in `package.json`). The smoke flows above **are** the regression checks — run `node driver.mjs smoke` and confirm it ends with `(no console/page errors)`, a valid film screenshot, and a valid artifact screenshot. Run `node driver.mjs smoke-artifact-link` when Artifact Lab hash/share behavior changes.

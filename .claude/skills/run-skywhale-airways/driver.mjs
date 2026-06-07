@@ -4,6 +4,7 @@
 // committed harness a future agent uses to drive the running dev server.
 //
 //   node driver.mjs smoke                       # scripted entry→film→artifact flow
+//   node driver.mjs smoke-artifact-link         # scripted shared artifact restore flow
 //   node driver.mjs <<'EOF' ... EOF             # pipe commands on stdin
 //   echo 'nav http://localhost:3000\nscreenshot' | node driver.mjs
 //
@@ -162,15 +163,37 @@ console-errors
 quit
 `;
 
-const lines =
-  process.argv[2] === "smoke"
-    ? SMOKE.split("\n")
-    : await new Promise((res) => {
-        const acc = [];
-        createInterface({ input: process.stdin })
-          .on("line", (l) => acc.push(l))
-          .on("close", () => res(acc));
-      });
+const artifactLinkUrl = `${URL.replace(/#.*$/, "")}#artifact?type=route&omen=good-pilots&decade=1990s&name=Sky%20Tester`;
+
+const ARTIFACT_LINK_SMOKE = `
+nav ${artifactLinkUrl}
+wait #gate-board
+click #gate-muted
+wait #artifact-form
+wait-eval document.querySelector("#artifact-name")?.value === "Sky Tester"
+wait-eval document.querySelector('.artifact-type-option[data-value="route"]')?.getAttribute("aria-pressed") === "true"
+wait-eval document.querySelector('.artifact-chip[data-value="good-pilots"]')?.getAttribute("aria-pressed") === "true"
+wait-eval document.querySelector('.artifact-decade[data-value="1990s"]')?.getAttribute("aria-pressed") === "true"
+wait-eval document.querySelector("#artifact-canvas")?.getAttribute("aria-label")?.includes("Good Pilots Route")
+wait-eval document.querySelector("#artifact-canvas")?.getAttribute("aria-label")?.includes("arriving in the 1990s")
+shot-el #artifact-lab 06-artifact-deeplink
+console-errors
+quit
+`;
+
+const scriptedFlows = {
+  smoke: SMOKE,
+  "smoke-artifact-link": ARTIFACT_LINK_SMOKE,
+};
+
+const lines = scriptedFlows[process.argv[2]]
+  ? scriptedFlows[process.argv[2]].split("\n")
+  : await new Promise((res) => {
+      const acc = [];
+      createInterface({ input: process.stdin })
+        .on("line", (l) => acc.push(l))
+        .on("close", () => res(acc));
+    });
 
 try {
   for (const line of lines) await run(line);
