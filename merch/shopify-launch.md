@@ -20,8 +20,14 @@ CNAME record for `shop` pointing to `shops.myshopify.com`.
 
 ## Products
 
-The first drop uses the canonical image from `merch/r5/i-am-nomad-master.png`
-for all three products. The holographic sticker print source is
+The first drop uses the canonical image from `merch/r5/i-am-nomad-master.png`,
+but the site presents each item with its own product mockup:
+
+- `merch/r5/i-am-nomad-holographic-sticker-mockup.png`
+- `merch/r5/i-am-nomad-patch-mockup.png`
+- `merch/r5/i-am-nomad-tee-mockup.png`
+
+The holographic sticker print source is
 `merch/print/r5-i-am-nomad-holographic-sticker.png`.
 
 | Product | Handle | Product ID | Price | Status | Site env key |
@@ -133,8 +139,8 @@ files out of git, and do not paste token values into docs, screenshots, or logs.
 ## Verification
 
 - `npm run build` succeeds with and without Shopify env vars.
-- Without env vars, the first three cards keep their Skywhale art and show the
-  non-transactional "Shop opening soon" fallback.
+- Without env vars, the first three cards keep their product-specific Nomad art
+  and show the non-transactional "Shop opening soon" fallback.
 - With env vars, the first three cards mount embedded Shopify Buy Buttons.
 - Production deploy `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM` is aliased to
   `https://skywhaleairways.com/`.
