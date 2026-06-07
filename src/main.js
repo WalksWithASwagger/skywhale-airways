@@ -1,10 +1,7 @@
 import { Journey } from "./journey.js";
 import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
-import { BoardingPass } from "./boarding-pass.js";
-import { DecadeWeather } from "./decade-weather.js";
-import { PassportStamp } from "./passport-stamp.js";
-import { GateReceipt, RoutePostcard, SuitcaseManifest } from "./terminal-artifacts.js";
+import { ArtifactLab } from "./artifact-lab.js";
 import { renderShop } from "./shop.js";
 import { initializeShopifyBuyButtons } from "./shopify-buy-buttons.js";
 import { trackEvent } from "./analytics.js";
@@ -33,81 +30,17 @@ const fish = new Fish(journey.scene, { reducedMotion, count: smallScreen ? 18 : 
 // --- Audio bed. ---
 const audio = new AudioBed(document.getElementById("audio-toggle"));
 
-// --- Boarding-pass widget. ---
-const boardingPass = new BoardingPass({
-  form: document.getElementById("pass-form"),
-  nameInput: document.getElementById("pass-name"),
-  decadeSelect: document.getElementById("pass-decade"),
-  stage: document.getElementById("pass-stage"),
-  canvas: document.getElementById("pass-canvas"),
-  downloadBtn: document.getElementById("pass-download"),
-  copyBtn: document.getElementById("pass-copy"),
-  shareBtn: document.getElementById("pass-share"),
-});
-
-// --- Decade-weather widget. ---
-const decadeWeather = new DecadeWeather({
-  form: document.getElementById("weather-form"),
-  decadeSelect: document.getElementById("weather-decade"),
-  stage: document.getElementById("weather-stage"),
-  canvas: document.getElementById("weather-canvas"),
-  downloadBtn: document.getElementById("weather-download"),
-  copyBtn: document.getElementById("weather-copy"),
-  shareBtn: document.getElementById("weather-share"),
-});
-
-// --- Gate Infinity passport-stamp widget. ---
-const passportStamp = new PassportStamp({
-  form: document.getElementById("stamp-form"),
-  decadeSelect: document.getElementById("stamp-decade"),
-  moodSelect: document.getElementById("stamp-mood"),
-  routeSelect: document.getElementById("stamp-route"),
-  stage: document.getElementById("stamp-stage"),
-  canvas: document.getElementById("stamp-canvas"),
-  downloadBtn: document.getElementById("stamp-download"),
-  copyBtn: document.getElementById("stamp-copy"),
-  shareBtn: document.getElementById("stamp-share"),
-});
-
-// --- Gate receipt widget. ---
-const gateReceipt = new GateReceipt({
-  form: document.getElementById("receipt-form"),
-  decadeSelect: document.getElementById("receipt-decade"),
-  delaySelect: document.getElementById("receipt-delay"),
-  stage: document.getElementById("receipt-stage"),
-  canvas: document.getElementById("receipt-canvas"),
-  downloadBtn: document.getElementById("receipt-download"),
-  copyBtn: document.getElementById("receipt-copy"),
-  shareBtn: document.getElementById("receipt-share"),
-});
-
-// --- Route postcard widget. ---
-const routePostcard = new RoutePostcard({
-  form: document.getElementById("route-form"),
-  originSelect: document.getElementById("route-origin"),
-  destinationSelect: document.getElementById("route-destination"),
-  moodSelect: document.getElementById("route-mood"),
-  stage: document.getElementById("route-stage"),
-  canvas: document.getElementById("route-canvas"),
-  downloadBtn: document.getElementById("route-download"),
-  copyBtn: document.getElementById("route-copy"),
-  shareBtn: document.getElementById("route-share"),
-});
-
-// --- Suitcase manifest widget. ---
-const suitcaseManifest = new SuitcaseManifest({
-  form: document.getElementById("manifest-form"),
-  decadeSelect: document.getElementById("manifest-decade"),
-  relicSelects: [
-    document.getElementById("manifest-relic-1"),
-    document.getElementById("manifest-relic-2"),
-    document.getElementById("manifest-relic-3"),
-  ],
-  stage: document.getElementById("manifest-stage"),
-  canvas: document.getElementById("manifest-canvas"),
-  downloadBtn: document.getElementById("manifest-download"),
-  copyBtn: document.getElementById("manifest-copy"),
-  shareBtn: document.getElementById("manifest-share"),
+// --- Artifact Lab. ---
+const artifactLab = new ArtifactLab({
+  root: document.getElementById("artifact-lab"),
+  canvas: document.getElementById("artifact-canvas"),
+  typeOptions: document.getElementById("artifact-type-options"),
+  omenOptions: document.getElementById("artifact-omen-options"),
+  decadeOptions: document.getElementById("artifact-decade-options"),
+  nameInput: document.getElementById("artifact-name"),
+  downloadBtn: document.getElementById("artifact-download"),
+  copyBtn: document.getElementById("artifact-copy"),
+  shareBtn: document.getElementById("artifact-share"),
 });
 
 // --- Duty-Free shop. ---
@@ -119,24 +52,6 @@ document.getElementById("gate-board")?.addEventListener("click", () => {
 });
 document.getElementById("gate-muted")?.addEventListener("click", () => {
   trackEvent("skywhale_board", { audio_mode: "muted" });
-});
-document.getElementById("pass-form")?.addEventListener("submit", () => {
-  trackEvent("boarding_pass_generate");
-});
-document.getElementById("weather-form")?.addEventListener("submit", () => {
-  trackEvent("decade_weather_generate");
-});
-document.getElementById("stamp-form")?.addEventListener("submit", () => {
-  trackEvent("passport_stamp_generate");
-});
-document.getElementById("receipt-form")?.addEventListener("submit", () => {
-  trackEvent("gate_receipt_generate");
-});
-document.getElementById("route-form")?.addEventListener("submit", () => {
-  trackEvent("route_postcard_generate");
-});
-document.getElementById("manifest-form")?.addEventListener("submit", () => {
-  trackEvent("suitcase_manifest_generate");
 });
 document.querySelectorAll(".film-link, .colophon-link").forEach((link) => {
   link.addEventListener("click", () => {
@@ -187,65 +102,16 @@ window.addEventListener("resize", onScroll);
 // owns the audio-start decision, so there is no scroll/tap autostart elsewhere.
 const gate = document.getElementById("gate");
 document.documentElement.style.overflow = "hidden"; // lock scroll while gated
-let sharedWidgetStateRestored = false;
-
-function parseSharedWidgetState() {
-  const hash = window.location.hash.replace(/^#/, "");
-  const [kind, query = ""] = hash.split("?");
-  const params = new URLSearchParams(query);
-  if (kind === "pass") {
-    return { kind, name: params.get("name") || "", decade: params.get("decade") || "" };
-  }
-  if (kind === "weather") {
-    return { kind, decade: params.get("decade") || "" };
-  }
-  if (kind === "stamp") {
-    return {
-      kind,
-      decade: params.get("decade") || "",
-      mood: params.get("mood") || "",
-      route: params.get("route") || "",
-    };
-  }
-  if (kind === "receipt") {
-    return { kind, decade: params.get("decade") || "", delay: params.get("delay") || "" };
-  }
-  if (kind === "route") {
-    return {
-      kind,
-      origin: params.get("origin") || "",
-      destination: params.get("destination") || "",
-      mood: params.get("mood") || "",
-    };
-  }
-  if (kind === "manifest") {
-    return {
-      kind,
-      decade: params.get("decade") || "",
-      relics: params.get("relics") || "",
-    };
-  }
-  return null;
-}
-
-function restoreSharedWidgetState() {
-  if (sharedWidgetStateRestored) return;
-  sharedWidgetStateRestored = true;
-  const state = parseSharedWidgetState();
-  if (!state) return;
-  if (state.kind === "pass") boardingPass.issueFromLink(state);
-  if (state.kind === "weather") decadeWeather.issueFromLink(state);
-  if (state.kind === "stamp") passportStamp.issueFromLink(state);
-  if (state.kind === "receipt") gateReceipt.issueFromLink(state);
-  if (state.kind === "route") routePostcard.issueFromLink(state);
-  if (state.kind === "manifest") suitcaseManifest.issueFromLink(state);
-}
+let sharedArtifactStateRestored = false;
 
 function closeGate() {
   gate.classList.add("gate-out");
   document.body.classList.remove("gated");
   document.documentElement.style.overflow = "";
-  restoreSharedWidgetState();
+  if (!sharedArtifactStateRestored) {
+    sharedArtifactStateRestored = true;
+    artifactLab.restoreFromUrl({ reveal: true });
+  }
   const hide = () => (gate.hidden = true);
   gate.addEventListener("transitionend", hide, { once: true });
   setTimeout(hide, 800); // fallback if transitionend is missed

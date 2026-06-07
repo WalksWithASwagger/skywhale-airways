@@ -21,11 +21,11 @@ not connected; embedded Buy Buttons are the current shop surface.
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
-and drives the distortion, and the poetic voiceover surfaces line by line. At the
-end of the terminal, visitors issue themselves a time-travel boarding pass,
-pull a decade weather advisory, stamp their Gate Infinity passport, collect
-small paper artifacts from the time airport, watch the festival cut in the
-terminal frame, and browse the Skywhale Airways Duty-Free merch concepts.
+and drives the distortion, and the poetic voiceover surfaces line by line. After
+that portal, the terminal leads with the festival cut: the animation contest
+entry. Visitors can then remix the film, lyrics, and merch art into one
+downloadable Skywhale Artifact Lab souvenir before browsing the Duty-Free merch
+concepts.
 
 ## Run it
 
@@ -127,23 +127,15 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 - **`src/audio.js`** — the soundtrack bed + a WebAudio `AnalyserNode` feeding a
   `0..1` amplitude into the shader. The boarding-gate tap starts playback; the
   `SOUND` toggle mutes/unmutes.
-- **`src/boarding-pass.js`** — the signature widget. Name + decade → a canvas
-  boarding pass in the film's style, downloadable, file-shareable where
-  supported, and restorable through a copied `#pass?...` link. No backend.
-- **`src/decade-weather.js`** — a second client-side canvas widget. Decade →
-  a Skywhale Airways weather advisory with deterministic copy, downloadable,
-  file-shareable where supported, and restorable through a copied `#weather?...`
-  link.
-- **`src/passport-stamp.js`** — the Gate Infinity passport-stamp widget. Decade
-  + mood + route → a downloadable/shareable portal stamp, restorable through a
-  copied `#stamp?...` link.
-- **`src/artifacts/`** — three client-side canvas artifacts, one module each:
-  Gate Receipt (`#receipt?...`), Route Map Postcard (`#route?...`), and Suitcase
-  Sticker Manifest (`#manifest?...`), re-exported through the
-  `src/terminal-artifacts.js` barrel. They share the `CanvasArtifact` base and
-  drawing primitives in `src/canvas/` (`canvas-kit.js`, `canvas-draw.js`) — which
-  the boarding-pass / decade-weather / passport-stamp widgets also use. Each
-  supports deterministic share links, PNG download, and file-share where supported.
+- **`src/artifact-lab.js`** — the aftershow Artifact Lab. It composites committed
+  Skywhale scene/merch art plus textless plates in `public/artifacts/` into a
+  deterministic 1024px PNG. State is shareable through `#artifact?...`; old
+  `#pass`, `#weather`, `#stamp`, `#receipt`, `#route`, and `#manifest` links map
+  into the new lab.
+- **Legacy canvas widgets** (`src/boarding-pass.js`, `src/decade-weather.js`,
+  `src/passport-stamp.js`, `src/artifacts/`, `src/canvas/`, and
+  `src/terminal-artifacts.js`) — retained as source-history/reference modules,
+  but no longer imported by the homepage.
 - **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
   Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
   mount embedded Shopify buttons when Vite env vars are set; all other products

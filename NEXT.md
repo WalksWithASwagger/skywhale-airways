@@ -14,6 +14,17 @@ Last updated: June 7, 2026.
 - Terminal artifacts live on the Gate Infinity desk: Gate Receipt, Route Map
   Postcard, and Suitcase Sticker Manifest.
 
+## Local Handoff: Homepage Entry Flow
+
+- Local, uncommitted homepage flow now runs: portal journey → contest-entry
+  festival cut → Skywhale Artifact Lab → Duty-Free Souvenir Desk → credits.
+- The festival cut remains the canonical YouTube no-cookie embed
+  (`FTMbAECxb8A`), with the 53s web cut linked at `nvKMmuzQNDs`.
+- Verification on June 7: `npm run build` passes with the existing large-bundle
+  warning; `npm run lint` passes; Browser smoke passes at `1280x720` and
+  `390x844` with no console errors.
+- This slice is not committed, pushed, or deployed yet.
+
 ## June 6–7 engineering + infra pass
 
 A hardening sweep landed on `main` (all merged, all live):
