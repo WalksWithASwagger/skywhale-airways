@@ -9,8 +9,8 @@ Last updated: June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 - Production deployment verified during smoke: `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM`
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
-- Primary film: `public/film/skywhale-awards-cut-v2.mp4`
-- Preserved web cut: `public/film/psychedelic-airport.mp4`
+- Primary film: festival cut embedded from YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
+- Web cut: YouTube (Unlisted) — `youtu.be/nvKMmuzQNDs`. Both mp4s removed from the repo/LFS.
 - Terminal artifacts live on the Gate Infinity desk: Gate Receipt, Route Map
   Postcard, and Suitcase Sticker Manifest.
 

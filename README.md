@@ -89,9 +89,10 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 
 - **Vercel production** — verified on June 5, 2026 with root-path assets, custom
   aliases attached, and a real Git LFS-backed film file.
-- **Finished film** — the 59s festival / awards cut is wired into the
-  `#film-frame` slot from `public/film/skywhale-awards-cut-v2.mp4`. The 53s web
-  cut remains available at `public/film/psychedelic-airport.mp4`.
+- **Finished film** — the 59s festival / awards cut is embedded in the
+  `#film-frame` slot from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`). The 53s web
+  cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
+  repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.
 - **Festival submissions** — *Skywhale Airways* is the submission brand; the site
   includes an award-facing press kit at `press.html`.
 - **Duty-Free merch** — concept products are live on the site. The first three
@@ -174,15 +175,16 @@ when those local sources are available.
 
 ## Film Embed
 
-The primary festival cut is committed at
-`public/film/skywhale-awards-cut-v2.mp4` and is embedded in the `#film-frame`
-element with relative asset paths. The 53s web cut remains committed at
-`public/film/psychedelic-airport.mp4`. Git LFS is enabled on Vercel, and
-production serves MP4 files as real video assets instead of pointer files.
+The festival cut is hosted on YouTube (Unlisted) and embedded in the
+`#film-frame` slot via a privacy-friendly `youtube-nocookie` iframe — the mp4s
+are no longer in the repo (removed from Git LFS to stop Vercel pulling ~158 MB
+per deploy). The 53s web cut is also on YouTube (`youtu.be/nvKMmuzQNDs`).
 
 ```html
 <div class="film-frame" id="film-frame">
-  <video src="./film/skywhale-awards-cut-v2.mp4" controls playsinline poster="./scenes/01-skywhale-airport.webp"></video>
+  <iframe src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
+          title="A Psychedelic Airport for Time Travelers — festival cut"
+          loading="lazy" allowfullscreen></iframe>
 </div>
 ```
 
