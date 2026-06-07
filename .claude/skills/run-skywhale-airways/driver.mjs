@@ -154,11 +154,14 @@ wait #film-slot
 shot-el #film-slot 03-film
 scroll-to #artifact-lab
 wait #artifact-form
+wait .artifact-type-option[data-value="route"]
 screenshot 04-terminal
 fill #artifact-name Time Traveler
 click .artifact-type-option[data-value="route"]
 wait #artifact-download
 shot-el #artifact-lab 05-artifact-lab
+scroll-to #shop-grid
+wait .shopify-buy-slot
 console-errors
 quit
 `;

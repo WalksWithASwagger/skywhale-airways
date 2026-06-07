@@ -34,7 +34,7 @@ echo $! > /tmp/skywhale-dev.pid
 for i in $(seq 1 30); do curl -sf http://localhost:3000 >/dev/null 2>&1 && { echo "SERVING"; break; }; sleep 1; done
 ```
 
-2. Drive it. The scripted smoke flow enters the gate, scrolls to the promoted festival-cut film, generates an artifact, and screenshots each step:
+2. Drive it. The scripted smoke flow enters the gate, scrolls to the promoted festival-cut film, generates an artifact, verifies the shop slots, and screenshots the main steps:
 
 ```bash
 cd .claude/skills/run-skywhale-airways
