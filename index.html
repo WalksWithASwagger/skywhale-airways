@@ -84,218 +84,17 @@
     <!-- Scroll track: one tall section per scene drives the journey progress -->
     <main id="scroll-track"></main>
 
-    <!-- Terminal widgets + credits + reserved film slot live after the journey -->
+    <!-- Terminal film, aftershow artifacts, shop, and credits live after the journey -->
     <section id="terminal">
       <div class="terminal-inner">
-        <div class="widget-desk" aria-label="Gate Infinity desk">
-          <div class="widget-desk-top" aria-hidden="true">
-            <span>Gate Infinity Desk</span>
-            <span>Artifacts issued nowhen</span>
-          </div>
-
-          <section class="widget-panel" id="boarding-pass">
-            <p class="widget-label">Ticket Counter 01</p>
-            <h2 class="terminal-title">Issue Yourself a Boarding Pass</h2>
-            <p class="terminal-sub">
-              At check-in we weigh your luggage, your memories, and the years you
-              haven't unpacked. Choose a decade. The airport remembers the rest.
-            </p>
-
-            <form id="pass-form" autocomplete="off">
-              <label>
-                Passenger
-                <input id="pass-name" type="text" maxlength="22" placeholder="your name" />
-              </label>
-              <label>
-                Arriving
-                <select id="pass-decade"></select>
-              </label>
-              <button id="pass-generate" type="submit">Issue pass</button>
-            </form>
-
-            <div id="pass-stage" hidden>
-              <canvas id="pass-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated time-travel boarding pass"></canvas>
-              <div class="pass-actions">
-                <button id="pass-download" type="button">Download pass</button>
-                <button id="pass-copy" type="button" hidden>Copy link</button>
-                <button id="pass-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="widget-panel" id="decade-weather">
-            <p class="widget-label">Weather Desk 08</p>
-            <h2 class="terminal-title">Decade Weather</h2>
-            <p class="terminal-sub">
-              Choose a decade and Skywhale Airways will issue the current
-              conditions: runway visibility, baggage advice, and the weather
-              waiting outside the wrong year.
-            </p>
-
-            <form id="weather-form" autocomplete="off">
-              <label>
-                Arriving
-                <select id="weather-decade"></select>
-              </label>
-              <button id="weather-generate" type="submit">Issue weather</button>
-            </form>
-
-            <div id="weather-stage" hidden>
-              <canvas id="weather-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated Skywhale Airways decade weather report"></canvas>
-              <div class="weather-actions">
-                <button id="weather-download" type="button">Download weather</button>
-                <button id="weather-copy" type="button" hidden>Copy link</button>
-                <button id="weather-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="widget-panel" id="passport-stamp">
-            <p class="widget-label">Passport Control ∞</p>
-            <h2 class="terminal-title">Gate Infinity Passport Stamp</h2>
-            <p class="terminal-sub">
-              Choose a decade, a mood, and a route through the portal. Skywhale
-              Airways will stamp your crossing for the records.
-            </p>
-
-            <form id="stamp-form" autocomplete="off">
-              <label>
-                Arriving
-                <select id="stamp-decade"></select>
-              </label>
-              <label>
-                Mood
-                <select id="stamp-mood"></select>
-              </label>
-              <label>
-                Route
-                <select id="stamp-route"></select>
-              </label>
-              <button id="stamp-generate" type="submit">Stamp passport</button>
-            </form>
-
-            <div id="stamp-stage" hidden>
-              <canvas id="stamp-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated Gate Infinity passport stamp"></canvas>
-              <div class="stamp-actions">
-                <button id="stamp-download" type="button">Download stamp</button>
-                <button id="stamp-copy" type="button" hidden>Copy link</button>
-                <button id="stamp-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="widget-panel" id="gate-receipt">
-            <p class="widget-label">Claim Desk 13</p>
-            <h2 class="terminal-title">Gate Receipt</h2>
-            <p class="terminal-sub">
-              The airport has a paper trail for everything: gravity, fish
-              traffic, duplicate selves, and luggage that remembers out loud.
-            </p>
-
-            <form id="receipt-form" autocomplete="off">
-              <label>
-                Decade
-                <select id="receipt-decade"></select>
-              </label>
-              <label>
-                Delay
-                <select id="receipt-delay"></select>
-              </label>
-              <button id="receipt-generate" type="submit">Issue receipt</button>
-            </form>
-
-            <div id="receipt-stage" hidden>
-              <canvas id="receipt-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated Skywhale Airways gate receipt"></canvas>
-              <div class="receipt-actions">
-                <button id="receipt-download" type="button">Download receipt</button>
-                <button id="receipt-copy" type="button" hidden>Copy link</button>
-                <button id="receipt-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="widget-panel" id="route-postcard">
-            <p class="widget-label">Route Office 27</p>
-            <h2 class="terminal-title">Route Map Postcard</h2>
-            <p class="terminal-sub">
-              A souvenir route from one decade to another, stamped by Gate
-              Infinity and carried by a pilot with fins.
-            </p>
-
-            <form id="route-form" autocomplete="off">
-              <label>
-                Origin
-                <select id="route-origin"></select>
-              </label>
-              <label>
-                Destination
-                <select id="route-destination"></select>
-              </label>
-              <label>
-                Mood
-                <select id="route-mood"></select>
-              </label>
-              <button id="route-generate" type="submit">Draw route</button>
-            </form>
-
-            <div id="route-stage" hidden>
-              <canvas id="route-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated Skywhale Airways route map postcard"></canvas>
-              <div class="route-actions">
-                <button id="route-download" type="button">Download postcard</button>
-                <button id="route-copy" type="button" hidden>Copy link</button>
-                <button id="route-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-
-          <section class="widget-panel" id="suitcase-manifest">
-            <p class="widget-label">Baggage Memory 04</p>
-            <h2 class="terminal-title">Suitcase Sticker Manifest</h2>
-            <p class="terminal-sub">
-              Three small relics for one impossible suitcase. The rest can wait
-              in lost baggage until the century calls.
-            </p>
-
-            <form id="manifest-form" autocomplete="off">
-              <label>
-                Decade
-                <select id="manifest-decade"></select>
-              </label>
-              <label>
-                Relic 01
-                <select id="manifest-relic-1"></select>
-              </label>
-              <label>
-                Relic 02
-                <select id="manifest-relic-2"></select>
-              </label>
-              <label>
-                Relic 03
-                <select id="manifest-relic-3"></select>
-              </label>
-              <button id="manifest-generate" type="submit">Pack manifest</button>
-            </form>
-
-            <div id="manifest-stage" hidden>
-              <canvas id="manifest-canvas" width="1024" height="640" role="img"
-                aria-label="Your generated Skywhale Airways suitcase sticker manifest"></canvas>
-              <div class="manifest-actions">
-                <button id="manifest-download" type="button">Download manifest</button>
-                <button id="manifest-copy" type="button" hidden>Copy link</button>
-                <button id="manifest-share" type="button" hidden>Share</button>
-              </div>
-            </div>
-          </section>
-        </div>
-
         <!-- Festival cut is hosted on YouTube (Unlisted) and embedded here; no local mp4 in the repo. -->
-        <div id="film-slot">
-          <p class="film-label">Feature presentation · festival cut</p>
+        <section id="film-slot" aria-labelledby="film-title">
+          <p class="film-label">Contest entry · festival cut</p>
+          <h2 class="terminal-title" id="film-title">A Psychedelic Airport for Time Travelers</h2>
+          <p class="terminal-sub">
+            The portal above is the boarding route. This 59-second film is the
+            animation contest entry.
+          </p>
           <div class="film-frame" id="film-frame">
             <iframe
               src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
@@ -310,16 +109,63 @@
             <a class="film-link" href="https://youtu.be/nvKMmuzQNDs">53s web cut</a>
             <a class="film-link" href="./press.html">Press kit</a>
           </div>
-        </div>
+        </section>
 
-        <section id="duty-free">
-          <h2 class="terminal-title">Skywhale Airways Duty-Free</h2>
-          <p class="terminal-sub">
-            Souvenirs from a terminal that may not exist — stickers, patches and
-            shirts carried back through memory. The duty-free opens when the clock
-            agrees.
-          </p>
-          <div class="shop-grid" id="shop-grid"></div>
+        <section id="artifact-lab" aria-labelledby="artifacts-title">
+          <div class="terminal-section-heading artifact-lab-heading">
+            <p class="film-label">Aftershow artifacts</p>
+            <h2 class="terminal-title" id="artifacts-title">Skywhale Artifact Lab</h2>
+            <p class="terminal-sub">
+              After the film, remix the terminal into one impossible souvenir.
+            </p>
+          </div>
+
+          <div class="artifact-lab-shell">
+            <div class="artifact-preview">
+              <canvas id="artifact-canvas" width="1024" height="640" role="img"
+                aria-label="Your generated Skywhale Airways artifact"></canvas>
+              <div class="artifact-actions">
+                <button id="artifact-download" type="button">Download artifact</button>
+                <button id="artifact-copy" type="button">Copy link</button>
+                <button id="artifact-share" type="button" hidden>Share</button>
+              </div>
+            </div>
+
+            <form class="artifact-controls" id="artifact-form" autocomplete="off">
+              <div class="artifact-control-block">
+                <p class="artifact-control-label">Artifact</p>
+                <div class="artifact-type-options" id="artifact-type-options"></div>
+              </div>
+
+              <div class="artifact-control-block">
+                <p class="artifact-control-label">Lyric omen</p>
+                <div class="artifact-chip-options" id="artifact-omen-options"></div>
+              </div>
+
+              <div class="artifact-control-block">
+                <p class="artifact-control-label">Arriving</p>
+                <div class="artifact-decade-options" id="artifact-decade-options"></div>
+              </div>
+
+              <label class="artifact-name-label">
+                Traveler
+                <input id="artifact-name" type="text" maxlength="22" placeholder="Time Traveller" />
+              </label>
+            </form>
+          </div>
+        </section>
+
+        <section id="duty-free" aria-labelledby="duty-free-title">
+          <div class="duty-free-header">
+            <p class="film-label">Skywhale Airways</p>
+            <h2 class="terminal-title" id="duty-free-title">Duty-Free Souvenir Desk</h2>
+            <p class="terminal-sub">
+              A retro airline gift shop for time travelers: the live Nomad drop
+              up front, the beloved Skywhale marks close behind, and the broader
+              concept archive held until fulfillment is real.
+            </p>
+          </div>
+          <div class="shop-grid" id="shop-grid" aria-live="polite"></div>
         </section>
 
         <footer id="credits">

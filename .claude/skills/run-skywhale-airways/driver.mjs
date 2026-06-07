@@ -3,7 +3,7 @@
 // command interpreter. The project ships no chromium-cli, so this is the
 // committed harness a future agent uses to drive the running dev server.
 //
-//   node driver.mjs smoke                       # scripted entry→scroll→pass flow
+//   node driver.mjs smoke                       # scripted entry→film→artifact flow
 //   node driver.mjs <<'EOF' ... EOF             # pipe commands on stdin
 //   echo 'nav http://localhost:3000\nscreenshot' | node driver.mjs
 //
@@ -143,12 +143,15 @@ click #gate-muted
 sleep 1200
 screenshot 02-journey
 scroll-to #terminal
-wait #pass-form
-screenshot 03-terminal
-fill #pass-name Time Traveler
-click #pass-generate
-wait #pass-download
-shot-el #boarding-pass 04-boarding-pass
+wait #film-slot
+shot-el #film-slot 03-film
+scroll-to #artifact-lab
+wait #artifact-form
+screenshot 04-terminal
+fill #artifact-name Time Traveler
+click .artifact-type-option[data-value="route"]
+wait #artifact-download
+shot-el #artifact-lab 05-artifact-lab
 console-errors
 quit
 `;
