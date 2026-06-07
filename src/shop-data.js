@@ -58,7 +58,7 @@ export const products = [
     type: "Embroidered patch · the chest-print skywhale for jackets and bags",
     price: "$12",
     shopify: {
-      enabled: false,
+      enabled: true,
       handle: "skywhale-chest-patch",
       productEnv: "VITE_SHOPIFY_CHEST_PATCH_PRODUCT_ID",
       componentId: "shopify-buy-skywhale-chest-patch",
