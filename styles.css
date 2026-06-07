@@ -179,8 +179,12 @@ body {
   opacity: 0;
   transition: opacity 0.4s;
 }
-.in-terminal #caption {
+.in-terminal #caption,
+.in-terminal #hud {
   pointer-events: none;
+}
+.in-terminal #audio-toggle {
+  pointer-events: auto;
 }
 @keyframes bob {
   50% { transform: translateY(8px); }
