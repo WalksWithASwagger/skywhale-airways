@@ -1,8 +1,8 @@
 # Skywhale Airways ✈ 🐋
 
-A scroll-driven, heavy-WebGL microsite for the animation *A Psychedelic Airport
-for Time Travelers* — **AI Film Club · Retro Challenge · June 2026**, by
-**Kris Krug & Suzy Easton**. *Skywhale Airways* is the in-world airline brand
+A scroll-driven, heavy-WebGL microsite for the animation _A Psychedelic Airport
+for Time Travelers_ — **AI Film Club · Retro Challenge · June 2026**, by
+**Kris Krug & Suzy Easton**. _Skywhale Airways_ is the in-world airline brand
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
 
@@ -20,7 +20,7 @@ not connected; embedded Buy Buttons are the current shop surface.
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
-fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
+fish-aircraft drift in parallax, the _whale sky god_ soundtrack plays underneath
 and drives the distortion, and the poetic voiceover surfaces line by line. At the
 end of the terminal, visitors issue themselves a time-travel boarding pass,
 pull a decade weather advisory, stamp their Gate Infinity passport, collect
@@ -83,6 +83,12 @@ Admin verification env vars are also documented in `.env.example`.
 present; production currently uses `G-W59LMFSG43`. `VITE_GOOGLE_SITE_VERIFICATION`
 injects the Search Console verification meta tag at build time.
 
+`sitemap.xml` is generated during `vite build` from the page list in
+`vite.config.js` (with git-derived `<lastmod>` dates) and served from the site
+root, so it never drifts from the pages that actually ship. `robots.txt` points
+crawlers at it. Set `VITE_SITE_URL` to override the base URL if the domain
+changes.
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
@@ -95,7 +101,7 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   `#film-frame` slot from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`). The 53s web
   cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
   repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.
-- **Festival submissions** — *Skywhale Airways* is the submission brand; the site
+- **Festival submissions** — _Skywhale Airways_ is the submission brand; the site
   includes an award-facing press kit at `press.html`.
 - **Duty-Free merch** — concept products are live on the site. The first three
   Nomad products mount real Shopify Buy Buttons; the broader catalog remains
@@ -122,7 +128,7 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   same render pass, parallaxing with scroll and pulsing with the audio.
 - **Boarding gate** (`#gate` in `index.html`, wired in `src/main.js`) — the site
   opens on an entry overlay so it's **sound-on by default**: browsers block
-  autoplay until a gesture, so the "Tap to board" tap *is* that gesture and starts
+  autoplay until a gesture, so the "Tap to board" tap _is_ that gesture and starts
   the soundtrack. A small "enter muted" link is the courteous opt-out.
 - **`src/audio.js`** — the soundtrack bed + a WebAudio `AnalyserNode` feeding a
   `0..1` amplitude into the shader. The boarding-gate tap starts playback; the
@@ -135,8 +141,8 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   file-shareable where supported, and restorable through a copied `#weather?...`
   link.
 - **`src/passport-stamp.js`** — the Gate Infinity passport-stamp widget. Decade
-  + mood + route → a downloadable/shareable portal stamp, restorable through a
-  copied `#stamp?...` link.
+  - mood + route → a downloadable/shareable portal stamp, restorable through a
+    copied `#stamp?...` link.
 - **`src/artifacts/`** — three client-side canvas artifacts, one module each:
   Gate Receipt (`#receipt?...`), Route Map Postcard (`#route?...`), and Suitcase
   Sticker Manifest (`#manifest?...`), re-exported through the
@@ -187,9 +193,12 @@ per deploy). The 53s web cut is also on YouTube (`youtu.be/nvKMmuzQNDs`).
 
 ```html
 <div class="film-frame" id="film-frame">
-  <iframe src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
-          title="A Psychedelic Airport for Time Travelers — festival cut"
-          loading="lazy" allowfullscreen></iframe>
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
+    title="A Psychedelic Airport for Time Travelers — festival cut"
+    loading="lazy"
+    allowfullscreen
+  ></iframe>
 </div>
 ```
 
