@@ -5,6 +5,12 @@ hand-painted Midjourney keyframes into animated clips and edits. The WebGL
 microsite (repo root) is the *presentation* layer; this folder is where the
 actual animation is generated and cut.
 
+> Note (June 7, 2026): the `public/film/*.mp4` files referenced below were
+> removed from the repo/LFS. The festival + web cuts now live on YouTube
+> (Unlisted) — `youtu.be/FTMbAECxb8A` and `youtu.be/nvKMmuzQNDs`. The
+> production-edit copies under `production/video_project/.../edits/` (Git LFS)
+> are unchanged.
+
 ## What's here
 
 ```

@@ -51,9 +51,9 @@ preserved merch PNG and print assets.
 - Search Console URL-prefix property verified and sitemap submitted. Issue #12
   closed.
 - Suno cover art for **Whale Sky God** archived in production titles.
-- Awards/festival cut v2 imported and wired as the primary homepage film frame:
-  `public/film/skywhale-awards-cut-v2.mp4`.
-- Original 53s web cut preserved at `public/film/psychedelic-airport.mp4`.
+- Awards/festival cut v2 wired as the primary homepage film frame — now embedded
+  from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`); original 53s web cut on YouTube
+  too (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the repo/LFS (June 7).
 - Awards title card, credits card, and audio master archived under
   `production/video_project/time_airport/`.
 - Press Kit upgraded for festival programmers with a snapshot, canonical
@@ -137,9 +137,10 @@ Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 - `npm run build`
 - `npm run optimize`
 - `npm audit --audit-level=moderate`
-- `ffprobe` on `public/film/skywhale-awards-cut-v2.mp4`
-- `ffmpeg blackdetect` on `public/film/skywhale-awards-cut-v2.mp4`
-- `ffmpeg ebur128=peak=true` on `public/film/skywhale-awards-cut-v2.mp4`
+- `ffprobe` on `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
+  (the LFS production-edit source; the public mp4 is now on YouTube)
+- `ffmpeg blackdetect` on the same production-edit source
+- `ffmpeg ebur128=peak=true` on the same production-edit source
 - Browser smoke: gate, scroll journey, soundtrack toggle, boarding pass,
   widget copy links, Duty-Free grid, About page, Press Kit, and film embed.
 - Terminal artifact smoke: shared links restore Gate Receipt, Route Map
@@ -156,8 +157,6 @@ Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
   - `/about.html`
   - `/press.html`
   - `/sitemap.xml`
-  - `/film/skywhale-awards-cut-v2.mp4`
-  - `/film/psychedelic-airport.mp4`
   - `/merch/...`
   - `/scenes/...`
 
@@ -178,6 +177,11 @@ Awards cut production checks on June 4, 2026:
 - `https://skywhaleairways.com/film/skywhale-awards-cut-v2.mp4` returned HTTP
   200, `content-type: video/mp4`, `content-length: 78241899`, and an `ftypisom`
   MP4 header.
+
+> Update (June 7, 2026): the `/film/*.mp4` checks above are superseded — both
+> cuts were moved to YouTube (Unlisted) and the mp4s removed from the repo/LFS,
+> so `/film/*.mp4` now returns 404 and the homepage embeds a `youtube-nocookie`
+> iframe instead. See NEXT.md.
 
 Shopify checkout checks on June 4, 2026:
 

@@ -36,7 +36,8 @@ npm run dev        # http://localhost:3000
 ```
 
 `npm run build` writes the static site to `dist/`. `npm run preview` serves the
-root-path Vercel build locally.
+root-path Vercel build locally. `npm run lint` runs ESLint; every PR is gated by
+a GitHub Actions **build + Playwright smoke** check (`.github/workflows/ci.yml`).
 
 To test the old GitHub Pages subpath build manually, run:
 
@@ -87,8 +88,9 @@ injects the Search Console verification meta tag at build time.
 See [ROADMAP.md](ROADMAP.md) for launch gates, merge order, and post-launch
 work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 
-- **Vercel production** — verified on June 5, 2026 with root-path assets, custom
-  aliases attached, and a real Git LFS-backed film file.
+- **Vercel production** — live at the domain root with custom aliases; the films
+  are embedded from YouTube (no longer Git LFS), and the Vite 8 / Rolldown build
+  is verified on Vercel.
 - **Finished film** — the 59s festival / awards cut is embedded in the
   `#film-frame` slot from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`). The 53s web
   cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
@@ -135,10 +137,13 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 - **`src/passport-stamp.js`** — the Gate Infinity passport-stamp widget. Decade
   + mood + route → a downloadable/shareable portal stamp, restorable through a
   copied `#stamp?...` link.
-- **`src/terminal-artifacts.js`** — three client-side canvas artifacts: Gate
-  Receipt (`#receipt?...`), Route Map Postcard (`#route?...`), and Suitcase
-  Sticker Manifest (`#manifest?...`). Each supports deterministic share links,
-  PNG download, and file-share where supported.
+- **`src/artifacts/`** — three client-side canvas artifacts, one module each:
+  Gate Receipt (`#receipt?...`), Route Map Postcard (`#route?...`), and Suitcase
+  Sticker Manifest (`#manifest?...`), re-exported through the
+  `src/terminal-artifacts.js` barrel. They share the `CanvasArtifact` base and
+  drawing primitives in `src/canvas/` (`canvas-kit.js`, `canvas-draw.js`) — which
+  the boarding-pass / decade-weather / passport-stamp widgets also use. Each
+  supports deterministic share links, PNG download, and file-share where supported.
 - **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
   Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
   mount embedded Shopify buttons when Vite env vars are set; all other products

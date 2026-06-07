@@ -1,18 +1,38 @@
 # Skywhale Airways Next
 
-Last updated: June 5, 2026 18:30 PDT / June 6 01:30 UTC.
+Last updated: June 7, 2026.
 
 ## Current Production
 
 - Production: `https://skywhaleairways.com/`
 - Vercel fallback: `https://skywhale-airways.vercel.app/`
-- Production deployment verified during smoke: `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM`
+- Production auto-deploys the latest `main`; the Vite 8 / Rolldown build is verified live on Vercel.
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
 - Primary film: festival cut embedded from YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
 - Web cut: YouTube (Unlisted) — `youtu.be/nvKMmuzQNDs`. Both mp4s removed from the repo/LFS.
 - Terminal artifacts live on the Gate Infinity desk: Gate Receipt, Route Map
   Postcard, and Suitcase Sticker Manifest.
+
+## June 6–7 engineering + infra pass
+
+A hardening sweep landed on `main` (all merged, all live):
+
+- **CI gate** — GitHub Actions `build` + Playwright `smoke` runs on every PR
+  (#36 / #38). The smoke flow is the run-skywhale-airways driver. Smoke flakiness
+  on the HUD overlay is tracked in #56.
+- **Lint + deps** — ESLint flat config + Prettier with `lint`/`format` scripts
+  (#37); `three` 0.171→0.184, `sharp` 0.33→0.34, and Dependabot (#39).
+- **Vite 6 → 8 (Rolldown/Oxc)** — `vite.config.js` uses `rolldownOptions`; build
+  verified on Vercel (#41).
+- **Canvas refactor** — the 873-line `terminal-artifacts.js` split into
+  `src/artifacts/*` + a shared `src/canvas/` kit (`canvas-kit.js`,
+  `canvas-draw.js`); the boarding-pass / decade-weather / passport-stamp widgets
+  now reuse that kit (#42 + #51, tiers 1–3). `THREE.Clock` → `THREE.Timer` (#48).
+- **LFS / film hosting** — the LFS budget exhaustion that failed every Vercel
+  deploy (clone step) was fixed (budget top-up + Vercel Pro), and the durable fix
+  removed both film mp4s from the repo/LFS; they're embedded from YouTube now
+  (#49 / #57). See "Current Production" above for the URLs.
 
 ## Admin State
 
@@ -71,7 +91,7 @@ public derivatives.
 - Creative origin notes: `production/ORIGIN_NOTES.md`
 - Awards QA checklist and evidence: `production/AWARDS_QA.md`
 - Film production project: `production/video_project/time_airport/`
-- Final public film files: `public/film/`
+- Films: YouTube (Unlisted) — `youtu.be/FTMbAECxb8A` (festival), `youtu.be/nvKMmuzQNDs` (web cut); removed from repo/LFS
 - Shopify launch notes: `merch/shopify-launch.md`
 - Duty-Free fulfillment policy: `merch/fulfillment-roadmap.md`
 - Canonical Nomad art: `merch/r5/i-am-nomad-master.png`
@@ -86,5 +106,5 @@ public derivatives.
 - Keep "Time Traveller" language across public and product copy.
 - Keep Shopify embeds button/cart/checkout-only so Skywhale's own visual catalog
   remains the public storefront.
-- Keep Git LFS enabled for film, production audio/video, and source/print merch
-  assets.
+- Keep Git LFS enabled for production audio/video and source/print merch assets.
+  (The public films are hosted on YouTube now, not Git LFS.)
