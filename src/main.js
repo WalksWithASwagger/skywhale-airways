@@ -1,12 +1,8 @@
 import { Journey } from "./journey.js";
 import { Fish } from "./fish-particles.js";
 import { AudioBed } from "./audio.js";
-import { ArtifactLab } from "./artifact-lab.js";
-import { renderShop } from "./shop.js";
-import { initializeShopifyBuyButtons } from "./shopify-buy-buttons.js";
 import { trackEvent } from "./analytics.js";
 import { scenes } from "./data/scenes.js";
-import { products } from "./shop-data.js";
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -29,23 +25,6 @@ const fish = new Fish(journey.scene, { reducedMotion, count: smallScreen ? 18 : 
 
 // --- Audio bed. ---
 const audio = new AudioBed(document.getElementById("audio-toggle"));
-
-// --- Artifact Lab. ---
-const artifactLab = new ArtifactLab({
-  root: document.getElementById("artifact-lab"),
-  canvas: document.getElementById("artifact-canvas"),
-  typeOptions: document.getElementById("artifact-type-options"),
-  omenOptions: document.getElementById("artifact-omen-options"),
-  decadeOptions: document.getElementById("artifact-decade-options"),
-  nameInput: document.getElementById("artifact-name"),
-  downloadBtn: document.getElementById("artifact-download"),
-  copyBtn: document.getElementById("artifact-copy"),
-  shareBtn: document.getElementById("artifact-share"),
-});
-
-// --- Duty-Free shop. ---
-renderShop(document.getElementById("shop-grid"));
-initializeShopifyBuyButtons(products);
 
 document.getElementById("gate-board")?.addEventListener("click", () => {
   trackEvent("skywhale_board", { audio_mode: "sound_on" });
@@ -103,15 +82,52 @@ window.addEventListener("resize", onScroll);
 const gate = document.getElementById("gate");
 document.documentElement.style.overflow = "hidden"; // lock scroll while gated
 let sharedArtifactStateRestored = false;
+let terminalModulesPromise;
+
+function loadTerminalModules() {
+  terminalModulesPromise ??= Promise.all([
+    import("./artifact-lab.js"),
+    import("./shop.js"),
+    import("./shop-data.js"),
+    import("./shopify-buy-buttons.js"),
+  ]).then(([{ ArtifactLab }, { renderShop }, { products }, { initializeShopifyBuyButtons }]) => {
+    const artifactLab = new ArtifactLab({
+      root: document.getElementById("artifact-lab"),
+      canvas: document.getElementById("artifact-canvas"),
+      typeOptions: document.getElementById("artifact-type-options"),
+      omenOptions: document.getElementById("artifact-omen-options"),
+      decadeOptions: document.getElementById("artifact-decade-options"),
+      nameInput: document.getElementById("artifact-name"),
+      downloadBtn: document.getElementById("artifact-download"),
+      copyBtn: document.getElementById("artifact-copy"),
+      shareBtn: document.getElementById("artifact-share"),
+    });
+
+    renderShop(document.getElementById("shop-grid"));
+    initializeShopifyBuyButtons(products);
+
+    return { artifactLab };
+  });
+
+  return terminalModulesPromise;
+}
+
+function reportTerminalModuleError(error) {
+  console.error("Terminal modules failed to load", error);
+}
+
+async function restoreSharedArtifactState() {
+  if (sharedArtifactStateRestored) return;
+  sharedArtifactStateRestored = true;
+  const { artifactLab } = await loadTerminalModules();
+  artifactLab.restoreFromUrl({ reveal: true });
+}
 
 function closeGate() {
   gate.classList.add("gate-out");
   document.body.classList.remove("gated");
   document.documentElement.style.overflow = "";
-  if (!sharedArtifactStateRestored) {
-    sharedArtifactStateRestored = true;
-    artifactLab.restoreFromUrl({ reveal: true });
-  }
+  void restoreSharedArtifactState().catch(reportTerminalModuleError);
   const hide = () => (gate.hidden = true);
   gate.addEventListener("transitionend", hide, { once: true });
   setTimeout(hide, 800); // fallback if transitionend is missed
