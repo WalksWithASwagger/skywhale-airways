@@ -2,7 +2,7 @@
 
 Last updated: June 4, 2026.
 
-> Note (June 7, 2026): the `public/film/*.mp4` paths below were removed from the
+> Note (June 7, 2026): the former `public/film/*.mp4` paths were removed from the
 > repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
 > (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`
 > source copies (Git LFS) are unchanged.
@@ -13,12 +13,14 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-- Primary festival cut:
-  `public/film/skywhale-awards-cut-v2.mp4`
+- Public primary festival cut:
+  YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
 - Production edit copy:
   `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
-- Preserved 53s web cut:
-  `public/film/psychedelic-airport.mp4`
+- Public preserved 53s web cut:
+  YouTube (Unlisted), `youtu.be/nvKMmuzQNDs`
+- Production web edit copy:
+  `production/video_project/time_airport/edits/skywhale_whalesky_final.mp4`
 - Awards title card:
   `production/video_project/time_airport/titles/title_card_awards.png`
 - Awards credits card:

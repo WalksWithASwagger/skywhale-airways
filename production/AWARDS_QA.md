@@ -2,7 +2,7 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-> Note (June 7, 2026): the `public/film/*.mp4` paths below were removed from the
+> Note (June 7, 2026): the former `public/film/*.mp4` paths were removed from the
 > repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
 > (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`
 > source copies (Git LFS) are unchanged, so the `ffprobe` checks still apply to
@@ -10,16 +10,17 @@ Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
 ## Files
 
-- Festival cut: `public/film/skywhale-awards-cut-v2.mp4`
+- Public festival cut: YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
 - Production edit: `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
-- Web cut, preserved: `public/film/psychedelic-airport.mp4`
+- Public web cut, preserved: YouTube (Unlisted), `youtu.be/nvKMmuzQNDs`
+- Production web edit: `production/video_project/time_airport/edits/skywhale_whalesky_final.mp4`
 - Awards audio master: `production/video_project/time_airport/audio/whale-sky-god-awards-master.wav`
 - Awards title card: `production/video_project/time_airport/titles/title_card_awards.png`
 - Awards credits card: `production/video_project/time_airport/titles/credits_card_awards.png`
 
-`public/film/skywhale-awards-cut-v2.mp4` and
-`production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4` are
-byte-identical.
+The old public MP4 copy was byte-identical to
+`production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4` before
+the public files were removed from the repo/LFS.
 
 ## Video Specs
 
@@ -28,7 +29,7 @@ Command:
 ```bash
 ffprobe -hide_banner -v error \
   -show_entries format=duration,size,bit_rate:stream=index,codec_type,codec_name,width,height,r_frame_rate,avg_frame_rate,sample_rate,channels \
-  -of json public/film/skywhale-awards-cut-v2.mp4
+  -of json production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4
 ```
 
 Result:
@@ -44,7 +45,7 @@ Command:
 
 ```bash
 ffmpeg -hide_banner -nostats \
-  -i public/film/skywhale-awards-cut-v2.mp4 \
+  -i production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4 \
   -vf blackdetect=d=0.1:pix_th=0.10 -an -f null -
 ```
 
@@ -56,7 +57,7 @@ Command:
 
 ```bash
 ffmpeg -hide_banner -nostats \
-  -i public/film/skywhale-awards-cut-v2.mp4 \
+  -i production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4 \
   -filter_complex ebur128=peak=true -f null -
 ```
 
@@ -84,8 +85,9 @@ Then smoke test:
 
 - Home page gate opens.
 - Festival cut appears in the terminal film frame.
-- `public/film/skywhale-awards-cut-v2.mp4` loads as the primary cut.
-- `public/film/psychedelic-airport.mp4` remains reachable as the 53s web cut.
+- The terminal film frame embeds the YouTube no-cookie festival cut
+  (`FTMbAECxb8A`) as the primary cut.
+- The 53s web cut link points to YouTube (`nvKMmuzQNDs`).
 - Press Kit links for festival cut, web cut, stills, About, and airport resolve.
 
 ## Remaining Human Review
