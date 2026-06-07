@@ -11,6 +11,7 @@
 //   nav <url>                 navigate and wait for DOMContentLoaded
 //   wait <selector>           wait for selector to be visible (10s)
 //   wait-text <text>          wait for text to appear (10s)
+//   wait-eval <js>            wait until a page function/expression is truthy (10s)
 //   click <selector>          click an element
 //   fill <selector> <value>   fill an input (rest of line is the value)
 //   press <selector> <key>    press a key on a focused selector
@@ -78,6 +79,10 @@ async function run(line) {
       await page.getByText(rest, { exact: false }).first().waitFor({ state: "visible", timeout: 10000 });
       console.log(`✓ text "${rest}"`);
       break;
+    case "wait-eval":
+      await page.waitForFunction(rest, undefined, { timeout: 10000 });
+      console.log(`✓ wait-eval ${rest}`);
+      break;
     case "click":
       await page.locator(rest).first().click({ timeout: 10000 });
       console.log(`• click ${rest}`);
@@ -143,6 +148,7 @@ click #gate-muted
 sleep 1200
 screenshot 02-journey
 scroll-to #terminal
+wait-eval document.body.classList.contains("in-terminal")
 wait #film-slot
 shot-el #film-slot 03-film
 scroll-to #artifact-lab

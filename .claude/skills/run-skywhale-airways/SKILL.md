@@ -46,10 +46,10 @@ Expected output ends with `(no console/page errors)` and writes `01-gate.png`, `
 3. For ad-hoc driving, pipe commands on stdin (same session, one command per line):
 
 ```bash
-printf 'nav http://localhost:3000\nwait #gate-board\nclick #gate-muted\nscroll-to #terminal\nwait #film-slot\nscroll-to #artifact-lab\nscreenshot terminal\nconsole-errors\n' | node driver.mjs
+printf 'nav http://localhost:3000\nwait #gate-board\nclick #gate-muted\nscroll-to #terminal\nwait-eval document.body.classList.contains("in-terminal")\nwait #film-slot\nscroll-to #artifact-lab\nscreenshot terminal\nconsole-errors\n' | node driver.mjs
 ```
 
-Driver commands: `nav <url>`, `wait <selector>`, `wait-text <text>`, `click <sel>`, `fill <sel> <value>`, `press <sel> <key>`, `scroll <px>`, `scroll-to <sel>`, `sleep <ms>`, `eval <js>`, `screenshot [name]`, `shot-el <sel> [name]` (crop to one element), `console-errors`, `quit`. Set `HEADED=1` to watch in a visible window.
+Driver commands: `nav <url>`, `wait <selector>`, `wait-text <text>`, `wait-eval <js>`, `click <sel>`, `fill <sel> <value>`, `press <sel> <key>`, `scroll <px>`, `scroll-to <sel>`, `sleep <ms>`, `eval <js>`, `screenshot [name]`, `shot-el <sel> [name]` (crop to one element), `console-errors`, `quit`. Set `HEADED=1` to watch in a visible window.
 
 4. Stop the server before relaunching (or the next `npm run dev` hits `EADDRINUSE`):
 
