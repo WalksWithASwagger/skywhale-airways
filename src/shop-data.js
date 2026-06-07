@@ -1,6 +1,16 @@
 // Skywhale Airways Duty-Free catalog. Images live in public/merch (committed
 // web-optimized webp; source rasters regenerate from merch/*.md). Nomad-first
 // Shopify products mount into the first three cards when VITE_* values are set.
+//
+// A product goes live by adding a `shopify` block (see the Nomad products
+// below). `enabled: false` products are staged: the wiring is in place but the
+// card still renders as the disabled "Boarding soon" button until KK creates the
+// Shopify product, sets its `productEnv` value in Vercel, and flips
+// `enabled: true`. See merch/shopify-launch.md for the launch checklist.
+//   handle       — Shopify product handle (informational reference)
+//   productEnv   — env var holding the Storefront product ID
+//   componentId  — DOM node id the Buy Button mounts into (`shopify-buy-<slug>`)
+//   variantMode  — "options" for apparel (size selector), else "button"
 
 export const products = [
   {
@@ -47,12 +57,26 @@ export const products = [
     title: "Skywhale Chest Patch",
     type: "Embroidered patch · the chest-print skywhale for jackets and bags",
     price: "$12",
+    shopify: {
+      enabled: false,
+      handle: "skywhale-chest-patch",
+      productEnv: "VITE_SHOPIFY_CHEST_PATCH_PRODUCT_ID",
+      componentId: "shopify-buy-skywhale-chest-patch",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r4-02-skywhale-chest-decal.webp",
     title: "Skywhale Chest Decal",
     type: "Die-cut decal · the friendly skywhale mark in travel-sticker form",
     price: "$6",
+    shopify: {
+      enabled: false,
+      handle: "skywhale-chest-decal",
+      productEnv: "VITE_SHOPIFY_CHEST_DECAL_PRODUCT_ID",
+      componentId: "shopify-buy-skywhale-chest-decal",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/mockups-05-skywhale-tee.webp",
@@ -65,6 +89,13 @@ export const products = [
     title: "Baggage Tag",
     type: "Sticker · seat fish, boarding through memory",
     price: "$5",
+    shopify: {
+      enabled: false,
+      handle: "baggage-tag",
+      productEnv: "VITE_SHOPIFY_BAGGAGE_TAG_PRODUCT_ID",
+      componentId: "shopify-buy-baggage-tag",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r4-06-baggage-tag-memory.webp",
@@ -77,6 +108,13 @@ export const products = [
     title: "Enamel Pin Set",
     type: "Five pins · skywhale, Gate infinity, suitcase, clock, fish-aircraft",
     price: "$28",
+    shopify: {
+      enabled: false,
+      handle: "enamel-pin-set",
+      productEnv: "VITE_SHOPIFY_PIN_SET_PRODUCT_ID",
+      componentId: "shopify-buy-enamel-pin-set",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r2-03-enamel-pins.webp",
@@ -89,6 +127,13 @@ export const products = [
     title: "Terminal Relics Sticker Sheet",
     type: "Kiss-cut sheet · cute fragments from the time airport",
     price: "$10",
+    shopify: {
+      enabled: false,
+      handle: "terminal-relics-sticker-sheet",
+      productEnv: "VITE_SHOPIFY_RELICS_SHEET_PRODUCT_ID",
+      componentId: "shopify-buy-terminal-relics-sheet",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r2-05-sticker-sheet.webp",
@@ -101,12 +146,26 @@ export const products = [
     title: "Gravity Stops Insisting",
     type: "Die-cut sticker · the Time Traveller, unweighted",
     price: "$5",
+    shopify: {
+      enabled: false,
+      handle: "gravity-stops-insisting-sticker",
+      productEnv: "VITE_SHOPIFY_GRAVITY_STICKER_PRODUCT_ID",
+      componentId: "shopify-buy-gravity-stops-sticker",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r4-05-gravity-stops-insisting-tee.webp",
     title: "Gravity Stops Insisting Tee",
     type: "Shirt · somewhere between gate and sky",
     price: "$36",
+    shopify: {
+      enabled: false,
+      handle: "gravity-stops-insisting-tee",
+      productEnv: "VITE_SHOPIFY_GRAVITY_TEE_PRODUCT_ID",
+      componentId: "shopify-buy-gravity-stops-tee",
+      variantMode: "options",
+    },
   },
   {
     img: "merch/r2-04-lyric-weather.webp",
@@ -119,6 +178,13 @@ export const products = [
     title: "Decade Weather Card",
     type: "Sticker card · warm analog haze, runway visible in dreams",
     price: "$5",
+    shopify: {
+      enabled: false,
+      handle: "decade-weather-card",
+      productEnv: "VITE_SHOPIFY_DECADE_WEATHER_CARD_PRODUCT_ID",
+      componentId: "shopify-buy-decade-weather-card",
+      variantMode: "button",
+    },
   },
   {
     img: "merch/r3-06-runway-like-a-memory.webp",
