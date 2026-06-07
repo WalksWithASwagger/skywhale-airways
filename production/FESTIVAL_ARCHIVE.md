@@ -2,6 +2,11 @@
 
 Last updated: June 4, 2026.
 
+> Note (June 7, 2026): the `public/film/*.mp4` paths below were removed from the
+> repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
+> (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`
+> source copies (Git LFS) are unchanged.
+
 This is the off-repo packaging checklist for festivals that require a ZIP,
 ProRes, stills sheet, separate rights files, or a delivery package beyond the
 public Skywhale site and Press Kit.
