@@ -23,7 +23,7 @@ export class Journey {
       antialias: true,
       powerPreference: "high-performance",
     });
-    this.renderer.setClearColor(0xe9c6d4, 1);
+    this.renderer.setClearColor(0xe9c6d5, 1);
 
     this.scene = new THREE.Scene();
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
