@@ -115,6 +115,22 @@ production/
   linked from the film actions and Press Kit. Vercel no longer serves public
   film MP4s from repo/LFS.
 
+## Submission export
+
+To package the finished cut for a festival portal or projector laptop, run:
+
+```bash
+production/scripts/export_festival_master.sh            # lossless repackage (recommended)
+production/scripts/export_festival_master.sh --reencode # fresh high-bitrate H.264 if a portal rejects the original
+```
+
+This does **not** regenerate the film — Veo clips are native 1920x1080, so
+1080p is the quality ceiling and the committed `skywhale_awards_cut_v2.mp4` is
+already a near-lossless CRF-18 master. The default mode is a bit-exact stream
+copy with `+faststart` and a clean submission filename; `--reencode` produces a
+fresh CRF-16 H.264 with BT.709 color tags and 320k audio for portals that
+demand a transcode. Requires `ffmpeg` and an LFS-pulled master (`git lfs pull`).
+
 See `AWARDS_QA.md` for the ffprobe, blackdetect, loudness, and browser checklist
 results.
 
