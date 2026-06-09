@@ -1,3 +1,8 @@
+import { inject } from "@vercel/analytics";
+
+// Initialize Vercel Web Analytics
+inject();
+
 const measurementId = (import.meta.env.VITE_GA_MEASUREMENT_ID || "").trim();
 const validGoogleTagId = /^(G|GT)-[A-Z0-9]+$/i.test(measurementId);
 

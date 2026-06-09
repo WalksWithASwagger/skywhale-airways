@@ -13,6 +13,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "three": "^0.184.0"
   },
   "devDependencies": {
