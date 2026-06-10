@@ -13,7 +13,11 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (v7) — **v7 is FINAL**: audio re-timed to start at frame one
+> June 10, 2026 (v8) — **v8 is FINAL**: 59.583s, s01/s07 full native takes,
+> s09 +1s, ambience outro, lyric grid released. Mix A sha256 `c776ddec72e3dc4b29010a2386be7aa9d68689d75e1b68ee345f0502a69ae5b5`;
+> Mix B sha256 `44de3223128bb79b6dde669c1a68cb9ab2cc5fa5fae7c9ed3432dd3ed0c4f718`. Recipe: `v8_timing.json`.
+
+> June 10, 2026 (v7) — **v7 is superseded**: audio re-timed to start at frame one
 > (music over the title), 53.5s total, first s01->s02 dissolve, lyric grid
 > re-pinned exactly, middles extended. Mix A sha256 `e6f55734e45c0385dbf6ad0550d5a4a673231c8d3c7c57eb6a17a8cc51347655`;
 > Mix B sha256 `a14c053f0e40b04595f08f1531874200ca9c75bdcee604c52f6b0213fcf6cbe2`. Recipe: `v7_timing.json`.
