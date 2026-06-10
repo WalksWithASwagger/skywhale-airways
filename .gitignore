@@ -12,3 +12,4 @@ production/video_project/time_airport/edits/Skywhale-Airways-festival-cut-submis
 __pycache__/
 # Raw card generations (4K crops are the committed assets)
 production/video_project/time_airport/titles/*_raw.png
+production/video_project/time_airport/review/
