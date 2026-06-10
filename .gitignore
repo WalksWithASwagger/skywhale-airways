@@ -9,3 +9,6 @@ dist
 
 # Derived submission export (regenerate with production/scripts/export_festival_master.sh)
 production/video_project/time_airport/edits/Skywhale-Airways-festival-cut-submission.mp4
+__pycache__/
+# Raw card generations (4K crops are the committed assets)
+production/video_project/time_airport/titles/*_raw.png
