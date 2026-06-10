@@ -1,0 +1,249 @@
+{
+  "source": "skywhale_awards_cut_v2.mp4",
+  "fps": 24,
+  "total_frames": 1420,
+  "title": {
+    "end_frame": 72,
+    "dip_min_frame": 72,
+    "dip_min_yavg": 35.0,
+    "title_yavg": 157.4,
+    "body_yavg": 150.2,
+    "fade_out_frames": 1,
+    "fade_in_frames": 15
+  },
+  "shots": [
+    {
+      "id": "s01",
+      "start_frame": 72,
+      "end_frame": 207,
+      "frames": 135,
+      "seconds": 5.625,
+      "motion_energy": 0.0121,
+      "compare_motion_energy": 0.01375,
+      "speed_ratio_vs_v2": 1.136,
+      "derived_window_seconds": 2.968
+    },
+    {
+      "id": "s02",
+      "start_frame": 207,
+      "end_frame": 315,
+      "frames": 108,
+      "seconds": 4.5,
+      "motion_energy": 0.0126,
+      "compare_motion_energy": 0.01334,
+      "speed_ratio_vs_v2": 1.059,
+      "derived_window_seconds": 3.022
+    },
+    {
+      "id": "s03",
+      "start_frame": 315,
+      "end_frame": 452,
+      "frames": 137,
+      "seconds": 5.7083,
+      "motion_energy": 0.01976,
+      "compare_motion_energy": 0.02029,
+      "speed_ratio_vs_v2": 1.027,
+      "derived_window_seconds": 3.887
+    },
+    {
+      "id": "s04",
+      "start_frame": 452,
+      "end_frame": 559,
+      "frames": 107,
+      "seconds": 4.4583,
+      "motion_energy": 0.00818,
+      "compare_motion_energy": 0.01257,
+      "speed_ratio_vs_v2": 1.537,
+      "derived_window_seconds": 2.081
+    },
+    {
+      "id": "s05",
+      "start_frame": 559,
+      "end_frame": 636,
+      "frames": 77,
+      "seconds": 3.2083,
+      "motion_energy": 0.00491,
+      "compare_motion_energy": 0.0067,
+      "speed_ratio_vs_v2": 1.365,
+      "derived_window_seconds": 1.7
+    },
+    {
+      "id": "s06",
+      "start_frame": 636,
+      "end_frame": 712,
+      "frames": 76,
+      "seconds": 3.1667,
+      "motion_energy": 0.01278,
+      "compare_motion_energy": 0.01022,
+      "speed_ratio_vs_v2": 0.8,
+      "derived_window_seconds": 2.899
+    },
+    {
+      "id": "s08",
+      "start_frame": 712,
+      "end_frame": 796,
+      "frames": 84,
+      "seconds": 3.5,
+      "motion_energy": 0.00263,
+      "compare_motion_energy": 0.00248,
+      "speed_ratio_vs_v2": 0.943,
+      "derived_window_seconds": 2.644
+    },
+    {
+      "id": "s09",
+      "start_frame": 796,
+      "end_frame": 880,
+      "frames": 84,
+      "seconds": 3.5,
+      "motion_energy": 0.00359,
+      "compare_motion_energy": 0.00296,
+      "speed_ratio_vs_v2": 0.825,
+      "derived_window_seconds": 3.022
+    },
+    {
+      "id": "s07",
+      "start_frame": 880,
+      "end_frame": 1018,
+      "frames": 138,
+      "seconds": 5.75,
+      "motion_energy": 0.01942,
+      "compare_motion_energy": 0.01892,
+      "speed_ratio_vs_v2": 0.974,
+      "derived_window_seconds": 4.1
+    },
+    {
+      "id": "s10",
+      "start_frame": 1018,
+      "end_frame": 1324,
+      "frames": 306,
+      "seconds": 12.75,
+      "motion_energy": 0.01626,
+      "compare_motion_energy": 0.02719,
+      "speed_ratio_vs_v2": 1.672,
+      "derived_window_seconds": 3.42
+    }
+  ],
+  "boundaries": [
+    {
+      "after": "s01",
+      "frame": 207,
+      "time": 8.625,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3788
+    },
+    {
+      "after": "s02",
+      "frame": 315,
+      "time": 13.125,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.271
+    },
+    {
+      "after": "s03",
+      "frame": 452,
+      "time": 18.83333,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3525
+    },
+    {
+      "after": "s04",
+      "frame": 559,
+      "time": 23.29167,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3142
+    },
+    {
+      "after": "s05",
+      "frame": 636,
+      "time": 26.5,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3294
+    },
+    {
+      "after": "s06",
+      "frame": 712,
+      "time": 29.66667,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.2905
+    },
+    {
+      "after": "s08",
+      "frame": 796,
+      "time": 33.16667,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3058
+    },
+    {
+      "after": "s09",
+      "frame": 880,
+      "time": 36.66667,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.3339
+    },
+    {
+      "after": "s07",
+      "frame": 1018,
+      "time": 42.41667,
+      "kind": "cut",
+      "width_frames": 1,
+      "peak_score": 0.2876
+    }
+  ],
+  "credits": {
+    "frame": 1324,
+    "time": 55.16667,
+    "kind": "cut",
+    "width_frames": 1,
+    "peak_score": 1.0
+  },
+  "v3_reconstruction": {
+    "method": "durations: frame-exact boundary detection. speeds: duplicate-frame signature calibration (7/10 shots match the README web-cut factors exactly; s09 probe-matched at w=2.9; s10 signature fits the full 8s take stretched to 12.75s; s01 confounded by natural stillness -> motion-energy-matched window).",
+    "scenes": [
+      "s01",
+      "s02",
+      "s03",
+      "s04",
+      "s05",
+      "s06",
+      "s08",
+      "s09",
+      "s07",
+      "s10"
+    ],
+    "durations": [
+      5.625,
+      4.5,
+      5.7083,
+      4.4583,
+      3.2083,
+      3.1667,
+      3.5,
+      3.5,
+      5.75,
+      12.75
+    ],
+    "windows": [
+      2.97,
+      3.201,
+      3.992,
+      3.198,
+      2.32,
+      2.32,
+      2.493,
+      2.9,
+      3.993,
+      7.99
+    ],
+    "transitions": "all internal boundaries hard cuts",
+    "title": "72f card; fast fade to dark (~2f) at end; body fades in from dark over ~15f",
+    "credits": "hard cut at frame 1324; 97f credits card segment; total 1421f / 59.208333s"
+  }
+}

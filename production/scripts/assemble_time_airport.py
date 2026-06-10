@@ -91,13 +91,16 @@ def main() -> int:
         seg = tmp / f"seg_{idx:02d}.mp4"
         vf = f"scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,fps={args.fps}"
         cmd = ["ffmpeg", "-y", "-v", "error", "-i", str(clip)]
+        frames_cap = []
         if args.mode == "head":
             factor = durations[idx] / windows[idx]
             vf = f"trim=0:{windows[idx]:.3f},setpts={factor:.5f}*PTS," + vf
+            # Frame-exact segments: float-seconds trims round up ~1f/segment.
+            frames_cap = ["-frames:v", str(round(durations[idx] * args.fps))]
         elif target:
             factor = target / dur(clip)
             vf = f"setpts={factor:.5f}*PTS," + vf
-        cmd += ["-vf", vf, "-an", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(seg)]
+        cmd += ["-vf", vf, "-an"] + frames_cap + ["-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(seg)]
         subprocess.run(cmd, check=True)
         segs.append(seg)
 
