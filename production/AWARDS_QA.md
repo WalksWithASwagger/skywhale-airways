@@ -2,7 +2,25 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD v7 — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v8 — June 10, 2026 (FINAL submission deliverable)
+
+KK claimed the runtime back toward the minute: **59.583s / 1430f**
+(~0.4s headroom to 60). s01 switched to the round-1 take ("clip two"),
+full 8 seconds at native speed (the whale's blue morph plays out);
+s07 golden fish full 8 seconds native; s09 +1s (old footage, 1.57x).
+Music still from frame one; the song (fixed 53.5s) ends ~6s before
+the picture, so a quiet generated-ambience outro (from the SFX-directed
+trippy rotunda take, -16dB, faded) carries the final seconds in BOTH
+mixes — tail measures -33dB, never silent. **Lyric grid released by
+director's call** (body outgrew the song; anchors no longer pinned).
+Recipe: `v8_timing.json`.
+
+Masters: Mix A `edits/i_am_nomad_4k_master_v8.mp4` sha256 `c776ddec72e3dc4b29010a2386be7aa9d68689d75e1b68ee345f0502a69ae5b5`;
+Mix B (scene beds s02/s03 + outro) `..._v8_sfx.mp4` sha256 `44de3223128bb79b6dde669c1a68cb9ab2cc5fa5fae7c9ed3432dd3ed0c4f718`.
+QA both: 1430f / 59.583s / 3840x2160 / 24fps / BT.709 / blackdetect 0 /
+-16.7 LUFS / -3.6 dBTP; head -20.3dB (music immediate).
+
+## I AM NOMAD v7 — June 10, 2026 (superseded by v8)
 
 The audio re-time cut. KK: music must start at frame one and play over
 the title; no quiet head, no dead tail; extend the middles; keep it
