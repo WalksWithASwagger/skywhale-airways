@@ -98,7 +98,7 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   are embedded from YouTube (no longer Git LFS), and the Vite 8 / Rolldown build
   is verified on Vercel.
 - **Finished film** — the 59s festival / awards cut is embedded in the
-  `#film-frame` slot from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`). The 53s web
+  `#film-frame` slot from YouTube (Unlisted, `youtu.be/3xmfwiwdhm8`). The 53s web
   cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
   repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.
 - **Festival submissions** — _Skywhale Airways_ is the submission brand; the site
@@ -186,7 +186,7 @@ per deploy). The 53s web cut is also on YouTube (`youtu.be/nvKMmuzQNDs`).
 ```html
 <div class="film-frame" id="film-frame">
   <iframe
-    src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
+    src="https://www.youtube-nocookie.com/embed/3xmfwiwdhm8"
     title="I AM NOMAD — festival cut"
     loading="lazy"
     allowfullscreen

@@ -9,7 +9,7 @@ Last updated: June 7, 2026.
 - Production auto-deploys the latest `main`; the Vite 8 / Rolldown build is verified live on Vercel.
 - `www.skywhaleairways.com` returns HTTP 308 to the apex.
 - GitHub Pages is retired and should return 404.
-- Primary film: festival cut embedded from YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
+- Primary film: festival cut embedded from YouTube (Unlisted) — `youtu.be/3xmfwiwdhm8`
 - Web cut: YouTube (Unlisted) — `youtu.be/nvKMmuzQNDs`. Both mp4s removed from the repo/LFS.
 - Terminal artifacts live on the Gate Infinity desk: Gate Receipt, Route Map
   Postcard, and Suitcase Sticker Manifest.
@@ -19,7 +19,7 @@ Last updated: June 7, 2026.
 - Local, uncommitted homepage flow now runs: portal journey → contest-entry
   festival cut → Skywhale Artifact Lab → Duty-Free Souvenir Desk → credits.
 - The festival cut remains the canonical YouTube no-cookie embed
-  (`FTMbAECxb8A`), with the 53s web cut linked at `nvKMmuzQNDs`.
+  (`3xmfwiwdhm8`), with the 53s web cut linked at `nvKMmuzQNDs`.
 - Verification on June 7: `npm run build` passes with the existing large-bundle
   warning; `npm run lint` passes; Browser smoke passes at `1280x720` and
   `390x844` with no console errors.
@@ -102,7 +102,7 @@ public derivatives.
 - Creative origin notes: `production/ORIGIN_NOTES.md`
 - Awards QA checklist and evidence: `production/AWARDS_QA.md`
 - Film production project: `production/video_project/time_airport/`
-- Films: YouTube (Unlisted) — `youtu.be/FTMbAECxb8A` (festival), `youtu.be/nvKMmuzQNDs` (web cut); removed from repo/LFS
+- Films: YouTube (Unlisted) — `youtu.be/3xmfwiwdhm8` (festival), `youtu.be/nvKMmuzQNDs` (web cut); removed from repo/LFS
 - Shopify launch notes: `merch/shopify-launch.md`
 - Duty-Free fulfillment policy: `merch/fulfillment-roadmap.md`
 - Canonical Nomad art: `merch/r5/i-am-nomad-master.png`

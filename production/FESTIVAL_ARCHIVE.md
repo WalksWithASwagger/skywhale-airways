@@ -3,7 +3,7 @@
 Last updated: June 4, 2026.
 
 > Note (June 7, 2026): the former `public/film/*.mp4` paths were removed from the
-> repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
+> repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/3xmfwiwdhm8`
 > (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`
 > source copies (Git LFS) are unchanged.
 
@@ -61,7 +61,7 @@ public Skywhale site and Press Kit.
 > section.
 
 - Public primary festival cut:
-  YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
+  YouTube (Unlisted), `youtu.be/3xmfwiwdhm8`
 - Production edit copy:
   `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
 - Public preserved 53s web cut:

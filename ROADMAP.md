@@ -52,7 +52,7 @@ preserved merch PNG and print assets.
   closed.
 - Suno cover art for **Whale Sky God** archived in production titles.
 - Awards/festival cut v2 wired as the primary homepage film frame — now embedded
-  from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`); original 53s web cut on YouTube
+  from YouTube (Unlisted, `youtu.be/3xmfwiwdhm8`); original 53s web cut on YouTube
   too (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the repo/LFS (June 7).
 - Awards title card, credits card, and audio master archived under
   `production/video_project/time_airport/`.

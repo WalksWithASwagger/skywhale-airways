@@ -219,14 +219,14 @@ Everything below documents the earlier 1080p awards cut
 timeline and the per-scene A/B reference.
 
 > Note (June 7, 2026): the former `public/film/*.mp4` paths were removed from the
-> repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
+> repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/3xmfwiwdhm8`
 > (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`
 > source copies (Git LFS) are unchanged, so the `ffprobe` checks still apply to
 > those.
 
 ## Files
 
-- Public festival cut: YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
+- Public festival cut: YouTube (Unlisted), `youtu.be/3xmfwiwdhm8`
 - Production edit: `production/video_project/time_airport/edits/skywhale_awards_cut_v2.mp4`
 - Public web cut, preserved: YouTube (Unlisted), `youtu.be/nvKMmuzQNDs`
 - Production web edit: `production/video_project/time_airport/edits/skywhale_whalesky_final.mp4`
@@ -302,7 +302,7 @@ Then smoke test:
 - Home page gate opens.
 - Festival cut appears in the terminal film frame.
 - The terminal film frame embeds the YouTube no-cookie festival cut
-  (`FTMbAECxb8A`) as the primary cut.
+  (`3xmfwiwdhm8`) as the primary cut.
 - The 53s web cut link points to YouTube (`nvKMmuzQNDs`).
 - Press Kit links for festival cut, web cut, stills, About, and airport resolve.
 

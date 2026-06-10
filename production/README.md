@@ -7,7 +7,7 @@ actual animation is generated and cut.
 
 > Note (June 7, 2026): the former `public/film/*.mp4` files were removed from
 > the repo/LFS. The festival + web cuts now live on YouTube
-> (Unlisted) — `youtu.be/FTMbAECxb8A` and `youtu.be/nvKMmuzQNDs`. The
+> (Unlisted) — `youtu.be/3xmfwiwdhm8` and `youtu.be/nvKMmuzQNDs`. The
 > production-edit copies under `production/video_project/.../edits/` (Git LFS)
 > are unchanged.
 
@@ -78,7 +78,7 @@ production/
 
 - **`edits/skywhale_awards_cut_v2.mp4`** — the production edit copy of the
   festival / awards cut. The **primary public watch path** is now YouTube
-  (Unlisted), `youtu.be/FTMbAECxb8A`, embedded on the site with
+  (Unlisted), `youtu.be/3xmfwiwdhm8`, embedded on the site with
   `youtube-nocookie`. 59.21s, 1920x1080, H.264/AAC, nominal 24fps. It uses the
   crisp awards title and credits cards, preserves the clean 53s film body, and
   trims the titled edit down from the earlier 63s pacing.
