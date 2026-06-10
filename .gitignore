@@ -6,3 +6,6 @@ dist
 .env
 .env.local
 .env.*.local
+
+# Derived submission export (regenerate with production/scripts/export_festival_master.sh)
+production/video_project/time_airport/edits/Skywhale-Airways-festival-cut-submission.mp4

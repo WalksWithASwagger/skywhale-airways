@@ -80,9 +80,11 @@ else
   # CRF 16 = visually transparent; BT.709 color tags ensure correct projector
   # color; AAC 320k gives audio headroom on a real sound system.
   echo "Mode  : re-encode (high-bitrate H.264 + BT.709 + 320k AAC)"
+  # setparams (not -color_* codec flags): on ffmpeg 8 the codec-context flags
+  # only tag the matrix — primaries/transfer come out "unknown" in the VUI.
   ffmpeg -hide_banner -y -i "$IN" \
     -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p \
-    -color_primaries bt709 -color_trc bt709 -colorspace bt709 \
+    -vf setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709 \
     -c:a aac -b:a 320k \
     -movflags +faststart \
     "$OUT"
