@@ -2,7 +2,26 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD v5 fine-tune — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v6 — June 10, 2026 (FINAL submission deliverable)
+
+KK's notes on v5: credits hold trimmed to 49f (~2s — the "black fade"
+feel was the song's quiet tail under a long bright card), s02 window
+moved to the front of the take ([0.25-3.806] — she walks up to the
+counter; the prior late window opened on the wrong style), and the
+zero-g shot switched to the round-1 take at NATIVE speed (127f, factor
+1.00, window [0.5-5.79]) — longer and unslowed per direction. The
+reclaimed credits second grew s06, which pushed the rotunda back to
+its EXACT original lyric anchor (frame 1018, "she arrived" on the cut).
+Recipe: `v6_timing.json`.
+
+Masters (off-repo):
+- Mix A `edits/i_am_nomad_4k_master_v6.mp4` sha256 `fcd371d2631e123b229a565f0b5e5407b7ebd9282cfa265a2a7867e3d5f17603`
+- Mix B `edits/i_am_nomad_4k_master_v6_sfx.mp4` sha256 `ff4b2d3eb85b306cf1468268cc42b3ad13dde40bd81f7bbd12f8b37e90e1f47a`
+
+QA both: 1421f / 59.208333s / 3840x2160 / 24fps / BT.709 / blackdetect
+zero / -16.7 LUFS / -3.6 (A) -3.7 (B) dBTP. Same chain as v4/v5.
+
+## I AM NOMAD v5 fine-tune — June 10, 2026 (superseded by v6)
 
 KK's polish pass on the v4 director's cut: title card -0.5s (60f), s01
 window slid 1s earlier ([4.03-7.0] — whale reads as a bird before the
