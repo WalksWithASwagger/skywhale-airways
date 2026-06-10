@@ -38,7 +38,9 @@ def run(cmd: list[str]) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--picks", required=True, help="JSON mapping scene id -> old|r1|r2")
+    ap.add_argument("--picks", help="JSON mapping scene id -> old|r1|r2")
+    ap.add_argument("--timing", help="Retimed-cut JSON: {scenes: [{id, pick, frames, window, offset}]} "
+                                     "(overrides the v2 EDL scene list/durations and --picks)")
     ap.add_argument("--size", default="1920x1080")
     ap.add_argument("--out", required=True)
     ap.add_argument("--title", default=str(CLIPS / "card_title_anim_full.mp4"))
@@ -49,7 +51,16 @@ def main() -> int:
     recon = edl["v3_reconstruction"]
     spec = {sid: (d, w) for sid, d, w in zip(recon["scenes"], recon["durations"], recon["windows"])}
     shots = {s["id"]: s for s in edl["shots"]}
-    picks = json.loads(Path(args.picks).read_text())
+
+    if args.timing:
+        timeline = json.loads(Path(args.timing).read_text())["scenes"]
+    else:
+        if not args.picks:
+            ap.error("--picks is required without --timing")
+        picks = json.loads(Path(args.picks).read_text())
+        timeline = [{"id": sid, "pick": picks.get(sid, "r1"),
+                     "frames": shots[sid]["frames"], "window": spec[sid][1], "offset": 0.0}
+                    for sid in recon["scenes"]]
     w, h = args.size.split("x")
     norm = (f"scale={w}:{h}:force_original_aspect_ratio=decrease,"
             f"pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,fps={FPS}")
@@ -70,17 +81,25 @@ def main() -> int:
          "-frames:v", "72"] + enc + [str(seg)])
     segs.append(seg)
 
-    # Body: EDL order; first shot fades in from dark over 15f.
-    for i, sid in enumerate(recon["scenes"]):
-        d, win = spec[sid]
-        n = shots[sid]["frames"]
-        pick = picks.get(sid, "r1")
+    # Body: timeline order; first shot fades in from dark over 15f.
+    for i, sc in enumerate(timeline):
+        sid, pick = sc["id"], sc["pick"]
+        n = sc["frames"]
+        win = sc.get("window", spec[sid][1])
+        off = sc.get("offset", 0.0)
+        d = n / FPS
         seg = tmp / f"{i+1:02d}_{sid}_{pick}.mp4"
         fade_in = f",fade=t=in:st=0:d={15/FPS:.5f}" if i == 0 else ""
         if pick == "old":
+            # Old footage exists only at its original in-film length; if the
+            # retimed cut gives the shot more frames, re-slow what exists
+            # (consistent with the film's setpts slow-mo vocabulary).
+            n_orig = shots[sid]["frames"]
             ss = shots[sid]["start_frame"] / FPS
-            vf = norm + fade_in
-            cmd = ["ffmpeg", "-y", "-v", "error", "-ss", f"{ss:.5f}", "-i", str(V2),
+            stretch = f"setpts={n / n_orig:.5f}*(PTS-STARTPTS)," if n > n_orig else ""
+            vf = stretch + norm + fade_in
+            cmd = ["ffmpeg", "-y", "-v", "error", "-ss", f"{ss:.5f}",
+                   "-t", f"{n_orig / FPS:.5f}", "-i", str(V2),
                    "-vf", vf, "-frames:v", str(n)] + enc + [str(seg)]
         else:
             if pick == "r1":
@@ -93,7 +112,11 @@ def main() -> int:
             if not src.exists():
                 raise SystemExit(f"missing source for {sid} pick={pick}: {src}")
             factor = d / win
-            vf = f"trim=0:{win:.4f},setpts={factor:.5f}*PTS,{norm}{fade_in}"
+            # tpad guards against 1-frame starvation when a late window butts
+            # against the take's end; -frames:v caps it exactly.
+            vf = (f"trim={off:.4f}:{off + win:.4f},"
+                  f"setpts={factor:.5f}*(PTS-STARTPTS),{norm},"
+                  f"tpad=stop_mode=clone:stop_duration=0.5{fade_in}")
             cmd = ["ffmpeg", "-y", "-v", "error", "-i", str(src),
                    "-vf", vf, "-frames:v", str(n)] + enc + [str(seg)]
         run(cmd)
@@ -117,7 +140,7 @@ def main() -> int:
          "-show_entries", "stream=nb_read_frames", "-of",
          "default=noprint_wrappers=1:nokey=1", str(out)],
         capture_output=True, text=True).stdout.strip()
-    expected = 72 + sum(shots[s]["frames"] for s in recon["scenes"]) + 97
+    expected = 72 + sum(sc["frames"] for sc in timeline) + 97
     status = "OK" if probe == str(expected) else f"MISMATCH (expected {expected})"
     print(f"✓ {out}  frames={probe} {status}")
     return 0 if probe == str(expected) else 1

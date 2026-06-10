@@ -13,6 +13,12 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
+> June 10, 2026 (later) — **Director's cut v4 is FINAL**: KK's per-scene picks
+> across old/r1/r2, s05+s08 cut with anchor-pinned retiming, Mix A
+> (`i_am_nomad_4k_master_v4.mp4`, sha256 `cc483461455580f9a040b10d7ce2362a6afd1fff573130d2de721bc0bb26ce11`)
+> and Mix B SFX variant (`..._v4_sfx.mp4`, sha256 `2e77464ef074fd739eb5b8a1ea74583ef4773ab0fba1735746f5a5944c3e7cf6`).
+> Recipe: `v4_timing.json` + `scripts/assemble_v3.py`. QA: AWARDS_QA top.
+
 > June 10, 2026 — **I AM NOMAD 4K master v2** (round-2 trippier takes,
 > EDL-exact edit, animated key-art cards) supersedes everything below as the
 > submission deliverable. Off-repo: `edits/i_am_nomad_4k_master_v2.mp4`,
