@@ -187,18 +187,17 @@ def generate_gemini(scene: Dict[str, Any], cfg: Dict[str, Any], key: str,
         "instances": [{
             "prompt": prompt,
             "image": {
-                "inlineData": {
-                    "mimeType": "image/jpeg",
-                    "data": image_jpeg_b64(PROJECT / scene["keyframe"]),
-                },
+                "mimeType": "image/jpeg",
+                "bytesBase64Encoded": image_jpeg_b64(PROJECT / scene["keyframe"]),
             },
         }],
         "parameters": {
             "aspectRatio": defaults["aspect_ratio"],
             "resolution": resolution,
-            "durationSeconds": str(defaults["duration"]),
+            "durationSeconds": defaults["duration"],
+            # no generateAudio param: the Gemini API always bakes audio; the
+            # assembly step strips it (-an), so clips' audio never ships.
             "negativePrompt": defaults["negative_prompt"],
-            "generateAudio": defaults["generate_audio"] if audio is None else audio,
         },
     }
     print(f"  Submitting {scene['id']} ({scene['title']}) on gemini/{GEMINI_VEO_MODEL} @ {resolution}...")
