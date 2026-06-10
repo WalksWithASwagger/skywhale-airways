@@ -13,6 +13,15 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
+> June 10, 2026 — **I AM NOMAD 4K master v2** (round-2 trippier takes,
+> EDL-exact edit, animated key-art cards) supersedes everything below as the
+> submission deliverable. Off-repo: `edits/i_am_nomad_4k_master_v2.mp4`,
+> sha256 `acd0c3f7d912bc470011d52a353405c7291d618618f6923f48cc55841479ad82`,
+> 267,064,609 bytes, 59.208333s, 3840×2160/24fps. Regenerable: keyframes +
+> prompts + trippier suffix (`predictions.json`) + `v2_edl.json` +
+> `scripts/assemble_v3.py` + Topaz provenance (`predictions.json` steps).
+> QA: `AWARDS_QA.md` top section.
+
 > June 9, 2026 — **I AM NOMAD 4K master** supersedes the 1080p awards cut as
 > the submission deliverable. Off-repo (LFS budget): keep
 > `edits/i_am_nomad_4k_master.mp4` in the festival archive; sha256

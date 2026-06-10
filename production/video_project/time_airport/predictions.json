@@ -128,5 +128,157 @@
     "error": null,
     "file": "video_project/time_airport/clips/s10_4k.mp4",
     "output_url": "https://generativelanguage.googleapis.com/v1beta/files/ebg8i675p5ah:download?alt=media"
+  },
+  {
+    "scene_id": "card_credits_anim",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "6mjd98t1nhrmw0cyp37vv4zatm",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/card_credits_anim_full.mp4"
+  },
+  {
+    "scene_id": "card_title_anim",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/card_title_anim_full.mp4"
+  },
+  {
+    "scene_id": "s01",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s01_full.mp4"
+  },
+  {
+    "scene_id": "s02",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "twh6vkg6f5rmr0cyp3192zpk4g",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s02_full.mp4"
+  },
+  {
+    "scene_id": "s03",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s03_full.mp4"
+  },
+  {
+    "scene_id": "s04",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s04_full.mp4"
+  },
+  {
+    "scene_id": "s05",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "dpv644mr4hrmt0cyp32sn3wk9r",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s05_full.mp4"
+  },
+  {
+    "scene_id": "s06",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "w6k3764wfsrmw0cyp3gttdvsdw",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s06_full.mp4"
+  },
+  {
+    "scene_id": "s07",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s07_full.mp4"
+  },
+  {
+    "scene_id": "s08",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "7x7qfyaf8nrmy0cyp369yqg300",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s08_full.mp4"
+  },
+  {
+    "scene_id": "s09",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "jz53r036e9rmw0cyp2wtwx6z3g",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s09_full.mp4"
+  },
+  {
+    "scene_id": "s10",
+    "round": 2,
+    "model": "full",
+    "backend": "replicate",
+    "resolution": "1080p",
+    "style": "trippier-r2 suffix (warm wax melt, character lock, SFX-only audio)",
+    "prediction_id": "expired-before-reconcile",
+    "status": "succeeded",
+    "file": "video_project/time_airport/clips/s10_full.mp4"
+  },
+  {
+    "step": "edl_assembly",
+    "tool": "scripts/assemble_v3.py",
+    "picks": "all r2",
+    "source": "v2_edl.json v3_reconstruction",
+    "frames": 1421
+  },
+  {
+    "step": "rehost_merge",
+    "model": "lucataco/video-merge",
+    "prediction_id": "t0fddve7vxrmr0cyp41tzexyv0",
+    "note": "chunkA+chunkB 1080p concat for public delivery URL; +1 trailing dup frame, trimmed at final encode"
+  },
+  {
+    "step": "upscale",
+    "model": "topazlabs/video-upscale",
+    "target": "4k @ 24fps",
+    "prediction_id": "4757a0y229rmw0cyp4bvb4wag4",
+    "note": "first attempt ne7sa2nyjxrmw0cyp43tk9y2dw defaulted to 30fps (discarded); per-clip topaz jobs also banked for 6 scenes"
   }
 ]
