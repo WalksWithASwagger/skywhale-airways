@@ -2,6 +2,40 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
+## I AM NOMAD 4K master — June 9, 2026
+
+The film was regenerated at native 4K (Veo 3.1 via the Gemini API, same
+keyframes and prompts) and retitled **I AM NOMAD**. New master:
+`edits/i_am_nomad_4k_master.mp4` (off-repo, not in LFS; sha256
+`d94fa8ecbeefa6d05dbfbdd0badc27d2f2462b07f7c7434a5f6db8bdf1635c78`).
+Generation provenance: `predictions.json` (10 Gemini operation IDs, all 4k).
+The submission export `I-Am-Nomad-festival-cut-submission.mp4` is
+byte-identical to the master.
+
+Measured on the master:
+
+- Duration: `59.208333` (1421 frames @ 24 fps — title 72f + body 1272f +
+  credits 106f with a 29-frame crossfade)
+- Video: H.264, `3840x2160`, yuv420p, BT.709-tagged, ~35.6 Mbps (CRF 18,
+  preset slow)
+- Audio: AAC stereo 48 kHz, **stream-copied** from `skywhale_awards_cut_v2.mp4`
+  — loudness therefore unchanged: `-16.7 LUFS` integrated, `-3.6 dBTP` peak
+  (re-measured on the new master, matches)
+- Black gap check (`blackdetect=d=0.1:pix_th=0.10`): zero events
+- Title/credits cards: `titles/title_card_nomad_4k.png`,
+  `titles/credits_card_nomad_4k.png` — text proofread at 100% zoom
+- Per-scene A/B against the v2 master: all ten 4K takes approved
+  (first-frame-anchored regen; pacing identical — same durations/head-windows)
+
+Remaining human review for the 4K cut: watch end to end on the target
+submission device; listen once on headphones, once on speakers.
+
+---
+
+Everything below documents the earlier 1080p awards cut
+(`skywhale_awards_cut_v2.mp4`), which remains the source of the audio
+timeline and the per-scene A/B reference.
+
 > Note (June 7, 2026): the former `public/film/*.mp4` paths were removed from the
 > repo/LFS; the cuts are now on YouTube (Unlisted) — `youtu.be/FTMbAECxb8A`
 > (festival) and `youtu.be/nvKMmuzQNDs` (web cut). The `production/.../edits/`

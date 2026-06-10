@@ -13,3 +13,8 @@ __pycache__/
 # Raw card generations (4K crops are the committed assets)
 production/video_project/time_airport/titles/*_raw.png
 production/video_project/time_airport/review/
+production/video_project/time_airport/build/
+# 4K media stays off-repo (LFS budget — see #49/#57); regenerable via predictions.json provenance
+production/video_project/time_airport/clips/*_4k*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-festival-cut-submission.mp4
