@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concept Gallery · Skywhale Airways</title>
+    <meta
+      name="description"
+      content="The Skywhale Airways concept gallery: patches, pins, lyric die-cuts, and time-airport fragments from the world of I AM NOMAD."
+    />
+    <meta name="theme-color" content="#e9c6d4" />
+    <link rel="canonical" href="https://skywhaleairways.com/gallery.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Concept Gallery · Skywhale Airways" />
+    <meta
+      property="og:description"
+      content="Patches, pins, lyric die-cuts, and time-airport fragments — the terminal's art wall."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://skywhaleairways.com/gallery.html" />
+    <meta property="og:site_name" content="Skywhale Airways" />
+    <style>
+      :root {
+        --rose: #e9c6d4;
+        --rose-deep: #c74a5c;
+        --ink: #33242a;
+        --cloud: #f4d9e3;
+        --sky: #cfd9ec;
+        --gold: #f2c14e;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, var(--cloud), var(--sky) 140%),
+          var(--rose);
+        color: var(--ink);
+        font-family: var(--serif);
+        -webkit-font-smoothing: antialiased;
+      }
+      #grain {
+        position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.5;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+        background-size: 220px 220px;
+      }
+      main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 4.5rem 1.5rem 5rem; }
+      .kicker {
+        font-size: 0.78rem; letter-spacing: 0.34em; text-transform: uppercase;
+        color: rgba(50, 35, 40, 0.6); margin: 0 0 0.8rem; text-align: center;
+      }
+      h1 {
+        font-size: clamp(2rem, 5.5vw, 3.6rem); line-height: 1.1;
+        margin: 0 0 0.8rem; text-align: center;
+      }
+      .dek {
+        max-width: 36rem; margin: 0 auto 1rem; text-align: center;
+        font-style: italic; font-size: clamp(1.02rem, 2.2vw, 1.25rem);
+        line-height: 1.6; color: rgba(50, 35, 40, 0.78);
+      }
+      .back {
+        display: block; text-align: center; margin: 0 0 3.2rem;
+        color: var(--rose-deep); font-size: 0.92rem;
+      }
+      .wall {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 2.6rem 1.6rem;
+        align-items: end;
+      }
+      .piece {
+        margin: 0; text-align: center;
+        transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1.4);
+      }
+      .piece img {
+        width: 100%; max-width: 250px; height: auto;
+        filter: drop-shadow(0 10px 18px rgba(60, 30, 50, 0.28));
+      }
+      /* Playful scatter: deterministic pseudo-random tilt + drift per slot. */
+      .piece:nth-child(6n + 1) { transform: rotate(-5deg) translateY(4px); }
+      .piece:nth-child(6n + 2) { transform: rotate(3.5deg) translateY(-8px); }
+      .piece:nth-child(6n + 3) { transform: rotate(-2deg) translateY(10px) scale(1.04); }
+      .piece:nth-child(6n + 4) { transform: rotate(6deg) translateY(-4px) scale(0.96); }
+      .piece:nth-child(6n + 5) { transform: rotate(-7deg) translateY(6px); }
+      .piece:nth-child(6n)     { transform: rotate(2.5deg) translateY(-10px) scale(1.02); }
+      .piece:hover { transform: rotate(0deg) translateY(-6px) scale(1.07); z-index: 3; position: relative; }
+      .piece figcaption { margin-top: 0.85rem; }
+      .piece-title { display: block; font-size: 0.92rem; font-weight: 700; }
+      .piece-note {
+        display: block; font-size: 0.8rem; font-style: italic;
+        color: rgba(50, 35, 40, 0.62); margin-top: 0.15rem;
+      }
+      .wall-outro {
+        margin: 4.5rem auto 0; text-align: center; max-width: 32rem;
+        font-style: italic; color: rgba(50, 35, 40, 0.7); line-height: 1.7;
+      }
+      .wall-outro a { color: var(--rose-deep); }
+      @media (max-width: 560px) {
+        .wall { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .piece, .piece:hover { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grain" aria-hidden="true"></div>
+    <main>
+      <p class="kicker">Skywhale Airways · Duty-Free Annex</p>
+      <h1>Concept Gallery</h1>
+      <p class="dek">
+        Everything the terminal dreamed up that isn't a real souvenir yet —
+        patches, pins, lyric die-cuts, and fragments of the time airport,
+        pinned to the wall like a suitcase that's been everywhere.
+      </p>
+      <a class="back" href="index.html#duty-free">← back to the Duty-Free desk (one real thing for sale)</a>
+      <div class="wall" id="gallery-wall" aria-live="polite"></div>
+      <p class="wall-outro">
+        These are concept pieces — art first, souvenirs someday. The one you can
+        actually take home today is the
+        <a href="index.html#duty-free">I AM NOMAD holographic sticker</a>.
+      </p>
+    </main>
+    <script type="module" src="/src/gallery.js"></script>
+  </body>
+</html>
