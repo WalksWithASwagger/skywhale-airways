@@ -1,0 +1,58 @@
+{
+ "note": "v9: lyric grid RESTORED (anchors 380/808/946 exact), no outro bed, song-matched 53.5s, cards minimized to 36f each, s01 full native take intact, s09 +1s kept, golden fish first 5.75s native.",
+ "title_frames": 36,
+ "credits_frames": 36,
+ "scenes": [
+  {
+   "id": "s01",
+   "pick": "r1",
+   "frames": 192,
+   "window": 7.99,
+   "offset": 0.0,
+   "dissolve_into_next": 16
+  },
+  {
+   "id": "s02",
+   "pick": "r2",
+   "frames": 88,
+   "window": 2.607,
+   "offset": 0.0
+  },
+  {
+   "id": "s03",
+   "pick": "r2",
+   "frames": 80,
+   "window": 2.331,
+   "offset": 0.0
+  },
+  {
+   "id": "s04",
+   "pick": "old",
+   "frames": 138
+  },
+  {
+   "id": "s06",
+   "pick": "r1",
+   "frames": 158,
+   "window": 6.583,
+   "offset": 0.5
+  },
+  {
+   "id": "s09",
+   "pick": "old",
+   "frames": 132
+  },
+  {
+   "id": "s07",
+   "pick": "r1",
+   "frames": 138,
+   "window": 5.75,
+   "offset": 0.0
+  },
+  {
+   "id": "s10",
+   "pick": "old",
+   "frames": 302
+  }
+ ]
+}

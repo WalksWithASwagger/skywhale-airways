@@ -2,7 +2,28 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD v8 — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v9 — June 10, 2026 (FINAL submission deliverable)
+
+The sync restoration. KK on v8: "you fucked up the sync script timing
+where the visuals and the lyrics go together." v9 re-pins the lyric
+grid exactly — duplicates at frame 380, golden fish at 808, rotunda
+at 946 (frame-grab verified) — drops the outro ambience he disliked,
+and minimizes both cards to 36f (1.5s) each so every reclaimed frame
+feeds the scenes. Total back to song-matched **53.5s / 1284f**, ending
+on the music's own outro.
+
+Within the grid: s01 keeps the FULL 8s round-1 take at native speed
+(spanA absorbed it by tightening s02/s03), s09 keeps its +1s (132f),
+s06 native float 6.58s, golden fish plays its take's first 5.75s
+native (the full-8 version cannot fit its lyric slot without
+fast-motion — grid wins by direction). Recipe: `v9_timing.json`.
+
+Masters: Mix A `edits/i_am_nomad_4k_master_v9.mp4` sha256 `811d8bdb19231aa5bbbdc020c92945c949a7c03d24da6278fbbafa96c0e2d7f0`;
+Mix B (s02/s03 beds only) `..._v9_sfx.mp4` sha256 `746546e0a9190f63d7a7f5394b6cc16d575e242952565e0ed7e9aa04d5982f43`.
+QA both: 1284f / 53.5s / 3840x2160 / 24fps / BT.709 / blackdetect 0 /
+-16.7 LUFS / -3.6 dBTP; music from frame one (head -20.3dB).
+
+## I AM NOMAD v8 — June 10, 2026 (superseded by v9)
 
 KK claimed the runtime back toward the minute: **59.583s / 1430f**
 (~0.4s headroom to 60). s01 switched to the round-1 take ("clip two"),

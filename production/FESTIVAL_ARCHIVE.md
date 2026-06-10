@@ -13,7 +13,11 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (v8) — **v8 is FINAL**: 59.583s, s01/s07 full native takes,
+> June 10, 2026 (v9) — **v9 is FINAL**: lyric grid restored exactly
+> (380/808/946), outro bed removed, 1.5s cards, song-matched 53.5s.
+> Mix A sha256 `811d8bdb19231aa5bbbdc020c92945c949a7c03d24da6278fbbafa96c0e2d7f0`; Mix B sha256 `746546e0a9190f63d7a7f5394b6cc16d575e242952565e0ed7e9aa04d5982f43`. Recipe: `v9_timing.json`.
+
+> June 10, 2026 (v8) — **v8 is superseded**: 59.583s, s01/s07 full native takes,
 > s09 +1s, ambience outro, lyric grid released. Mix A sha256 `c776ddec72e3dc4b29010a2386be7aa9d68689d75e1b68ee345f0502a69ae5b5`;
 > Mix B sha256 `44de3223128bb79b6dde669c1a68cb9ab2cc5fa5fae7c9ed3432dd3ed0c4f718`. Recipe: `v8_timing.json`.
 
