@@ -13,6 +13,16 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
+> June 9, 2026 — **I AM NOMAD 4K master** supersedes the 1080p awards cut as
+> the submission deliverable. Off-repo (LFS budget): keep
+> `edits/i_am_nomad_4k_master.mp4` in the festival archive; sha256
+> `d94fa8ecbeefa6d05dbfbdd0badc27d2f2462b07f7c7434a5f6db8bdf1635c78`,
+> 263,651,782 bytes, 59.208333s, 3840×2160. Regenerable: keyframes + prompts
+> (`scenes.json`) + Gemini operation IDs (`predictions.json`) + assembly recipe
+> (`production/README.md`). 4K title/credits cards are committed in `titles/`.
+> YouTube upload + site embed swap pending (PR #83). QA: `AWARDS_QA.md` top
+> section.
+
 - Public primary festival cut:
   YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
 - Production edit copy:
