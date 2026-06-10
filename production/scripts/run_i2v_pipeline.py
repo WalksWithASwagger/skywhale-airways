@@ -233,6 +233,11 @@ def main() -> int:
     parser.add_argument("--resolution", choices=["720p", "1080p", "4k"])
     parser.add_argument("--backend", choices=["replicate", "gemini"],
                         help="Default: gemini for 4k (Replicate lacks it), replicate otherwise")
+    parser.add_argument("--style-suffix", default=None,
+                        help="Override scenes.json style_suffix for this run ('' disables it)")
+    parser.add_argument("--keyframe", help="Ad-hoc mode: animate this image instead of scenes.json entries")
+    parser.add_argument("--prompt", help="Ad-hoc mode: full prompt for --keyframe")
+    parser.add_argument("--id", dest="adhoc_id", help="Ad-hoc mode: output name (clips/<id>.mp4)")
     args = parser.parse_args()
 
     backend = args.backend or ("gemini" if args.resolution == "4k" else "replicate")
@@ -241,13 +246,21 @@ def main() -> int:
 
     token = load_google_key() if backend == "gemini" else load_token()
     cfg = read_json(SCENES_PATH, {})
+    if args.style_suffix is not None:
+        cfg["defaults"]["style_suffix"] = args.style_suffix
     scenes = cfg["scenes"]
-    if args.all:
+    if args.keyframe:
+        if not (args.prompt and args.adhoc_id):
+            raise SystemExit("Ad-hoc mode needs --keyframe --prompt --id together.")
+        # An absolute keyframe path passes through PROJECT / path untouched.
+        targets = [{"id": args.adhoc_id, "title": args.adhoc_id,
+                    "keyframe": args.keyframe, "prompt": args.prompt}]
+    elif args.all:
         targets = scenes
     elif args.scenes:
         targets = [s for s in scenes if s["id"] in set(args.scenes)]
     else:
-        raise SystemExit("Specify --all or --scenes s01 ...")
+        raise SystemExit("Specify --all, --scenes s01 ..., or --keyframe/--prompt/--id")
 
     CLIPS_DIR.mkdir(parents=True, exist_ok=True)
     predictions = read_json(PREDICTIONS_PATH, [])
