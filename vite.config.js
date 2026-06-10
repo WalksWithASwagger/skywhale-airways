@@ -11,6 +11,7 @@ const pages = [
   { name: "main", file: "index.html", path: "/" },
   { name: "about", file: "about.html", path: "/about.html" },
   { name: "press", file: "press.html", path: "/press.html" },
+  { name: "gallery", file: "gallery.html", path: "/gallery.html" },
 ];
 
 function escapeHtmlAttribute(value) {
