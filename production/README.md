@@ -123,6 +123,41 @@ production/
   linked from the film actions and Press Kit. Vercel no longer serves public
   film MP4s from repo/LFS.
 
+## The I AM NOMAD cut (v9 — final, June 2026)
+
+The film was re-cut as **I AM NOMAD** through nine director iterations.
+The final recipe is fully committed and reproducible:
+
+1. **Edit forensics** — `scripts/extract_edl.py` measured the original
+   awards edit frame-exactly from the v2 master (shot boundaries, the
+   title dip-to-dark, per-shot slow-motion via duplicate-frame
+   signatures) into `video_project/time_airport/v2_edl.json`.
+2. **Assembly** — `scripts/assemble_v3.py --timing <vN_timing.json>`
+   renders any cut: per-scene picks across {old master extraction, r1
+   4K take, r2 trippy take}, window offsets, per-shot frame counts,
+   dissolves (`dissolve_into_next`), parametric title/credits lengths.
+   The final recipe is `v9_timing.json` (lyric anchors at frames
+   380/808/946 against the master audio trimmed from its 3.0s mark).
+3. **4K upscale** — assemble at 1080p, split at a hard cut into <100MB
+   chunks, upload via the Replicate Files API, re-host through
+   `lucataco/video-merge` (Topaz cannot fetch authed Files URLs), then
+   one `topazlabs/video-upscale` pass with `target_resolution: "4k"`
+   **and `target_fps: 24`** (it defaults to 30 and will resample).
+4. **Audio** — the approved master audio trimmed from 3.0s with a
+   0.25s smoothing fade (music from frame one); Mix B adds the r2
+   takes' SFX-directed ambience, time-stretched by each shot's slow
+   factor (`atempo`), ducked -20dB. Loudness target -16.7 LUFS /
+   -3.6 dBTP (EBU gating makes the trim loudness-invariant).
+5. **Final encode** — H.264 CRF 18 preset slow, BT.709 via
+   `setparams` (ffmpeg 8: the `-color_*` flags only tag the matrix),
+   exact `-frames:v` cap, audio mux, `+faststart`.
+6. **QA battery** — frame count, duration, blackdetect zero, ebur128,
+   anchor frame-grabs, head-audio level. Version log + hashes:
+   `AWARDS_QA.md`; canonical deliverable per `FESTIVAL_ARCHIVE.md`.
+
+Approved final: `edits/i_am_nomad_4k_master_v9.mp4` (53.5s, Mix A
+canonical). Masters v1–v8 remain in `edits/` as history (off-repo).
+
 ## Submission export
 
 To package the finished cut for a festival portal or projector laptop, run:
