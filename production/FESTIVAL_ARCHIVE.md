@@ -13,7 +13,7 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (v9) — **v9 is FINAL**: lyric grid restored exactly
+> June 10, 2026 (v9) — **v9 is FINAL and KK-APPROVED** (canonical: Mix A): lyric grid restored exactly
 > (380/808/946), outro bed removed, 1.5s cards, song-matched 53.5s.
 > Mix A sha256 `811d8bdb19231aa5bbbdc020c92945c949a7c03d24da6278fbbafa96c0e2d7f0`; Mix B sha256 `746546e0a9190f63d7a7f5394b6cc16d575e242952565e0ed7e9aa04d5982f43`. Recipe: `v9_timing.json`.
 

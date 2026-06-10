@@ -2,7 +2,13 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD v9 — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v9 — June 10, 2026 (FINAL — APPROVED BY KK)
+
+> **KK signed off on v9 on June 10, 2026** ("good enough — ship it").
+> Canonical submission file: `I-Am-Nomad-FINAL-v9-mixA.mp4` (Mix A, the
+> pure song mix; Mix B with ambience beds remains available if ears
+> prefer it at upload time). This closes the human watch/listen loop
+> (issue #15). Remaining step: YouTube upload + site embed swap (PR #83).
 
 The sync restoration. KK on v8: "you fucked up the sync script timing
 where the visuals and the lyrics go together." v9 re-pins the lyric
