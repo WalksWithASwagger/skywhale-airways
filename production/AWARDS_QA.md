@@ -2,7 +2,32 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD director's cut v4 — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v5 fine-tune — June 10, 2026 (FINAL submission deliverable)
+
+KK's polish pass on the v4 director's cut: title card -0.5s (60f), s01
+window slid 1s earlier ([4.03-7.0] — whale reads as a bird before the
+melt arrives), span-B re-slow relaxed from ~1.6x to ~1.35x (more living
+motion in duplicates/zero-g/orchard), credits -1s (73f, the animation's
+most stable window), and the claimed ~4.3s given to the narrative keys:
+golden fish +1.8s (window opens to [2.76-8.0], same 1.44x tempo) and
+the rotunda arrival +2s (mild 1.16x re-slow). Recipe: `v5_timing.json`.
+
+Lyric-sync note: the duplicate-selves anchor stays exact; the golden
+fish now begins ~2.8s before "the big yellow animal" (lands mid-shot)
+and the rotunda ~1s before "she arrived" — a deliberate trade for the
+longer hero shots.
+
+Masters (off-repo; video identical, audio differs):
+- Mix A `edits/i_am_nomad_4k_master_v5.mp4` sha256 `32f80d985dd8c48ee1a795e5c0b6f06fd0fdf2cc21504742cc61f4e74a6efa64`
+- Mix B `edits/i_am_nomad_4k_master_v5_sfx.mp4` (s01/s02/s03 generated
+  ambience stretched to picture speed, -20dB under the song) sha256
+  `9c19671c6d095ff6c5741a48810e418cf8af299f6aac057b4bcafc2303721253`
+
+QA both: 1421f / 59.208333s / 3840x2160 / 24fps / BT.709 / blackdetect
+zero / -16.7 LUFS / -3.6 dBTP. Same merge->Topaz(24fps)->CRF18 chain
+as v4.
+
+## I AM NOMAD director's cut v4 — June 10, 2026 (superseded by v5)
 
 KK's final per-scene direction after the three-way full-length review:
 s01 trippy r2 (late window — the rainbow-drip end state), s02 trippy r2

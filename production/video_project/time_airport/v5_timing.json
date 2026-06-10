@@ -1,0 +1,63 @@
+{
+ "note": "v5 fine-tune: KK 2026-06-10 \u2014 title -0.5s, s01 window 1s earlier, span-B re-slow relaxed to ~1.35x, credits -1s, freed time to golden fish + rotunda",
+ "title_frames": 60,
+ "credits_frames": 73,
+ "scenes": [
+  {
+   "id": "s01",
+   "pick": "r2",
+   "frames": 135,
+   "window": 2.97,
+   "offset": 4.03,
+   "why": "1s earlier - bird before the trip"
+  },
+  {
+   "id": "s02",
+   "pick": "r2",
+   "frames": 120,
+   "window": 3.556,
+   "offset": 4.0,
+   "why": "2nd half, +0.5s"
+  },
+  {
+   "id": "s03",
+   "pick": "r2",
+   "frames": 137,
+   "window": 3.992,
+   "offset": 0.0,
+   "why": "front half (unchanged, keeps s04 anchor exact)"
+  },
+  {
+   "id": "s04",
+   "pick": "old",
+   "frames": 145,
+   "why": "re-slow relaxed 1.61->1.36x; anchor exact at abs frame 452"
+  },
+  {
+   "id": "s06",
+   "pick": "old",
+   "frames": 103,
+   "why": "re-slow relaxed to 1.36x"
+  },
+  {
+   "id": "s09",
+   "pick": "old",
+   "frames": 113,
+   "why": "re-slow relaxed to 1.35x"
+  },
+  {
+   "id": "s07",
+   "pick": "r1",
+   "frames": 181,
+   "window": 5.24,
+   "offset": 2.76,
+   "why": "golden fish climax +1.8s, window opens to the 2/3 zone, factor 1.44 unchanged"
+  },
+  {
+   "id": "s10",
+   "pick": "old",
+   "frames": 354,
+   "why": "arrival +2s, mild 1.16x re-slow"
+  }
+ ]
+}

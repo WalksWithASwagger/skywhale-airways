@@ -52,8 +52,12 @@ def main() -> int:
     spec = {sid: (d, w) for sid, d, w in zip(recon["scenes"], recon["durations"], recon["windows"])}
     shots = {s["id"]: s for s in edl["shots"]}
 
+    title_frames, credits_frames = 72, 97
     if args.timing:
-        timeline = json.loads(Path(args.timing).read_text())["scenes"]
+        tj = json.loads(Path(args.timing).read_text())
+        timeline = tj["scenes"]
+        title_frames = tj.get("title_frames", title_frames)
+        credits_frames = tj.get("credits_frames", credits_frames)
     else:
         if not args.picks:
             ap.error("--picks is required without --timing")
@@ -77,8 +81,8 @@ def main() -> int:
     # Title: 72f, fast 2-frame fade to dark at the end.
     seg = tmp / "00_title.mp4"
     run(["ffmpeg", "-y", "-v", "error"] + card_input(args.title) +
-        ["-vf", f"{norm},fade=t=out:st={70/FPS:.5f}:d={2/FPS:.5f}",
-         "-frames:v", "72"] + enc + [str(seg)])
+        ["-vf", f"{norm},fade=t=out:st={(title_frames-2)/FPS:.5f}:d={2/FPS:.5f}",
+         "-frames:v", str(title_frames)] + enc + [str(seg)])
     segs.append(seg)
 
     # Body: timeline order; first shot fades in from dark over 15f.
@@ -125,7 +129,7 @@ def main() -> int:
     # Credits: hard cut in, 97f, ends bright (no fade).
     seg = tmp / "99_credits.mp4"
     run(["ffmpeg", "-y", "-v", "error"] + card_input(args.credits) +
-        ["-vf", norm, "-frames:v", "97"] + enc + [str(seg)])
+        ["-vf", norm, "-frames:v", str(credits_frames)] + enc + [str(seg)])
     segs.append(seg)
 
     concat = tmp / "list.txt"
@@ -140,7 +144,7 @@ def main() -> int:
          "-show_entries", "stream=nb_read_frames", "-of",
          "default=noprint_wrappers=1:nokey=1", str(out)],
         capture_output=True, text=True).stdout.strip()
-    expected = 72 + sum(sc["frames"] for sc in timeline) + 97
+    expected = title_frames + sum(sc["frames"] for sc in timeline) + credits_frames
     status = "OK" if probe == str(expected) else f"MISMATCH (expected {expected})"
     print(f"✓ {out}  frames={probe} {status}")
     return 0 if probe == str(expected) else 1

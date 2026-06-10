@@ -13,7 +13,12 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (later) — **Director's cut v4 is FINAL**: KK's per-scene picks
+> June 10, 2026 (final) — **v5 fine-tune is FINAL**: shorter title/credits,
+> earlier bird-skywhale window, relaxed span-B slow-mo, longer golden-fish and
+> rotunda holds. Mix A sha256 `32f80d985dd8c48ee1a795e5c0b6f06fd0fdf2cc21504742cc61f4e74a6efa64`;
+> Mix B sha256 `9c19671c6d095ff6c5741a48810e418cf8af299f6aac057b4bcafc2303721253`. Recipe: `v5_timing.json`.
+
+> June 10, 2026 (later) — **Director's cut v4 is superseded**: KK's per-scene picks
 > across old/r1/r2, s05+s08 cut with anchor-pinned retiming, Mix A
 > (`i_am_nomad_4k_master_v4.mp4`, sha256 `cc483461455580f9a040b10d7ce2362a6afd1fff573130d2de721bc0bb26ce11`)
 > and Mix B SFX variant (`..._v4_sfx.mp4`, sha256 `2e77464ef074fd739eb5b8a1ea74583ef4773ab0fba1735746f5a5944c3e7cf6`).
