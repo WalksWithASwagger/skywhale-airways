@@ -35,7 +35,7 @@ ffprobe -hide_banner -v error \
 Result:
 
 - Duration: `59.208333`
-- Size: `78,241,899` bytes
+- Size: `76,464,369` bytes (matches the committed LFS pointer, sha256 `6b9357a6…`)
 - Video: H.264, `1920x1080`, `24/1` nominal frame rate
 - Audio: AAC, stereo, `48000 Hz`
 

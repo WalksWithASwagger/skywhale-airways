@@ -1,7 +1,10 @@
 import { inject } from "@vercel/analytics";
 
-// Initialize Vercel Web Analytics
-inject();
+// Initialize Vercel Web Analytics. /_vercel/insights/script.js only exists on
+// Vercel deployments — injecting on localhost 404s and fails the CI smoke run.
+if (!["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+  inject();
+}
 
 const measurementId = (import.meta.env.VITE_GA_MEASUREMENT_ID || "").trim();
 const validGoogleTagId = /^(G|GT)-[A-Z0-9]+$/i.test(measurementId);
