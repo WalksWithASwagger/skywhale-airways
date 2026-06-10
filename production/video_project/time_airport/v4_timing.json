@@ -1,0 +1,61 @@
+{
+ "note": "v4 director's cut: KK picks 2026-06-10; s05+s08 cut, lyric anchors pinned (s04@0:16, s07@0:34, s10@0:40)",
+ "scenes": [
+  {
+   "id": "s01",
+   "pick": "r2",
+   "frames": 135,
+   "window": 2.97,
+   "offset": 5.03,
+   "why": "rainbow-drip end state of the take"
+  },
+  {
+   "id": "s02",
+   "pick": "r2",
+   "frames": 108,
+   "window": 3.201,
+   "offset": 4.0,
+   "why": "2nd half"
+  },
+  {
+   "id": "s03",
+   "pick": "r2",
+   "frames": 137,
+   "window": 3.992,
+   "offset": 0.0,
+   "why": "front half"
+  },
+  {
+   "id": "s04",
+   "pick": "old",
+   "frames": 172,
+   "why": "original uprezzed; re-slowed 1.61x to fill span (anchor pinned at body 380f)"
+  },
+  {
+   "id": "s06",
+   "pick": "old",
+   "frames": 122,
+   "why": "original uprezzed; re-slowed 1.61x"
+  },
+  {
+   "id": "s09",
+   "pick": "old",
+   "frames": 134,
+   "why": "original uprezzed; re-slowed 1.60x"
+  },
+  {
+   "id": "s07",
+   "pick": "r1",
+   "frames": 138,
+   "window": 3.993,
+   "offset": 4.0,
+   "why": "round-1 4K, back portion - the plane-flying read (anchor 808f)"
+  },
+  {
+   "id": "s10",
+   "pick": "old",
+   "frames": 306,
+   "why": "original uprezzed, keeps its fade (anchor 946f)"
+  }
+ ]
+}

@@ -2,7 +2,33 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD 4K master v2 — June 10, 2026 (current submission deliverable)
+## I AM NOMAD director's cut v4 — June 10, 2026 (FINAL submission deliverable)
+
+KK's final per-scene direction after the three-way full-length review:
+s01 trippy r2 (late window — the rainbow-drip end state), s02 trippy r2
+(2nd half), s03 trippy r2 (front half), s04/s06/s09/s10 original takes
+uprezzed, s07 round-1 4K (back portion — the plane-flying read).
+**Scenes s05 and s08 cut**; their 161 frames redistributed across
+s04/s06/s09 (~1.6x deeper slow-mo) with the lyric anchors pinned
+(duplicate selves 0:16, golden fish 0:34, rotunda 0:40 — verified by
+frame-grab). Timing recipe: `v4_timing.json`; assembly:
+`scripts/assemble_v3.py --timing`.
+
+Two masters, identical video, KK chooses by ear:
+- `edits/i_am_nomad_4k_master_v4.mp4` (Mix A — bit-exact original
+  audio), sha256 `cc483461455580f9a040b10d7ce2362a6afd1fff573130d2de721bc0bb26ce11`
+- `edits/i_am_nomad_4k_master_v4_sfx.mp4` (Mix B — generated airport
+  ambience from the s01/s02/s03 takes, time-stretched to match the
+  slowed picture, ducked -20dB under the song), sha256 `2e77464ef074fd739eb5b8a1ea74583ef4773ab0fba1735746f5a5944c3e7cf6`
+
+QA (both): 1421f / 59.208333s / 3840x2160 / 24fps / BT.709 /
+blackdetect zero / Mix A -16.7 LUFS -3.6 dBTP, Mix B -16.7 LUFS
+-3.7 dBTP. Video chain: 1080p EDL assembly -> video-merge re-host ->
+single Topaz 4K pass (24fps locked) -> H.264 CRF18.
+
+Remaining human review: watch both, pick the mix, upload to YouTube.
+
+## I AM NOMAD 4K master v2 — June 10, 2026 (superseded by v4)
 
 Round-2 regeneration per KK's watch-through notes: trippier/drippier takes,
 the **real v2 awards edit** (recovered frame-exact in `v2_edl.json` — the
