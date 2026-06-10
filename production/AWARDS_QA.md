@@ -2,7 +2,35 @@
 
 Audited June 3, 2026 23:30 PDT / June 4, 2026 06:30 UTC.
 
-## I AM NOMAD v6 — June 10, 2026 (FINAL submission deliverable)
+## I AM NOMAD v7 — June 10, 2026 (FINAL submission deliverable)
+
+The audio re-time cut. KK: music must start at frame one and play over
+the title; no quiet head, no dead tail; extend the middles; keep it
+under 59s. The 59.208s total existed only to preserve the original
+audio alignment — released.
+
+- **Audio**: the approved master audio trimmed from its 3.0s mark
+  (0.25s smoothing fade) so the song is audible immediately
+  (first 1.4s mean -20.3dB vs -91dB before); baked fades otherwise
+  intact; ends riding the song's own outro. Loudness unchanged:
+  -16.7 LUFS, peaks -3.6/-3.7 dBTP.
+- **Total 53.5s / 1284f** — title 60f (music over it), body 1175f,
+  credits 49f ending as the song breathes out.
+- **The film's first dissolve**: s01 bird-whale melts into the baggage
+  hall (16f xfade); s02 from the top of its take (walk to the counter).
+- **Lyric grid shifted -3.0s and re-pinned exactly**: duplicates at
+  frame 380, golden fish at 808 (back ON "the big yellow animal" at
+  natural 5.75s length), rotunda at 946 ("she arrived" on the cut).
+- **Middles extended**: zero-g r1 at native speed grows to 7.08s;
+  duplicates 1.40x, orchard 1.29x re-slow; rotunda 12.04s.
+- Recipe: `v7_timing.json` (assembler dissolve support in
+  `assemble_v3.py`).
+
+Masters: Mix A `edits/i_am_nomad_4k_master_v7.mp4` sha256 `e6f55734e45c0385dbf6ad0550d5a4a673231c8d3c7c57eb6a17a8cc51347655`;
+Mix B (ambience bed) `..._v7_sfx.mp4` sha256 `a14c053f0e40b04595f08f1531874200ca9c75bdcee604c52f6b0213fcf6cbe2`.
+QA both: 1284f / 53.5s / 3840x2160 / 24fps / BT.709 / blackdetect 0.
+
+## I AM NOMAD v6 — June 10, 2026 (superseded by v7)
 
 KK's notes on v5: credits hold trimmed to 49f (~2s — the "black fade"
 feel was the song's quiet tail under a long bright card), s02 window

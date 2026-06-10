@@ -13,7 +13,12 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (v6) — **v6 is FINAL**: ~2s credits hold, s02 walk-to-counter
+> June 10, 2026 (v7) — **v7 is FINAL**: audio re-timed to start at frame one
+> (music over the title), 53.5s total, first s01->s02 dissolve, lyric grid
+> re-pinned exactly, middles extended. Mix A sha256 `e6f55734e45c0385dbf6ad0550d5a4a673231c8d3c7c57eb6a17a8cc51347655`;
+> Mix B sha256 `a14c053f0e40b04595f08f1531874200ca9c75bdcee604c52f6b0213fcf6cbe2`. Recipe: `v7_timing.json`.
+
+> June 10, 2026 (v6) — **v6 is superseded**: ~2s credits hold, s02 walk-to-counter
 > window, zero-g at native speed via round-1 take, rotunda anchor exact again.
 > Mix A sha256 `fcd371d2631e123b229a565f0b5e5407b7ebd9282cfa265a2a7867e3d5f17603`; Mix B sha256 `ff4b2d3eb85b306cf1468268cc42b3ad13dde40bd81f7bbd12f8b37e90e1f47a`. Recipe: `v6_timing.json`.
 

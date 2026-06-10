@@ -132,6 +132,28 @@ def main() -> int:
         ["-vf", norm, "-frames:v", str(credits_frames)] + enc + [str(seg)])
     segs.append(seg)
 
+    # Optional dissolves: xfade-join a segment into its successor.
+    merged = [segs[0]]  # title
+    di = 0
+    for i, sc in enumerate(timeline):
+        seg = segs[1 + i]
+        dis = sc.get("dissolve_into_next", 0)
+        if dis and i + 1 < len(timeline):
+            nxt = segs[1 + i + 1]
+            a_frames = sc["frames"]
+            joined = tmp / f"join_{sc['id']}.mp4"
+            run(["ffmpeg", "-y", "-v", "error", "-i", str(seg), "-i", str(nxt),
+                 "-filter_complex",
+                 f"[0:v][1:v]xfade=transition=fade:duration={dis/FPS:.5f}:offset={(a_frames-dis)/FPS:.5f}",
+                 "-frames:v", str(a_frames + timeline[i+1]["frames"] - dis),
+                 "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", str(joined)])
+            segs[1 + i + 1] = joined  # successor slot now carries the joined pair
+            di += dis
+            continue
+        merged.append(segs[1 + i])
+    merged.append(segs[-1])  # credits
+    segs = merged
+
     concat = tmp / "list.txt"
     concat.write_text("".join(f"file '{s}'\n" for s in segs))
     out = Path(args.out)
@@ -144,7 +166,8 @@ def main() -> int:
          "-show_entries", "stream=nb_read_frames", "-of",
          "default=noprint_wrappers=1:nokey=1", str(out)],
         capture_output=True, text=True).stdout.strip()
-    expected = title_frames + sum(sc["frames"] for sc in timeline) + credits_frames
+    expected = (title_frames + sum(sc["frames"] for sc in timeline)
+                - sum(sc.get("dissolve_into_next", 0) for sc in timeline) + credits_frames)
     status = "OK" if probe == str(expected) else f"MISMATCH (expected {expected})"
     print(f"✓ {out}  frames={probe} {status}")
     return 0 if probe == str(expected) else 1
