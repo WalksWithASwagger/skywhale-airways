@@ -1,7 +1,7 @@
 # Skywhale Airways ✈ 🐋
 
-A scroll-driven, heavy-WebGL microsite for the animation _A Psychedelic Airport
-for Time Travelers_ — **AI Film Club · Retro Challenge · June 2026**, by
+A scroll-driven, heavy-WebGL microsite for the animation _I AM NOMAD_ (a
+psychedelic airport for time travelers) — **AI Film Club · Retro Challenge · June 2026**, by
 **Kris Krug & Suzy Easton**. _Skywhale Airways_ is the in-world airline brand
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
@@ -187,7 +187,7 @@ per deploy). The 53s web cut is also on YouTube (`youtu.be/nvKMmuzQNDs`).
 <div class="film-frame" id="film-frame">
   <iframe
     src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
-    title="A Psychedelic Airport for Time Travelers — festival cut"
+    title="I AM NOMAD — festival cut"
     loading="lazy"
     allowfullscreen
   ></iframe>

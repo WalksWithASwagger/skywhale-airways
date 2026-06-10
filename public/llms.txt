@@ -15,8 +15,8 @@
 
 ## Project Notes
 
-Skywhale Airways is the project and festival brand for *A Psychedelic Airport
-for Time Travelers*. The canonical project image is the **I AM NOMAD** Time
+Skywhale Airways is the project and festival brand for *I AM NOMAD* (a
+psychedelic airport for time travelers). The canonical project image is the **I AM NOMAD** Time
 Traveller poster. The primary public film is the 59s festival cut on YouTube
 (Unlisted) at `youtu.be/FTMbAECxb8A`; the preserved 53s web cut is also on
 YouTube (Unlisted) at `youtu.be/nvKMmuzQNDs`. The public site embeds the
