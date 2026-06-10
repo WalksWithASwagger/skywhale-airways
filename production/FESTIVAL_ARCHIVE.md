@@ -13,7 +13,11 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
-> June 10, 2026 (final) — **v5 fine-tune is FINAL**: shorter title/credits,
+> June 10, 2026 (v6) — **v6 is FINAL**: ~2s credits hold, s02 walk-to-counter
+> window, zero-g at native speed via round-1 take, rotunda anchor exact again.
+> Mix A sha256 `fcd371d2631e123b229a565f0b5e5407b7ebd9282cfa265a2a7867e3d5f17603`; Mix B sha256 `ff4b2d3eb85b306cf1468268cc42b3ad13dde40bd81f7bbd12f8b37e90e1f47a`. Recipe: `v6_timing.json`.
+
+> June 10, 2026 (final) — **v5 fine-tune is superseded**: shorter title/credits,
 > earlier bird-skywhale window, relaxed span-B slow-mo, longer golden-fish and
 > rotunda holds. Mix A sha256 `32f80d985dd8c48ee1a795e5c0b6f06fd0fdf2cc21504742cc61f4e74a6efa64`;
 > Mix B sha256 `9c19671c6d095ff6c5741a48810e418cf8af299f6aac057b4bcafc2303721253`. Recipe: `v5_timing.json`.
