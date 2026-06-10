@@ -37,6 +37,25 @@ function renderProduct(product, base) {
     </figure>`;
 }
 
+// The current drop gets a single hero presentation instead of a grid cell.
+function renderHeroProduct(product, base) {
+  return `
+    <figure class="product product-hero">
+      <div class="product-hero-img">
+        <img src="${base}${product.img}" alt="${product.title}" loading="lazy" />
+      </div>
+      <figcaption class="product-hero-info">
+        <span class="product-badge product-hero-badge">${product.badge}</span>
+        <h4 class="product-hero-title">${product.title}</h4>
+        <p class="product-hero-type">${product.type}</p>
+        <div class="product-hero-buy">
+          <span class="product-hero-price">${product.price}</span>
+          ${renderCommerceControl(product)}
+        </div>
+      </figcaption>
+    </figure>`;
+}
+
 function renderSection(section, base) {
   const sectionProducts = products.filter((product) => product.group === section.group);
   if (!sectionProducts.length) return "";
@@ -49,7 +68,11 @@ function renderSection(section, base) {
         <p>${section.description}</p>
       </div>
       <div class="product-grid product-grid-${section.layout}">
-        ${sectionProducts.map((product) => renderProduct(product, base)).join("")}
+        ${sectionProducts
+          .map((product) =>
+            section.layout === "drop" ? renderHeroProduct(product, base) : renderProduct(product, base)
+          )
+          .join("")}
       </div>
     </section>`;
 }
@@ -58,5 +81,11 @@ function renderSection(section, base) {
 // products stay visible as concept/candidate catalog pieces.
 export function renderShop(gridEl) {
   const base = import.meta.env.BASE_URL;
-  gridEl.innerHTML = shopSections.map((section) => renderSection(section, base)).join("");
+  const galleryLink = `
+    <a class="gallery-invite" href="gallery.html">
+      <span class="gallery-invite-eyebrow">Concept gallery</span>
+      <span class="gallery-invite-title">Browse the terminal's other relics →</span>
+      <span class="gallery-invite-sub">Patches, pins, lyric die-cuts, and time-airport fragments — art first, souvenirs someday.</span>
+    </a>`;
+  gridEl.innerHTML = shopSections.map((section) => renderSection(section, base)).join("") + galleryLink;
 }

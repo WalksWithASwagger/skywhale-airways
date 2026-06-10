@@ -13,6 +13,53 @@ public Skywhale site and Press Kit.
 
 ## Canonical Deliverables
 
+> June 10, 2026 (v9) — **v9 is FINAL and KK-APPROVED** (canonical: Mix A): lyric grid restored exactly
+> (380/808/946), outro bed removed, 1.5s cards, song-matched 53.5s.
+> Mix A sha256 `811d8bdb19231aa5bbbdc020c92945c949a7c03d24da6278fbbafa96c0e2d7f0`; Mix B sha256 `746546e0a9190f63d7a7f5394b6cc16d575e242952565e0ed7e9aa04d5982f43`. Recipe: `v9_timing.json`.
+
+> June 10, 2026 (v8) — **v8 is superseded**: 59.583s, s01/s07 full native takes,
+> s09 +1s, ambience outro, lyric grid released. Mix A sha256 `c776ddec72e3dc4b29010a2386be7aa9d68689d75e1b68ee345f0502a69ae5b5`;
+> Mix B sha256 `44de3223128bb79b6dde669c1a68cb9ab2cc5fa5fae7c9ed3432dd3ed0c4f718`. Recipe: `v8_timing.json`.
+
+> June 10, 2026 (v7) — **v7 is superseded**: audio re-timed to start at frame one
+> (music over the title), 53.5s total, first s01->s02 dissolve, lyric grid
+> re-pinned exactly, middles extended. Mix A sha256 `e6f55734e45c0385dbf6ad0550d5a4a673231c8d3c7c57eb6a17a8cc51347655`;
+> Mix B sha256 `a14c053f0e40b04595f08f1531874200ca9c75bdcee604c52f6b0213fcf6cbe2`. Recipe: `v7_timing.json`.
+
+> June 10, 2026 (v6) — **v6 is superseded**: ~2s credits hold, s02 walk-to-counter
+> window, zero-g at native speed via round-1 take, rotunda anchor exact again.
+> Mix A sha256 `fcd371d2631e123b229a565f0b5e5407b7ebd9282cfa265a2a7867e3d5f17603`; Mix B sha256 `ff4b2d3eb85b306cf1468268cc42b3ad13dde40bd81f7bbd12f8b37e90e1f47a`. Recipe: `v6_timing.json`.
+
+> June 10, 2026 (final) — **v5 fine-tune is superseded**: shorter title/credits,
+> earlier bird-skywhale window, relaxed span-B slow-mo, longer golden-fish and
+> rotunda holds. Mix A sha256 `32f80d985dd8c48ee1a795e5c0b6f06fd0fdf2cc21504742cc61f4e74a6efa64`;
+> Mix B sha256 `9c19671c6d095ff6c5741a48810e418cf8af299f6aac057b4bcafc2303721253`. Recipe: `v5_timing.json`.
+
+> June 10, 2026 (later) — **Director's cut v4 is superseded**: KK's per-scene picks
+> across old/r1/r2, s05+s08 cut with anchor-pinned retiming, Mix A
+> (`i_am_nomad_4k_master_v4.mp4`, sha256 `cc483461455580f9a040b10d7ce2362a6afd1fff573130d2de721bc0bb26ce11`)
+> and Mix B SFX variant (`..._v4_sfx.mp4`, sha256 `2e77464ef074fd739eb5b8a1ea74583ef4773ab0fba1735746f5a5944c3e7cf6`).
+> Recipe: `v4_timing.json` + `scripts/assemble_v3.py`. QA: AWARDS_QA top.
+
+> June 10, 2026 — **I AM NOMAD 4K master v2** (round-2 trippier takes,
+> EDL-exact edit, animated key-art cards) supersedes everything below as the
+> submission deliverable. Off-repo: `edits/i_am_nomad_4k_master_v2.mp4`,
+> sha256 `acd0c3f7d912bc470011d52a353405c7291d618618f6923f48cc55841479ad82`,
+> 267,064,609 bytes, 59.208333s, 3840×2160/24fps. Regenerable: keyframes +
+> prompts + trippier suffix (`predictions.json`) + `v2_edl.json` +
+> `scripts/assemble_v3.py` + Topaz provenance (`predictions.json` steps).
+> QA: `AWARDS_QA.md` top section.
+
+> June 9, 2026 — **I AM NOMAD 4K master** supersedes the 1080p awards cut as
+> the submission deliverable. Off-repo (LFS budget): keep
+> `edits/i_am_nomad_4k_master.mp4` in the festival archive; sha256
+> `d94fa8ecbeefa6d05dbfbdd0badc27d2f2462b07f7c7434a5f6db8bdf1635c78`,
+> 263,651,782 bytes, 59.208333s, 3840×2160. Regenerable: keyframes + prompts
+> (`scenes.json`) + Gemini operation IDs (`predictions.json`) + assembly recipe
+> (`production/README.md`). 4K title/credits cards are committed in `titles/`.
+> YouTube upload + site embed swap pending (PR #83). QA: `AWARDS_QA.md` top
+> section.
+
 - Public primary festival cut:
   YouTube (Unlisted), `youtu.be/FTMbAECxb8A`
 - Production edit copy:

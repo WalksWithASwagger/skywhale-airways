@@ -1,0 +1,58 @@
+{
+ "note": "v7b: audio trimmed from 3.0s (audible immediately, 0.25s smoothing fade), lyric grid -3.0s total; spanA tightened, rotunda back to 12s. Total 1284f/53.5s.",
+ "title_frames": 60,
+ "credits_frames": 49,
+ "scenes": [
+  {
+   "id": "s01",
+   "pick": "r2",
+   "frames": 124,
+   "window": 2.728,
+   "offset": 4.03,
+   "dissolve_into_next": 16
+  },
+  {
+   "id": "s02",
+   "pick": "r2",
+   "frames": 110,
+   "window": 3.261,
+   "offset": 0.0
+  },
+  {
+   "id": "s03",
+   "pick": "r2",
+   "frames": 102,
+   "window": 2.972,
+   "offset": 0.0
+  },
+  {
+   "id": "s04",
+   "pick": "old",
+   "frames": 150
+  },
+  {
+   "id": "s06",
+   "pick": "r1",
+   "frames": 170,
+   "window": 7.083,
+   "offset": 0.5
+  },
+  {
+   "id": "s09",
+   "pick": "old",
+   "frames": 108
+  },
+  {
+   "id": "s07",
+   "pick": "r1",
+   "frames": 138,
+   "window": 3.993,
+   "offset": 2.76
+  },
+  {
+   "id": "s10",
+   "pick": "old",
+   "frames": 289
+  }
+ ]
+}

@@ -5,16 +5,16 @@
 #
 # WHAT THIS IS FOR
 #   Producing the single MP4 you hand to a festival / AI Film Club portal or
-#   load onto a projector laptop. It does NOT regenerate the film — the AI
-#   clips are generated at native 1920x1080, so 1080p is the quality ceiling
-#   and there is nothing to gain by re-running Veo.
+#   load onto a projector laptop. It does NOT regenerate the film — it
+#   packages whichever finished master you point it at (default: the 4K
+#   I AM NOMAD master; pass --in for any other cut).
 #
 # IMPORTANT — re-encoding upward does not add quality
-#   `skywhale_awards_cut_v2.mp4` is already a near-lossless CRF-18 encode of the
-#   native 1080p edit. Re-encoding it to a *higher* bitrate cannot recover
-#   detail that was never there and adds one generation of loss. So the DEFAULT
-#   mode here is a bit-exact stream copy: same pristine video, just repackaged
-#   with +faststart and a clean filename. Use --reencode ONLY when a submission
+#   The masters are already near-lossless CRF-17/18 encodes of the native
+#   edit. Re-encoding to a *higher* bitrate cannot recover detail that was
+#   never there and adds one generation of loss. So the DEFAULT mode here is
+#   a bit-exact stream copy: same pristine video, just repackaged with
+#   +faststart and a clean filename. Use --reencode ONLY when a submission
 #   portal rejects the original container or demands a fresh transcode.
 #
 # AUDIO NOTE
@@ -34,7 +34,8 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT="$(cd "$HERE/.." && pwd)/video_project/time_airport"
 EDITS="$PROJECT/edits"
 
-IN="$EDITS/skywhale_awards_cut_v2.mp4"
+IN="$EDITS/i_am_nomad_4k_master.mp4"
+[[ -f "$IN" ]] || IN="$EDITS/skywhale_awards_cut_v2.mp4"  # pre-4K fallback
 OUT=""
 REENCODE=0
 
@@ -63,7 +64,12 @@ if [[ "$(head -c 40 "$IN")" == "version https://git-lfs.github.com/spec"* ]]; th
   exit 1
 fi
 
-[[ -n "$OUT" ]] || OUT="$EDITS/Skywhale-Airways-festival-cut-submission.mp4"
+if [[ -z "$OUT" ]]; then
+  case "$(basename "$IN")" in
+    i_am_nomad*) OUT="$EDITS/I-Am-Nomad-festival-cut-submission.mp4" ;;
+    *)           OUT="$EDITS/Skywhale-Airways-festival-cut-submission.mp4" ;;
+  esac
+fi
 
 echo "Input : $IN"
 echo "Output: $OUT"

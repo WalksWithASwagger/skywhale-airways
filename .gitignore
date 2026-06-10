@@ -9,3 +9,27 @@ dist
 
 # Derived submission export (regenerate with production/scripts/export_festival_master.sh)
 production/video_project/time_airport/edits/Skywhale-Airways-festival-cut-submission.mp4
+__pycache__/
+# Raw card generations (4K crops are the committed assets)
+production/video_project/time_airport/titles/*_raw.png
+production/video_project/time_airport/review/
+production/video_project/time_airport/build/
+# 4K media stays off-repo (LFS budget — see #49/#57); regenerable via predictions.json provenance
+production/video_project/time_airport/clips/*_4k*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-festival-cut-submission.mp4
+production/video_project/time_airport/clips/*_full*.mp4
+production/video_project/time_airport/clips/*_topaz_4k*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v2.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v4*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-DIRECTORS-CUT*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v5*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-FINAL-v5*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v6*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-FINAL-v6*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v7*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-FINAL-v7*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v8*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-FINAL-v8*.mp4
+production/video_project/time_airport/edits/i_am_nomad_4k_master_v9*.mp4
+production/video_project/time_airport/edits/I-Am-Nomad-FINAL-v9*.mp4
