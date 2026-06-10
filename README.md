@@ -1,7 +1,7 @@
 # Skywhale Airways ✈ 🐋
 
-A scroll-driven, heavy-WebGL microsite for the animation _A Psychedelic Airport
-for Time Travelers_ — **AI Film Club · Retro Challenge · June 2026**, by
+A scroll-driven, heavy-WebGL microsite for the animation _I AM NOMAD_ (a
+psychedelic airport for time travelers) — **AI Film Club · Retro Challenge · June 2026**, by
 **Kris Krug & Suzy Easton**. _Skywhale Airways_ is the in-world airline brand
 (it's the airline on the boarding pass) and the project's name for festivals and
 merch.
@@ -98,7 +98,7 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   are embedded from YouTube (no longer Git LFS), and the Vite 8 / Rolldown build
   is verified on Vercel.
 - **Finished film** — the 59s festival / awards cut is embedded in the
-  `#film-frame` slot from YouTube (Unlisted, `youtu.be/FTMbAECxb8A`). The 53s web
+  `#film-frame` slot from YouTube (Unlisted, `youtu.be/3xmfwiwdhm8`). The 53s web
   cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
   repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.
 - **Festival submissions** — _Skywhale Airways_ is the submission brand; the site
@@ -186,8 +186,8 @@ per deploy). The 53s web cut is also on YouTube (`youtu.be/nvKMmuzQNDs`).
 ```html
 <div class="film-frame" id="film-frame">
   <iframe
-    src="https://www.youtube-nocookie.com/embed/FTMbAECxb8A"
-    title="A Psychedelic Airport for Time Travelers — festival cut"
+    src="https://www.youtube-nocookie.com/embed/3xmfwiwdhm8"
+    title="I AM NOMAD — festival cut"
     loading="lazy"
     allowfullscreen
   ></iframe>

@@ -1,4 +1,4 @@
-// The ten scenes of "A Psychedelic Airport for Time Travelers", in order.
+// The ten scenes of "I AM NOMAD" (a psychedelic airport for time travelers), in order.
 // Each pairs a keyframe (optimized into public/scenes by scripts/optimize-assets.mjs)
 // with its title and the voiceover lines that surface as captions on scroll.
 // Source: the Veo 3.1 shot list + Suno voiceover draft.

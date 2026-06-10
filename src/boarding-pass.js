@@ -106,7 +106,7 @@ export class BoardingPass extends CanvasArtifact {
     ctx.fillText("SKYWHALE AIRWAYS", 56, 84);
     ctx.font = "italic 17px Georgia, serif";
     ctx.fillStyle = "rgba(50,35,40,0.7)";
-    ctx.fillText("A Psychedelic Airport for Time Travelers", 56, 110);
+    ctx.fillText("I AM NOMAD · a psychedelic airport for time travelers", 56, 110);
 
     this.#field(ctx, "PASSENGER", d.name.toUpperCase() || "TRAVELER", 56, 180, 30);
     this.#field(ctx, "DEPARTING", "NOW", 56, 260, 26);
@@ -269,6 +269,6 @@ export class BoardingPass extends CanvasArtifact {
   }
 
   shareText() {
-    return "Boarding through memory at A Psychedelic Airport for Time Travelers.";
+    return "Boarding through memory at I AM NOMAD — a psychedelic airport for time travelers.";
   }
 }
