@@ -9,11 +9,11 @@ production host, Git LFS media is enabled, and the public domain root is live at
 `https://skywhaleairways.com/`. `www.skywhaleairways.com` hard-redirects to the
 apex with HTTP 308.
 
-Duty-Free is live for the first Nomad drop. The first three cards use Skywhale's
-own catalog art and copy, then mount embedded Shopify Buy Buttons for checkout.
-The Shopify API domain is `dze7ru-ii.myshopify.com`; `shop.skywhaleairways.com`
-does not resolve and remains a human/DNS decision, not a launch blocker for the
-embedded Buy Button flow.
+Duty-Free is live for the first Nomad drop. The I AM NOMAD holographic sticker
+uses Skywhale's own catalog art and copy, then mounts an embedded Shopify Buy
+Button for checkout. The Shopify API domain is `dze7ru-ii.myshopify.com`;
+`shop.skywhaleairways.com` does not resolve and remains a human/DNS decision,
+not a launch blocker for the embedded Buy Button flow.
 
 GA4 and Search Console are live for production. The GA4 Measurement ID is
 `G-W59LMFSG43`, Search Console URL-prefix verification is installed through the
@@ -45,8 +45,9 @@ preserved merch PNG and print assets.
 - Merch Wave 5 refined: the upgraded **I AM NOMAD** poster is the canonical
   project/store image and drives the sticker, patch, tee, and social preview
   art.
-- Shopify Buy Button checkout launched for the first three Nomad products:
-  sticker, patch, and tee. Issue #10 closed.
+- Shopify Buy Button checkout launched for the I AM NOMAD holographic sticker.
+  Patch and tee moved back to the fulfillment/product-setup queue. Issue #10
+  closed.
 - GA4 stream verified and production collection smoke-tested. Issue #11 closed.
 - Search Console URL-prefix property verified and sitemap submitted. Issue #12
   closed.
@@ -146,8 +147,8 @@ Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 - Terminal artifact smoke: shared links restore Gate Receipt, Route Map
   Postcard, and Suitcase Sticker Manifest; canvases render nonblank; 390px
   mobile layout has no horizontal overflow.
-- Shopify smoke: first three Duty-Free cards mount real Buy Buttons, add to cart
-  works, remove works, cart reopens, and checkout starts on Shopify.
+- Shopify smoke: the I AM NOMAD holographic sticker mounts a real Buy Button,
+  add to cart works, remove works, cart reopens, and checkout starts on Shopify.
 - GA smoke: production page loads the configured GA4 tag and sends the expected
   Google Analytics request.
 - Search Console smoke: URL-prefix ownership verified and
@@ -189,12 +190,12 @@ Shopify checkout checks on June 4, 2026:
 - Store domain: `dze7ru-ii.myshopify.com`.
 - Default currency: USD.
 - Buy Button sales channel installed.
-- Products are active and published for the first drop:
+- The live site currently exposes one active/published first-drop product:
   - `I AM NOMAD Holographic Sticker`, product ID `15051888918891`, `$6.00 USD`.
-  - `I AM NOMAD Patch`, product ID `15051889705323`, `$14.00 USD`.
-  - `I AM NOMAD Tee`, product ID `15051891638635`, `$36.00 USD`.
+- Patch and tee remain concept-gallery items until fulfillment, variants,
+  shipping, returns, and tax are decided.
 - Vercel production and preview env vars are set for Shopify domain, Storefront
-  token, and the three product IDs. The token is not committed.
+  token, and the sticker product ID. The token is not committed.
 - Production checkout opened on Shopify with Skywhale branding, the sticker line
   item, and a `USD $6.00` total.
 
@@ -217,10 +218,10 @@ Launch-finish verification on June 5, 2026 18:30 PDT / June 6 01:30 UTC:
 - `https://skywhaleairways.com/film/skywhale-awards-cut-v2.mp4` returned HTTP
   200, `content-type: video/mp4`.
 - Vercel Production and Preview env names are present for Shopify domain,
-  Storefront token, and the three Nomad product IDs; values stayed encrypted in
-  CLI output.
-- Headless Chrome smoke rendered 26 products, 3 Shopify Buy Button slots, and 3
-  ready Shopify iframes without clicking cart or checkout.
+  Storefront token, and the sticker product ID; values stayed encrypted in CLI
+  output.
+- Headless Chrome smoke rendered the sticker Shopify Buy Button slot without
+  clicking cart or checkout.
 - `shop.skywhaleairways.com` did not resolve in DNS.
 
 Press Kit local performance pass on June 4, 2026:
@@ -233,7 +234,7 @@ Press Kit local performance pass on June 4, 2026:
 
 ## Launch Polish
 
-- #34: Vercel Shopify env and embedded Buy Button rendering are complete. Keep
+- #34: Vercel Shopify env and embedded sticker Buy Button rendering are complete. Keep
   this open only if KK wants the optional standalone `shop.skywhaleairways.com`
   handoff connected in Shopify and Porkbun.
 - #15: Run the human watch/listen signoff pass against the production-served
@@ -243,12 +244,11 @@ Press Kit local performance pass on June 4, 2026:
 ## Next Swarm
 
 - #15: Human watch/listen signoff for the production-served awards cut.
-- #34: Optional standalone shop-domain decision; embedded Buy Buttons are already
-  live.
+- #34: Optional standalone shop-domain decision; the embedded sticker Buy Button
+  is already live.
 - #17: Parent tracker for broader Shopify/fulfillment.
-- #25-#31: Product-specific merch decisions. Keep only the three Nomad Buy
-  Buttons live until fulfillment, variants, shipping, returns, and tax are
-  decided.
+- #25-#31: Product-specific merch decisions. Keep only the sticker Buy Button
+  live until fulfillment, variants, shipping, returns, and tax are decided.
 
 ## Later
 

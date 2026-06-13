@@ -50,11 +50,11 @@ A hardening sweep landed on `main` (all merged, all live):
 - GA4 is live with Measurement ID `G-W59LMFSG43`.
 - Search Console URL-prefix verification is live and the sitemap has been
   submitted.
-- Shopify Buy Button checkout is live for the first three Nomad products through
-  `dze7ru-ii.myshopify.com`.
+- Shopify Buy Button checkout is live for the I AM NOMAD holographic sticker
+  through `dze7ru-ii.myshopify.com`.
 - Vercel Production and Preview env vars are set for Shopify domain, Storefront
-  token, and product IDs. Headless Chrome verified 3 ready Shopify Buy Button
-  iframes on June 5, 2026 without cart or checkout actions.
+  token, and the sticker product ID. Patch, tee, and the broader catalog remain
+  concept-gallery items until fulfillment and product setup are chosen.
 - `shop.skywhaleairways.com` does not resolve. Leave it disconnected unless KK
   chooses a standalone Shopify storefront outside the embedded Buy Button flow.
 - Shopify Dev MCP is configured globally in `/Users/kk/.codex/config.toml` as
@@ -74,7 +74,7 @@ A hardening sweep landed on `main` (all merged, all live):
 
 - #15: Human watch/listen signoff for awards submission.
 - #34: Optional standalone shop-domain handoff. The Vercel env and embedded
-  Buy Button portions are verified; only `shop.skywhaleairways.com` DNS/Shopify
+  sticker Buy Button are verified; only `shop.skywhaleairways.com` DNS/Shopify
   connection remains unresolved.
 - #17: Parent tracker for broader Shopify/fulfillment. Child issue split:
   #25 Nomad tee size/fulfillment, #26 Chest Print patch, #27 Chest Print

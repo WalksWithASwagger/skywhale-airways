@@ -31,7 +31,7 @@ jobs:
       - name: Install driver deps and chromium
         run: |
           cd .claude/skills/run-skywhale-airways
-          npm install
+          npm ci
           npx playwright install --with-deps chromium
           cd -
       - name: Build static site

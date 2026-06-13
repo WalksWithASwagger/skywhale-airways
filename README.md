@@ -14,9 +14,10 @@ Porkbun DNS.
 
 **Vercel fallback:** https://skywhale-airways.vercel.app/
 
-**Shopify checkout:** the first Nomad drop checks out through embedded Shopify
-Buy Buttons backed by `dze7ru-ii.myshopify.com`. `shop.skywhaleairways.com` is
-not connected; embedded Buy Buttons are the current shop surface.
+**Shopify checkout:** the live I AM NOMAD holographic sticker checks out through
+an embedded Shopify Buy Button backed by `dze7ru-ii.myshopify.com`.
+`shop.skywhaleairways.com` is not connected; the embedded Buy Button is the
+current shop surface.
 
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
@@ -75,8 +76,8 @@ The old `walkswithaswagger.github.io/skywhale-airways/` URL should return 404.
 
 Shopify Buy Button env vars are documented in `.env.example` and
 `merch/shopify-launch.md`. Production and preview env vars are set in Vercel for
-the first three Nomad products; live rendering was verified on June 5, 2026
-without cart or checkout actions.
+the live I AM NOMAD holographic sticker; patch, tee, and broader catalog pieces
+remain concept-gallery items until fulfillment and product setup are chosen.
 
 Admin verification env vars are also documented in `.env.example`.
 `VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or `GT-...` tag is
@@ -103,10 +104,9 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.
 - **Festival submissions** — _Skywhale Airways_ is the submission brand; the site
   includes an award-facing press kit at `press.html`.
-- **Duty-Free merch** — concept products are live on the site. The first three
-  Nomad products mount real Shopify Buy Buttons; the broader catalog remains
-  concept-only until fulfillment and product setup are chosen. Source and
-  print-ready PNGs are kept in
+- **Duty-Free merch** — the I AM NOMAD holographic sticker mounts a real Shopify
+  Buy Button; patch, tee, and broader catalog pieces remain concept-only until
+  fulfillment and product setup are chosen. Source and print-ready PNGs are kept in
   `merch/` and tracked with Git LFS; deployable WebP derivatives live in
   `public/merch/`.
 
@@ -143,9 +143,9 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
   `src/terminal-artifacts.js`) — retained as source-history/reference modules,
   but no longer imported by the homepage.
 - **`src/shop-data.js` / `src/shop.js` / `src/shopify-buy-buttons.js`** — the
-  Duty-Free catalog, renderer, and Shopify Buy Button loader. Nomad products
-  mount embedded Shopify buttons when Vite env vars are set; all other products
-  remain concept-only.
+  Duty-Free catalog, renderer, and Shopify Buy Button loader. Products with
+  enabled Shopify config mount embedded buttons when Vite env vars are set; all
+  other products remain concept-only.
 - **`src/analytics.js`** — optional GA4 loader. It is included on all public
   entry pages but does nothing until `VITE_GA_MEASUREMENT_ID` is configured.
 - **`src/data/scenes.js`** — the single source of truth: ten scenes, each with a

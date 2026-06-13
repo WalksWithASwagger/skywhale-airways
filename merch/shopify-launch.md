@@ -1,8 +1,8 @@
 # Skywhale Airways Shopify Launch
 
 Duty-Free is live for the first Nomad drop. The Skywhale site keeps its own
-product cards and mounts embedded Shopify Buy Buttons inside the first three
-cards when the required Vite environment values are present.
+product card and mounts an embedded Shopify Buy Button for the I AM NOMAD
+holographic sticker when the required Vite environment values are present.
 
 ## Storefront
 
@@ -20,8 +20,9 @@ CNAME record for `shop` pointing to `shops.myshopify.com`.
 
 ## Products
 
-The first drop uses the canonical image from `merch/r5/i-am-nomad-master.png`,
-but the site presents each item with its own product mockup:
+The first drop uses the canonical image from `merch/r5/i-am-nomad-master.png`.
+The live site currently sells the holographic sticker and keeps the patch and
+tee in the concept gallery:
 
 - `merch/r5/i-am-nomad-holographic-sticker-mockup.png`
 - `merch/r5/i-am-nomad-patch-mockup.png`
@@ -33,8 +34,8 @@ The holographic sticker print source is
 | Product | Handle | Product ID | Price | Status | Site env key |
 |---|---|---:|---:|---|---|
 | I AM NOMAD Holographic Sticker | `i-am-nomad-holographic-sticker` | `15051888918891` | `$6.00 USD` | Active, Buy Button published | `VITE_SHOPIFY_NOMAD_STICKER_PRODUCT_ID` |
-| I AM NOMAD Patch | `i-am-nomad-patch` | `15051889705323` | `$14.00 USD` | Active, Buy Button published | `VITE_SHOPIFY_NOMAD_PATCH_PRODUCT_ID` |
-| I AM NOMAD Tee | `i-am-nomad-tee` | `15051891638635` | `$36.00 USD` | Active, Buy Button published | `VITE_SHOPIFY_NOMAD_TEE_PRODUCT_ID` |
+| I AM NOMAD Patch | `i-am-nomad-patch` | `15051889705323` | `$14.00 USD` | Concept-gallery item until fulfillment is decided | `VITE_SHOPIFY_NOMAD_PATCH_PRODUCT_ID` |
+| I AM NOMAD Tee | `i-am-nomad-tee` | `15051891638635` | `$36.00 USD` | Concept-gallery item until sizing and fulfillment are decided | `VITE_SHOPIFY_NOMAD_TEE_PRODUCT_ID` |
 
 The tee is currently a single product with no size or color variants. Treat real
 tee fulfillment, sizing, shipping, tax, and returns as issue #17 work before a
@@ -52,9 +53,9 @@ access token, make products available to the app/channel, then embed Buy Button
 JS components for product buttons, cart, and checkout.
 
 Default recommendation for #17: keep Duty-Free as Skywhale's concept gallery
-plus the three live Nomad Buy Buttons until fulfillment, variants, shipping,
-returns, and tax are decided. Do not create more live Shopify products or add
-more product IDs to Vercel until the product can actually be fulfilled.
+plus the live holographic-sticker Buy Button until fulfillment, variants,
+shipping, returns, and tax are decided. Do not create more live Shopify products
+or add more product IDs to Vercel until the product can actually be fulfilled.
 
 Best next real-product candidates:
 
@@ -86,9 +87,10 @@ non-transactional until fulfillment is real.
 
 ## Launching a staged product
 
-The next-batch candidates above are now **pre-wired** in `src/shop-data.js` with a
-`shopify` block kept `enabled: false` (staged) — the cards still render the
-disabled "Boarding soon" button until each goes live. Staged products and env keys:
+The next-batch candidates above have reserved env-key names in `.env.example`,
+but they are not wired as live product cards in `src/shop-data.js`. Add a
+complete `shopify` block only after each product has a real fulfillment path.
+Reserved staged product env keys:
 
 | Product | `productEnv` | `variantMode` |
 |---|---|---|
@@ -117,9 +119,9 @@ Field conventions: `componentId` is `shopify-buy-<slug>` (must be unique);
 `variantMode: "options"` shows Shopify's size selector for apparel, otherwise
 `"button"`. `handle` is informational — the code uses `productEnv` + `componentId`.
 
-(#25 — I AM NOMAD tee sizing — needs no scaffolding: that product is already live
-with `variantMode: "options"`; its remaining work is defining the size variants on
-the Shopify product itself.)
+(#25 — I AM NOMAD tee sizing — needs product work before live commerce: define
+the size/fulfillment model, then add or enable the Shopify config with
+`variantMode: "options"`.)
 
 ## Environment
 
@@ -129,26 +131,26 @@ Local `.env` shape:
 VITE_SHOPIFY_DOMAIN=dze7ru-ii.myshopify.com
 VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN=<from Shopify Buy Button; do not commit>
 VITE_SHOPIFY_NOMAD_STICKER_PRODUCT_ID=15051888918891
-VITE_SHOPIFY_NOMAD_PATCH_PRODUCT_ID=15051889705323
-VITE_SHOPIFY_NOMAD_TEE_PRODUCT_ID=15051891638635
 ```
 
-The same values are set in Vercel for Production and Preview. Keep local `.env`
-files out of git, and do not paste token values into docs, screenshots, or logs.
+The sticker values are set in Vercel for Production and Preview. Keep local
+`.env` files out of git, and do not paste token values into docs, screenshots,
+or logs.
 
 ## Verification
 
 - `npm run build` succeeds with and without Shopify env vars.
-- Without env vars, the first three cards keep their product-specific Nomad art
-  and show the non-transactional "Shop opening soon" fallback.
-- With env vars, the first three cards mount embedded Shopify Buy Buttons.
+- Without env vars, the sticker card keeps its product-specific Nomad art and
+  shows the non-transactional "Shop opening soon" fallback.
+- With env vars, the sticker card mounts an embedded Shopify Buy Button.
 - Production deploy `dpl_BATferbaAcuaPEKmjPaotgJ6uSoM` is aliased to
   `https://skywhaleairways.com/`.
-- Headless Chrome smoke on June 5, 2026 rendered 26 products, 3 Shopify Buy
-  Button slots, and 3 ready Shopify iframes without clicking cart or checkout.
+- Headless Chrome smoke on June 5, 2026 rendered the then-current Shopify slots
+  without clicking cart or checkout; the current site exposes only the sticker
+  Buy Button.
 - Production smoke on June 4, 2026:
   - Shopify SDK loads from the public site.
-  - First three Duty-Free cards show real Add to cart buttons.
+  - The sticker Duty-Free card shows a real Add to cart button.
   - Sticker add-to-cart works.
   - Removing the item works.
   - Reopening the cart works.
