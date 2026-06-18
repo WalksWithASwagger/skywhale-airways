@@ -906,6 +906,10 @@ body {
   text-transform: uppercase;
   color: rgba(50, 35, 40, 0.7);
 }
+.credit-network {
+  margin-top: 1rem;
+  line-height: 1.7;
+}
 .colophon-link {
   color: var(--rose-deep);
   text-transform: none;
