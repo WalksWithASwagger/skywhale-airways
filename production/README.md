@@ -222,6 +222,13 @@ fades to black). The current primary awards cut is
 
 ## Config
 
-Copy `.env.example` → `.env` and set `REPLICATE_API_TOKEN` (clips, beds, stems),
+The environment contract is in `.env.schema`. Agents may inspect that schema,
+but must not read local `.env*` value files. Run secret-dependent commands with:
+
+```bash
+varlock run --inject vars -- <command>
+```
+
+The contract covers `REPLICATE_API_TOKEN` (clips, beds, stems),
 `ELEVENLABS_API_KEY` (voiceover), plus `GOOGLE_API_KEY` / `OPENAI_API_KEY` for
-rafiki card generation.
+Gemini and Rafiki card generation. `GEMINI_API_KEY` remains an accepted alias.
