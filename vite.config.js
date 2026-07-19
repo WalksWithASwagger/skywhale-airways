@@ -7,7 +7,7 @@ const r = (p) => fileURLToPath(new URL(p, import.meta.url));
 // Single source of truth for the site's indexable HTML pages. Drives both the
 // multi-page build inputs and the generated sitemap.xml, so the page list and
 // the sitemap can never drift apart — add a page here and it lands in both.
-const pages = [
+export const pages = [
   { name: "main", file: "index.html", path: "/" },
   { name: "about", file: "about.html", path: "/about.html" },
   { name: "press", file: "press.html", path: "/press.html" },

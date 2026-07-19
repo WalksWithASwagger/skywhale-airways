@@ -44,6 +44,40 @@
       name="twitter:image:alt"
       content="I AM NOMAD poster art with the blonde Time Traveller at Gate infinity as fish-aircraft drift overhead."
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://skywhaleairways.com/#website",
+            "name": "Skywhale Airways",
+            "url": "https://skywhaleairways.com/"
+          },
+          {
+            "@type": "Movie",
+            "@id": "https://skywhaleairways.com/#film",
+            "name": "I AM NOMAD",
+            "url": "https://skywhaleairways.com/",
+            "image": "https://skywhaleairways.com/social/i-am-nomad-og.jpg",
+            "duration": "PT53.5S",
+            "creator": [
+              {
+                "@type": "Person",
+                "name": "Kris Krug"
+              },
+              {
+                "@type": "Person",
+                "name": "Suzy Easton"
+              }
+            ],
+            "isPartOf": {
+              "@id": "https://skywhaleairways.com/#website"
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/src/analytics.js"></script>
   </head>
