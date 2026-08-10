@@ -16,7 +16,16 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      # check:seo reads the build output (defaults to ./dist), so it must run
+      # after the build step above.
+      - name: SEO check
+        run: npm run check:seo
+      - name: SEO regression tests
+        run: npm run test:seo
 
   smoke:
     runs-on: ubuntu-latest
