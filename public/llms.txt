@@ -21,3 +21,16 @@ Traveller poster. The primary public film is the 53.5s festival cut on YouTube
 (Unlisted) at `youtu.be/3xmfwiwdhm8`; the preserved 53s web cut is also on
 YouTube (Unlisted) at `youtu.be/nvKMmuzQNDs`. The public site embeds the
 festival cut with `youtube-nocookie`.
+
+## Creative AI Human Lab
+
+Skywhale Airways is part of Kris Krüg's Creative AI Human Lab, a linked set of
+public films, portals, music, and agent tools.
+
+- [KrisKrug.co Work](https://kriskrug.co/work/)
+- [Punk Rock AI](https://www.punkrockai.com/)
+- [Gorgeous Ghost](https://gorgeousghost.com/)
+- [Ghost Radio](https://ghost.radio.fm/)
+- [Wedges](https://wedges.dev/)
+- [Too Weird to Die](https://www.bothhandsfull.com/album/too-weird-to-die)
+- [Ethos Lab Block Party](https://ethosblockparty.com/the-day)
