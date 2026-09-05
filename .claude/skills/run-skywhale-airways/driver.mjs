@@ -5,6 +5,7 @@
 //
 //   node driver.mjs smoke                       # scripted entry→film→artifact flow
 //   node driver.mjs smoke-artifact-link         # scripted shared artifact restore flow
+//   node driver.mjs smoke-film-entry            # focused film acceptance scenarios
 //   node driver.mjs <<'EOF' ... EOF             # pipe commands on stdin
 //   echo 'nav http://localhost:3000\nscreenshot' | node driver.mjs
 //
@@ -22,7 +23,7 @@
 //   eval <js>                 run JS in page, print result
 //   screenshot [name]         full-page PNG into ./screenshots/<name>.png
 //   shot-el <selector> [name] crop screenshot to one element
-//   console-errors            print console errors/page errors collected so far
+//   console-errors            fail on collected console/page errors
 //   quit                      close and exit
 //
 // Env: URL (default http://localhost:3000), HEADED=1 to watch, SHOT_DIR override.
@@ -131,7 +132,8 @@ async function run(line) {
       break;
     }
     case "console-errors":
-      console.log(errors.length ? errors.join("\n") : "(no console/page errors)");
+      if (errors.length) throw new Error(errors.join("\n"));
+      console.log("(no console/page errors)");
       break;
     case "quit":
       throw { done: true };
@@ -189,7 +191,9 @@ const scriptedFlows = {
   "smoke-artifact-link": ARTIFACT_LINK_SMOKE,
 };
 
-const lines = scriptedFlows[process.argv[2]]
+const lines = process.argv[2] === "smoke-film-entry"
+  ? []
+  : scriptedFlows[process.argv[2]]
   ? scriptedFlows[process.argv[2]].split("\n")
   : await new Promise((res) => {
       const acc = [];
@@ -199,6 +203,10 @@ const lines = scriptedFlows[process.argv[2]]
     });
 
 try {
+  if (process.argv[2] === "smoke-film-entry") {
+    const { checkFilmEntry } = await import("./film-checks.mjs");
+    await checkFilmEntry(browser, URL, SHOT_DIR);
+  }
   for (const line of lines) await run(line);
 } catch (e) {
   if (!e?.done) {

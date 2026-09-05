@@ -1,8 +1,54 @@
 # Skywhale Airways Roadmap
 
+## Approved product north star
+
+Make Skywhale Airways a complete short visit: watch **I AM NOMAD**, optionally
+wander its psychedelic airport, and leave with one impossible souvenir. Preserve
+the authored imagery, Time Traveller voice, musical rhythm, and unusual world.
+The approved festival cut remains v9, 53.5 seconds, by Kris Krug and Suzy Easton.
+
+The product hypothesis is that a clear route to the film increases successful
+viewing without sacrificing the delight of voluntary exploration. Completion and
+souvenir uptake are not yet measured outcomes.
+
+### Non-goals
+
+No runtime AI, film regeneration, framework rewrite, new commerce surface, new
+accounts, expanded tracking, or generic redesign. Dependencies and abstractions
+must solve a demonstrated problem. Preserve the existing Artifact Lab, share URL
+formats, authored portal, and embedded sticker catalog/checkout boundary.
+
+Tracking issue: [#111](https://github.com/WalksWithASwagger/skywhale-airways/issues/111).
+Current proof: [#112](https://github.com/WalksWithASwagger/skywhale-airways/issues/112).
+
+## Approved transformation roadmap
+
+1. **Current proof — direct film boarding.** A primary Watch action and film
+   permalink, optional wandering, resilient startup, one soundtrack at a time,
+   and a clear route into the existing Artifact Lab. These foundations ship as
+   a complete visitor journey, not as standalone infrastructure. See [NEXT.md](NEXT.md)
+   for scope, decisions, acceptance criteria, and validation evidence.
+2. **Differentiator — a satisfying aftershow keepsake.** After proof review and
+   first-time visitor feedback, make choosing, personalizing, and keeping one
+   artifact feel like the ending of the film visit. Reuse the existing lab and
+   share restoration from PR #76; decide the next bounded slice from evidence.
+3. **Optional experiments.** Test stronger scene-to-keepsake connections and
+   offscreen rendering savings only if observed behavior or profiling supports
+   them. Do not create the future backlog before the proof is reviewed.
+
+Existing separate work remains with #99 (skill portability), #70 (read-only
+launch health), #73 (festival packaging), and #17/#25/#71/#72 (merchandise).
+The transformation does not reopen completed launch work or require those issues.
+
+## Historical launch record
+
+The following is the June launch record, retained for provenance. Its dated
+status, cut versions, deployment checks, and suggested next work are historical;
+the approved roadmap above and current milestone in NEXT.md govern new work.
+
 Last updated: June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 
-## Launch Status
+### Launch Status
 
 Skywhale Airways remains the project and festival brand. Vercel is the primary
 production host, Git LFS media is enabled, and the public domain root is live at
@@ -26,7 +72,7 @@ The canonical repository is `/Users/kk/Code/skywhale-airways`. The sibling
 checkout `/Users/kk/Code/psychedelic-airport` was used only as the source for
 preserved merch PNG and print assets.
 
-## Closed Out
+### Closed Out
 
 - PR #2: Vercel/root-path cleanup, Git LFS policy, merch source assets, fallback
   Pages configuration, and documentation refresh.
@@ -88,7 +134,7 @@ preserved merch PNG and print assets.
 - Fulfillment defaults, standalone shop-domain decision, and festival archive
   package checklist documented for issues #24, #32, and #33.
 
-## Repository Queue Snapshot
+### Repository Queue Snapshot
 
 Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
 
@@ -132,7 +178,7 @@ Audited June 5, 2026 18:30 PDT / June 6 01:30 UTC.
   - #2 `Prepare Vercel launch and LFS merch assets`
   - #1 `Add film production pipeline and final web cut`
 
-## Verification
+### Verification
 
 - `npm ci`
 - `npm run build`
@@ -232,7 +278,7 @@ Press Kit local performance pass on June 4, 2026:
 - 390px layout smoke: document width equals viewport width; title, intro, and
   action buttons fit within the page.
 
-## Launch Polish
+### Launch Polish
 
 - #34: Vercel Shopify env and embedded sticker Buy Button rendering are complete. Keep
   this open only if KK wants the optional standalone `shop.skywhaleairways.com`
@@ -241,7 +287,7 @@ Press Kit local performance pass on June 4, 2026:
   awards cut. This is the only remaining launch-polish gate that should stay
   human-owned.
 
-## Next Swarm
+### Next Swarm
 
 - #15: Human watch/listen signoff for the production-served awards cut.
 - #34: Optional standalone shop-domain decision; the embedded sticker Buy Button
@@ -250,7 +296,7 @@ Press Kit local performance pass on June 4, 2026:
 - #25-#31: Product-specific merch decisions. Keep only the sticker Buy Button
   live until fulfillment, variants, shipping, returns, and tax are decided.
 
-## Later
+### Later
 
 - Connect `shop.skywhaleairways.com` only if KK later decides the public shop
   surface should exist outside embedded Buy Buttons.

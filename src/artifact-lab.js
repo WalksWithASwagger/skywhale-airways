@@ -138,7 +138,10 @@ export class ArtifactLab {
     const state = parseHash(window.location.hash);
     if (!state) return false;
     this.setState(state, { track: false });
-    if (reveal) this.root.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (reveal) this.root.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+      block: "start",
+    });
     return true;
   }
 

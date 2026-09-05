@@ -1,6 +1,6 @@
 # Skywhale Airways ✈ 🐋
 
-A scroll-driven, heavy-WebGL microsite for the animation _I AM NOMAD_ (a
+A film-first microsite with an optional WebGL journey for _I AM NOMAD_ (a
 psychedelic airport for time travelers) — **AI Film Club · Retro Challenge · June 2026**, by
 **Kris Krug & Suzy Easton**. _Skywhale Airways_ is the in-world airline brand
 (it's the airline on the boarding pass) and the project's name for festivals and
@@ -22,23 +22,30 @@ current shop surface.
 Ten hand-painted gouache keyframes become a single immersive journey: scroll
 melts each scene into the next with a liquid chromatic shader, generative
 fish-aircraft drift in parallax, the *whale sky god* soundtrack plays underneath
-and drives the distortion, and the poetic voiceover surfaces line by line. After
-that portal, the terminal leads with the festival cut: the animation contest
-entry. Visitors can then remix the film, lyrics, and merch art into one
+and drives the distortion, and the poetic voiceover surfaces line by line.
+Visitors can watch the festival cut immediately through “Watch I AM NOMAD” or
+`/#film-slot`, or choose to wander the airport first. Film entry pauses the
+airport soundtrack; returning to the airport never resumes it automatically.
+Visitors can then remix the film, lyrics, and merch art into one
 downloadable Skywhale Artifact Lab souvenir before browsing the Duty-Free merch
 concepts.
 
 ## Run it
 
 ```bash
-npm install
-npm run optimize   # refreshes committed public assets when local source folders exist
+npm ci             # Node 24, matching CI
 npm run dev        # http://localhost:3000
 ```
 
 `npm run build` writes the static site to `dist/`. `npm run preview` serves the
 root-path Vercel build locally. `npm run lint` runs ESLint; every PR is gated by
 a GitHub Actions **build + Playwright smoke** check (`.github/workflows/ci.yml`).
+Run `node --test tests/audio.test.mjs` for audio cancellation/coordination checks.
+The existing harness also provides `smoke-artifact-link` and `smoke-film-entry`;
+see `.claude/skills/run-skywhale-airways/SKILL.md` for setup and commands.
+The film suite uses a deterministic YouTube boundary; real playback still needs
+manual review. The approved roadmap lives in [ROADMAP.md](ROADMAP.md), with the
+current milestone and validation evidence in [NEXT.md](NEXT.md).
 
 To test the old GitHub Pages subpath build manually, run:
 
@@ -98,7 +105,7 @@ work. See [NEXT.md](NEXT.md) for the shortest restart handoff.
 - **Vercel production** — live at the domain root with custom aliases; the films
   are embedded from YouTube (no longer Git LFS), and the Vite 8 / Rolldown build
   is verified on Vercel.
-- **Finished film** — the 59s festival / awards cut is embedded in the
+- **Finished film** — the approved v9, 53.5s festival / awards cut is embedded in the
   `#film-frame` slot from YouTube (Unlisted, `youtu.be/3xmfwiwdhm8`). The 53s web
   cut is also on YouTube (`youtu.be/nvKMmuzQNDs`). Both mp4s were removed from the
   repo/LFS so Vercel no longer pulls ~158 MB of LFS on every deploy.

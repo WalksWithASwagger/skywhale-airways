@@ -81,18 +81,22 @@
     <link rel="stylesheet" href="/styles.css" />
     <script type="module" src="/src/analytics.js"></script>
   </head>
-  <body class="gated">
-    <!-- Boarding gate: the entry tap starts the soundtrack (sound-on by default) -->
+  <body>
     <div id="gate">
       <div class="gate-inner">
         <p class="gate-kicker">Skywhale Airways</p>
-        <h1 class="gate-title">I AM NOMAD</h1>
+        <h1 class="gate-title" id="gate-title">I AM NOMAD</h1>
         <p class="gate-tagline">a psychedelic airport for time travelers</p>
-        <button id="gate-board" type="button">
-          <span class="gate-board-main">▶ Tap to board</span>
-          <span class="gate-board-sub">sound on · best with headphones</span>
-        </button>
-        <button id="gate-muted" type="button" class="gate-muted">enter muted</button>
+        <a id="gate-watch" href="#film-slot">
+          <span class="gate-board-main">▶ Watch I AM NOMAD</span>
+          <span class="gate-board-sub">53.5 seconds · a film by Kris Krug &amp; Suzy Easton</span>
+        </a>
+        <div class="wander-actions" data-needs-js hidden>
+          <p class="gate-invitation">Or take the long way through the airport.</p>
+          <button id="gate-board" type="button" class="gate-muted">Wander with sound</button>
+          <button id="gate-muted" type="button" class="gate-muted">Wander muted</button>
+        </div>
+        <p class="journey-status" role="status"></p>
       </div>
     </div>
 
@@ -108,9 +112,11 @@
     <!-- Audio + scene HUD -->
     <header id="hud">
       <span id="now-showing">I AM NOMAD</span>
+      <a id="journey-watch" href="#film-slot">Watch the film ↗</a>
       <button id="audio-toggle" type="button" aria-pressed="false" aria-label="Play soundtrack">
         <span class="dot"></span><span class="audio-label">sound</span>
       </button>
+      <span id="audio-status" role="status"></span>
     </header>
 
     <!-- Scroll affordance -->
@@ -125,10 +131,10 @@
         <!-- Festival cut is hosted on YouTube (Unlisted) and embedded here; no local mp4 in the repo. -->
         <section id="film-slot" aria-labelledby="film-title">
           <p class="film-label">Contest entry · festival cut</p>
-          <h2 class="terminal-title" id="film-title">I AM NOMAD</h2>
+          <h2 class="terminal-title" id="film-title" tabindex="-1">I AM NOMAD</h2>
           <p class="terminal-sub">
-            The portal above is the boarding route. This 53-second film is the
-            animation contest entry.
+            One impossible airport. One brief departure.
+            Stay for the film, then make something to take with you.
           </p>
           <div class="film-frame" id="film-frame">
             <iframe
@@ -139,6 +145,12 @@
               allowfullscreen
             ></iframe>
           </div>
+          <p id="film-status" class="film-status" role="status"></p>
+          <div class="after-film-actions">
+            <a class="film-link primary" href="#artifact-lab">Make a souvenir ↓</a>
+            <button id="film-wander" class="film-link" type="button" data-needs-js hidden>Wander the airport</button>
+          </div>
+          <p class="journey-status" role="status"></p>
           <div class="film-actions">
             <a class="film-link primary" href="https://youtu.be/3xmfwiwdhm8">Watch on YouTube</a>
             <a class="film-link" href="https://kriskrug.co/i-am-nomad-ai-film/">Read the making-of</a>
@@ -150,13 +162,14 @@
         <section id="artifact-lab" aria-labelledby="artifacts-title">
           <div class="terminal-section-heading artifact-lab-heading">
             <p class="film-label">Aftershow artifacts</p>
-            <h2 class="terminal-title" id="artifacts-title">Skywhale Artifact Lab</h2>
+            <h2 class="terminal-title" id="artifacts-title" tabindex="-1">Skywhale Artifact Lab</h2>
             <p class="terminal-sub">
               After the film, remix the terminal into one impossible souvenir.
             </p>
           </div>
 
-          <div class="artifact-lab-shell">
+          <p id="artifact-status" class="film-status" role="status">Souvenirs need JavaScript. The film is ready to watch above.</p>
+          <div class="artifact-lab-shell" inert>
             <div class="artifact-preview">
               <canvas id="artifact-canvas" width="1024" height="640" role="img"
                 aria-label="Your generated Skywhale Airways artifact"></canvas>

@@ -26,6 +26,8 @@ jobs:
         run: npm run check:seo
       - name: SEO regression tests
         run: npm run test:seo
+      - name: Ambient audio race tests
+        run: node --test tests/audio.test.mjs
 
   smoke:
     runs-on: ubuntu-latest
@@ -57,6 +59,18 @@ jobs:
         run: |
           URL=http://localhost:4173 node .claude/skills/run-skywhale-airways/driver.mjs smoke 2>&1 | tee /tmp/smoke.log
           grep -F "(no console/page errors)" /tmp/smoke.log
+      - name: Shared artifact link regression
+        run: URL=http://localhost:4173 node .claude/skills/run-skywhale-airways/driver.mjs smoke-artifact-link
+      - name: Film entry acceptance checks
+        run: URL=http://localhost:4173 node .claude/skills/run-skywhale-airways/driver.mjs smoke-film-entry
+      - name: Driver rejects console errors
+        run: |
+          set +e
+          printf 'nav http://localhost:4173\neval console.error("intentional driver regression probe")\nconsole-errors\nquit\n' | node .claude/skills/run-skywhale-airways/driver.mjs > /tmp/driver-negative.log 2>&1
+          driver_status=$?
+          set -e
+          test "$driver_status" -eq 1
+          grep -F "✗ console: intentional driver regression probe" /tmp/driver-negative.log
       - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v7
