@@ -2,28 +2,63 @@
 // amplitude into the shader. Browsers block autoplay, so playback starts on the
 // first user gesture; the toggle lets the visitor mute/unmute thereafter.
 export class AudioBed {
-  constructor(toggleEl, { src = `${import.meta.env.BASE_URL}audio/whale-sky-god.mp3` } = {}) {
+  constructor(
+    toggleEl,
+    {
+      src = `${import.meta.env.BASE_URL}audio/whale-sky-god.mp3`,
+      beforePlay = () => true,
+    } = {}
+  ) {
     this.level = 0;
     this.started = false;
+    this.wantsPlay = false;
+    this.request = 0;
+    this.allowedRequest = 0;
+    this.beforePlay = beforePlay;
     this.toggle = toggleEl;
 
     this.el = new Audio(src);
     this.el.loop = true;
-    this.el.preload = "auto";
+    this.el.preload = "none";
     this.el.crossOrigin = "anonymous";
 
     this.toggle.addEventListener("click", (e) => {
       e.stopPropagation();
-      this.started ? this.#userToggle() : this.start();
+      if (this.wantsPlay) this.pause();
+      else void this.start();
     });
   }
 
-  // Called once on the first page gesture (scroll/click/touch).
-  start() {
-    if (this.started) return;
-    this.started = true;
-    this.#connectAnalyser();
-    this.#play();
+  async start() {
+    const request = ++this.request;
+    this.wantsPlay = true;
+    if (!this.started) {
+      this.started = true;
+      this.#connectAnalyser();
+    }
+    try {
+      const resumed =
+        this.ctx?.state === "suspended" ? this.ctx.resume() : Promise.resolve();
+      const [allowed] = await Promise.all([this.beforePlay(), resumed]);
+      if (request !== this.request) return;
+      if (!allowed) {
+        this.pause();
+        return;
+      }
+      this.allowedRequest = request;
+      await this.el.play();
+      if (this.allowedRequest !== this.request) this.el.pause();
+      if (request === this.request) this.#setUi(this.wantsPlay);
+    } catch {
+      if (request === this.request) this.pause();
+    }
+  }
+
+  pause() {
+    this.request++;
+    this.wantsPlay = false;
+    this.el.pause();
+    this.#setUi(false);
   }
 
   #connectAnalyser() {
@@ -43,29 +78,13 @@ export class AudioBed {
     }
   }
 
-  async #play() {
-    try {
-      if (this.ctx?.state === "suspended") await this.ctx.resume();
-      await this.el.play();
-      this.#setUi(true);
-    } catch {
-      this.#setUi(false);
-    }
-  }
-
-  #userToggle() {
-    if (this.el.paused) {
-      this.#play();
-    } else {
-      this.el.pause();
-      this.#setUi(false);
-    }
-  }
-
   #setUi(on) {
     this.toggle.setAttribute("aria-pressed", String(on));
     this.toggle.classList.toggle("on", on);
-    this.toggle.setAttribute("aria-label", on ? "Mute soundtrack" : "Play soundtrack");
+    this.toggle.setAttribute(
+      "aria-label",
+      on ? "Mute soundtrack" : "Play soundtrack"
+    );
   }
 
   // 0..1 smoothed amplitude for the current frame.
