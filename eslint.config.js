@@ -29,6 +29,7 @@ export default [
     // Node tooling: build scripts, config, and skill drivers.
     files: [
       "scripts/*.mjs",
+      "tests/*.mjs",
       "vite.config.js",
       "eslint.config.js",
       ".claude/skills/**/*.mjs",

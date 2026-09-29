@@ -34,7 +34,7 @@ concepts.
 
 ```bash
 npm ci             # Node 24, matching CI
-npm run dev        # http://localhost:3000
+npm run dev        # Vite through Varlock; http://localhost:3000
 ```
 
 `npm run build` writes the static site to `dist/`. `npm run preview` serves the
@@ -81,15 +81,29 @@ returned HTTP 308 to the apex. Page canonical tags point at the apex domain.
 GitHub Pages was disabled on June 3, 2026 after Vercel production was verified.
 The old `walkswithaswagger.github.io/skywhale-airways/` URL should return 404.
 
-Shopify Buy Button env vars are documented in `.env.example` and
-`merch/shopify-launch.md`. Production and preview env vars are set in Vercel for
-the live I AM NOMAD holographic sticker; patch, tee, and broader catalog pieces
-remain concept-gallery items until fulfillment and product setup are chosen.
+Shopify Buy Button env vars are documented in `.env.schema`, `.env.example`, and
+`merch/shopify-launch.md`. Local values live in
+`~/.agents/env/values/.env.skywhale-airways.local` and are imported by path
+(`allowMissing=true`). `npm run dev` loads them through `varlock run --inject vars`.
+Do not wrap `npm run build` or `npm run preview` — CI and Vercel inject or omit
+them. Production and preview env vars stay in Vercel for the live I AM NOMAD
+holographic sticker; patch, tee, and broader catalog pieces remain
+concept-gallery items until fulfillment and product setup are chosen.
 
-Admin verification env vars are also documented in `.env.example`.
-`VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or `GT-...` tag is
-present; production currently uses `G-W59LMFSG43`. `VITE_GOOGLE_SITE_VERIFICATION`
-injects the Search Console verification meta tag at build time.
+Admin verification env vars are also documented in `.env.schema` and
+`.env.example`. `VITE_GA_MEASUREMENT_ID` loads GA4 only when a valid `G-...` or
+`GT-...` tag is present; production currently uses `G-W59LMFSG43`.
+`VITE_GOOGLE_SITE_VERIFICATION` injects the Search Console verification meta tag
+at build time.
+
+Validate the committed contract (redacted output only):
+
+```bash
+npm run env:validate
+# same as: npx varlock load --agent --show-all
+```
+
+Agents must not create, open, print, copy, or modify value files.
 
 `sitemap.xml` is generated during `vite build` from the page list in
 `vite.config.js` (with git-derived `<lastmod>` dates) and served from the site

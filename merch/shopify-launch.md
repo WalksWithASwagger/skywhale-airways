@@ -109,7 +109,7 @@ To take one live (after the fulfillment decisions in the packet above):
    handle in `src/shop-data.js`), make it available to the Buy Button channel,
    and copy its Storefront **product ID**.
 2. **Set the env var** (the product's `productEnv`) to that ID in **Vercel
-   Production + Preview** (and local `.env`).
+   Production + Preview** (and `~/.agents/env/values/.env.skywhale-airways.local`).
 3. **Flip `enabled: true`** for that product's `shopify` block in
    `src/shop-data.js`, commit, and deploy.
 4. **Verify on production:** the card mounts a live "Add to cart" button; the cart
@@ -125,17 +125,19 @@ the size/fulfillment model, then add or enable the Shopify config with
 
 ## Environment
 
-Local `.env` shape:
+Local values live in `~/.agents/env/values/.env.skywhale-airways.local` and are
+imported by path from `.env.schema`. `npm run dev` loads them through
+`varlock run --inject vars`. Key names only (do not copy secrets into this repo):
 
 ```bash
-VITE_SHOPIFY_DOMAIN=dze7ru-ii.myshopify.com
-VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN=<from Shopify Buy Button; do not commit>
-VITE_SHOPIFY_NOMAD_STICKER_PRODUCT_ID=15051888918891
+VITE_SHOPIFY_DOMAIN=
+VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN=
+VITE_SHOPIFY_NOMAD_STICKER_PRODUCT_ID=
 ```
 
-The sticker values are set in Vercel for Production and Preview. Keep local
-`.env` files out of git, and do not paste token values into docs, screenshots,
-or logs.
+The live sticker values are set in Vercel for Production and Preview. Do not
+paste token values into docs, screenshots, or logs. Agents must not open,
+print, copy, or hash value files.
 
 ## Verification
 

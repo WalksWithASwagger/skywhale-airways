@@ -28,6 +28,10 @@ jobs:
         run: npm run test:seo
       - name: Ambient audio race tests
         run: node --test tests/audio.test.mjs
+      - name: Env contract tests
+        run: npm run test:env
+      - name: Varlock schema validate
+        run: npm run env:validate
 
   smoke:
     runs-on: ubuntu-latest

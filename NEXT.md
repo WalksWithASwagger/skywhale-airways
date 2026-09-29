@@ -219,6 +219,7 @@ A hardening sweep landed on `main` (all merged, all live):
   MCP docs tools while forbidding store, product, order, cart, deployment, commit,
   and issue-comment mutations.
 - Do not commit real `.env` files or the Shopify Storefront access token.
+  Local values live in `~/.agents/env/values/.env.skywhale-airways.local`.
 
 ### Open Work
 
