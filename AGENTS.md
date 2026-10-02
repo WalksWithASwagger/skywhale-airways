@@ -16,8 +16,8 @@ award, or festival claims.
 - `index.html` and `press.html`: currently visible public facts and credits
 - `production/AWARDS_QA.md` and `production/README.md`: approved final-cut facts
 - `vite.config.js`: indexable page list, build inputs, and sitemap generation
-- `src/analytics.js`, `.env.example`, and `vite.config.js`: env-gated analytics
-  and Search Console behavior
+- `src/analytics.js`, `.env.schema`, `.env.example`, and `vite.config.js`:
+  env-gated analytics and Search Console behavior
 
 Stop and open an issue if runtime, credits, rights, publication status, or
 creator attribution conflict across those sources. Never hard-code analytics or
@@ -33,8 +33,24 @@ npm run lint
 npm run build
 npm run check:seo
 npm run test:seo
+npm run test:env
+npm run env:validate
 git diff --check
 ```
 
 Keep site, film, commerce, WebGL, audio, external-service, and deployment changes
 out of search-signal maintenance unless an issue explicitly authorizes them.
+
+## Secrets (Varlock)
+
+Local values live in `~/.agents/env/values/.env.skywhale-airways.local` (mode
+`0600`). `.env.schema` `@import`s that file with `allowMissing=true`. Do not rely
+on a repo-root `.env` symlink. Production pipeline keys live in
+`production/.env.schema` and import the same project file.
+
+Agents inspect with `varlock load --agent` (`npm run env:validate`) and run
+tools with `varlock run --inject vars -- <command>`. `npm run dev` already
+injects. Never `cat` `.env` / `.env.local` / files under `~/.agents/env/values/`,
+never `printenv` secrets, never `varlock reveal` in agent sessions.
+
+Canonical contract docs: `/Users/kk/Code/kk-kb/docs/AGENT-SECRETS-VARLOCK.md`.

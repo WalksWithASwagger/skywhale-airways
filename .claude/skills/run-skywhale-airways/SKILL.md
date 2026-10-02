@@ -22,14 +22,14 @@ cd .claude/skills/run-skywhale-airways && npm install && npx playwright install 
 cd -                                                                 # back to project root
 ```
 
-No env vars are required to run locally. `.env.example` lists optional Shopify / Google analytics keys; the site renders fully without them.
+No env vars are required to run locally. `.env.schema` / `.env.example` list optional Shopify / Google analytics keys; the site renders fully without them. `npm run dev` injects `~/.agents/env/values/.env.skywhale-airways.local` through Varlock when that file exists (`allowMissing=true`). Agents must not create or inspect a local env file.
 
 ## Run (agent path) — START HERE
 
 1. Start the dev server in the background and poll the port (macOS has no `timeout`, so loop):
 
 ```bash
-npm run dev > /tmp/skywhale-dev.log 2>&1 &
+npm run dev > /tmp/skywhale-dev.log 2>&1 &  # Vite through Varlock
 echo $! > /tmp/skywhale-dev.pid
 for i in $(seq 1 30); do curl -sf http://localhost:3000 >/dev/null 2>&1 && { echo "SERVING"; break; }; sleep 1; done
 ```

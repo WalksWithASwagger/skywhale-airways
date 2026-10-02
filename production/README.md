@@ -35,10 +35,10 @@ production/
    (currently "legible Dalí melt" — strong surreal morph, subject still readable).
 
    ```bash
-   python3 scripts/run_i2v_pipeline.py --scenes s01 --model fast --no-audio   # test one
-   python3 scripts/run_i2v_pipeline.py --all --model fast --no-audio          # all ten
-   python3 scripts/run_i2v_pipeline.py --all --model full                     # pro pass (veo-3.1)
-   python3 scripts/run_i2v_pipeline.py --all --model full --resolution 4k --no-audio  # 4K pass
+   varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --scenes s01 --model fast --no-audio   # test one
+   varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all --model fast --no-audio          # all ten
+   varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all --model full                     # pro pass (veo-3.1)
+   varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all --model full --resolution 4k --no-audio  # 4K pass
    ```
 
    Cost: `fast` ≈ $1 per 8-s clip, `full` (veo-3.1) ≈ $3.20, `4k` ≈ $4.80
@@ -47,7 +47,8 @@ production/
    **Resolution note (updated):** Veo 3.1 gained native 4K (3840×2160) in a
    January 2026 update. Replicate's `google/veo-3.1` still caps at 1080p, so
    4k requests route to the Gemini API (`veo-3.1-generate-preview`) — set
-   `GOOGLE_API_KEY` in `production/.env`. 4K clips land as `clips/sNN_4k.mp4`;
+   `GOOGLE_API_KEY` in `~/.agents/env/values/.env.skywhale-airways.local` and
+   run the pipeline through `varlock run --inject vars`. 4K clips land as `clips/sNN_4k.mp4`;
    re-rolls never overwrite earlier takes (`sNN_4k_t2.mp4`, …).
 
 2. **Clips → cut.** Assemble in storyboard order against a track.
@@ -222,11 +223,24 @@ fades to black). The current primary awards cut is
 
 ## Config
 
-The environment contract is in `.env.schema`. Agents may inspect that schema,
-but must not read local `.env*` value files. Run secret-dependent commands with:
+The environment contract is in `.env.schema`. Local values live in
+`~/.agents/env/values/.env.skywhale-airways.local` and are imported by path
+(`allowMissing=true`). A leftover `production/.env` (often a symlink into the
+values directory) is compat only; do not copy secrets into this folder. Agents
+may inspect the schema, but must not read local `.env*` value files. Run
+secret-dependent commands with:
 
 ```bash
-varlock run --inject vars -- <command>
+varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --scenes s01 --model fast --no-audio
+# equivalent from repo root:
+# npx varlock run --path production --inject vars -- python3 production/scripts/run_i2v_pipeline.py --scenes s01 --model fast --no-audio
+```
+
+Validate the contract (redacted output only):
+
+```bash
+varlock load --agent --show-all
+# from repo root: npx varlock load --agent --show-all --path production
 ```
 
 The contract covers `REPLICATE_API_TOKEN` (clips, beds, stems),

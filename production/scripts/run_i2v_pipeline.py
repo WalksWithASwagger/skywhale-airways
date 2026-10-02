@@ -6,13 +6,14 @@ Animates each keyframe into an 8-second clip, preserving the painted look
 
 Backends: Replicate (720p/1080p) and the Gemini API (adds 4k — Replicate's
 google/veo-3.1 does not expose the Jan-2026 4K update). 4k requests route to
-Gemini automatically; it needs GOOGLE_API_KEY (env or production/.env).
+Gemini automatically; it needs GOOGLE_API_KEY injected by
+`varlock run --inject vars` (a leftover production/.env is fallback only).
 
 Usage:
-    python3 scripts/run_i2v_pipeline.py --scenes s01            # one clip (test)
-    python3 scripts/run_i2v_pipeline.py --all                   # all scenes
-    python3 scripts/run_i2v_pipeline.py --all --model full --audio
-    python3 scripts/run_i2v_pipeline.py --all --model full --resolution 4k --no-audio
+    varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --scenes s01            # one clip (test)
+    varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all                   # all scenes
+    varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all --model full --audio
+    varlock run --inject vars -- python3 scripts/run_i2v_pipeline.py --all --model full --resolution 4k --no-audio
 """
 
 from __future__ import annotations
@@ -37,6 +38,9 @@ ENV_FILE = ROOT / ".env"
 
 
 def load_token() -> str:
+    # Documented commands inject through `varlock run --inject vars`.
+    # A leftover local .env is applied only for keys that are not already set.
+    # Do not rely on a production/.env symlink.
     token = os.getenv("REPLICATE_API_TOKEN")
     if token:
         return token
@@ -46,7 +50,9 @@ def load_token() -> str:
                 token = line.split("=", 1)[1].strip()
                 if token:
                     return token
-    raise RuntimeError("REPLICATE_API_TOKEN missing.")
+    raise RuntimeError(
+        "REPLICATE_API_TOKEN missing. Run through `varlock run --inject vars` (do not commit values)."
+    )
 
 
 def load_google_key() -> str:
@@ -61,7 +67,10 @@ def load_google_key() -> str:
                     key = line.split("=", 1)[1].strip()
                     if key:
                         return key
-    raise RuntimeError("GOOGLE_API_KEY missing (required for 4k via the Gemini API).")
+    raise RuntimeError(
+        "GOOGLE_API_KEY missing (required for 4k via the Gemini API). "
+        "Run through `varlock run --inject vars` (do not commit values)."
+    )
 
 
 def read_json(path: Path, default: Any) -> Any:
