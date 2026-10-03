@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **This repository is archived (read-only) as of 2026-10-03.** The canonical source now lives in [`WalksWithASwagger/kk-kb`](https://github.com/WalksWithASwagger/kk-kb) at [`kk-kb/apps/skywhale-airways`](https://github.com/WalksWithASwagger/kk-kb/tree/main/apps/skywhale-airways). The live site (https://skywhaleairways.com) deploys from kk-kb. Open issues, PRs and history stay here for reference. Make new changes in kk-kb.
+
 # Skywhale Airways ✈ 🐋
 
 A film-first microsite with an optional WebGL journey for _I AM NOMAD_ (a
